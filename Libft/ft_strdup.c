@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjung <hjung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 17:54:36 by hjung             #+#    #+#             */
-/*   Updated: 2020/04/05 20:04:11 by hjung            ###   ########.fr       */
+/*   Created: 2021/01/06 15:54:42 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/06 15:55:47 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 char	*ft_strdup(const char *src)
 {
-	char	*box;
+	char	*ret;
 	int		i;
 
 	i = ft_strlen(src);
-	box = (char *)malloc(i + 1);
-	if (!box)
+	ret = (char *)malloc(i + 1);
+	if (!ret)
 		return (NULL);
 	i = 0;
 	while (src[i] != '\0')
 	{
-		box[i] = src[i];
+		ret[i] = src[i];
 		i++;
 	}
-	box[i] = '\0';
-	return (box);
+	ret[i] = '\0';
+	return (ret);
 }

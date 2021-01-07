@@ -3,86 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjung <hjung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/06 22:28:38 by hjung             #+#    #+#             */
-/*   Updated: 2020/04/18 23:59:24 by hjung            ###   ########.fr       */
+/*   Created: 2021/01/06 16:58:37 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/07 11:37:01 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_check(char const *set, char const letter)
+static int	is_set(char ch, char const *set)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	while (set[i] != '\0')
 	{
-		if (letter == set[i])
+		if (ch == set[i])
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int		ft_res_len(char const *s1, char const *set)
+static	int	get_head(char const *s1, char const *set)
 {
+	int ret;
+
+	ret = 0;
+	while (s1[ret] != '\0')
+	{
+		if (is_set(s1[ret], set) == 0)
+			return (ret);
+		ret++;
+	}
+	return (-1);
+}
+
+static	int	get_tail(char const *s1, char const *set)
+{
+	int ret;
+
+	ret = ft_strlen(s1) - 1;
+	if (is_set(s1[ret], set) == 0)
+		return (ret);
+	while (ret >= 0)
+	{
+		if (is_set(s1[ret], set) == 0)
+			return (ret);
+		ret--;
+	}
+	return (-1);
+}
+
+char		*ft_strtrim(char const *s1, char const *set)
+{
+	char	*ret;
+	char	*temp;
 	int		head;
 	int		tail;
-	int		i;
 
-	i = 0;
-	while (s1[i] != '\0')
+	head = get_head(s1, set);
+	tail = get_tail(s1, set);
+	if (head == -1 || tail == -1)
 	{
-		if (ft_check(set, s1[i]))
-			i++;
-		else
-			break ;
+		ret = (char *)malloc(1);
+		*ret = 0;
+		return (ret);
 	}
-	head = i;
-	i = (int)(ft_strlen(s1)) - 1;
-	if (head == i + 1)
-		return (0);
-	while (i >= 0)
-	{
-		if (ft_check(set, s1[i]))
-			i--;
-		else
-			break ;
-	}
-	tail = i;
-	return (tail - head + 1);
-}
-
-char	*ft_input(char const *s1, char const *set)
-{
-	int		res_len;
-	int		i;
-
-	i = 0;
-	res_len = ft_res_len(s1, set) + 1;
-	if (res_len == 1)
-		return (ft_strdup(""));
-	else
-	{
-		while (s1[i] != '\0')
-		{
-			if (ft_check(set, s1[i]))
-				i++;
-			else
-				break ;
-		}
-		return (ft_substr(s1, i, res_len - 1));
-	}
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	char	*res;
-
-	if (s1 == NULL || set == NULL)
-		return (NULL);
-	res = ft_input(s1, set);
-	return (res);
+	temp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	ft_strlcpy(temp, &(s1[head]), tail - head + 2);
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(temp) + 2));
+	ft_strlcpy(ret, temp, ft_strlen(temp) + 1);
+	free(temp);
+	return (ret);
 }

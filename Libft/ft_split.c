@@ -1,88 +1,99 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjung <hjung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/07 02:12:16 by hjung             #+#    #+#             */
-/*   Updated: 2020/04/19 11:25:34 by hjung            ###   ########.fr       */
+/*   Created: 2021/01/06 16:00:21 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/07 12:05:14 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		w_cnt(const char *str, char c)
+static	int		is_c(char ch, char const c)
 {
-	int i;
-	int word_cnt;
+	if (ch == c)
+		return (1);
+	return (0);
+}
 
+static	int		get_start(char const *s1, char const c, int end)
+{
+	int ret;
+	int i;
+
+	ret = end + 1;
+	if (s1[ret] == '\0')
+		return (-1);
 	i = 0;
-	word_cnt = 0;
-	while (str[i] != '\0')
+	while (s1[ret + i] != '\0')
 	{
-		if (((i == 0) && (str[i] != c)) || ((str[i] != c) && (str[i - 1] == c)))
-			word_cnt++;
-		i++;
+		if (is_c(s1[ret + i], c) == 0)
+			return (ret + i);
+		else
+			i++;
 	}
-	return (word_cnt + 1);
+	return (-1);
 }
 
-int		ft_word_len(const char *word, char c)
+static	int		get_end(char const *s1, char const c, int start)
 {
+	int ret;
 	int i;
 
+	if (start == -1)
+		return (-1);
+	ret = start;
 	i = 0;
-	while ((word[i] != c) && (word[i] != '\0'))
-		i++;
-	return (i);
-}
-
-int		ft_add(const char *str, char c, char *res)
-{
-	int i;
-
-	i = 0;
-	while ((str[i] != c) && str[i] != '\0')
+	while (s1[ret + i] != '\0')
 	{
-		res[i] = str[i];
-		i++;
+		if (is_c(s1[ret + i], c) == 1)
+			return (ret + i - 1);
+		else
+			i++;
 	}
-	res[i] = '\0';
-	return (i);
+	return (ret + i - 1);
 }
 
-void	ft_increment(char letter, int *i)
+static	char	**new_ret(char **ret, char const *s1, int start, int end)
 {
-	if (letter != '\0')
-		*i += 1;
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**res;
 	int		i;
-	int		line;
+	int		len;
+	char	**return_value;
+	char	*str;
 
-	i = 0;
-	line = 0;
-	if (s == 0 || (res = (char **)malloc(sizeof(char *) * w_cnt(s, c))) == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	len = 0;
+	while (ret[len] != 0)
+		len++;
+	return_value = (char **)malloc(sizeof(char *) * (len + 2));
+	i = -1;
+	while (ret[++i] != '\0')
+		return_value[i] = ret[i];
+	free(ret);
+	str = (char *)malloc(sizeof(char) * (end - start + 2));
+	ft_strlcpy(str, &s1[start], end - start + 2);
+	return_value[i++] = str;
+	return_value[i] = 0;
+	return (return_value);
+}
+
+char			**ft_split(char const *s1, char const c)
+{
+	char	**ret;
+	int		start;
+	int		end;
+
+	ret = (char **)malloc(sizeof(char *) * 1);
+	*ret = 0;
+	start = get_start(s1, c, -1);
+	end = get_end(s1, c, start);
+	while (start != -1)
 	{
-		if (((i == 0) && (s[i] != c)) || ((s[i] != c) && (s[i - 1] == c)))
-		{
-			if ((res[line] = (char *)malloc(ft_word_len(&s[i], c) + 1)) == NULL)
-			{
-				while (--line >= 0)
-					free(res[line]);
-				return (NULL);
-			}
-			i += ft_add(&s[i], c, res[line]);
-			line++;
-		}
-		ft_increment(s[i], &i);
+		ret = new_ret(ret, s1, start, end);
+		start = get_start(s1, c, end);
+		end = get_end(s1, c, start);
 	}
-	res[line] = 0;
-	return (res);
+	return (ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjung <hjung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/06 17:14:33 by hjung             #+#    #+#             */
-/*   Updated: 2020/04/17 16:41:10 by hjung            ###   ########.fr       */
+/*   Created: 2021/01/06 15:58:08 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/06 15:59:31 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*res;
+	char	*ret;
 	int		i;
 	int		j;
 
@@ -22,20 +22,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	res = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!res)
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!ret)
 		return (NULL);
 	while (s1[i] != '\0')
 	{
-		res[i] = s1[i];
+		ret[i] = s1[i];
 		i++;
 	}
 	while (s2[j] != '\0')
 	{
-		res[i] = s2[j];
+		ret[i] = s2[j];
 		i++;
 		j++;
 	}
-	res[i] = '\0';
-	return (res);
+	ret[i] = '\0';
+	return (ret);
 }

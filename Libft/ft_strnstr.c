@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjung <hjung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 15:01:04 by hjung             #+#    #+#             */
-/*   Updated: 2020/04/15 04:17:11 by hjung            ###   ########.fr       */
+/*   Created: 2021/01/06 15:42:25 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/06 15:47:51 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_cmp(const char *s1, const char *s2)
+int		ft_comp(const char *s1, const char *s2)
 {
 	int		i;
 
@@ -38,7 +38,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 	{
 		if (n - i < ft_strlen(to_find))
 			return (char *)(NULL);
-		if (ft_cmp(&str[i], to_find) == 1)
+		if (ft_comp(&str[i], to_find) == 1)
 			return ((char *)&str[i]);
 		i++;
 	}

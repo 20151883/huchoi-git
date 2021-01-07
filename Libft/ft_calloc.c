@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjung <hjung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/05 15:42:35 by hjung             #+#    #+#             */
-/*   Updated: 2020/04/05 20:01:25 by hjung            ###   ########.fr       */
+/*   Created: 2021/01/06 15:52:44 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/06 15:54:31 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t			total_size;
+	size_t			multipl;
 	size_t			i;
 	unsigned char	*ptr;
 
 	i = 0;
-	total_size = count * size;
-	ptr = (unsigned char *)malloc(total_size);
+	multipl = count * size;
+	ptr = (unsigned char *)malloc(multipl);
 	if (!ptr)
 		return (void *)(NULL);
-	while (i < total_size)
+	while (i < multipl)
 	{
 		ptr[i] = '\0';
 		i++;

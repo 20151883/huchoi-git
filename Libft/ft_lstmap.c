@@ -3,46 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjung <hjung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42soeul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/19 21:58:56 by hjung             #+#    #+#             */
-/*   Updated: 2020/04/14 21:52:04 by hjung            ###   ########.fr       */
+/*   Created: 2021/01/07 13:24:41 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/07 13:31:08 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	clearall(t_list *lst, void (*del)(void *))
-{
-	while (lst)
-	{
-		del(lst->content);
-		free(lst);
-		lst = lst->next;
-	}
-}
-
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*newlist;
+	t_list	*head;
 	t_list	*newnode;
-	t_list	*tail;
+	t_list	*cur;
 
-	newlist = NULL;
+	head = NULL;
 	while (lst)
 	{
 		newnode = ft_lstnew((*f)(lst->content));
 		if (!newnode)
 		{
-			clearall(newlist, del);
+			ft_lstclrea(&head, del);
 			return (NULL);
 		}
-		if (newlist == NULL)
-			newlist = newnode;
+		if (head == NULL)
+			head = newnode;
 		else
-			tail->next = newnode;
-		tail = newnode;
+			cur->next = newnode;
+		cur = newnode;
 		lst = lst->next;
 	}
-	return (newlist);
+	return (head);
 }
