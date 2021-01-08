@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:58:37 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/07 11:37:01 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/08 14:04:57 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static	int	get_tail(char const *s1, char const *set)
 char		*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ret;
-	char	*temp;
+	char	temp[ft_strlen(s1) + 1];
 	int		head;
 	int		tail;
 
@@ -71,10 +71,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 		*ret = 0;
 		return (ret);
 	}
-	temp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	ft_strlcpy(temp, &(s1[head]), tail - head + 2);
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(temp) + 2));
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(temp) + 1));
 	ft_strlcpy(ret, temp, ft_strlen(temp) + 1);
-	free(temp);
 	return (ret);
 }
