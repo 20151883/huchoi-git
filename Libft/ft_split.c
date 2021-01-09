@@ -6,17 +6,36 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:00:21 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/07 12:05:14 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/09 13:40:41 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		is_c(char ch, char const c)
+static	void	my_clear(char **lst)
 {
-	if (ch == c)
-		return (1);
-	return (0);
+	int		i;
+	char	*cur;
+	char	*del;
+
+	i = 0;
+	del = lst[i];
+	if (del == 0)
+	{
+		free(del);
+		return ;
+	}
+	else
+	{
+		cur = lst[++i];
+		free(del);
+		while (cur != 0)
+		{
+			del = cur;
+			cur = lst[++i];
+			free(del);
+		}
+	}
 }
 
 static	int		get_start(char const *s1, char const c, int end)
@@ -30,7 +49,7 @@ static	int		get_start(char const *s1, char const c, int end)
 	i = 0;
 	while (s1[ret + i] != '\0')
 	{
-		if (is_c(s1[ret + i], c) == 0)
+		if (s1[ret + i] != c)
 			return (ret + i);
 		else
 			i++;
@@ -49,7 +68,7 @@ static	int		get_end(char const *s1, char const c, int start)
 	i = 0;
 	while (s1[ret + i] != '\0')
 	{
-		if (is_c(s1[ret + i], c) == 1)
+		if (c == (s1[ret + i]))
 			return (ret + i - 1);
 		else
 			i++;
@@ -68,6 +87,11 @@ static	char	**new_ret(char **ret, char const *s1, int start, int end)
 	while (ret[len] != 0)
 		len++;
 	return_value = (char **)malloc(sizeof(char *) * (len + 2));
+	if (return_value == 0)
+	{
+		my_clear(ret);
+		return (0);
+	}
 	i = -1;
 	while (ret[++i] != '\0')
 		return_value[i] = ret[i];
@@ -86,12 +110,16 @@ char			**ft_split(char const *s1, char const c)
 	int		end;
 
 	ret = (char **)malloc(sizeof(char *) * 1);
+	if (ret == 0)
+		return (0);
 	*ret = 0;
 	start = get_start(s1, c, -1);
 	end = get_end(s1, c, start);
 	while (start != -1)
 	{
 		ret = new_ret(ret, s1, start, end);
+		if (ret == 0)
+			return (0);
 		start = get_start(s1, c, end);
 		end = get_end(s1, c, start);
 	}

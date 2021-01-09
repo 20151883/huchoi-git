@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:58:37 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/08 14:04:57 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/09 12:12:51 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 	}
 	ft_strlcpy(temp, &(s1[head]), tail - head + 2);
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(temp) + 1));
+	if (ret == 0)
+		return (0);
 	ft_strlcpy(ret, temp, ft_strlen(temp) + 1);
 	return (ret);
 }
