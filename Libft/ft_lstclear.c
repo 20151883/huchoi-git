@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 12:56:32 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/07 13:09:57 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/09 12:00:32 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*cur;
 
 	delnode = (*lst);
-	cur = *(lst->next);
+	if (delnode == 0)
+		return ;
+	cur = delnode->next;
 	del(delnode->content);
 	free(delnode);
 	while (cur != 0)
@@ -28,4 +30,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		del(delnode->content);
 		free(delnode);
 	}
+	*lst = 0;
 }

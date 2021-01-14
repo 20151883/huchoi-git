@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42soeul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 13:24:41 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/07 13:31:08 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/09 11:42:39 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		newnode = ft_lstnew((*f)(lst->content));
 		if (!newnode)
 		{
-			ft_lstclrea(&head, del);
+			ft_lstclear(&head, del);
 			return (NULL);
 		}
 		if (head == NULL)
