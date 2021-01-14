@@ -1,5 +1,3 @@
-#include "ft_pritnf.h"
-
 void put_unsignd_x(size_t num)
 {
     char *arr;

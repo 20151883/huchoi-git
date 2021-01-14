@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
-
 //va_strat
 //va_arg
 //va_copy
