@@ -2,7 +2,7 @@
 #define __GET_NEXT_LINE__
 
 #include <unistd.h>
-#include <stdlin.h>
+#include <stdlib.h>
 
 char	*ft_strdup(const char *src);
 int ft_strlen(char *str)
