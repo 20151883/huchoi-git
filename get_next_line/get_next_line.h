@@ -5,6 +5,6 @@
 #include <stdlib.h>
 
 char	*ft_strdup(const char *src);
-int ft_strlen(char *str)
+int ft_strlen(char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 #endif
