@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 10:43:14 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/18 21:16:38 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/18 20:13:03 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,26 @@ int get_next_line(int fd, char **line)
     while((ret = read(fd, buf, BUFFER_SIZE)) >= 0)
     {
         buf[ret] = '\0';//NULL terminated
-        if (ret == 0)
+        if (ret == 0)//EOF를 만났을때라고 단정지을수있나? 뭔소리지...???
         {
             if (backup != NULL)
             {
-				p = ft_strrchr(backup, '\0');
-				while (p != &backup[ret])
-				{
-					if (backup[ret] != '\0')
-						backup[ret] = '\n';
-					ret++;
-				}
+                p = ft_strchr(backup, '\n');
+                if (p != 0)
+                {
+                    *p = 0;
+                    *line = strdup(backup);
+                    temp = strdup(++p);
+                    free(backup);
+                    free(buf);
+                    backup = temp;
+                    return (1);
+                }
                 *line = (char *)ft_strdup(backup);
                 free(buf);
                 free(backup);
-                backup = NULL;
+				if ()
+                	backup = NULL;
                 return (0);//return zero or one ??!!!???!!!
             }
             else
