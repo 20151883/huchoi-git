@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 10:43:14 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/18 16:58:39 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/18 18:12:21 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int get_next_line(int fd, char **line)
                 free(buf);
                 free(backup);
                 backup = NULL;
-                return (1);//return zero or one ??!!!???!!!
+                return (0);//return zero or one ??!!!???!!!
             }
             else
             {
