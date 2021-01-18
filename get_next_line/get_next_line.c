@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 10:43:14 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/14 10:14:13 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/18 15:09:20 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int get_next_line(int fd, char **line)
             }
             else
             {
-                *line = strdup("");
+                *line = ft_strdup("");
                 return (0);//return zero is coreect...! because main process the free(line)!!
             }
         }
@@ -54,8 +54,8 @@ int get_next_line(int fd, char **line)
                 else
                 {
                     *p = 0;
-                    *line = strdup(backup);
-                    temp = strdup(++p);
+                    *line = ft_strdup(backup);
+                    temp = ft_strdup(++p);
                     free(backup);
                     backup = temp;
                     return (1);
@@ -63,16 +63,16 @@ int get_next_line(int fd, char **line)
             }
             else
             {
-                backup = strdup(buf);
-                if ((p = strchr(backup, '\n') == 0)
+                backup = ft_strdup(buf);
+                if ((p = ft_strchr(backup, '\n') == 0)
                 {
                     continue;
                 }
                 else
                 {
                     *p = 0;
-                    *line = strdup(backup);
-                    temp = strdup(++p);
+                    *line = ft_strdup(backup);
+                    temp = ft_strdup(++p);
                     free(backup);
                     backup = temp;
                     return (1);
