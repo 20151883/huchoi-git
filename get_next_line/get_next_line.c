@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 10:43:14 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/18 18:12:21 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/18 19:09:45 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int get_next_line(int fd, char **line)
                 free(backup);
                 backup = temp;
 				p = ft_strchr(backup, '\n');
-                if (*p == 0)
+                if (p == (char *)NULL)
                 {
                     continue;
                 }
@@ -67,7 +67,7 @@ int get_next_line(int fd, char **line)
             {
                 backup = ft_strdup(buf);
 				p = ft_strchr(backup, '\n');
-                if (*p == 0)
+                if (p == (char *)NULL)
                 {
                     continue;
                 }
