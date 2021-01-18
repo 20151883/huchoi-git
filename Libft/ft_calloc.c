@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 14:42:29 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/04 14:48:56 by huchoi           ###   ########.fr       */
+/*   Created: 2021/01/06 15:52:44 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/06 15:54:31 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
-	size_t	j;
-	size_t	dstlen;
-	size_t	srclen;
+	size_t			multipl;
+	size_t			i;
+	unsigned char	*ptr;
 
-	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
-	if (dstlen >= size)
-		return (srclen + size);
-	else
+	i = 0;
+	multipl = count * size;
+	ptr = (unsigned char *)malloc(multipl);
+	if (!ptr)
+		return (void *)(NULL);
+	while (i < multipl)
 	{
-		i = 0;
-		j = dstlen;
-		while (size - dstlen - 1 > 0 && src[i] != '\0')
-		{
-			dst[j] = src[i];
-			j++;
-			i++;
-			size--;
-		}
-		dst[j] = '\0';
-		return (dstlen + srclen);
+		ptr[i] = '\0';
+		i++;
 	}
+	return (void *)(ptr);
 }
