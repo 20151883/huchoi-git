@@ -14,33 +14,71 @@
 
 int get_next_line(int fd, char **line)
 {
+    static char *backup;
     char *buf;
-    char *str;
     int ret;
+    char * p;
+    char *temp;
 
-    str = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-    str[0] = '\0';
-    buf = (char *)malloc(sizeof(char) * BUFFER_SIZE);//buf don't need the null (strlcat will be used) you must know that null is just check point
-    if (fd < 0 || buf == 0) 
-        return (-1);
-    while (1)
+    buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    while((ret = read(fd, buf, BUFFER_SIZE)) >= 0)
     {
-        ret = read(fd, buf, BUFFER_SIZE);//the return nalue of read function is very useful value 
-        if (0 == ret)//read dosen't prommis the null terminated, read return 0 if contact wih EOF
-            return (0);//read 함수가 언제 0을 반환하는지가 애매하다... read는 읽은 만큼만 반환한다. 그걸 이용하면 된다.
-        if (check_buffer(buf, ret) != ret)//enter is founded
+        buf[ret] = '\0';//NULL terminated
+        if (ret = 0)
         {
-           get_new_str(&str, buf, ret);//add this string to the char **line
-            if (-1 == add_new_str(line, str))
-                return (-1);
-            return (1);
+            if (!backup)
+            {
+                *line = strdup(backup);
+                free(buf);
+                free(backup);
+                backup = NULL;
+                return (1);//return zero or one ??!!!???!!!
+            }
+            else
+            {
+                *line = strdup("");
+                return (0);//return zero is coreect...! because main process the free(line)!!
+            }
         }
-        else//just cat the stirng of buufer to the array str.
+        else if (0 < ret && ret <= BUFFER_SIZE)
         {
-            get_new_str(&str, buf, ret);
-            if (-1 == add_new_str(line, str))
-                return (-1);
-            return (1);
+            if (!backup)
+            {
+                temp = strjoin(backup, buf);
+                free(backup);
+                backup = temp;
+                if ((p = strchr(backup, '\n') == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    *p = 0;
+                    *line = strdup(backup);
+                    temp = strdup(++p);
+                    free(backup);
+                    backup = temp;
+                    return (1);
+                }
+            }
+            else
+            {
+                backup = strdup(buf);
+                if ((p = strchr(backup, '\n') == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    *p = 0;
+                    *line = strdup(backup);
+                    temp = strdup(++p);
+                    free(backup);
+                    backup = temp;
+                    return (1);
+                }
+            }
         }
     }
+    return (-1);
 }
