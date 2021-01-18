@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 10:43:14 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/18 15:35:14 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/18 16:58:39 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int get_next_line(int fd, char **line)
             else
             {
                 *line = ft_strdup("");
+				free(buf);
                 return (0);//return zero is coreect...! because main process the free(line)!!
             }
         }
