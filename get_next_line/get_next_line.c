@@ -24,11 +24,11 @@ int get_next_line(int fd, char **line)
     while((ret = read(fd, buf, BUFFER_SIZE)) >= 0)
     {
         buf[ret] = '\0';//NULL terminated
-        if (ret = 0)
+        if (ret == 0)
         {
             if (!backup)
             {
-                *line = ft_strdup(backup);
+                *line = (char *)ft_strdup(backup);
                 free(buf);
                 free(backup);
                 backup = NULL;
@@ -44,10 +44,10 @@ int get_next_line(int fd, char **line)
         {
             if (!backup)
             {
-                temp = strjoin(backup, buf);
+                temp = ft_strjoin(backup, buf);
                 free(backup);
                 backup = temp;
-                if ((p = strchr(backup, '\n') == 0)
+                if (p = ft_strchr(backup, '\n') == 0)
                 {
                     continue;
                 }
