@@ -47,7 +47,7 @@ int get_next_line(int fd, char **line)
                 temp = ft_strjoin(backup, buf);
                 free(backup);
                 backup = temp;
-                if (p = ft_strchr(backup, '\n') == 0)
+                if (p = ft_strchr(backup, '\n') == NULL)
                 {
                     continue;
                 }
@@ -64,7 +64,7 @@ int get_next_line(int fd, char **line)
             else
             {
                 backup = ft_strdup(buf);
-                if ((p = ft_strchr(backup, '\n') == 0)
+                if ((p = ft_strchr(backup, '\n') == NULL)
                 {
                     continue;
                 }
