@@ -12,18 +12,23 @@
 
 #include "get_next_line.h"
 
-int check_buffer(char *buf, int size)//return the count value and this function's return value is prommised
+char	*ft_strdup(const char *src)
 {
-    int count;
-    
-    count = 0;
-    while (count < size)
-    {
-        if (buf[count] == '\n')
-            return (count);
-        count++;
-    }
-    return (count);
+	char	*ret;
+	int		i;
+
+	i = ft_strlen(src);
+	ret = (char *)malloc(i + 1);
+	if (!ret)
+		return (NULL);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		ret[i] = src[i];
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
 }
 
 int ft_strlen(char *str)// fact : max_idx = the number of member - 1  
@@ -38,65 +43,30 @@ int ft_strlen(char *str)// fact : max_idx = the number of member - 1
     return (ret);
 }
 
-int ft_strlcat(char *dest, char *src, int size)//study this function
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-    int i;
-    int j;
+	char	*ret;
+	int		i;
+	int		j;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	i = 0;
 	j = 0;
-	if (ft_strlen(dest) > size)
-		return (ft_strlen(src) + size);
-	else
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!ret)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		while(dest[i] != '\0')
-			i++;
-		while (src[j] && i < (size - 1))
-		{
-			dest[i] = src[j];
-			j++;
-			i++;
-		}
-		dest[i] = '\0';
-		//while(*src)
-		//	i++;
-		return (i);
+		ret[i] = s1[i];
+		i++;
 	}
-}
-
-int add_new_str(char **line, char *str)
-{
-    int size;
-    int i;
-    char **temp;
-
-    size = 0;
-    while(line[size])
-        size++;
-    temp = (char **)malloc(sizeof(char *) * (size + 2));
-    if (temp == 0)
-        return (-1);
-    i = 0;
-    while(line[i] != 0)
-    {
-        temp[i] = line[i];
-        i++;
-    }
-    free(line);
-    line = temp;
-    line[i++] = str;
-    line[i] = 0;
-	return (0);
-}
-
-void get_new_str(char **str, char *buf, int plus)
-{
-    char * temp;
-
-    temp = malloc(sizeof(char) * ft_strlen(*str) + plus+ 1);
-    temp[0] = '\0';
-    ft_strlcat(temp, *str, ft_strlen(*str) + 1);
-    ft_strlcat(temp, buf, plus + 1);//in this line ret has the number of byte that read func has read...
-    free(*str);
-    *str = temp;
+	while (s2[j] != '\0')
+	{
+		ret[i] = s2[j];
+		i++;
+		j++;
+	}
+	ret[i] = '\0';
+	return (ret);
 }

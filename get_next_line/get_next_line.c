@@ -28,7 +28,7 @@ int get_next_line(int fd, char **line)
         {
             if (!backup)
             {
-                *line = strdup(backup);
+                *line = ft_strdup(backup);
                 free(buf);
                 free(backup);
                 backup = NULL;
