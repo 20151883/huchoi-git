@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 10:43:14 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/18 15:09:20 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/18 15:35:14 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int get_next_line(int fd, char **line)
         buf[ret] = '\0';//NULL terminated
         if (ret == 0)
         {
-            if (!backup)
+            if (backup != NULL)
             {
                 *line = (char *)ft_strdup(backup);
                 free(buf);
@@ -42,12 +42,13 @@ int get_next_line(int fd, char **line)
         }
         else if (0 < ret && ret <= BUFFER_SIZE)
         {
-            if (!backup)
+            if (backup != NULL)
             {
                 temp = ft_strjoin(backup, buf);
                 free(backup);
                 backup = temp;
-                if (p = ft_strchr(backup, '\n') == NULL)
+				p = ft_strchr(backup, '\n');
+                if (*p == 0)
                 {
                     continue;
                 }
@@ -64,7 +65,8 @@ int get_next_line(int fd, char **line)
             else
             {
                 backup = ft_strdup(buf);
-                if ((p = ft_strchr(backup, '\n') == NULL)
+				p = ft_strchr(backup, '\n');
+                if (*p == 0)
                 {
                     continue;
                 }

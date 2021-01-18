@@ -4,7 +4,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char	*ft_strdup(const char *src);
+char	*ft_strdup(char *src);
 int ft_strlen(char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
 #endif
