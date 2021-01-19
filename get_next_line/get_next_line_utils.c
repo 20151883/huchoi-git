@@ -31,23 +31,6 @@ char	*ft_strdup(char *src)
 	return (ret);
 }
 
-char	*ft_strrchr(char *s, int c)
-{
-	int		i;
-	char	*ret;
-
-	i = 0;
-	ret = NULL;
-	while (s[i] != '\0')
-	{
-		if (s[i] == (char)c)
-			ret = (char *)s + i;
-		i++;
-	}
-	if (c == 0)
-		return (char *)(s + i);
-	return (ret);
-}
 
 int ft_strlen(char *str)// fact : max_idx = the number of member - 1  
 {
