@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 11:11:17 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/18 19:05:39 by huchoi           ###   ########.fr       */
+/*   Created: 2021/01/20 16:53:44 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/20 17:07:01 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strdup(char *src)
 {
@@ -31,17 +31,16 @@ char	*ft_strdup(char *src)
 	return (ret);
 }
 
-
-int ft_strlen(char *str)// fact : max_idx = the number of member - 1  
+int		ft_strlen(char *str)
 {
-    int ret;
+	int ret;
 
-    ret = 0;
-    while (str[ret])
-    {
-        ret++;
-    }
-    return (ret);
+	ret = 0;
+	while (str[ret])
+	{
+		ret++;
+	}
+	return (ret);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -74,7 +73,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*ft_strchr(char *s, int c)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (s[i] != (char)c)

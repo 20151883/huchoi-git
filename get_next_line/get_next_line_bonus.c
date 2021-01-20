@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 10:43:14 by marvin            #+#    #+#             */
-/*   Updated: 2021/01/20 15:18:37 by huchoi           ###   ########.fr       */
+/*   Created: 2021/01/20 17:00:50 by huchoi            #+#    #+#             */
+/*   Updated: 2021/01/20 17:06:27 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	free_back_buf(char *p1, char *p2)
 {

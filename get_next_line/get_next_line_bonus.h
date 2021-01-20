@@ -6,12 +6,12 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:21:36 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/20 17:19:41 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/20 17:20:45 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
