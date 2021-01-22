@@ -27,6 +27,11 @@ int		renewer_backup(char **line, char **p_backup, char **p_buf, char *p)
 	*p = '\0';
 	*line = ft_strdup(*p_backup);
 	temp = ft_strdup(++p);
+	if (*line  == 0 || temp == 0)
+	{
+		free_back_buf(*p_backup, *p_buf);
+		return (-1);
+	}
 	free_back_buf(*p_backup, *p_buf);
 	*p_backup = temp;
 	return (1);
@@ -41,10 +46,13 @@ int		case_ret_zero(char **line, char **p_backup, char **p_buf)
 		p = ft_strchr(*p_backup, '\n');
 		if (p != 0)
 		{
-			renewer_backup(line, p_backup, p_buf, p);
-			return (1);
+			if (-1 == (renewer_backup(line, p_backup, p_buf, p)))
+				return (-1);
+			else
+				return (1);
 		}
-		*line = (char *)ft_strdup(*p_backup);
+		if (0 == (*line = (char *)ft_strdup(*p_backup)))
+			return (-1);
 		free_back_buf(*p_backup, *p_buf);
 		*p_backup = NULL;
 		return (0);
@@ -64,7 +72,11 @@ int		case_ret_non_zero(char **line, char **p_backup, char **p_buf)
 
 	if (*p_backup != NULL)
 	{
-		temp = ft_strjoin(*p_backup, *p_buf);
+		if (0 == (temp = ft_strjoin(*p_backup, *p_buf)))
+		{
+			free_back_buf(*p_backup, *p_buf);
+			return (-1);
+		}
 		free(*p_backup);
 		*p_backup = temp;
 		p = ft_strchr(*p_backup, '\n');
