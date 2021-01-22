@@ -93,7 +93,7 @@ int		get_next_line(int fd, char **line)
 	if (BUFFER_SIZE == 0 || BUFFER_SIZE == -1 || fd < 0 || line == 0)
 		return (-1);
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	while ((ret = read(fd, buf, BUFFER_SIZE)) >= 0)
+	while ((ret = read(fd, buf, BUFFER_SIZE)) >= 0)//
 	{
 		buf[ret] = '\0';
 		if (ret == 0)

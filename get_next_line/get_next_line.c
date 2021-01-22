@@ -36,7 +36,7 @@ int		case_ret_zero(char **line, char **p_backup, char **p_buf)
 {
 	char *p;
 
-	if (*p_backup != NULL)
+	if (*p_backup != NULL)//문자열을 가리키고 있음
 	{
 		p = ft_strchr(*p_backup, '\n');
 		if (p != 0)
@@ -49,7 +49,7 @@ int		case_ret_zero(char **line, char **p_backup, char **p_buf)
 		*p_backup = NULL;
 		return (0);
 	}
-	else
+	else//문자열을 가리키지 않음
 	{
 		*line = ft_strdup("");
 		free(*p_buf);
@@ -64,7 +64,7 @@ int		case_ret_non_zero(char **line, char **p_backup, char **p_buf)
 
 	if (*p_backup != NULL)
 	{
-		temp = ft_strjoin(*p_backup, *p_buf);
+		if (-1 == (temp = ft_strjoin(*p_backup, *p_buf))
 		free(*p_backup);
 		*p_backup = temp;
 		p = ft_strchr(*p_backup, '\n');
@@ -93,15 +93,15 @@ int		get_next_line(int fd, char **line)
 	if (BUFFER_SIZE == 0 || BUFFER_SIZE == -1 || fd < 0 || line == 0)
 		return (-1);
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	while ((ret = read(fd, buf, BUFFER_SIZE)) >= 0)
+	while ((ret = read(fd, buf, BUFFER_SIZE)) >= 0)//종료조건: EOF를 만나거나, 개행을 만날때
 	{
 		buf[ret] = '\0';
 		if (ret == 0)
-			return (case_ret_zero(line, &(backup[fd]), &buf));
+			return (case_ret_zero(line, &(backup), &buf));
 		else if (0 < ret && ret <= BUFFER_SIZE)
 		{
-			ret = case_ret_non_zero(line, &(backup[fd]), &buf);
-			if (ret == 42)
+			ret = case_ret_non_zero(line, &(backup), &buf);
+			)if (ret == 42)
 				continue;
 			return (ret);
 		}
