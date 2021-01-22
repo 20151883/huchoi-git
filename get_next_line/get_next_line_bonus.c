@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:00:50 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/22 07:22:22 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/01/22 23:55:13 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		renewer_backup(char **line, char **p_backup, char **p_buf, char *p)
 	*p = '\0';
 	*line = ft_strdup(*p_backup);
 	temp = ft_strdup(++p);
-	if (*line  == 0 || temp == 0)
+	if (*line == 0 || temp == 0)
 	{
 		free_back_buf(*p_backup, *p_buf);
 		return (-1);
@@ -82,8 +82,7 @@ int		case_ret_non_zero(char **line, char **p_backup, char **p_buf)
 		p = ft_strchr(*p_backup, '\n');
 		if (p == (char *)NULL)
 			return (42);
-		else
-			return (renewer_backup(line, p_backup, p_buf, p));
+		return (renewer_backup(line, p_backup, p_buf, p));
 	}
 	else
 	{
@@ -91,8 +90,7 @@ int		case_ret_non_zero(char **line, char **p_backup, char **p_buf)
 		p = ft_strchr(*p_backup, '\n');
 		if (p == (char *)NULL)
 			return (42);
-		else
-			return (renewer_backup(line, p_backup, p_buf, p));
+		return (renewer_backup(line, p_backup, p_buf, p));
 	}
 }
 
