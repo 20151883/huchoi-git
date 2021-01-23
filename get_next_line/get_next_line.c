@@ -47,11 +47,7 @@ int		case_ret_zero(char **line, char **p_backup, char **p_buf)
 	if (*p_backup != NULL)
 	{
 		if (0 != (p = ft_strchr(*p_backup, '\n')))
-		{
-			if (-1 == (renewer_backup(line, p_backup, p_buf, p)))
-				return (-1);
-			return (1);
-		}
+			return (renewer_backup(line, p_backup, p_buf, p));
 		if (0 == (*line = (char *)ft_strdup(*p_backup)))
 		{
 			free_back_buf(*p_backup, *p_buf);
