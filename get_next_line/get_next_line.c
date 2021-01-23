@@ -25,9 +25,12 @@ int		renewer_backup(char **line, char **p_backup, char **p_buf, char *p)
 	char *temp;
 
 	*p = '\0';
-	*line = ft_strdup(*p_backup);
-	temp = ft_strdup(++p);
-	if (*line == 0 || temp == 0)
+	if (0 == (*line = ft_strdup(*p_backup)))
+	{
+		free_back_buf(*p_backup, *p_buf);
+		return (-1);
+	}
+	if (0 == (temp = ft_strdup(++p)))
 	{
 		free_back_buf(*p_backup, *p_buf);
 		return (-1);
@@ -52,14 +55,21 @@ int		case_ret_zero(char **line, char **p_backup, char **p_buf)
 				return (1);
 		}
 		if (0 == (*line = (char *)ft_strdup(*p_backup)))
+		{
+			free_back_buf(*p_backup, *p_buf);
 			return (-1);
+		}
 		free_back_buf(*p_backup, *p_buf);
 		*p_backup = NULL;
 		return (0);
 	}
 	else
 	{
-		*line = ft_strdup("");
+		if (0 == (*line = ft_strdup("")))
+		{
+			free(buf);
+			return (-1);
+		}
 		free(*p_buf);
 		return (0);
 	}
@@ -84,14 +94,14 @@ int		case_ret_non_zero(char **line, char **p_backup, char **p_buf)
 			return (42);
 		return (renewer_backup(line, p_backup, p_buf, p));
 	}
-	else
+	if (0 == (*p_backup = ft_strdup(*p_buf)))
 	{
-		*p_backup = ft_strdup(*p_buf);
-		p = ft_strchr(*p_backup, '\n');
-		if (p == (char *)NULL)
-			return (42);
-		return (renewer_backup(line, p_backup, p_buf, p));
+		free_back_buf(*p_backup, *p_buf);
+		return (-1);
 	}
+	if (0 == (p = ft_strchr(*p_backup, '\n')))
+		return (42);
+	return (renewer_backup(line, p_backup, p_buf, p));
 }
 
 int		get_next_line(int fd, char **line)
