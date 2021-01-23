@@ -15,8 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
-# include <fcntl.h>
 
 char	*ft_strdup(char *src);
 int		ft_strlen(char *str);
