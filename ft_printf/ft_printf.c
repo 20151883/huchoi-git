@@ -53,20 +53,24 @@ int ft_printf(const char* str, ...)
 		i++;
 		//temp 의 모든 요소가0으로 초기화된상태...? 그건 보장안함.
 		//buf는 항상 0인 상태로 루프 진입한다
-		my_case = what_my_case(str[i]);
+		my_case = 1;
 		*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
 			if (my_case != what_my_case(str[i]))
 			{
 				final[my_case] = ft_strdup(temp);
-				my_case = what_my_case(str[i]);
-				*temp = '\0';
-				memset(temp, 0, ft_strlen(temp + 1));//ft_strlen(temp)해줘도 될거같긴한데.
+				my_case++;
+				ft_memset(temp, '\0', ft_strlen(temp + 1));//ft_strlen(temp)해줘도 될거같긴한데.
+				i++;
+				continue;
 			}
 			if(str[i] == '.')
+			{	
 				i++;//사소하지만 중요한 부분
-			if (my_case == 1)
+				continue;
+			}
+			if (str[i] == '-' || str[i] == '0')
 			{
 				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
@@ -77,7 +81,7 @@ int ft_printf(const char* str, ...)
 			{
 				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
-				printf("%s\n",temp);
+				ft_memset(two, 0, sizeof(char) * 2);
 			}
 			else
 			{
@@ -89,7 +93,7 @@ int ft_printf(const char* str, ...)
 			i++;
 		}
 		final[my_case] = ft_strdup(temp);
-		memset(temp, 0, ft_strlen(temp));
+		memset(temp, '\0', ft_strlen(temp));
 		*temp = '\0';
 		the_type = str[i];
 		//type_to_data(&temp, va_arg(ap, ))//tpye_to_Data(char **p_temp, void data)
