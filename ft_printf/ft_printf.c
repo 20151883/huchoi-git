@@ -19,7 +19,7 @@ int what_my_case(char c)
         return (2);
     if(('1' <= c && c <= '9') || c == '.')
         return (3);
-    if (ft_strchr(arr, c) != 0)
+    if (ft_strchr("cspdiuxX%", c) != 0)
         return (5);
     return (-1);
 }
@@ -66,6 +66,13 @@ int ft_printf(const char* str, ...)
 			}
 			if(str[i] == '.')
 				i++;//사소하지만 중요한 부분
+			if (case == 1)
+			{
+				two[0] == str[i];
+				temp = ft_strjoin(temp, two);
+				i++;
+				continue;
+			}
 			if (str[i] != '*')
 			{
 				two[0] = str[i];
