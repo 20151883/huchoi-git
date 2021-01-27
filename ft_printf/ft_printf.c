@@ -77,6 +77,7 @@ int ft_printf(const char* str, ...)
 				free(buf);
 				buf = 0;
 			}
+			i++;
 		}
 		final[my_case] = ft_strdup(temp);
 		memset(temp, 0, ft_strlen(temp));
@@ -107,15 +108,13 @@ int ft_printf(const char* str, ...)
 			//그래서 일단 10진수로 해석하고 그 이후에 저장해놓은 the_tyep에 맞게 변환하면 되겠다. 이 작업은 make_string에서 하겠다.
 		}
 		final[5] = ft_strdup(temp);
-<<<<<<< HEAD
+
 		printf("%s\n%s\n%s\n%s\n\n",final[1], final[2], final[3], final[5]);
 		//ft_putstr_fd(make_string(the_type,temp), 1);//출력할 문자열을 멩글어 주는 함수//여기서 여러가지 분기가 일어나겠다.
-=======
-		printf("%s\n%s\n%s\n%s\n\n",arr[1],arr[2],arr[3],arr[5]);
 		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 		//ft_putstr_fd(make_string(the_type,temp), 1);
 		//출력할 문자열을 멩글어 주는 함수//여기서 여러가지 분기가 일어나겠다.
->>>>>>> edfdeb72369b1aa1b04a5ac967216565d4815b36
+
 		//temp에서 맨 뒤부터 보겠.
 		i++;//사소하지만 중요한 부분
 	}
