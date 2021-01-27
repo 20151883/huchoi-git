@@ -70,6 +70,7 @@ int ft_printf(const char* str, ...)
 			{	
 				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
+				printf("%s\n",temp);
 			}
 			else
 			{
