@@ -124,6 +124,6 @@ int ft_printf(const char* str, ...)
 
 int main(void)
 {
-	ft_printf("my %-1,2s","adsasd");
+	ft_printf("my %-1.2s","adsasd");
 	return (0);
 }
