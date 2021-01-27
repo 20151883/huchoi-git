@@ -7,12 +7,12 @@ int main(void)
 	p = &num;
 
 	printf("[%4.3s]", "12345");
-	printf("[ 123]\n");
+	printf("[]\n");
 	printf("[%2.3s]", "12345");
-	printf("[123]\n");
+	printf("[]\n");
 	printf("[%3.7s]", "12345");
-	printf("[12345]\n");
+	printf("[]\n");
 	printf("[%7.7s]", "12345");
-	printf("[  12345]");
+	printf("[]");
 	return(0);
 }
