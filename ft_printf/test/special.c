@@ -2,9 +2,7 @@
 
 int main(void)
 {
-	printf("[%-010.5%]\n");//
-	printf("[%         ]");    
-	printf("[%000000000]");
-	printf("[0000%     ]");
+	printf("[%-010.5%]\n");
+	printf("[%%         ]");    
 	return (0);
 }
