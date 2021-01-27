@@ -130,6 +130,6 @@ int ft_printf(const char* str, ...)
 
 int main(void)
 {
-	ft_printf("my %-1.2s aaaaagit ","adsasd");
+	ft_printf("my aaaaaaaaaaa%-1.2s aaaaagit ","adsasd");
 	return (0);
 }
