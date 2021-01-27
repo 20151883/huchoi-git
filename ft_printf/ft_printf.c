@@ -3,9 +3,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "libft.h"
-#ifdef DE
-#define TEST printf("here")
-#endif
 //va_strat
 //va_arg
 //va_copy
@@ -47,7 +44,6 @@ int ft_printf(const char* str, ...)
 	int j;
 	char the_type;
 	int my_case;
-	printf("her");
 	while(str[i] != '\0')
 	{
 		if(str[i] != '%')
@@ -71,7 +67,7 @@ int ft_printf(const char* str, ...)
 			if(str[i] == '.')
 				i++;//사소하지만 중요한 부분
 			if (str[i] != '*')
-			{	
+			{
 				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
 				printf("%s\n",temp);
@@ -83,7 +79,6 @@ int ft_printf(const char* str, ...)
 				free(buf);
 				buf = 0;
 			}
-			
 			i++;
 		}
 		final[my_case] = ft_strdup(temp);
