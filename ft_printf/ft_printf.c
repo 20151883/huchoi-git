@@ -68,7 +68,7 @@ int ft_printf(const char* str, ...)
 				i++;//사소하지만 중요한 부분
 			if (case == 1)
 			{
-				two[0] == str[i];
+				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
 				i++;
 				continue;
