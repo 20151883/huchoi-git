@@ -82,7 +82,7 @@ int ft_printf(const char* str, ...)
 		}
 		final[my_case] = ft_strdup(temp);
 		memset(temp, 0, ft_strlen(temp));
-
+		*temp = '\0';
 		the_type = str[i];
 		//type_to_data(&temp, va_arg(ap, ))//tpye_to_Data(char **p_temp, void data)
 		if(the_type == 'c')
@@ -124,6 +124,6 @@ int ft_printf(const char* str, ...)
 
 int main(void)
 {
-	ft_printf("my %-1.2s","adsasd");
+	ft_printf("my %-1.2s aaaaagit ","adsasd");
 	return (0);
 }
