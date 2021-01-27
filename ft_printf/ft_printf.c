@@ -17,7 +17,7 @@ int what_my_case(char c)
         return (1);
     if('1' < c && c < '9')
         return (2);
-    if(c == '.')
+    if(('1' <= c && c <= '9') || c == '.')
         return (3);
     if (ft_strchr(arr, c) != 0)
         return (5);
@@ -64,7 +64,7 @@ int ft_printf(const char* str, ...)
 				*temp = '\0';
 				memset(temp, 0, ft_strlen(temp + 1));//ft_strlen(temp)해줘도 될거같긴한데.
 			}
-			if(my_case == 3)
+			if(str[i] == '.')
 				i++;//사소하지만 중요한 부분
 			if (str[i] != '*')
 			{	
