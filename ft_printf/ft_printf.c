@@ -12,11 +12,11 @@ int what_case(char c)
     char *arr;
 
     arr = malloc(10);
-    ft_strcpy(arr, "cspdiuxX%");
+    ft_strlcpy(arr, "cspdiuxX%", 10);
     if (c == '-' || c == '0')
         return (1);
     if('1' < c && c < '9')
-        return (2)
+        return (2);
     if(c == '.')
         return (3);
     if (ft_strchr(arr, c) != 0)
@@ -43,6 +43,7 @@ int ft_printf(const char* str, ...)
 	int i = 0;
 	int j;
 	char the_type;
+	int case;
 	while(str[i] != '\0')
 	{
 		if(str[i] != '%')
@@ -53,9 +54,8 @@ int ft_printf(const char* str, ...)
 		j = 0;
 		//temp 의 모든 요소가0으로 초기화된상태...? 그건 보장안함.
 		//buf는 항상 0인 상태로 루프 진입한다
-		int case;
 		case = what_case(str[i]);
-		while(ft_strncmp(str[i], "cspdiuxX%", 10) == 0)
+		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
 			if (case != what_case(str[i]))
 			{
@@ -94,7 +94,7 @@ int ft_printf(const char* str, ...)
 		}
 		if(the_type == 'p')
 		{
-			printf("pointer...!!!")
+			printf("pointer...!!!");
 		}
 		if(the_type == '%')
 		{
@@ -107,8 +107,8 @@ int ft_printf(const char* str, ...)
 			//그래서 일단 10진수로 해석하고 그 이후에 저장해놓은 the_tyep에 맞게 변환하면 되겠다. 이 작업은 make_string에서 하겠다.
 		}
 		final[5] = ft_strdup(temp);
-		ft_putstr_fd(make_string(the_type,temp), 1)//출력할 문자열을 멩글어 주는 함수//여기서 여러가지 분기가 일어나겠다.
-		temp에서 맨 뒤부터 보겠.
+		ft_putstr_fd(make_string(the_type,temp), 1);//출력할 문자열을 멩글어 주는 함수//여기서 여러가지 분기가 일어나겠다.
+		//temp에서 맨 뒤부터 보겠.
 		i++;//사소하지만 중요한 부분
 	}
 	return (count);
