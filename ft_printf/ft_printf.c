@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "libft.h"
+#ifdef DE
+#define TEST printf("here")
+#endif
 //va_strat
 //va_arg
 //va_copy
@@ -44,6 +47,7 @@ int ft_printf(const char* str, ...)
 	int j;
 	char the_type;
 	int my_case;
+	printf("her");
 	while(str[i] != '\0')
 	{
 		if(str[i] != '%')
@@ -79,6 +83,7 @@ int ft_printf(const char* str, ...)
 				free(buf);
 				buf = 0;
 			}
+			
 			i++;
 		}
 		final[my_case] = ft_strdup(temp);
