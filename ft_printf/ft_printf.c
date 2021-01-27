@@ -51,16 +51,17 @@ int ft_printf(const char* str, ...)
 			ft_putchar_fd(str[i++], 1);
 		}	continue;
 		i++;
-		j = 0;
 		//temp 의 모든 요소가0으로 초기화된상태...? 그건 보장안함.
 		//buf는 항상 0인 상태로 루프 진입한다
 		my_case = what_my_case(str[i]);
+		*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
 			if (my_case != what_my_case(str[i]))
 			{
 				final[my_case] = ft_strdup(temp);
 				my_case = what_my_case(str[i]);
+				*temp = '\0';
 				memset(temp, 0, ft_strlen(temp + 1));//ft_strlen(temp)해줘도 될거같긴한데.
 			}
 			if(my_case == 3)
