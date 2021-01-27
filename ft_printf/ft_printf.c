@@ -66,7 +66,7 @@ int ft_printf(const char* str, ...)
 			}
 			if(str[i] == '.')
 				i++;//사소하지만 중요한 부분
-			if (case == 1)
+			if (my_case == 1)
 			{
 				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
