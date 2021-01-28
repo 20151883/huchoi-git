@@ -121,6 +121,7 @@ int ft_printf(const char* str, ...)
 		{
 			arr = va_arg(ap, char *);
 			temp = ft_strdup(arr);
+			printf("*****************\n%s\n*******************",temp);
 		}
 		if(the_type == 'p')
 		{
