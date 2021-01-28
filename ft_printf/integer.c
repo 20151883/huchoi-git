@@ -18,9 +18,9 @@ char *case_d(char **line)
     {
         lenth = atoi(line[2]);
     }
-    /*ret = malloc(sizeof(char) * (lenth + 1));*///주석처리하자.
+    ret = malloc(sizeof(char) * (lenth + 1));//주석처리하자.
     //if (*line[3] != '\0') then flag has no power..
-    ret[lenth] = '\0';
+    //ret[lenth] = '\0';
     if (*line[3] != '\0')
     {
     /*    ft_memset(ret, ' ', lenth);
@@ -44,6 +44,7 @@ char *case_d(char **line)
     }
     else//precision is nit in line.//plus is zero.. 
     {
+		ret[lenth] = '\0';
         if (ft_strchr(line[1], '0') != 0)
             ft_memset(ret, '0', lenth);
         else

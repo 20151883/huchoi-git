@@ -62,12 +62,13 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	int i;
 
 	i = 0;
-	ret = malloc(sizeof(char) * (lenth + 1);
-	ft_memset(*p_ret, ' ', lenth)
+	ret = malloc(sizeof(char) * (lenth + 1));
+	ret[lenth] = '\0';
+	ft_memset(ret, ' ', lenth);
 	if (ft_strchr(line[1], '-') != 0)
 	{
 		while (i < plus)
-			ret[i++] = '\0';
+			ret[i++] = '0';
 		ft_strlcpy(&ret[i], line[5], size + 1);
 		if (i + size != lenth)
 			ret[i + size] = ' ';
@@ -83,3 +84,6 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 }
 
 char *precision_int(char **p_ret, char *flag, char *precion)
+{
+	return (0);
+}
