@@ -35,12 +35,12 @@ int ft_printf(const char* str, ...)
 	int count;
 	char **final = malloc(sizeof(char *) * 6);
 	char *buf = 0;
-	char *two = malloc(sizeof(char) * 2);
-	two[1] = '\0';
+	char two[2];
 	int i = 0;
 	int j;
 	char the_type;
 	int my_case;
+	two[1] = '\0';
 	temp = 0;
 	while (str[i] != '\0')
 	{
@@ -82,7 +82,6 @@ int ft_printf(const char* str, ...)
 			{
 				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
-				ft_memset(two, '\0', sizeof(char) * 2);
 				i++;
 				continue;
 			}
