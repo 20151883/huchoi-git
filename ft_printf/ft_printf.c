@@ -11,9 +11,9 @@ int what_my_case(char c)
 {
     if (c == '-' || c == '0')
         return (1);
-    if('1' < c && c < '9')
+    if('0' <= c && c <= '9')
         return (2);
-    if(('1' <= c && c <= '9') || c == '.')
+    if(('0' <= c && c <= '9') || c == '.')
         return (3);
     if (ft_strchr("cspdiuxX%", c) != 0)
         return (5);
