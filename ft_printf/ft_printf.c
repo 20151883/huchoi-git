@@ -7,14 +7,22 @@
 //va_arg
 //va_copy
 //va_end
-int what_my_case(char c)
+int what_my_case(char c, int now_case)
 {
     if (c == '-' || c == '0')
-        return (1);
+    {
+		if (now_case <= 1)
+			return (1);
+	}
     if('0' <= c && c <= '9')
-        return (2);
+    {    if ((now_case <= 2))
+			return (2);
+	}
     if(('0' <= c && c <= '9') || c == '.')
-        return (3);
+    {
+	    if (now_case <= 3)
+			return (3);
+	}
     if (ft_strchr("cspdiuxX%", c) != 0)
         return (5);
     return (-1);
@@ -64,7 +72,6 @@ int ft_printf(const char* str, ...)
 				my_case++;
 				ft_memset(temp, '\0', sizeof(char)*(ft_strlen(temp) + 1));//ft_strlen(temp)해줘도 될거같긴한데.
 				*temp = '\0';
-				i++;
 				continue;
 			}
 			if(str[i] == '.')
