@@ -14,11 +14,11 @@ int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
 		if (now_case <= 1)
 			return (1);
 	}
-    if('0' <= c && c <= '9')
+    if(('0' <= c && c <= '9') || c == '*')
     {    if ((now_case <= 2))
 			return (2);
 	}
-    if(('0' <= c && c <= '9') || c == '.')
+    if(('0' <= c && c <= '9') || c == '.' || c == '*')
     {
 	    if (now_case <= 3)
 			return (3);
@@ -100,6 +100,8 @@ int ft_printf(const char* str, ...)
 				free(buf);
 				buf = 0;
 				i++;
+				if (what_case(str[i], my_case) == my_case)//%*42.42s  이런 경우는 나오면 안되는 case.
+					return (-1);
 				continue;
 			}
 		}
