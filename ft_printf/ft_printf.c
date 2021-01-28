@@ -151,6 +151,6 @@ int ft_printf(const char* str, ...)
 
 int main(void)
 {
-	ft_printf("my aaaaaaaaaaa%-1.2sbbbbbbbb%42.42s","first", "twice");
+	ft_printf("my aaaaaaaaaaa%-1.2sbbbbbbbb%-------000042.42s","first", "twice");
 	return (0);
 }
