@@ -2,7 +2,7 @@
 //minus integer case is not managed....
 char *ten_small_hex(char *str)
 {
-	int num;
+	unsigned int num;
 	char *hex;
 	char temp[12];
 	char *ret;
@@ -10,7 +10,7 @@ char *ten_small_hex(char *str)
 	int j;
 
 	i = 0;
-	num = ft_atoi(str);
+	num = (unsigned int)ft_atoi(str);
 	hex = malloc(sizeof(char) *17);
 	ft_strlcpy(hex, "0123456789abcdef",17);
 	while(num / 16 != 0)
@@ -30,7 +30,7 @@ char *ten_small_hex(char *str)
 
 char *ten_big_hex(char *str)
 {
-	int num;
+	unsigned int num;
 	char *hex;
 	char temp[12];
 	char *ret;
@@ -38,7 +38,7 @@ char *ten_big_hex(char *str)
 	int j;
 
 	i = 0;
-	num = ft_atoi(str);
+	num = (unsigned int)ft_atoi(str);//just label
 	hex = malloc(sizeof(char) *17);
 	ft_strlcpy(hex, "0123456789ABCDEF",17);
 	while(num / 16 != 0)
