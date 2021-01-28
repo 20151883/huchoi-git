@@ -3,9 +3,10 @@
 int main(void)
 {
 	char *arr = "cspdiuxX%";
-	if(ft_strchr(arr, '-')!= NULL)
+	char ch = '-';
+	if(ft_strchr("cspdiuxX%", ch) != 0)
 		printf("done");
-	else
+	else if (ft_strchr("cspdiuxX%", ch) == 0)
 		printf("not");
 	return (0);
 }

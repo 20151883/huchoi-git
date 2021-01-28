@@ -48,7 +48,8 @@ int ft_printf(const char* str, ...)
 		{
 			ft_putchar_fd(str[i], 1);
 			i++;
-		}	continue;
+			continue;
+		}
 		i++;
 		my_case = 1;
 		if (temp != 0)
