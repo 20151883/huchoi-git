@@ -99,6 +99,8 @@ int ft_printf(const char* str, ...)
 				temp = ft_strjoin(temp, buf);
 				free(buf);
 				buf = 0;
+				i++;
+				continue;
 			}
 		}
 		final[my_case] = ft_strdup(temp);
@@ -151,6 +153,6 @@ int ft_printf(const char* str, ...)
 
 int main(void)
 {
-	ft_printf("my aaaaaaaaaaa%-1.2sbbbbbbbb%-------000042.42s","first", "twice");
+	ft_printf("test%--00--*.*s",42,21,"huchoi");
 	return (0);
 }
