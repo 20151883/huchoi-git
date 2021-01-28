@@ -1,12 +1,4 @@
-#include <stdarg.h>
-#include <string.h>
-#include <stdio.h>
-#include <unistd.h>
-#include "libft.h"
-//va_strat
-//va_arg
-//va_copy
-//va_end
+#include "ft_printf.h"
 int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
 {
     if (c == '-' || c == '0')
