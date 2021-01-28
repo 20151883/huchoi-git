@@ -100,7 +100,7 @@ int ft_printf(const char* str, ...)
 				free(buf);
 				buf = 0;
 				i++;
-				if (what_case(str[i], my_case) == my_case)//%*42.42s  이런 경우는 나오면 안되는 case.
+				if (what_my_case(str[i], my_case) == my_case)//%*42.42s  이런 경우는 나오면 안되는 case.
 					return (-1);
 				continue;
 			}
