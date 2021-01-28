@@ -62,7 +62,7 @@ int ft_printf(const char* str, ...)
 			{
 				final[my_case] = ft_strdup(temp);
 				my_case++;
-				ft_memset(temp, '\0', ft_strlen(temp + 1));//ft_strlen(temp)해줘도 될거같긴한데.
+				ft_memset(temp, '\0', ft_strlen(temp) + 1);//ft_strlen(temp)해줘도 될거같긴한데.
 				i++;
 				continue;
 			}
