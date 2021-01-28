@@ -123,11 +123,11 @@ int ft_printf(const char* str, ...)
 			temp = ft_strdup(arr);
 			printf("*****************\n%s\n*******************",temp);
 		}
-		if(the_type == 'p')
+		else if(the_type == 'p')
 		{
 			printf("pointer...!!!");
 		}
-		if(the_type == '%')
+		else if(the_type == '%')
 		{
 			two[0] = '%';
 			temp = ft_strjoin(temp, two);
