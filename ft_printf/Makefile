@@ -10,6 +10,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	ar rcs $@ $(OBJS)
+$(OBJS) : ft_printf.h
 
 clean :
 	$(RM) $(OBJS)
