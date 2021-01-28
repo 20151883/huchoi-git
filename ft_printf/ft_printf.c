@@ -141,7 +141,7 @@ int ft_printf(const char* str, ...)
 			//그래서 일단 10진수로 해석하고 그 이후에 저장해놓은 the_tyep에 맞게 변환하면 되겠다. 이 작업은 make_string에서 하겠다.
 		}
 		final[5] = ft_strdup(temp);
-		printf("%s\n%s\n%s\n%s\n%s\n\n",final[1], final[2], final[3],final[4], final[5]);
+		printf("%s\n%s\n%s\n%s\n%s\n",final[1], final[2], final[3],final[4], final[5]);
 		//ft_putstr_fd(make_string(the_type,temp), 1);//출력할 문자열을 멩글어 주는 함수//여기서 여러가지 분기가 일어나겠다.
 		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 		//ft_putstr_fd(make_string(the_type,temp), 1);
