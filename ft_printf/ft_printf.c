@@ -119,7 +119,8 @@ int ft_printf(const char* str, ...)
 		}
 		if(the_type == 's')
 		{
-			temp = ft_strjoin(temp, va_arg(ap, char *));
+			arr = va_arg(temp, char *);
+			temp = ft_strjoin(temp, arr);
 		}
 		if(the_type == 'p')
 		{
@@ -137,7 +138,7 @@ int ft_printf(const char* str, ...)
 		}
 		final[5] = ft_strdup(temp);
 
-		printf("%s\n%s\n%s\n%s\n\n",final[1], final[2], final[3], final[5]);
+		printf("%s\n%s\n%s\n%s\n",final[1], final[2], final[3], final[5]);
 		//ft_putstr_fd(make_string(the_type,temp), 1);//출력할 문자열을 멩글어 주는 함수//여기서 여러가지 분기가 일어나겠다.
 		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 		//ft_putstr_fd(make_string(the_type,temp), 1);
