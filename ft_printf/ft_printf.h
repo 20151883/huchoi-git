@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+char *precision_int(char **line, int plus, int size, int lenth);
 char *no_precision_int(char **line, int plus, int size, int lenth);
 char *ten_big_hex(char *str);
 char *ten_small_hex(char *str);
