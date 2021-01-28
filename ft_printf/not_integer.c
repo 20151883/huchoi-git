@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-char *case_c(char **line)
+char *case_c(char **line)//dot procedure is needed
 {
     int size;
     char *ret;
