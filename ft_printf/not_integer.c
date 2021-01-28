@@ -12,7 +12,8 @@ char *case_c(char **line)
         size = ft_atoi(line[2]);
     else
         size = 1;
-    ret = malloc(sizeof(char) * size);//[0] ~ [size-1]
+    ret = malloc(sizeof(char) * (size + 1));//[0] ~ [size-1]
+	ret[size] = '\0';
     idx = 0;
     while(idx < size)
         ret[idx++] = ' ';
@@ -20,6 +21,7 @@ char *case_c(char **line)
         ret[0] = *line[5];
     else
         ret[size - 1] = *line[5];
+	printf("\n\n%c\n\n",*line[5]);
     return (ret);
 }
 
@@ -31,7 +33,7 @@ char *case_s(char **line)
 {
     return (0);
 }
-char *case_percent(cahr **line)
+char *case_percent(char **line)
 {
-    return (0)
+    return (0);
 }
