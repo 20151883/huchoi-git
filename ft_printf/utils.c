@@ -83,7 +83,27 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	return (ret);
 }
 
-char *precision_int(char **p_ret, char *flag, char *precion)
+char *precision_int(char **line, int plus, int size, int lenth)
 {
-	return (0);
+	char *ret;
+	int i;
+
+	i = 0;
+	ret = malloc(sizeof(char) * (lenth + 1));
+	ret[lenth] = '\0';
+	if (ft_strchr(line[1], '0') != 0)
+		ft_memset(ret, '0'. lenth);
+	else
+		ft_memset(ret, ' ', lenth);
+	if(ft_strchr(line[1], '-') != 0)
+	{
+		ft_strlcpy(ret, line[5], size + 1);
+		if (ft_strchr(line[1], '0') != 0)
+			ret[size] = 0;
+		else
+			ret[size] = ' ';
+	}
+	else
+		ft_strlcpy(&ret[lenth - size]), line[5], size + 1);
+	return (ret);
 }
