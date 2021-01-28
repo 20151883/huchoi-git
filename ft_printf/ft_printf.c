@@ -108,7 +108,7 @@ int ft_printf(const char* str, ...)
 			final[my_case] = ft_strdup("");
 			my_case++;
 		}
-		/*ft_memset(temp, '\0', ft_strlen(temp));
+		ft_memset(temp, '\0', ft_strlen(temp));
 		*temp = '\0';
 		the_type = str[i];
 		//type_to_data(&temp, va_arg(ap, ))//tpye_to_Data(char **p_temp, void data)
@@ -134,7 +134,7 @@ int ft_printf(const char* str, ...)
 		{
 			temp = ft_itoa(va_arg(ap, int));//일단 가변인자쪽은 무조건 10진수 정수이다???,.,말이 이상하긴한데 암튼 그럼...
 			//그래서 일단 10진수로 해석하고 그 이후에 저장해놓은 the_tyep에 맞게 변환하면 되겠다. 이 작업은 make_string에서 하겠다.
-		}*/
+		}
 		//final[5] = ft_strdup(temp);
 
 		printf("%s\n%s\n%s\n%s\n\n",final[1], final[2], final[3], final[5]);
