@@ -7,7 +7,7 @@
 //va_arg
 //va_copy
 //va_end
-int what_my_case(char c, int now_case)
+int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
 {
     if (c == '-' || c == '0')
     {
@@ -66,7 +66,7 @@ int ft_printf(const char* str, ...)
 		*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
-			if (my_case != what_my_case(str[i]))
+			if (my_case != what_my_case(str[i], my_case))
 			{
 				final[my_case] = ft_strdup(temp);
 				my_case++;
