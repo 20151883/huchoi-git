@@ -11,7 +11,7 @@ char *case_d(char **line)
 
     size = ft_strlen(line[5]);
     plus = 0;
-    if (*line[3] != '\0' && size < atoi(line[3])
+    if (*line[3] != '\0' && size < atoi(line[3]))
         plus = atoi(line[3]) - size;
     lenth = size + plus;
     if (*line[2] != '\0' && lenth < atoi(line[2]))
@@ -26,27 +26,28 @@ char *case_d(char **line)
         ft_memset(ret, ' ', lenth);
         if (ft_strchr(line[1], '-') != 0)
         {
+		//	printf("i : %d   plus : %d \n", i,plus);
             while(i<plus)
-                ret[i++] = '0'
-            while(i<plus + size)
-                ft_strlcpy(&ret[i], line[5], size + 1);
-            ret[i + size] = ' ';
+                ret[i++] = '0';
+            ft_strlcpy(&ret[i], line[5], size + 1);
+            if (i + size != lenth)//in left sort.. warning input ' ' in NULL space...
+				ret[i + size] = ' ';
         }
         else
         {
             i = lenth - size - plus;
             while(i < lenth - size)
-                rer[i++] = '0';
+                ret[i++] = '0';
             ft_strlcpy(&ret[i], line[5], size + 1);
         }
     }
     else//precision is nit in line.//plus is zero.. 
     {
-        if (ft_strchr(line[1], '0') != '0')
+        if (ft_strchr(line[1], '0') != 0)
             ft_memset(ret, '0', lenth);
         else
             ft_memset(ret, ' ', lenth);
-        if (ft_strchr(line[1), '-')
+        if (ft_strchr(line[1], '-'))
         {
             ft_strlcpy(ret, line[5], size + 1);
             if (ft_strchr(line[1], '0') != 0)
@@ -55,9 +56,7 @@ char *case_d(char **line)
                 ret[size] = ' ';
         }
         else//right sort
-        {
             ft_strlcpy(&ret[lenth - size], line[5], size + 1);
-        }
     }
     return (ret);
 }
