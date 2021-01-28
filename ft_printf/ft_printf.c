@@ -120,7 +120,7 @@ int ft_printf(const char* str, ...)
 		if(the_type == 's')
 		{
 			arr = va_arg(ap, char *);
-			temp = ft_strjoin(temp, arr);
+			temp = ft_strdup(arr);
 		}
 		if(the_type == 'p')
 		{
