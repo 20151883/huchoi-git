@@ -33,7 +33,7 @@ int ft_printf(const char* str, ...)
 	//이때, 참조만 하는거기 때문에 포인터의 변화, data의 변화등등은 없을것이다.
 	//그러니까 char *parr = va_args(ap, char *) 이렇게 쓰는게 맞을것이다.
 	char* arr;
-	char *temp = ft_calloc(999999,1);//메모리크기 근거가 부족하다. 1로 바꿧다 이떄는 근거가 있다.
+	char *temp;//메모리크기 근거가 부족하다. 1로 바꿧다 이떄는 근거가 있다.
 	char ch;
 	int	num;
 	int count;
@@ -44,16 +44,21 @@ int ft_printf(const char* str, ...)
 	int j;
 	char the_type;
 	int my_case;
-	while(str[i] != '\0')
+	temp = 0;
+	while (str[i] != '\0')
 	{
 		if(str[i] != '%')
 		{
-			ft_putchar_fd(str[i++], 1);
+			ft_putchar_fd(str[i], 1);
+			i++;
 		}	continue;
 		i++;
 		//temp 의 모든 요소가0으로 초기화된상태...? 그건 보장안함.
 		//buf는 항상 0인 상태로 루프 진입한다
 		my_case = 1;
+		if (temp != 0)
+			free(temp);
+		temp = malloc(sizeof(char) * 1);
 		*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
@@ -86,7 +91,7 @@ int ft_printf(const char* str, ...)
 			else
 			{
 				buf = ft_itoa(va_arg(ap, int));
-				ft_strjoin(temp, buf);
+				temp = ft_strjoin(temp, buf);
 				free(buf);
 				buf = 0;
 			}
