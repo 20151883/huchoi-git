@@ -21,7 +21,6 @@ char *case_c(char **line)
         ret[0] = *line[5];
     else
         ret[size - 1] = *line[5];
-	printf("\n\n%c\n\n",*line[5]);
     return (ret);
 }
 
@@ -31,7 +30,40 @@ char *case_p(char **line)
 }
 char *case_s(char **line)
 {
-    return (0);
+	int size;//character number
+	int lenth;//buffer size
+	char *buf;
+	char *temp;
+
+	size = ft_strlen(line[5]);
+	if (size > ft_atoi(line[3] && *line[3] != '\0'))
+		size = ft_atoi(line[3]);
+	lenth = size;
+	if (lenth < ft_atoi(line[2]) && *line[2] != '\0')
+	{
+		lenth = ft_atoi(line[2]);
+	}
+	else
+	{
+		lenth = lenth + 0;
+	}//[0] ~ [size] but  at [size] NULL ...so [0] ~ [size-1] ///[0]start or [size-lenth]start
+	ret = malloc(sizeof(char) * (lenth + 1));
+	ret[lenth] = '\0';//needed...!!!
+	if(ft_strchr(line[1], '0') != 0)
+	{
+		while(--lenth >= 0)
+			ret[lenth] = '0';
+	}
+	else
+	{
+		while(--lenth >= 0)
+			ret[lenth] = ' ';
+	}
+	if (ft_strchr(line[1], '-') != 0)
+		ft_strlcpy(&ret[0], line[5], size + 1);
+	else
+		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
+    return (ret);
 }
 char *case_percent(char **line)
 {
