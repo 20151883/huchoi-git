@@ -18,12 +18,12 @@ char *case_d(char **line)
     {
         lenth = atoi(line[2]);
     }
-    ret = malloc(sizeof(char) * (lenth + 1));
+    /*ret = malloc(sizeof(char) * (lenth + 1));*///주석처리하자.
     //if (*line[3] != '\0') then flag has no power..
     ret[lenth] = '\0';
     if (*line[3] != '\0')
     {
-        ft_memset(ret, ' ', lenth);
+    /*    ft_memset(ret, ' ', lenth);
         if (ft_strchr(line[1], '-') != 0)
         {
 		//	printf("i : %d   plus : %d \n", i,plus);
@@ -39,7 +39,8 @@ char *case_d(char **line)
             while(i < lenth - size)
                 ret[i++] = '0';
             ft_strlcpy(&ret[i], line[5], size + 1);
-        }
+        }*/
+        ret = no_precision_int(line, plus, size, lenth);
     }
     else//precision is nit in line.//plus is zero.. 
     {
