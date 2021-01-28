@@ -62,6 +62,7 @@ int ft_printf(const char* str, ...)
 		*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
+			printf("here???");
 			if (my_case != what_my_case(str[i]))
 			{
 				final[my_case] = ft_strdup(temp);
