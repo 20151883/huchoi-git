@@ -9,10 +9,6 @@
 //va_end
 int what_my_case(char c)
 {
-    char *arr;
-
-    arr = malloc(10);
-    ft_strlcpy(arr, "cspdiuxX%", 10);
     if (c == '-' || c == '0')
         return (1);
     if('1' < c && c < '9')
@@ -39,7 +35,8 @@ int ft_printf(const char* str, ...)
 	int count;
 	char **final = malloc(sizeof(char *) * 6);
 	char *buf = 0;
-	char *two = ft_calloc(2, 1);
+	char *two = malloc(sizeof(char) * 2);
+	two[1] = '\0';
 	int i = 0;
 	int j;
 	char the_type;
@@ -53,8 +50,6 @@ int ft_printf(const char* str, ...)
 			i++;
 		}	continue;
 		i++;
-		//temp 의 모든 요소가0으로 초기화된상태...? 그건 보장안함.
-		//buf는 항상 0인 상태로 루프 진입한다
 		my_case = 1;
 		if (temp != 0)
 			free(temp);
@@ -62,7 +57,6 @@ int ft_printf(const char* str, ...)
 		*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
-			printf("here???");
 			if (my_case != what_my_case(str[i]))
 			{
 				final[my_case] = ft_strdup(temp);
@@ -87,7 +81,9 @@ int ft_printf(const char* str, ...)
 			{
 				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
-				ft_memset(two, 0, sizeof(char) * 2);
+				ft_memset(two, '\0', sizeof(char) * 2);
+				i++;
+				continue;
 			}
 			else
 			{
@@ -96,10 +92,15 @@ int ft_printf(const char* str, ...)
 				free(buf);
 				buf = 0;
 			}
-			i++;
 		}
 		final[my_case] = ft_strdup(temp);
-		memset(temp, '\0', ft_strlen(temp));
+		my_case++;
+		while (my_case <= 5)
+		{
+			final[my_case] = ft_strdup("");
+			my_case++;
+		}
+		/*ft_memset(temp, '\0', ft_strlen(temp));
 		*temp = '\0';
 		the_type = str[i];
 		//type_to_data(&temp, va_arg(ap, ))//tpye_to_Data(char **p_temp, void data)
@@ -125,8 +126,8 @@ int ft_printf(const char* str, ...)
 		{
 			temp = ft_itoa(va_arg(ap, int));//일단 가변인자쪽은 무조건 10진수 정수이다???,.,말이 이상하긴한데 암튼 그럼...
 			//그래서 일단 10진수로 해석하고 그 이후에 저장해놓은 the_tyep에 맞게 변환하면 되겠다. 이 작업은 make_string에서 하겠다.
-		}
-		final[5] = ft_strdup(temp);
+		}*/
+		//final[5] = ft_strdup(temp);
 
 		printf("%s\n%s\n%s\n%s\n\n",final[1], final[2], final[3], final[5]);
 		//ft_putstr_fd(make_string(the_type,temp), 1);//출력할 문자열을 멩글어 주는 함수//여기서 여러가지 분기가 일어나겠다.
