@@ -34,9 +34,12 @@ char *case_s(char **line)
 	int lenth;//buffer size
 	char *buf;
 	char *temp;
+	char *ret;
+	int i;
 
+	i = 0;
 	size = ft_strlen(line[5]);
-	if (size > ft_atoi(line[3] && *line[3] != '\0'))
+	if (size > ft_atoi(line[3]) && *line[3] != '\0')
 		size = ft_atoi(line[3]);
 	lenth = size;
 	if (lenth < ft_atoi(line[2]) && *line[2] != '\0')
@@ -50,17 +53,18 @@ char *case_s(char **line)
 	ret = malloc(sizeof(char) * (lenth + 1));
 	ret[lenth] = '\0';//needed...!!!
 	if(ft_strchr(line[1], '0') != 0)
-	{
-		while(--lenth >= 0)
-			ret[lenth] = '0';
-	}
+		return (NULL);
 	else
 	{
-		while(--lenth >= 0)
-			ret[lenth] = ' ';
+		while(i < lenth)
+			ret[i++] = ' ';
 	}
 	if (ft_strchr(line[1], '-') != 0)
+	{
 		ft_strlcpy(&ret[0], line[5], size + 1);
+		if (size != lenth)
+			ret[size] = ' ';
+	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
     return (ret);

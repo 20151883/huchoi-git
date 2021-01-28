@@ -4,6 +4,8 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+char *ten_big_hex(char *str);
+char *ten_small_hex(char *str);
 int ft_printf(const char *str, ...);
 int what_my_case(char c, int now_case);
 char *make_string(char **final, char the_type);

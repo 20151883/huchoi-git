@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include "libft.h"
+#include "ft_printf.h"
 int main(void)
 {
-	char *arr = "cspdiuxX%";
-	char ch = '-';
-	if(ft_strchr("cspdiuxX%", ch) != 0)
-		printf("done");
-	else if (ft_strchr("cspdiuxX%", ch) == 0)
-		printf("not");
+	printf("%s\n", ten_small_hex("1234567"));
+	printf("%x\n", 1234567);
+	printf("%s\n",ten_big_hex("2147483647"));
+	printf("%X\n",2147483647);
+	printf("%s\n",ten_big_hex("-2147483647"));
+	printf("%X\n",-2147483647);
 	return (0);
 }
