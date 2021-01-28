@@ -7,7 +7,7 @@ char *case_c(char **line)
     int idx;
 
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
-        return (-1)
+        return (0);
     if (*line[2] != '\0')
         size = ft_atoi(line[2]);
     else
@@ -17,8 +17,8 @@ char *case_c(char **line)
     while(idx < size)
         ret[idx++] = ' ';
     if (ft_strchr(line[1], '-') != 0)
-        ret[0] == *line[5];
+        ret[0] = *line[5];
     else
-        ret[size - 1] = %line[5];
+        ret[size - 1] = *line[5];
     return (ret);
 }
