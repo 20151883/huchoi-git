@@ -22,3 +22,16 @@ char *case_c(char **line)
         ret[size - 1] = *line[5];
     return (ret);
 }
+
+char *case_p(char **line)
+{
+    return (0);
+}
+char *case_s(char **line)
+{
+    return (0);
+}
+char *case_percent(cahr **line)
+{
+    return (0)
+}
