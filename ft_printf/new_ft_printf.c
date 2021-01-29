@@ -63,7 +63,7 @@ int ft_printf(const char* str, ...)
 			}
 			if (str[i] == '.' || str[i] == '-' || str[i] == '0')
 			{
-				if (flag_precise(final, &temp, str, &i) == 1)
+				if (flag_precise(final, &temp, (char *)str, &i) == 1)
 					continue;//it's good func...??? no!!!!
 				else
 					return (0);//free is done...!!
@@ -82,7 +82,7 @@ int ft_printf(const char* str, ...)
 			}*/
 			if (str[i] != '*')
 			{
-				if (1 == not_star(final, str, &temp, &i))
+				if (1 == not_star(final, (char *)str, &temp, &i))
 					continue;
 				else
 					return (0);// free is done!!

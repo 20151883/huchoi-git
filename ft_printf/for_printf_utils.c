@@ -50,7 +50,7 @@ int not_star(char **line, char *str, char **p_temp, int *p_i)
         return (free_ret_zero(line, *p_temp, NULL));
     free(*p_temp);
     *p_temp = arr;
-	*p_i++;
+	(*p_i)++;
     return (1);
 }
 
@@ -84,7 +84,7 @@ int case_changed(char **line, char **p_temp, int *p_my_case)
     if (0 == (line[*p_my_case] = ft_strdup(*p_temp)))
         return (free_ret_zero(line, *p_temp, 0));//***
     (*p_my_case)++;
-    ft_memeset(*p_temp, '\0', ft_strlen(*p_temp));
+    ft_memset(*p_temp, '\0', ft_strlen(*p_temp));
     **p_temp = '\0';
     return (1);
 }
