@@ -1,4 +1,4 @@
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 SRCS = new_ft_printf.c make_string.c integer.c not_integer.c utils.c 
 OBJS = $(SRCS:.c=.o)
@@ -16,3 +16,4 @@ clean :
 	$(RM) $(OBJS)
 fclean :
 	$(RM) $(OBJS) $(NAME)
+re : fclean all

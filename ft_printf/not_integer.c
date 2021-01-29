@@ -74,6 +74,7 @@ char *case_s(char **line)
 char *case_percent(char **line)
 {
 	int lenth;
+	char *ret;
 
 	lenth = 1;
 	if (ft_atoi(line[2]) > lenth)
