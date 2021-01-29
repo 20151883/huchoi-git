@@ -33,8 +33,9 @@ int ft_printf(const char* str, ...)
 	char the_type;
 	int my_case;
 	char *arr;
-	char temp[2];
+	char two[2]
 	
+	two[1] = '\0';
 	//temp = 0;
 	while (str[i] != '\0')
 	{
@@ -83,7 +84,7 @@ int ft_printf(const char* str, ...)
 			{
 				if (1 == not_star(final, str, &temp, &i))
 					continue;
-				else if
+				else
 					return (0);// free is done!!
 			}
 			/*if (str[i] != '*')
@@ -105,14 +106,14 @@ int ft_printf(const char* str, ...)
 				temp = ft_strjoin(temp, buf);*/
 			else
 			{	
-				buf = ft_itoa(va_arg(ap, int);)
+				buf = ft_itoa(va_arg(ap, int));
 				if (0 == star(final, &temp, buf, my_case))
 					return (0);//not continue...!!
 				//free(buf);this done in star function
 				buf = 0;//is it needed???
 				i++;//this action is done in here (not in star func)
 				if (what_my_case(str[i], my_case) == my_case)
-					return (free_ret_zero(line, temp, NULL));
+					return (free_ret_zero(final, temp, NULL));
 					//free(buf) is done in "star" func
 			}
 			//		******************************
