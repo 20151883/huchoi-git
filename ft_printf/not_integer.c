@@ -22,7 +22,9 @@ char *case_c(char **line)//dot procedure is needed
     else
         ret[size - 1] = *line[5];
     return (ret);
-}
+}//malloc fail then return 0...
+//but if (in case malloc fail) we just ret = 0;
+//then return (ret)....??  
 
 char *case_p(char **line)
 {
@@ -71,5 +73,20 @@ char *case_s(char **line)
 }
 char *case_percent(char **line)
 {
-    return (0);
+	int lenth;
+
+	lenth = 1;
+	if (ft_atoi(line[2]) > lenth)
+		lenth = ft_atoi(line[2]);
+	ret = malloc(sizeof(char) * (lenth + 1));
+	ret[lenth] = '\0';
+	if(ft_strchr(line[1], '0') != 0)
+		ft_memset(ret, '0', lenth);
+	else
+		ft_memset(ret, ' ', lenth);
+	if (ft_strchr(line[1], '-') != 0)
+		ret[0] = '%';
+	else
+		ret[lenth - 1] = '%';
+    return (ret);
 }

@@ -129,10 +129,10 @@ int ft_printf(const char* str, ...)
 			two[0] = '%';
 			temp = ft_strjoin(temp, two);
 		}
-		else//숫자 부분
-		{
+		else if (ft_strchr("di", the_type))//숫자 부분
 			temp = ft_itoa(va_arg(ap, int));
-		}
+		else
+			temp = ft_itoa(va_arg(ap, unsigned int));
 		//printf("%s\n%s\n%s\n%s\n",final[1], final[2], final[3], final[5]);
 		final[5] = ft_strdup(temp);// c,s,p,%,숫자 이렇게 분기했고, 이 라인에서 2진data에서 해석을 거친 값의 문자열표현이 temp에 들어가있다.
 		ft_putstr_fd(make_string(final, the_type), 1);

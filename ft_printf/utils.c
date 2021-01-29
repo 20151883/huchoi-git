@@ -1,5 +1,7 @@
 #include "ft_printf.h"
 //minus integer case is not managed....
+//hex case does not manage minus...
+
 char *ten_small_hex(char *str)
 {
 	unsigned int num;
@@ -93,7 +95,8 @@ char *precision_int(char **line, int plus, int size, int lenth)
 	int i;
 
 	i = 0;
-	ret = malloc(sizeof(char) * (lenth + 1));
+	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
+		return (0);
 	ret[lenth] = '\0';
 	if (ft_strchr(line[1], '0') != 0)
 		ft_memset(ret, '0', lenth);
