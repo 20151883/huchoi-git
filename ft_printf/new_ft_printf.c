@@ -51,7 +51,7 @@ int ft_printf(const char* str, ...)
 		//*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
-			printf("[case: %d]\n", my_case);
+			//printf("[case: %d]\n", my_case);
 			if (my_case != what_my_case(str[i], my_case))
 			{
 				if (!case_changed(final, &temp, &my_case))
@@ -152,7 +152,7 @@ int ft_printf(const char* str, ...)
 		else
 			temp = ft_itoa(va_arg(ap, unsigned int));//되나?
 		final[5] = ft_strdup(temp);// c,s,p,%,숫자(5가지 경우이겠다.) 이렇게 분기했고, 이 라인에서 2진data에서 해석을 거친 값의 문자열표현이 temp에 들어가있다.	
-		printf("[1: %s][2: %s][3 : %s][4 : %s]\n",final[1], final[2], final[3], final[5]);
+		//printf("[1: %s][2: %s][3 : %s][4 : %s]\n",final[1], final[2], final[3], final[5]);
 		ft_putstr_fd(make_string(final, the_type), 1);
         //지금까지 한 것 : %부터 변환문자까지 내용을 final배열에 저장을 마친 상태이다. 여기 *도 없고  변환문자도 없는 상태이다
         //순수한 문자열들의 집합이 된것이다.
