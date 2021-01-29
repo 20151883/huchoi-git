@@ -1,17 +1,22 @@
 NAME = libftprintf.a
 
 SRCS = new_ft_printf.c make_string.c integer.c not_integer.c utils.c 
+
 OBJS = $(SRCS:.c=.o)
+
+SUBOBJS = ./*.o
+CC = gcc
 RM = rm -f
 .c.o :
-	$(CC) $(CLFAG) -c $< -o $(<:.c=.o)
+	$(CC) -c $< -o $(<:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	ar rcs $@ $(OBJS)
-$(OBJS) : ft_printf.h
+$(NAME) : $(OBJS) SUB
+	ar rcsv $@ $(SUBOBJS) $(OBJS)
 
+SUB : 
+	cd libft ; $(MAKE)
 clean :
 	$(RM) $(OBJS)
 fclean :
