@@ -39,62 +39,6 @@ char *free_ret_zero(char **p, char *s1, char *s2)
     }
 }//renewer str... if error it rturn (0) (free is done)
 */
-char *first(char *str, int *p_i)
-{
-    char *alloc;
-    char *temp;
-
-    while(ft_strchr("cspdiuxX%", str[i]) == 0)
-	{
-		if (my_case != what_my_case(str[i], my_case))
-		{
-			final[my_case] = ft_strdup(temp);
-			my_case++;
-			ft_memset(temp, '\0', sizeof(char)*(ft_strlen(temp) + 1));
-			*temp = '\0';
-			continue;
-		}
-		if(str[i] == '.')
-		{	
-			i++;
-			continue;
-		}
-		if (str[i] == '-' || str[i] == '0')
-    	{
-			two[0] = str[i];
-			temp = ft_strjoin(temp, two);
-			i++;
-			continue;
-		}
-		if (str[i] != '*')
-		{
-            not_star(str, &temp, &i)
-			/*two[0] = str[i];
-			temp = ft_strjoin(temp, two);
-			i++;
-			continue;*/
-		}
-		else
-		{
-            star(str, i, ft_itoa(va_arg(ap, int)));
-			/*buf = ft_itoa(va_arg(ap, int));
-			if (my_case == 2 && (ft_strchr(buf, '-')))
-			{
-				two[0] = '-';
-				final[1] = ft_strjoin(final[1], two);
-				buf[0] = '0';//minus is interchaned to '0'
-			}
-			temp = ft_strjoin(temp, buf);
-			free(buf);
-			buf = 0;*/
-			i++;
-			if (what_my_case(str[i], my_case) == my_case)
-				return (-1);
-			continue;
-		}
-	}
-}
-
 int not_star(char **line, char *str, char **p_temp, int *p_i)
 {
     char two[2];
