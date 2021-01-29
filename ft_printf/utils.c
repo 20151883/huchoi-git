@@ -11,7 +11,8 @@ char *ten_small_hex(char *str)
 
 	i = 0;
 	num = (unsigned int)ft_atoi(str);
-	hex = malloc(sizeof(char) *17);
+	if (0 == (hex = malloc(sizeof(char) *17)))
+		return (0);
 	ft_strlcpy(hex, "0123456789abcdef",17);
 	while(num / 16 != 0)
 	{
@@ -19,7 +20,8 @@ char *ten_small_hex(char *str)
 		num = num / 16;
 	}
 	temp[i] = hex[num % 16];
-	ret = malloc(sizeof(char) * (i + 1));
+	if (0 == (ret = malloc(sizeof(char) * (i + 1)))
+		return (0);
 	j = 0;
 	while(i >= 0)
 		ret[j++] = temp[i--];
@@ -38,8 +40,9 @@ char *ten_big_hex(char *str)
 	int j;
 
 	i = 0;
-	num = (unsigned int)ft_atoi(str);//just label
-	hex = malloc(sizeof(char) *17);
+	num = (unsigned int)ft_atoi(str);//just labeling
+	if (0 == (hex = malloc(sizeof(char) *17)))
+		return (0);
 	ft_strlcpy(hex, "0123456789ABCDEF",17);
 	while(num / 16 != 0)
 	{
@@ -47,7 +50,8 @@ char *ten_big_hex(char *str)
 		num = num / 16;
 	}
 	temp[i] = hex[num % 16];
-	ret = malloc(sizeof(char) * (i + 1));
+	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
+		return (0);
 	j = 0;
 	while(i >= 0)
 		ret[j++] = temp[i--];
