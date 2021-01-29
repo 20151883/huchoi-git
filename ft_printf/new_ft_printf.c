@@ -51,6 +51,7 @@ int ft_printf(const char* str, ...)
 		//*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
+			printf("[case: %d]\n", my_case);
 			if (my_case != what_my_case(str[i], my_case))
 			{
 				if (case_changed(final, &temp, &my_case))
@@ -124,7 +125,6 @@ int ft_printf(const char* str, ...)
 		my_case++;
 		while (my_case < 5)
 			final[my_case++] = ft_strdup("");
-		
 		ft_memset(temp, '\0', ft_strlen(temp) + 1);
 		*temp = '\0';
 		the_type = str[i];//가독성을 위해 넣은것 나중엔 str[i]로 대체할수도 있음...
