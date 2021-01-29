@@ -20,7 +20,7 @@ char *ten_small_hex(char *str)
 		num = num / 16;
 	}
 	temp[i] = hex[num % 16];
-	if (0 == (ret = malloc(sizeof(char) * (i + 1)))
+	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
 		return (0);
 	j = 0;
 	while(i >= 0)
@@ -103,7 +103,7 @@ char *precision_int(char **line, int plus, int size, int lenth)
 	{
 		ft_strlcpy(ret, line[5], size + 1);
 		if (ft_strchr(line[1], '0') != 0)
-			ret[size] = 0;
+			ret[size] = '0';
 		else
 			ret[size] = ' ';
 	}

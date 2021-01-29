@@ -19,11 +19,11 @@ int main(void)
 	printf("\n\n\n\n");
 	ft_printf("[%d]\n",12345);
 	printf("[%d]\n",12345);
-	ft_printf("[%-10.8d]\n",12345);
-	printf("[%-10.8d]\n",12345);
-	ft_printf("[%10.3d]\n",12345);
-	printf("[%10.3d]\n",12345);
-	ft_printf("[%-3.5d]\n",12345);
-	printf("[%-3.5d]\n",12345);
+	ft_printf("[%*.8d]\n", -10, 12345);
+	printf("[%*.8d]\n", -10,12345);
+	ft_printf("[%*.3d]\n",10, 12345);
+	printf("[%*.3d]\n",10, 12345);
+	ft_printf("[%*.5d]\n",-3, 12345);
+	printf("[%*.5d]\n",-3, 12345);
 	return (0);
 }

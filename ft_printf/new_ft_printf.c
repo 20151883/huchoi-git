@@ -85,6 +85,12 @@ int ft_printf(const char* str, ...)
 			else
 			{
 				buf = ft_itoa(va_arg(ap, int));
+				if (my_case == 2 && (ft_strchr(buf, '-')))
+				{
+					two[0] = '-';
+					final[1] = ft_strjoin(final[1], two);
+					buf[0] = '0';//minus is interchaned to '0'
+				}
 				temp = ft_strjoin(temp, buf);
 				free(buf);
 				buf = 0;
