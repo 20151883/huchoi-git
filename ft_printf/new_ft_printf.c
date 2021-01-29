@@ -54,7 +54,7 @@ int ft_printf(const char* str, ...)
 			printf("[case: %d]\n", my_case);
 			if (my_case != what_my_case(str[i], my_case))
 			{
-				if (case_changed(final, &temp, &my_case))
+				if (!case_changed(final, &temp, &my_case))
 					return (0);// free is done in over func..
 				/*final[my_case] = ft_strdup(temp);
 				my_case++;
