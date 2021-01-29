@@ -25,20 +25,15 @@ int ft_printf(const char* str, ...)
 {
 	va_list ap;
 	va_start(ap, str);
-	char* arr;
 	char *temp;
-	char ch;
-	int	num;
 	int count;
-	char **final = malloc(sizeof(char *) * 6);
+	char *final[6];//final is not use malloc 
 	char *buf = 0;
-	char two[2];
 	int i = 0;
-	int j;
 	char the_type;
 	int my_case;
-	two[1] = '\0';
-	temp = 0;
+	
+	//temp = 0;
 	while (str[i] != '\0')
 	{
 		if(str[i] != '%')
@@ -47,23 +42,28 @@ int ft_printf(const char* str, ...)
 			i++;
 			continue;
 		}
-		i++;
+		i++;//this is correct
 		my_case = 1;
-		if (temp != 0)
-			free(temp);
-		temp = malloc(sizeof(char) * 1);
-		*temp = '\0';
+		temp = ft_calloc(1, sizeof(char));
+		//*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
 			if (my_case != what_my_case(str[i], my_case))
 			{
-				final[my_case] = ft_strdup(temp);
+				if (case_changed(final, &temp, &my_case))
+					return (0);// free is done in over func..
+				/*final[my_case] = ft_strdup(temp);
 				my_case++;
 				ft_memset(temp, '\0', sizeof(char)*(ft_strlen(temp) + 1));
-				*temp = '\0';
+				*temp = '\0';*/
 				continue;
 			}
-			if(str[i] == '.')
+			if (str[i] == '.' || str[i] == '-' || str[i] == '0')
+				if (flag_prcise(final, &temp, str, &i) == 1)
+					continue;//it's good func...??? no!!!!
+				else
+					return (0);//free is done...!!
+			/*if(str[i] == '.')
 			{	
 				i++;
 				continue;
@@ -74,42 +74,53 @@ int ft_printf(const char* str, ...)
 				temp = ft_strjoin(temp, two);
 				i++;
 				continue;
-			}
+			}*/
 			if (str[i] != '*')
+				if (1 == not_star(line, str, &temp, &i))
+					continue;
+				else if
+					return (0)// free is done!!
+			/*if (str[i] != '*')
 			{
 				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
 				i++;
 				continue;
-			}
+			}*
 			else
 			{
-				buf = ft_itoa(va_arg(ap, int));
-				if (my_case == 2 && (ft_strchr(buf, '-')))
+				buf = ft_itoa(va_arg(ap, int));//malloc
+				/*if (my_case == 2 && (ft_strchr(buf, '-')))
 				{
 					two[0] = '-';
 					final[1] = ft_strjoin(final[1], two);
 					buf[0] = '0';//minus is interchaned to '0'
 				}
-				temp = ft_strjoin(temp, buf);
-				free(buf);
-				buf = 0;
-				i++;
+				temp = ft_strjoin(temp, buf);*/
+			else
+			{	
+				buf = ft_itoa(va_arg(ap, int);)
+				if (0 == star(final, &temp, buf, my_case))
+					return (0);//not continue...!!
+				//free(buf);this done in star function
+				buf = 0;//is it needed???
+				i++;//this action is done in here (not in star func)
 				if (what_my_case(str[i], my_case) == my_case)
-					return (-1);
-				continue;
+					return (free_ret_zero(line, temp, NULL));
+					//free(buf) is done in "star" func
 			}
+			//		******************************
+			//	if reach here it means error ...!!!
+			//	so.. return (0)?? no ..... not that way
 		}
 		final[my_case] = ft_strdup(temp);
 		my_case++;
 		while (my_case < 5)
-		{
-			final[my_case] = ft_strdup("");
-			my_case++;
-		}
+			final[my_case++] = ft_strdup("");
+		
 		ft_memset(temp, '\0', ft_strlen(temp) + 1);
 		*temp = '\0';
-		the_type = str[i];
+		the_type = str[i];//가독성을 위해 넣은것 나중엔 str[i]로 대체할수도 있음...
 		if(the_type == 'c')
 		{
 			two[0] = (char)va_arg(ap, int);
@@ -132,12 +143,13 @@ int ft_printf(const char* str, ...)
 		else if (ft_strchr("di", the_type))//숫자 부분
 			temp = ft_itoa(va_arg(ap, int));
 		else
-			temp = ft_itoa(va_arg(ap, unsigned int));
+			temp = ft_itoa(va_arg(ap, unsigned int));//되나?
 		//printf("%s\n%s\n%s\n%s\n",final[1], final[2], final[3], final[5]);
-		final[5] = ft_strdup(temp);// c,s,p,%,숫자 이렇게 분기했고, 이 라인에서 2진data에서 해석을 거친 값의 문자열표현이 temp에 들어가있다.
+		final[5] = ft_strdup(temp);// c,s,p,%,숫자(5가지 경우이겠다.) 이렇게 분기했고, 이 라인에서 2진data에서 해석을 거친 값의 문자열표현이 temp에 들어가있다.
 		ft_putstr_fd(make_string(final, the_type), 1);
         //지금까지 한 것 : %부터 변환문자까지 내용을 final배열에 저장을 마친 상태이다. 여기 *도 없고  변환문자도 없는 상태이다
         //순수한 문자열들의 집합이 된것이다.
+		free_ret_zero(final, temp, 0);//if reach here... you must free the temp
 		i++;
 	}
 	return (count);
