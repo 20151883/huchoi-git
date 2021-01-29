@@ -33,7 +33,7 @@ int ft_printf(const char* str, ...)
 	char the_type;
 	int my_case;
 	char *arr;
-	char two[2]
+	char two[2];
 	
 	two[1] = '\0';
 	//temp = 0;

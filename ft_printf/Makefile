@@ -1,6 +1,6 @@
-NAME = libftprintf.a
+NAME = ft_printf.a
 
-SRCS = new_ft_printf.c make_string.c integer.c not_integer.c utils.c 
+SRCS = new_ft_printf.c make_string.c integer.c not_integer.c utils.c for_printf_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
