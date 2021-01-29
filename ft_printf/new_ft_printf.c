@@ -32,6 +32,8 @@ int ft_printf(const char* str, ...)
 	int i = 0;
 	char the_type;
 	int my_case;
+	char *arr;
+	char temp[2];
 	
 	//temp = 0;
 	while (str[i] != '\0')
@@ -59,10 +61,12 @@ int ft_printf(const char* str, ...)
 				continue;
 			}
 			if (str[i] == '.' || str[i] == '-' || str[i] == '0')
-				if (flag_prcise(final, &temp, str, &i) == 1)
+			{
+				if (flag_precise(final, &temp, str, &i) == 1)
 					continue;//it's good func...??? no!!!!
 				else
 					return (0);//free is done...!!
+			}
 			/*if(str[i] == '.')
 			{	
 				i++;
@@ -76,21 +80,23 @@ int ft_printf(const char* str, ...)
 				continue;
 			}*/
 			if (str[i] != '*')
-				if (1 == not_star(line, str, &temp, &i))
+			{
+				if (1 == not_star(final, str, &temp, &i))
 					continue;
 				else if
-					return (0)// free is done!!
+					return (0);// free is done!!
+			}
 			/*if (str[i] != '*')
 			{
 				two[0] = str[i];
 				temp = ft_strjoin(temp, two);
 				i++;
 				continue;
-			}*
+			}
 			else
 			{
 				buf = ft_itoa(va_arg(ap, int));//malloc
-				/*if (my_case == 2 && (ft_strchr(buf, '-')))
+				if (my_case == 2 && (ft_strchr(buf, '-')))
 				{
 					two[0] = '-';
 					final[1] = ft_strjoin(final[1], two);
