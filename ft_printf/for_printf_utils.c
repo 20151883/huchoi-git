@@ -1,14 +1,14 @@
 #include "ft_printf.h"
 
 
-char *free_ret_zero(char **p, char *s1, char *s2)
+int free_ret_zero(char **p, char *s1, char *s2)
 {
     int i;
 
     i = 1;
     while(i <= 5)
     {
-        free[p[i++]];
+        free(p[i++]);
     }
     if (s1 != 0)
         free(s1);
@@ -45,7 +45,7 @@ int not_star(char **line, char *str, char **p_temp, int *p_i)
     char *arr;
 
     two[1] = '\0';
-	two[0] = str[i];
+	two[0] = str[*p_i];
 	if (0 == (arr = ft_strjoin(*p_temp, two)))
         return (free_ret_zero(line, *p_temp, NULL));
     free(*p_temp);
@@ -71,7 +71,7 @@ int star(char **line, char **p_temp, char *buf, int my_case)
             return (free_ret_zero(line, *p_temp, buf));
 		*(ft_strchr(buf, '-')) = '0';//minus is interchaned to '0'
 	}
-	if (0 == (arr = ft_strjoin(temp, buf)))
+	if (0 == (arr = ft_strjoin(*p_temp, buf)))
         return (free_ret_zero(line, *p_temp, buf));
     free(*p_temp);
     free(buf);
@@ -82,7 +82,7 @@ int star(char **line, char **p_temp, char *buf, int my_case)
 int case_changed(char **line, char **p_temp, int *p_my_case)
 {
     if (0 == (line[*p_my_case] = ft_strdup(*p_temp)))
-        return (free_ret_zero(line, temp, 0));//***
+        return (free_ret_zero(line, *p_temp, 0));//***
     (*p_my_case)++;
     ft_memeset(*p_temp, '\0', ft_strlen(*p_temp));
     **p_temp = '\0';
@@ -96,13 +96,15 @@ int flag_precise(char **line, char **p_temp,char *str, int *p_i)
 
     two[1] = '\0';
     if (str[*p_i] == '.')
-        *p_i++;
+        (*p_i)++;
     else if (str[*p_i] == '-' || str[*p_i] == '0')
     {
-        two[0] = str[i];
-        if (0 == (arr = ft_strjoin(temp, two)))
+        two[0] = str[*p_i];
+        if (0 == (arr = ft_strjoin(*p_temp, two)))
             return (free_ret_zero(line, *p_temp, 0));
-        (*p_i)++
+        (*p_i)++;
+        free(*p_temp);
+        *p_temp = arr;
     }
     return (1);
 }
