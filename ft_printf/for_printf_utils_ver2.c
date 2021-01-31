@@ -144,4 +144,5 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
         else   
             return (0);
     }
+    return (1);
 }
