@@ -11,6 +11,7 @@ typedef struct s_node{
 	//va_list...???
 	char *string;
 	char *buf;
+    int ret;
 }t_node;
 void init_node(t_node* p_node, const char *str);
 int contact_with_format(t_node *p_node, char **line, char **p_temp);
