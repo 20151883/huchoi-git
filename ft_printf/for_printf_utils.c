@@ -122,8 +122,3 @@ int real_complete_final(char **line, char**p_temp, char *str, int *p_i)
     (*p_i)++;
     return (1);
 }
-
-int over_star(char **line, char **p_temp, char **p_buf, int my_case)
-{
-    if (0 == star(line, p_temp, *p_buf, my_case));
-}
