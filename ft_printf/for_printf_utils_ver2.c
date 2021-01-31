@@ -124,7 +124,7 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
 
 int contact_with_format(t_node *p_node, char **line, char **p_temp)
 {
-    if (p_node->case != what_my_case((p_node->string)[p_node->idx], p_node->my_case)))
+    if (p_node->my_case != what_my_case((p_node->string)[p_node->idx], p_node->my_case))
     {
         if (!case_changed(line, p_temp, &(p_node->my_case)))
             return (0);
@@ -132,7 +132,7 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
     }
     if (ft_strchr(".-0", p_node->string[p_node->idx]) != 0)
     {
-        if (falg_precise(line, *p_temp, (char *)p_node->string, &(p_node->idx))
+        if (flag_precise(line, *p_temp, (char *)p_node->string, &(p_node->idx)))
             return (42);
         else   
             return (0);
