@@ -97,7 +97,7 @@ int ft_printf(const char* str, ...)
 			return (0);//if over if is true... free action is done already
 		if (0 == inter_type(final, &temp, va_arg(ap, unsigned long long), str[node.idx]))
             return (0);//if over if is ture... free actoin is already doen...!
-        if (0 == real_complete_final(final, &temp, &node.idx))
+        if (0 == real_complete_final(final, &temp, node.string, &node.idx))
 			return (0);
 		/*if (0 == (final[5] = ft_strdup(temp)))
 			return (free_ret_zero(final, temp, 0));
