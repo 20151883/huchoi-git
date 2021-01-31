@@ -58,7 +58,7 @@ int ft_printf(const char* str, ...)
 			continue;
 		}
 		node.idx++;
-		if (0 == temp = ft_calloc(1, sizeof(char)))
+		if (0 == (temp = ft_calloc(1, sizeof(char))))
 			return (free_ret_zero(NULL, temp, NULL));
 		while (ft_strchr("cspdiuxX%", node.string[node.idx]) == 0)
 		{
@@ -75,7 +75,7 @@ int ft_printf(const char* str, ...)
 				else
 					return (0);
 			}
-			if (str[i] != '*')
+			if (str[node.idx] != '*')
 			{
 				if (1 == not_star(final, (char *)node.string, &temp, &(node.idx)))
 					continue;
@@ -107,5 +107,5 @@ int ft_printf(const char* str, ...)
 		i++;*/
 
 	}
-	return (count);
+	return (node.count);
 }
