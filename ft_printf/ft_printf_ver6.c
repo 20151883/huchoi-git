@@ -1,5 +1,6 @@
 #include "ft_printf.h"
 
+t_list ap;
 int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
 {
     if (c == '-' || c == '0')
@@ -41,7 +42,6 @@ void init_node(t_node* p_node, const char *str)
 
 int ft_printf(const char* str, ...)
 {
-	va_list ap;
 	char *temp, final[6]
 	//char *final[6];//final is not use malloc 
 	t_node node;
@@ -59,14 +59,8 @@ int ft_printf(const char* str, ...)
 			return (free_ret_zero(NULL, temp, NULL));
 		while (ft_strchr("cspdiuxX%", node.string[++node.idx]) == 0)
 		{   
-            if (42 == (node.ret = contact_with_format(&node, final, &temp)))
-                continue;
-            else if (ret == 0)
-                 return (0);
-			if (0 == (node.buf = ft_itoa(va_arg(ap, int))))
-				return (free_ret_zero(final, temp, NULL));
-            if (over_star(&node, final, &temp) == 0)
-                return (0);
+        	if (important(&node, final, &temp) == 0)
+				return (0);
 		}
 		node.value = va_arg(ap, unsigned long long);
 		if (finale(&node, final, &temp) == 0)

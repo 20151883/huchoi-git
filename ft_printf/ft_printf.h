@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+extern va_list ap;
 typedef struct s_node{
 	int count;
 	int idx;
@@ -13,6 +14,7 @@ typedef struct s_node{
 	char *buf;
     int ret;
     unsigned long long value;
+    int num[3];
 }t_node;
 int finale(t_node*p_node, char **line, char **p_temp);
 int over_star(t_node *p_node, char **line, char**p_temp);

@@ -167,3 +167,16 @@ int finale(t_node*p_node, char **line, char **p_temp)
         return (0);
     return (1);
 }
+
+int important(t_node *p_node, char **line, char **p_temp)
+{
+    if (42 == (p_node->ret = contact_with_format(p_node, line, p_temp)))
+        return (1);//***&***
+    else if (p_node->ret == 0)
+        return (0);
+    if (0 == (p_node->buf = ft_itoa(va_arg(ap, int))))
+        return (free_ret_zero(final,*p_temp, 0));
+    if (over_star(p_node, line, p_temp) == 0)
+        return (0);
+    return (1)
+}
