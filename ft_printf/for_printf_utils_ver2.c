@@ -14,29 +14,108 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
     return (1);
 }
 
-int pro_arg(char the_tpye, void )
+//***********************************************************
+int inter_type(char **line, char **p_temp. unsigned long long value, char the_tpye)
 {
-    if(the_type == 'c')
-	{
-		two[0] = (char)va_arg(*p_ap, int);
-		temp = ft_strjoin(temp, two);
-	}
-	else if(the_type == 's')
-	{
-		arr = va_arg(*p_ap, char *);
-		temp = ft_strdup(arr);
-	}
-	else if(the_type == 'p')
-	{
-	    return (-1);
-	}
-	else if(the_type == '%')
-	{
-		two[0] = '%';
-		temp = ft_strjoin(temp, two);
-	}
-	else if (ft_strchr("di", the_type))//숫자 부분
-		temp = ft_itoa(va_arg(*p_ap, int));
-	else
-		temp = ft_itoa(va_arg(*p_ap, unsigned int));
+    if (the_tpye == 'c' || the_type == '%')
+        return (letter_c_percent(line, p_temp, value));
+    if (the_type == 's')
+        return (letter_s(line, p_temp, value));
+    if (the_type == 'p')
+        return (letter_p(line, p_temp, value));
+    if (ft_strchr("di", the_tpye) != 0)
+        return (letter_di(line, p_temp, value));
+    if (ft_strchr("uxX", the_type) != 0)
+        return (letter_uxX(line, p_temp, value, the_tpye));
+    else
+        return (free_ret_zero(line, *p_temp, NULL));//******!!!!
+}
+
+int letter_c_percent(char **line, char **p_temp, unsigned long long value)
+{
+    char two[2];
+    char *arr;
+
+    two[0] = (char)value;
+    two[1] = '\0';
+    if (0 == (arr = ft_strjoin(*p_temp, two)))
+        return (free_ret_zero(line, *p_temp, NULL));
+    free(*p_temp);
+    *p_temp = arr;
+    return (1);
+}
+
+int letter_s(char **line, cahr **p_temp, unsigned long long value)
+{
+    char *arr;
+
+    if (0 == (arr = (ft_strjoin(*p_temp, (char *)value))))
+        return (free_ret_zero(line, *p_temp, 0));
+    free(*p_temp);
+    *p_temp = arr;
+    return (1);
+}
+
+int letter_p(char **line, cahr **p_temp, unsigned long long value)
+{
+    char *arr;
+    char *buf;//not array declare buf malloc declare****
+    int idx;
+    char *hex;
+
+    if ( 0 == (hex = ft_strdup("0123456789abcdef")))
+        return (0);
+    if (0 == buf = malloc(sizeof(char) * 15))
+        return (0);
+    ft_memset(buf, '0', 15);
+    buf[0] - '0';
+    buf[1] = 'x';
+    buf[14] = '\0';
+    idx = 13;
+    while (idx > 1 || value > 0)
+    {
+        buf[idx--] = hex[value % 16];
+        value = value / 16;
+    }
+    free(*p_temp);
+    free(hex);
+    *p_temp = buf;
+    return (1);
+}
+
+int letter_di(char **line, char **p_temp, unsigned long long value)
+{
+    char *arr;
+
+    if (0 == (arr = ft_itoa((int)value)))
+        return (free_ret_zero(line, *p_temp, NULL));
+    free(*p_temp);
+    *p_temp = arr;
+    return (1)
+}
+
+int letter_uxX(char **line, cahr **p_temp, unsigned long long value, char the_tpye)
+{
+    char *arr;
+    unsigned int num;
+
+    num = (unsigned int)value;
+    if(the_tpye == 'u')
+    {
+        if (0 == (arr = ft_itoa(num))
+            return (free_Ret_zero(line, *P_temp));
+    }
+    else if (the_tpye == 'x')
+    {
+        if (0 == (arr = ten_small_hex(ft_itoa(num))))
+            return (free_ret_zero(line, *p_temp, 0));
+    }
+    else if (the_type == 'X')
+    {
+        if (0 == (arr = ten_big_hex(ft_itoa(num))))
+            return (free_ret_zero(line, *p_temp, 0));
+    }
+    free(*p_temp);
+    *p_temp = arr;
+    return (1);
 }

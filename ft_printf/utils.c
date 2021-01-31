@@ -2,9 +2,8 @@
 //minus integer case is not managed....
 //hex case does not manage minus...
 
-char *ten_small_hex(char *str)
+char *ten_small_hex(unsigned int num)
 {
-	unsigned int num;
 	char *hex;
 	char temp[12];
 	char *ret;
@@ -12,7 +11,6 @@ char *ten_small_hex(char *str)
 	int j;
 
 	i = 0;
-	num = (unsigned int)ft_atoi(str);
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
 	ft_strlcpy(hex, "0123456789abcdef",17);
@@ -32,9 +30,8 @@ char *ten_small_hex(char *str)
 	return (ret);
 }
 
-char *ten_big_hex(char *str)
-{
-	unsigned int num;
+char *ten_big_hex(unsigned int num)
+{//%p할떄랑은 다른 방식을 취해야하는게 맞다..
 	char *hex;
 	char temp[12];
 	char *ret;
@@ -42,7 +39,7 @@ char *ten_big_hex(char *str)
 	int j;
 
 	i = 0;
-	num = (unsigned int)ft_atoi(str);//just labeling
+	//num = (unsigned int)ft_atoi(str);//just labeling
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
 	ft_strlcpy(hex, "0123456789ABCDEF",17);
