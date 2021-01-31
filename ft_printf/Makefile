@@ -1,6 +1,6 @@
 NAME = ft_printf.a
 
-SRCS = new_ft_printf.c make_string.c integer.c not_integer.c utils.c for_printf_utils.c
+SRCS = new_ft_printf.c make_string.c integer.c not_integer.c utils.c for_printf_utils.c for_printf_utils_ver2.c
 
 OBJS = $(SRCS:.c=.o)
 
