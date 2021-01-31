@@ -6,9 +6,11 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
         return (free_ret_zero(line, *p_temp, 0));
     (*p_my_case)++;
     while(*p_my_case < 5)
+    {
         if (0 == (line[*p_my_case] = ft_strdup("")))
             return (free_ret_zero(line, *p_temp, 0));
         (*p_my_case)++;
+    }
     ft_memset(*p_temp, '\0', ft_strlen(*p_temp) + 1);
     **p_temp = '\0';
     return (1);
@@ -119,3 +121,5 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
     *p_temp = arr;
     return (1);
 }
+
+int contact_format(char **line, char *buf, int my_case, int i)
