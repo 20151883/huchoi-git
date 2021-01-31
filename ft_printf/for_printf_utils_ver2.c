@@ -100,15 +100,15 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
     unsigned int num;
 
     num = (unsigned int)value;
-    if(the_tpye == 'u')
+    if(the_type == 'u')
     {
         if (NULL == (arr = ten_unsigned(num)))
-            return (free_ret_zero(line, *p_temp));
+            return (free_ret_zero(line, *p_temp, NULL));
     }
-    else if (the_tpye == 'x')
+    else if (the_type == 'x')
     {
         if (0 == (arr = ten_small_hex(num)))
-            return (free_ret_zero(line, *p_temp, 0));
+            return (free_ret_zero(line, *p_temp, NULL));
     }
     else if (the_type == 'X')
     {
