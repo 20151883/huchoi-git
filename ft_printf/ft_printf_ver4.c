@@ -82,7 +82,7 @@ int ft_printf(const char* str, ...)
 				else
 					return (0);
 			}*/
-            if (node.str[node.idx] != '*')
+            if (node.string[node.idx] != '*')
             {    
                 if (42 == contact_with_format(&node, final, &temp))
                  continue;
