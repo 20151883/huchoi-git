@@ -2,11 +2,11 @@
 
 int complete_final(char **line, int *p_my_case, char **p_temp)
 {
-    if (0 == (final[*p_my_case] = ft_strdup(*p_temp)))
+    if (0 == (line[*p_my_case] = ft_strdup(*p_temp)))
         return (free_ret_zero(line, *p_temp, 0));
     (*p_my_case)++;
     while(*p_my_case < 5)
-        if (0 == (final[*p_my_case] = ft_strdup("")))
+        if (0 == (line[*p_my_case] = ft_strdup("")))
             return (free_ret_zero(line, *p_temp, 0));
         (*p_my_case)++;
     ft_memset(*p_temp, '\0', ft_strlen(*p_temp) + 1);
@@ -17,16 +17,16 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
 //***********************************************************
 int inter_type(char **line, char **p_temp, unsigned long long value, char the_type)
 {
-    if (the_tpye == 'c' || the_type == '%')
+    if (the_type == 'c' || the_type == '%')
         return (letter_c_percent(line, p_temp, value));
     if (the_type == 's')
         return (letter_s(line, p_temp, value));
     if (the_type == 'p')
         return (letter_p(line, p_temp, value));
-    if (ft_strchr("di", the_tpye) != 0)
+    if (ft_strchr("di", the_type) != 0)
         return (letter_di(line, p_temp, value));
     if (ft_strchr("uxX", the_type) != 0)
-        return (letter_uxX(line, p_temp, value, the_tpye));
+        return (letter_uxX(line, p_temp, value, the_type));
     else
         return (free_ret_zero(line, *p_temp, NULL));//******!!!!
 }
@@ -94,7 +94,7 @@ int letter_di(char **line, char **p_temp, unsigned long long value)
     return (1);
 }
 
-int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tpye)
+int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_type)
 {
     char *arr;
     unsigned int num;
@@ -103,7 +103,7 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tp
     if(the_tpye == 'u')
     {
         if (NULL == (arr = ten_unsigned(num)))
-            return (free_Ret_zero(line, *P_temp));
+            return (free_ret_zero(line, *p_temp));
     }
     else if (the_tpye == 'x')
     {
