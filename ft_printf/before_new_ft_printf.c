@@ -45,41 +45,81 @@ int ft_printf(const char* str, ...)
 			i++;
 			continue;
 		}
-		i++;
+		i++;//this is correct
 		my_case = 1;
 		temp = ft_calloc(1, sizeof(char));
+		//*temp = '\0';
 		while(ft_strchr("cspdiuxX%", str[i]) == 0)
 		{
+			//printf("[case: %d]\n", my_case);
 			if (my_case != what_my_case(str[i], my_case))
 			{
 				if (!case_changed(final, &temp, &my_case))
-					return (0);
+					return (0);// free is done in over func..
+				/*final[my_case] = ft_strdup(temp);
+				my_case++;
+				ft_memset(temp, '\0', sizeof(char)*(ft_strlen(temp) + 1));
+				*temp = '\0';*/
 				continue;
 			}
 			if (str[i] == '.' || str[i] == '-' || str[i] == '0')
 			{
 				if (flag_precise(final, &temp, (char *)str, &i) == 1)
-					continue;
+					continue;//it's good func...??? no!!!!
 				else
-					return (0);
+					return (0);//free is done...!!
 			}
+			/*if(str[i] == '.')
+			{	
+				i++;
+				continue;
+			}
+			if (str[i] == '-' || str[i] == '0')
+			{
+				two[0] = str[i];
+				temp = ft_strjoin(temp, two);
+				i++;
+				continue;
+			}*/
 			if (str[i] != '*')
 			{
 				if (1 == not_star(final, (char *)str, &temp, &i))
 					continue;
 				else
-					return (0);
+					return (0);// free is done!!
 			}
+			/*if (str[i] != '*')
+			{
+				two[0] = str[i];
+				temp = ft_strjoin(temp, two);
+				i++;
+				continue;
+			}
+			else
+			{
+				buf = ft_itoa(va_arg(ap, int));//malloc
+				if (my_case == 2 && (ft_strchr(buf, '-')))
+				{
+					two[0] = '-';
+					final[1] = ft_strjoin(final[1], two);
+					buf[0] = '0';//minus is interchaned to '0'
+				}
+				temp = ft_strjoin(temp, buf);*/
 			else
 			{	
 				buf = ft_itoa(va_arg(ap, int));
 				if (0 == star(final, &temp, buf, my_case))
-					return (0);
-				buf = 0;
-				i++;
+					return (0);//not continue...!!
+				//free(buf);this done in star function
+				buf = 0;//is it needed???
+				i++;//this action is done in here (not in star func)
 				if (what_my_case(str[i], my_case) == my_case)
 					return (free_ret_zero(final, temp, NULL));
+					//free(buf) is done in "star" func
 			}
+			//		******************************
+			//	if reach here it means error ...!!!
+			//	so.. return (0)?? no ..... not that way
 		}
 		final[my_case] = ft_strdup(temp);
 		my_case++;
