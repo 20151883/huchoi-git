@@ -22,15 +22,6 @@ int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
     return (-1);
 }
 
-/*typedef struct s_node{
-	int count;
-	int idx;
-	int my_case;
-	//va_list...???
-	char *string;
-	char *buf;
-}t_node;*/
-
 void init_node(t_node* p_node, const char *str)
 {
 	p_node->count = 0;
@@ -42,8 +33,8 @@ void init_node(t_node* p_node, const char *str)
 
 int ft_printf(const char* str, ...)
 {
-	char *temp, *final[6];
-	//char *final[6];//final is not use malloc 
+	char *temp;
+	char *final[6];
 	t_node node;
 
 	init_node(&node, str);
