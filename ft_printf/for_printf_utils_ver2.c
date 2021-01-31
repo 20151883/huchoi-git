@@ -146,3 +146,20 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
     }
     return (1);
 }
+
+int over_star(t_node *p_node, char **line, char**p_temp)
+{
+    if (0 == star(line, p_temp, p_node->buf, p_node->my_case)
+        return (0);
+    p_node->buf = 0;
+    if (what_my_case(p_node->string[++(p_node->idx)], p_node->my_case) == p_node->my_case)
+        return (free(line, temp, NULL));
+    return (1);
+}
+
+int pro_print(t_node *p_node, char **lone, char**p_temp)
+{????????????????????????
+    if (0 == complete_final(line, &p_node->my_case, p_temp))
+        return (0);
+    if
+}

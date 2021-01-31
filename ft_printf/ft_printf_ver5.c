@@ -65,11 +65,13 @@ int ft_printf(const char* str, ...)
                  return (0);
 			if (0 == (node.buf = ft_itoa(va_arg(ap, int))))
 				return (free_ret_zero(final, temp, NULL));
-			if (0 == star(final, &temp, node.buf, node.my_case))
+			/*if (0 == star(final, &temp, node.buf, node.my_case))
 				return (0);
 			buf = 0;
 			if (what_my_case(node.string[++node.idx], node.my_case) == node.my_case)
-				return (free_ret_zero(final, temp, NULL));
+				return (free_ret_zero(final, temp, NULL));*/
+            if (over_star(&node, final, &temp) == 0)
+                return (0);
 		}
 		if (0 == complete_final(final, &node.my_case, &temp))
 			return (0);//if over if is true... free action is done already
