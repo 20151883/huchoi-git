@@ -153,6 +153,6 @@ int over_star(t_node *p_node, char **line, char**p_temp)
         return (0);
     p_node->buf = 0;
     if (what_my_case(p_node->string[++(p_node->idx)], p_node->my_case) == p_node->my_case)
-        return (free(line, *p_temp, NULL));
+        return (free_ret_zero(line, *p_temp, NULL));
     return (1);
 }
