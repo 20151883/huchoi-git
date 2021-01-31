@@ -82,11 +82,13 @@ int ft_printf(const char* str, ...)
 				else
 					return (0);
 			}*/
-            if (42 == contact_with_format(&node, final, &temp))
-                continue;
-            else
-                return (0);
-			
+            if (node.str[node.idx] != '*')
+            {    
+                if (42 == contact_with_format(&node, final, &temp))
+                 continue;
+                else
+                 return (0);
+            }
 			if (0 == (node.buf = ft_itoa(va_arg(ap, int))))
 				return (free_ret_zero(final, temp, NULL));
 			if (0 == star(final, &temp, node.buf, node.my_case))
