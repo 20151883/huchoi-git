@@ -156,10 +156,3 @@ int over_star(t_node *p_node, char **line, char**p_temp)
         return (free(line, temp, NULL));
     return (1);
 }
-
-int pro_print(t_node *p_node, char **lone, char**p_temp)
-{????????????????????????
-    if (0 == complete_final(line, &p_node->my_case, p_temp))
-        return (0);
-    if
-}
