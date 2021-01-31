@@ -15,7 +15,7 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
 }
 
 //***********************************************************
-int inter_type(char **line, char **p_temp, unsigned long long value, char the_tpye)
+int inter_type(char **line, char **p_temp, unsigned long long value, char the_type)
 {
     if (the_tpye == 'c' || the_type == '%')
         return (letter_c_percent(line, p_temp, value));
@@ -65,10 +65,10 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
 
     if ( 0 == (hex = ft_strdup("0123456789abcdef")))
         return (0);
-    if (0 == buf = malloc(sizeof(char) * 15))
+    if (0 == (buf = malloc(sizeof(char) * 15)))
         return (0);
     ft_memset(buf, '0', 15);
-    buf[0] - '0';
+    buf[0] = '0';
     buf[1] = 'x';
     buf[14] = '\0';
     idx = 13;
@@ -91,7 +91,7 @@ int letter_di(char **line, char **p_temp, unsigned long long value)
         return (free_ret_zero(line, *p_temp, NULL));
     free(*p_temp);
     *p_temp = arr;
-    return (1)
+    return (1);
 }
 
 int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tpye)
@@ -102,17 +102,17 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tp
     num = (unsigned int)value;
     if(the_tpye == 'u')
     {
-        if (0 == (arr = ft_itoa(num))
+        if (NULL == (arr = ten_unsigned(num)))
             return (free_Ret_zero(line, *P_temp));
     }
     else if (the_tpye == 'x')
     {
-        if (0 == (arr = ten_small_hex(ft_itoa(num))))
+        if (0 == (arr = ten_small_hex(num)))
             return (free_ret_zero(line, *p_temp, 0));
     }
     else if (the_type == 'X')
     {
-        if (0 == (arr = ten_big_hex(ft_itoa(num))))
+        if (0 == (arr = ten_big_hex(num)))
             return (free_ret_zero(line, *p_temp, 0));
     }
     free(*p_temp);

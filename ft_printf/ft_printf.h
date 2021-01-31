@@ -4,12 +4,13 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+char *ten_unsigned(unsigned int num);
 int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tpye);
 int letter_di(char **line, char **p_temp, unsigned long long value);
 int letter_p(char **line, char **p_temp, unsigned long long value);
 int letter_s(char **line, char **p_temp, unsigned long long value);
 int letter_c_percent(char **line, char **p_temp, unsigned long long value);
-int inter_type(char **line, char **p_temp, unsigned long long value, char the_tpye);
+int inter_type(char **line, char **p_temp, unsigned long long value, char the_type);
 int complete_final(char **line, int *p_my_case, char **p_temp);
 int flag_precise(char **line, char **p_temp,char *str, int *p_i);
 int case_changed(char **line, char **p_temp, int *p_my_case);

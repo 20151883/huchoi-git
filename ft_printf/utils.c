@@ -59,6 +59,30 @@ char *ten_big_hex(unsigned int num)
 	return (ret);
 }
 
+char *ten_unsigned(unsigned int num)
+{
+	char *arr;
+	char *ret;
+	int i;
+	int j;
+
+	i = 0;
+	if (0 == (arr = malloc(sizeof(char) * 15)))
+		return (NULL);
+	while (num > 0)
+	{
+		arr[i++] = num % 16;
+		num = num / 16;
+	}
+	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	ret[i] = '\0';
+	j = 0;
+	while (i >= 0)
+		ret[j++] = arr[i--];
+	return (ret);
+}
+
 char *no_precision_int(char **line, int plus, int size, int lenth)
 {
 	char *ret;
