@@ -42,8 +42,8 @@ void init_node(t_node* p_node, const char *str)
 int ft_printf(const char* str, ...)
 {
 	va_list ap;
-	char *temp;
-	char *final[6];//final is not use malloc 
+	char *temp, final[6]
+	//char *final[6];//final is not use malloc 
 	t_node node;
 
 	init_node(&node, str);
@@ -69,12 +69,6 @@ int ft_printf(const char* str, ...)
                 return (0);
 		}
 		node.value = va_arg(ap, unsigned long long);
-		/*if (0 == complete_final(final, &node.my_case, &temp))
-			return (0);//if over if is true... free action is done already
-		if (0 == inter_type(final, &temp, va_arg(ap, unsigned long long), str[node.idx]))
-            return (0);//if over if is ture... free actoin is already doen...!
-        if (0 == real_complete_final(final, &temp, node.string, &node.idx))
-			return (0);*/
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
