@@ -15,7 +15,7 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
 }
 
 //***********************************************************
-int inter_type(char **line, char **p_temp. unsigned long long value, char the_tpye)
+int inter_type(char **line, char **p_temp, unsigned long long value, char the_tpye)
 {
     if (the_tpye == 'c' || the_type == '%')
         return (letter_c_percent(line, p_temp, value));
@@ -45,7 +45,7 @@ int letter_c_percent(char **line, char **p_temp, unsigned long long value)
     return (1);
 }
 
-int letter_s(char **line, cahr **p_temp, unsigned long long value)
+int letter_s(char **line, char **p_temp, unsigned long long value)
 {
     char *arr;
 
@@ -56,7 +56,7 @@ int letter_s(char **line, cahr **p_temp, unsigned long long value)
     return (1);
 }
 
-int letter_p(char **line, cahr **p_temp, unsigned long long value)
+int letter_p(char **line, char **p_temp, unsigned long long value)
 {
     char *arr;
     char *buf;//not array declare buf malloc declare****
@@ -94,7 +94,7 @@ int letter_di(char **line, char **p_temp, unsigned long long value)
     return (1)
 }
 
-int letter_uxX(char **line, cahr **p_temp, unsigned long long value, char the_tpye)
+int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tpye)
 {
     char *arr;
     unsigned int num;
