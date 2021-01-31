@@ -4,6 +4,15 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+void init_node(t_node* p_node, const char *str)
+{
+	p_node->count = 0;
+	p_node->idx = 0;
+	p_node->my_case = 1;
+	p_node->string = (char *)str;
+	p_node->buf = 0;
+}
+int contact_with_format(t_node *p_node, char **line, char **p_temp);
 int real_complete_final(char **line, char**p_temp, char *str, int *p_i);
 char *ten_unsigned(unsigned int num);
 int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tpye);
