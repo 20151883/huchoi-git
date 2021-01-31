@@ -61,7 +61,7 @@ int ft_printf(const char* str, ...)
 		{   
             if (42 == (node.ret = contact_with_format(&node, final, &temp)))
                 continue;
-            else if (ret == 0)
+            else if (node.ret == 0)
                  return (0);
 			if (0 == (node.buf = ft_itoa(va_arg(ap, int))))
 				return (free_ret_zero(final, temp, NULL));
