@@ -57,7 +57,8 @@ int ft_printf(const char* str, ...)
 		}
 		if (0 == (temp = ft_calloc(1, sizeof(char))))
 			return (free_ret_zero(NULL, temp, NULL));
-		while (ft_strchr("cspdiuxX%", node.string[++node.idx]) == 0)
+        node.idx++;
+		while (ft_strchr("cspdiuxX%", node.string[node.idx]) == 0)
 		{   
             if (42 == (node.ret = contact_with_format(&node, final, &temp)))
                 continue;
