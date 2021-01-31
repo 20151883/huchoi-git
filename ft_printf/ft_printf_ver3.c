@@ -30,7 +30,7 @@ typedef struct s_node{
 	char *buf;
 }t_node;
 
-void init_node(t_list* p_node, const char *str)
+void init_node(t_node* p_node, const char *str)
 {
 	p_node->count = 0;
 	p_node->idx = 0;
