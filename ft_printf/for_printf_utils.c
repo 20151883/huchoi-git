@@ -109,21 +109,21 @@ int flag_precise(char **line, char **p_temp,char *str, int *p_i)
     return (1);
 }
 
-int real_complete_final(char **line, char**p_temp, int *p_i)
+int real_complete_final(char **line, char**p_temp, char *str, int *p_i)
 {
     char *arr;
 
     if (0 == (line[5] = ft_strdup(*p_temp)))
         return (free_ret_zero(line, *p_temp, NULL));
-    if (0 == (arr = make_string(line,str[i])))
+    if (0 == (arr = make_string(line,str[*p_i])))
         return (0);//free is done??? yes...!
     ft_putstr_fd(arr, 1);
-    free_ret_zero(line, temp, 0);
+    free_ret_zero(line, *p_temp, 0);
     (*p_i)++;
     return (1);
 }
 
 int over_star(char **line, char **p_temp, char **p_buf, int my_case)
 {
-    if (0 == star(line, p_temp, *p_buf, my_case))
+    if (0 == star(line, p_temp, *p_buf, my_case));
 }
