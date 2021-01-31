@@ -149,10 +149,10 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
 
 int over_star(t_node *p_node, char **line, char**p_temp)
 {
-    if (0 == star(line, p_temp, p_node->buf, p_node->my_case)
+    if (0 == star(line, p_temp, p_node->buf, p_node->my_case))
         return (0);
     p_node->buf = 0;
     if (what_my_case(p_node->string[++(p_node->idx)], p_node->my_case) == p_node->my_case)
-        return (free(line, temp, NULL));
+        return (free(line, *p_temp, NULL));
     return (1);
 }
