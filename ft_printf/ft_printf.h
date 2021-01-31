@@ -13,6 +13,7 @@ typedef struct s_node{
 	char *buf;
     int ret;
 }t_node;
+int over_star(t_node *p_node, char **line, char**p_temp);
 void init_node(t_node* p_node, const char *str);
 int contact_with_format(t_node *p_node, char **line, char **p_temp);
 int real_complete_final(char **line, char**p_temp, char *str, int *p_i);
