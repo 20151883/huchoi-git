@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+int real_complete_final(char **line, char**p_temp, int *p_i);
 char *ten_unsigned(unsigned int num);
 int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tpye);
 int letter_di(char **line, char **p_temp, unsigned long long value);

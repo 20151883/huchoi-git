@@ -47,7 +47,7 @@ int ft_printf(const char* str, ...)
 	char *buf;
 	t_node node;
 
-	init_node(node, str);
+	init_node(&node, str);
 	va_start(ap, str);
 	while (node.string[node.idx] != '\0')
 	{
@@ -95,7 +95,7 @@ int ft_printf(const char* str, ...)
 		}
 		if (0 == complete_final(final, &node.my_case, &temp))
 			return (0);//if over if is true... free action is done already
-		if (0 == inter_type(final, &temp, va_arg(ap, unsigned long long), str[i]))
+		if (0 == inter_type(final, &temp, va_arg(ap, unsigned long long), str[node.idx]))
             return (0);//if over if is ture... free actoin is already doen...!
         if (0 == real_complete_final(final, &temp, &node.idx))
 			return (0);

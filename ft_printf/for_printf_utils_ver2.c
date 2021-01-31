@@ -121,5 +121,3 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
     *p_temp = arr;
     return (1);
 }
-
-int contact_format(char **line, char *buf, int my_case, int i)
