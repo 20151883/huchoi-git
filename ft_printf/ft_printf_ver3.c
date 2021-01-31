@@ -35,7 +35,7 @@ void init_node(t_node* p_node, const char *str)
 	p_node->count = 0;
 	p_node->idx = 0;
 	p_node->my_case = 1;
-	p_node->string = str;
+	p_node->string = (char *)str;
 	p_node->buf = 0;
 }
 

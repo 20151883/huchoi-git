@@ -28,7 +28,7 @@ char *case_d(char **line)
 }
 char *case_i(char **line)
 {
-        int size;//number of character
+    int size;//number of character
     int plus;
     int lenth;//buffer lenth excluded the NULL
     char *temp;
@@ -89,7 +89,6 @@ char *case_x(char **line)
     char *ret;
     int i = 0;
 
-    line[5] = ten_small_hex(line[5]);//malloc
     size = ft_strlen(line[5]);
     if (*line[3] != '\0' && size < atoi(line[3]))
         plus = atoi(line[3]) - size;
@@ -110,14 +109,13 @@ char *case_x(char **line)
 }
 char *case_X(char **line)
 {
-        int size;//number of character
+    int size;//number of character
     int plus;
     int lenth;//buffer lenth excluded the NULL
     char *temp;
     char *ret;
     int i = 0;
 
-    line[5] = ten_big_hex(line[5]);
     size = ft_strlen(line[5]);
     if (*line[3] != '\0' && size < atoi(line[3]))
         plus = atoi(line[3]) - size;
