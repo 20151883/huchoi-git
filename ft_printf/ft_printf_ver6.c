@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-t_list ap;
+va_list ap;
 int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
 {
     if (c == '-' || c == '0')
@@ -42,7 +42,7 @@ void init_node(t_node* p_node, const char *str)
 
 int ft_printf(const char* str, ...)
 {
-	char *temp, final[6]
+	char *temp, *final[6];
 	//char *final[6];//final is not use malloc 
 	t_node node;
 
