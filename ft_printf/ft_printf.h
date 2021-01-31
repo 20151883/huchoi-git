@@ -4,7 +4,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
-//extern va_list ap;
+extern va_list ap;
 typedef struct s_node{
 	int count;
 	int idx;
