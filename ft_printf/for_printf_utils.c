@@ -96,7 +96,10 @@ int flag_precise(char **line, char **p_temp,char *str, int *p_i)
 
     two[1] = '\0';
     if (str[*p_i] == '.')
+    {    
         (*p_i)++;
+        p_node->is_precision = 1;
+    }
     else if (str[*p_i] == '-' || str[*p_i] == '0')
     {
         two[0] = str[*p_i];

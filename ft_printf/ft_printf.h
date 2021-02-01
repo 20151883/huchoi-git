@@ -14,6 +14,7 @@ typedef struct s_node{
 	char *buf;
     int ret;
     unsigned long long value;
+    int is_precision;
     int num[3];
 }t_node;
 void my_putchar_fd(t_node *p_node);
