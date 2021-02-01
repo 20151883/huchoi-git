@@ -51,7 +51,7 @@ int not_star(char **line, char *str, char **p_temp, int *p_i)
     free(*p_temp);
     *p_temp = arr;
 	(*p_i)++;
-    return (1);
+    return (1);//free is not done in here
 }
 
 int star(char **line, char **p_temp, char *buf, int my_case)

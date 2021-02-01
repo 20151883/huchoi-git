@@ -5,7 +5,7 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
     if (0 == (line[*p_my_case] = ft_strdup(*p_temp)))
         return (free_ret_zero(line, *p_temp, 0));
     (*p_my_case)++;
-    while(*p_my_case < 5)
+    while(*p_my_case <= 5)
     {
         if (0 == (line[*p_my_case] = ft_strdup("")))
             return (free_ret_zero(line, *p_temp, 0));
@@ -68,7 +68,7 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
     if ( 0 == (hex = ft_strdup("0123456789abcdef")))
         return (0);
     if (0 == (buf = malloc(sizeof(char) * 15)))
-        return (0);
+        return (free_ret_zero(0, hex, 0));
     ft_memset(buf, '0', 15);
     buf[0] = '0';
     buf[1] = 'x';
@@ -133,14 +133,14 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
     if (ft_strchr(".-0", p_node->string[p_node->idx]) != 0)
     {
         if (flag_precise(line, p_temp, (char *)p_node->string, &(p_node->idx)))
-            return (42);
+            return (42);//free is not done in here...
         else   
             return (0);
     }
     if (p_node->string[p_node->idx] != '*')
     {
         if (1 == not_star(line, (char*)p_node->string, p_temp, &(p_node->idx)))
-            return (42);
+            return (42);//free is not done in here
         else   
             return (0);
     }
@@ -150,7 +150,7 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
 int over_star(t_node *p_node, char **line, char**p_temp)
 {
     if (0 == star(line, p_temp, p_node->buf, p_node->my_case))
-        return (0);
+        return (0);//free(buf) is done in star func
     p_node->buf = 0;
     if (what_my_case(p_node->string[++(p_node->idx)], p_node->my_case) == p_node->my_case)
         return (free_ret_zero(line, *p_temp, NULL));
@@ -174,10 +174,10 @@ int finale(t_node *p_node, char **line, char **p_temp)
 int important(t_node *p_node, char **line, char **p_temp)
 {
     if (42 == (p_node->ret = contact_with_format(p_node, line, p_temp)))
-        return (1);//***&***
+        return (1);//free is not done in here
     else if (p_node->ret == 0)
         return (0);
-    if (0 == (p_node->buf = ft_itoa(va_arg(ap, int))))
+    if (0 == (p_node->buf = ft_itoa(va_arg(ap, int))))//itoa malloc is done...
         return (free_ret_zero(line,*p_temp, 0));
     if (over_star(p_node, line, p_temp) == 0)
         return (0);
