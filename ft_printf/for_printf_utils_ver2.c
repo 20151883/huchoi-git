@@ -139,7 +139,7 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
     }
     if (p_node->string[p_node->idx] != '*')
     {
-        if (1 == not_star(line, (char*)p_node->string, p_temp, &(p_node->idx)))
+        if (1 == not_star(line, (char*)p_node->string, p_temp, p_node))
             return (42);//free is not done in here
         else   
             return (0);
