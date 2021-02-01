@@ -82,6 +82,7 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
     free(*p_temp);
     free(hex);
     *p_temp = buf;
+    printf("test : %s\n", *p_temp);
     return (1);
 }
 
