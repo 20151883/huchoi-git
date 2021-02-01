@@ -109,7 +109,7 @@ int flag_precise(char **line, char **p_temp,char *str, int *p_i)
     return (1);
 }
 
-int real_complete_final(t_node *p_node, char **line, char**p_temp)
+int real_complete_final(t_node *p_node, char **line, char**p_temp, t_node *p_node)
 {
     char *arr;
     char *str;
