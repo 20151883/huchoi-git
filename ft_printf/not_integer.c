@@ -1,36 +1,38 @@
 #include "ft_printf.h"
 
-char *case_c(char **line)//dot procedure is needed
+char *case_c(t_node *p_node, char **line)//dot procedure is needed
 {
-    int size;
+    int lenth;
     char *ret;
     int idx;
 
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
     if (*line[2] != '\0')
-        size = ft_atoi(line[2]);
+        lenth = ft_atoi(line[2]);
     else
-        size = 1;
-    ret = malloc(sizeof(char) * (size + 1));//[0] ~ [size-1]
-	ret[size] = '\0';
+        lenth = 1;
+    ret = malloc(sizeof(char) * (lenth + 1));//[0] ~ [size-1]
+	ret[lenth] = '\0';
+	(p_node->count)+=lenth;
     idx = 0;
-    while(idx < size)
+    while(idx < lenth)
         ret[idx++] = ' ';
     if (ft_strchr(line[1], '-') != 0)
         ret[0] = *line[5];
     else
-        ret[size - 1] = *line[5];
+        ret[lenth - 1] = *line[5];
+	(p_node->count)++;
     return (ret);
 }//malloc fail then return 0...
 //but if (in case malloc fail) we just ret = 0;
 //then return (ret)....??  
 
-char *case_p(char **line)
+char *case_p(t_node *p_node, char **line)
 {
     return (0);
 }
-char *case_s(char **line)
+char *case_s(t_node *p_node, char **line)
 {
 	int size;//character number
 	int lenth;//buffer size
@@ -54,6 +56,7 @@ char *case_s(char **line)
 	}//[0] ~ [size] but  at [size] NULL ...so [0] ~ [size-1] ///[0]start or [size-lenth]start
 	ret = malloc(sizeof(char) * (lenth + 1));
 	ret[lenth] = '\0';//needed...!!!
+	(p_node->count)+=lenth;
 	if(ft_strchr(line[1], '0') != 0)
 		return (NULL);
 	else
@@ -71,7 +74,8 @@ char *case_s(char **line)
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
     return (ret);
 }
-char *case_percent(char **line)
+
+char *case_percent(t_node *p_node, char **line)
 {
 	int lenth;
 	char *ret;
@@ -81,6 +85,7 @@ char *case_percent(char **line)
 		lenth = ft_atoi(line[2]);
 	ret = malloc(sizeof(char) * (lenth + 1));
 	ret[lenth] = '\0';
+	(p_node->count)+=lenth;
 	if(ft_strchr(line[1], '0') != 0)
 		ft_memset(ret, '0', lenth);
 	else
