@@ -168,7 +168,6 @@ int finale(t_node *p_node, char **line, char **p_temp)
         return (0);
     if (!real_complete_final(p_node, line, p_temp))
         return (0);
-    printf("\n****%s****\n", line[5]);
     return (1);
 }
 
