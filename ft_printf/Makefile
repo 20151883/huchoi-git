@@ -10,7 +10,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-FLAGS = -c -Wall -Wextra -Werror
+FLAGS = -c 
 
 INCLUDES = -I./includes
 
