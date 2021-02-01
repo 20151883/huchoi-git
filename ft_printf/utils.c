@@ -80,6 +80,7 @@ char *ten_unsigned(unsigned int num)
 	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	j = 0;
+	i--;
 	while (i >= 0)
 	{
 		ret[j++] = arr[i--];
