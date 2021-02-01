@@ -62,7 +62,7 @@ char *ten_big_hex(unsigned int num)
 
 char *ten_unsigned(unsigned int num)
 {
-	char *arr;
+	char arr[16]
 	char *ret;
 	int i;
 	int j;
@@ -70,8 +70,6 @@ char *ten_unsigned(unsigned int num)
 
 	as = num;
 	i = 0;
-	if (0 == (arr = malloc(sizeof(char) * 16)))
-		return (NULL);
 	while (as > 0)
 	{
 		arr[i++] = (as % 10) + '0';
@@ -83,7 +81,6 @@ char *ten_unsigned(unsigned int num)
 	while (i >= 0)
 		ret[j++] = arr[i--];
 	ret[j] = '\0';
-	free(arr);
 	return (ret);
 }
 

@@ -126,7 +126,7 @@ int real_complete_final(t_node *p_node, char **line, char**p_temp)
     if (0 == (arr = make_string(p_node, line,str[i])))
         return (0);//free is done??? yes...!
     ft_putstr_fd(arr, 1);
-    free_ret_zero(line, *p_temp, 0, p_node->my_case);
+    free_ret_zero(line, *p_temp, arr, p_node->my_case);
     (p_node->idx)++;
     return (1);
 }
