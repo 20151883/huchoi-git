@@ -22,7 +22,7 @@ int main(void)
 	printf("[%20.14u]\n",0xffffffff);
 	ft_printf("[%12.15u]\n", 0xffffffff);
 	printf("[%12.15u]\n",0xffffffff);
-	ft_printf("[%u]*******",2147483648);
+	ft_printf("[%u]",2147483648);
 	printf("[%u]", num);
 	return (0);
 }

@@ -74,7 +74,7 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
     buf[1] = 'x';
     buf[14] = '\0';
     idx = 13;
-    while (idx > 1 || value > 0)
+    while (idx > 1 && value > 0)
     {
         buf[idx--] = hex[value % 16];
         value = value / 16;

@@ -4,7 +4,7 @@
 int main(void)
 {
 	int num1,num2;
-	char *arr ="abcd";
+	char *arr = "abcd";
 	unsigned int num3 = 2147483647;
 	ft_printf("[%-4.7d]",12345);
 	printf("[0012345]\n");
@@ -24,7 +24,7 @@ int main(void)
 	num2=printf("[%0d]\n", -12345);
 	printf("%d %d",num1, num2);
 	ft_printf("[%x %x]", 0xaaff, 2147483647);
-	ft_printf("[%x %x %u %X %p]",0xaaff, 2147483647, num3, 2147483647, arr);
-	printf("[%x %x %u %X %p]",0xaaff, 2147483647, num3, 2147483647, arr);
+	ft_printf("[%x %x %d %X %p\n]???",0xaaff, 2147483647, 100, 2147483647, arr);
+	printf("[%x %x %u %X %p\n]",0xaaff, 2147483647, num3, 2147483647, arr);
 	return (0);
 }
