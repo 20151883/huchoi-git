@@ -1,11 +1,11 @@
 #include "ft_printf.h"
 
-int free_ret_zero(char **p, char *s1, char *s2)
+int free_ret_zero(char **p, char *s1, char *s2, int my_case)
 {
     int i;
 
     i = 1;
-    while(i <= 5)
+    while(i <= my_case)
     {
         free(p[i++]);
     }

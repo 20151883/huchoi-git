@@ -52,6 +52,7 @@ char *case_i(t_node *p_node, char **line)
     return (ret);
     return (0);
 }
+
 char *case_u(t_node *p_node, char **line)
 {
     int size;//number of character
@@ -105,6 +106,7 @@ char *case_x(t_node *p_node, char **line)
     return (ret);
     return (0);
 }
+
 char *case_X(t_node *p_node, char **line)
 {
     int size;//number of character
