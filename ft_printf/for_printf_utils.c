@@ -129,7 +129,7 @@ int real_complete_final(t_node *p_node, char **line, char**p_temp)
     free_ret_zero(line, *p_temp, arr, 6);
     (p_node->idx)++;
     p_node->my_case = 1;
-    p_node->is_precise = 0
+    p_node->is_precision = 0;
     p_node->buf = 0;
     return (1);
 }
