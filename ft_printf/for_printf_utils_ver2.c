@@ -3,12 +3,12 @@
 int complete_final(char **line, int *p_my_case, char **p_temp)
 {
     if (0 == (line[*p_my_case] = ft_strdup(*p_temp)))
-        return (free_ret_zero(line, *p_temp, 0));
+        return (free_ret_zero(line, *p_temp, 0, *p_my_case));
     (*p_my_case)++;
     while(*p_my_case <= 5)
     {
         if (0 == (line[*p_my_case] = ft_strdup("")))
-            return (free_ret_zero(line, *p_temp, 0));
+            return (free_ret_zero(line, *p_temp, 0, *p_my_case));
         (*p_my_case)++;
     }
     ft_memset(*p_temp, '\0', ft_strlen(*p_temp) + 1);
@@ -30,7 +30,7 @@ int inter_type(char **line, char **p_temp, unsigned long long value, char the_ty
     if (ft_strchr("uxX", the_type) != 0)
         return (letter_uxX(line, p_temp, value, the_type));
     else
-        return (free_ret_zero(line, *p_temp, NULL));//******!!!!
+        return (free_ret_zero(line, *p_temp, NULL, 5));//******!!!!
 }
 
 int letter_c_percent(char **line, char **p_temp, unsigned long long value)
@@ -41,7 +41,7 @@ int letter_c_percent(char **line, char **p_temp, unsigned long long value)
     two[0] = (char)value;
     two[1] = '\0';
     if (0 == (arr = ft_strjoin(*p_temp, two)))
-        return (free_ret_zero(line, *p_temp, NULL));
+        return (free_ret_zero(line, *p_temp, NULL, 5));
     free(*p_temp);
     *p_temp = arr;
     return (1);
@@ -52,7 +52,7 @@ int letter_s(char **line, char **p_temp, unsigned long long value)
     char *arr;
 
     if (0 == (arr = (ft_strjoin(*p_temp, (char *)value))))
-        return (free_ret_zero(line, *p_temp, 0));
+        return (free_ret_zero(line, *p_temp, 0, 5));
     free(*p_temp);
     *p_temp = arr;
     return (1);
@@ -68,7 +68,7 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
     if ( 0 == (hex = ft_strdup("0123456789abcdef")))
         return (0);
     if (0 == (buf = malloc(sizeof(char) * 15)))
-        return (free_ret_zero(0, hex, 0));
+        return (free_ret_zero(0, hex, 0, 5));
     ft_memset(buf, '0', 15);
     buf[0] = '0';
     buf[1] = 'x';
@@ -90,7 +90,7 @@ int letter_di(char **line, char **p_temp, unsigned long long value)
     char *arr;
 
     if (0 == (arr = ft_itoa((int)value)))
-        return (free_ret_zero(line, *p_temp, NULL));
+        return (free_ret_zero(line, *p_temp, NULL, 5));
     free(*p_temp);
     *p_temp = arr;
     return (1);
@@ -105,17 +105,17 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
     if (the_type == 'u')
     {
         if (NULL == (arr = ten_unsigned(num)))
-            return (free_ret_zero(line, *p_temp, NULL));
+            return (free_ret_zero(line, *p_temp, NULL, 5));
     }
     else if (the_type == 'x')
     {
         if (0 == (arr = ten_small_hex(num)))
-            return (free_ret_zero(line, *p_temp, NULL));
+            return (free_ret_zero(line, *p_temp, NULL, 5));
     }
     else if (the_type == 'X')
     {
         if (0 == (arr = ten_big_hex(num)))
-            return (free_ret_zero(line, *p_temp, 0));
+            return (free_ret_zero(line, *p_temp, 0, 5));
     }
     free(*p_temp);
     *p_temp = arr;
@@ -153,7 +153,7 @@ int over_star(t_node *p_node, char **line, char**p_temp)
         return (0);//free(buf) is done in star func
     p_node->buf = 0;
     if (what_my_case(p_node->string[++(p_node->idx)], p_node->my_case) == p_node->my_case)
-        return (free_ret_zero(line, *p_temp, NULL));
+        return (free_ret_zero(line, *p_temp, NULL, p_node->my_case));
     return (1);
 }
 
@@ -178,7 +178,7 @@ int important(t_node *p_node, char **line, char **p_temp)
     else if (p_node->ret == 0)
         return (0);
     if (0 == (p_node->buf = ft_itoa(va_arg(ap, int))))//itoa malloc is done...
-        return (free_ret_zero(line,*p_temp, 0));
+        return (free_ret_zero(line,*p_temp, 0, p_node->my_case));
     if (over_star(p_node, line, p_temp) == 0)
         return (0);
     return (1);
