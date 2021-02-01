@@ -183,3 +183,12 @@ int important(t_node *p_node, char **line, char **p_temp)
         return (0);
     return (1);
 }
+
+void my_putchar_fd(t_node *p_node)
+{
+    char *str;
+
+    str = p_node->string;
+    ft_putchar_fd(str[(p_node->idx) - 1], 1);
+    p_node->count++;
+}
