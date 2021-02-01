@@ -1,6 +1,5 @@
 #include "ft_printf.h"
 
-
 int free_ret_zero(char **p, char *s1, char *s2)
 {
     int i;
@@ -89,23 +88,25 @@ int case_changed(char **line, char **p_temp, int *p_my_case)
     return (1);
 }
 
-int flag_precise(char **line, char **p_temp,char *str, int *p_i)
+int flag_precise(char **line, char **p_temp,t_node *p_node)
 {
     char two[2];
     char *arr;
+    char *str;
 
+    str = p_node->string;
     two[1] = '\0';
-    if (str[*p_i] == '.')
+    if (str[p_node->idx] == '.')
     {    
-        (*p_i)++;
+        (p_node->idx)++;
         p_node->is_precision = 1;
     }
-    else if (str[*p_i] == '-' || str[*p_i] == '0')
+    else if (str[p_node->idx] == '-' || str[p_node->idx] == '0')
     {
-        two[0] = str[*p_i];
+        two[0] = str[p_node->idx];
         if (0 == (arr = ft_strjoin(*p_temp, two)))
             return (free_ret_zero(line, *p_temp, 0));
-        (*p_i)++;
+        (p_node->idx)++;
         free(*p_temp);
         *p_temp = arr;
     }

@@ -32,7 +32,7 @@ int letter_s(char **line, char **p_temp, unsigned long long value);
 int letter_c_percent(char **line, char **p_temp, unsigned long long value);
 int inter_type(char **line, char **p_temp, unsigned long long value, char the_type);
 int complete_final(char **line, int *p_my_case, char **p_temp);
-int flag_precise(char **line, char **p_temp,char *str, int *p_i);
+int flag_precise(char **line, char **p_temp,t_node *p_node);
 int case_changed(char **line, char **p_temp, int *p_my_case);
 int star(char **line, char **p_temp, char *buf, int my_case);
 int not_star(char **line, char *str, char **p_temp, int *p_i);
