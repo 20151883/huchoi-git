@@ -5,7 +5,7 @@
 char *ten_small_hex(unsigned int num)
 {
 	char *hex;
-	char temp[12];
+	char temp[15];
 	char *ret;
 	int i;
 	int j;
@@ -26,6 +26,7 @@ char *ten_small_hex(unsigned int num)
 	while(i >= 0)
 		ret[j++] = temp[i--];
 	ret[j] = '\0';
+	printf("@@@@%s@@@@\n", ret);
 	free(hex);
 	return (ret);
 }
