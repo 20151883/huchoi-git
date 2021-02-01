@@ -12,6 +12,7 @@ char *ten_small_hex(unsigned int num)
 	unsigned int as;
 
 	as = num;
+	printf("here???");
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
