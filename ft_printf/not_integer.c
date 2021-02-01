@@ -33,6 +33,7 @@ char *case_p(t_node *p_node, char **line)
 	char *ret;
 	int size;
 
+	ret = 0;
 	p_node->count+=14;
 	if (0 == (ret == malloc(sizeof(char) * 15)))
 		return (0);
@@ -48,8 +49,6 @@ char *case_s(t_node *p_node, char **line)
 {
 	int size;//character number
 	int lenth;//buffer size
-	char *buf;
-	char *temp;
 	char *ret;
 	int i;
 
