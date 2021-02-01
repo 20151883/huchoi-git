@@ -48,7 +48,7 @@ int ft_printf(const char* str, ...)
 			continue;
 		}
 		if (0 == (temp = ft_calloc(1, sizeof(char))))
-			return (free_ret_zero(NULL, temp, NULL,node->my_case));
+			return (free_ret_zero(NULL, temp, NULL,node.my_case));
 		while (ft_strchr("cspdiuxX%%", str[node.idx]) == 0)
 		{   
         	if (important(&node, final, &temp) == 0)
