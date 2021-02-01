@@ -106,12 +106,12 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
     {
         if (NULL == (arr = ten_unsigned(num)))
             return (free_ret_zero(line, *p_temp, NULL, 5));
+        printf("@@@@%s@@@", arr);
     }
     else if (the_type == 'x')
     {
         if (0 == (arr = ten_small_hex(num)))
             return (free_ret_zero(line, *p_temp, NULL, 5));
-        printf("@@@@%s@@@", arr);
     }
     else if (the_type == 'X')
     {
