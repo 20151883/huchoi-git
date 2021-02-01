@@ -12,7 +12,6 @@ char *ten_small_hex(unsigned int num)
 	unsigned int as;
 
 	as = num;
-	printf("here???");
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
@@ -28,7 +27,6 @@ char *ten_small_hex(unsigned int num)
 	while(i >= 0)
 		ret[j++] = temp[i--];
 	ret[j] = '\0';
-	printf("@@@@%s@@@@\n", ret);
 	free(hex);
 	return (ret);
 }
@@ -85,7 +83,7 @@ char *ten_unsigned(unsigned int num)
 	j = 0;
 	while (i >= 0)
 		ret[j++] = arr[i--];
-	printf("(((((((((())))))))%s\n(((())))\n", ret);
+	//printf("(((((((((())))))))%s\n(((())))\n", ret);
 	free(arr);
 	return (ret);
 }
