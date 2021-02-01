@@ -76,7 +76,7 @@ char *ten_unsigned(unsigned int num)
 		return (NULL);
 	while (as > 0)
 	{
-		arr[i++] = as % 10;
+		arr[i++] = (as % 10) + '0';
 		as = as / 10;
 	}
 	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
@@ -86,6 +86,7 @@ char *ten_unsigned(unsigned int num)
 	while (i >= 0)
 		ret[j++] = arr[i--];
 	printf("(((((((((())))))))%s\n(((())))\n", ret);
+	free(arr);
 	return (ret);
 }
 
