@@ -103,7 +103,7 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
 
     num = (unsigned int)value;
     printf("$$$$%u$$$$\n",num);
-    if(the_type == 'u')
+    if (the_type == 'u')
     {
         if (NULL == (arr = ten_unsigned(num)))
             return (free_ret_zero(line, *p_temp, NULL));
