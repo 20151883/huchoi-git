@@ -111,12 +111,14 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
     {
         if (0 == (arr = ten_small_hex(num)))
             return (free_ret_zero(line, *p_temp, NULL, 5));
+        printf("@@@@%s@@@", arr);
     }
     else if (the_type == 'X')
     {
         if (0 == (arr = ten_big_hex(num)))
             return (free_ret_zero(line, *p_temp, 0, 5));
     }
+    free(*p_temp);
     *p_temp = arr;
     return (1);
 }
