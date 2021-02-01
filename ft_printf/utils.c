@@ -70,7 +70,7 @@ char *ten_unsigned(unsigned int num)
 
 	as = num;
 	i = 0;
-	if (0 == (arr = malloc(sizeof(char) * 15)))
+	if (0 == (arr = malloc(sizeof(char) * 16)))
 		return (NULL);
 	while (as > 0)
 	{
@@ -79,10 +79,10 @@ char *ten_unsigned(unsigned int num)
 	}
 	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	ret[i--] = '\0';
 	j = 0;
 	while (i >= 0)
 		ret[j++] = arr[i--];
+	ret[j] = '\0';
 	free(arr);
 	return (ret);
 }
