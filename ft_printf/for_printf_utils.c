@@ -5,7 +5,7 @@ int free_ret_zero(char **p, char *s1, char *s2, int my_case)
     int i;
 
     i = 1;
-    while(i <= my_case)
+    while(i < my_case)
     {
         free(p[i++]);
     }
@@ -38,18 +38,18 @@ int free_ret_zero(char **p, char *s1, char *s2, int my_case)
     }
 }//renewer str... if error it rturn (0) (free is done)
 */
-int not_star(char **line, char *str, char **p_temp, int *p_i)
+int not_star(char **line, char *str, char **p_temp, t_node *p_node)
 {
     char two[2];
     char *arr;
 
     two[1] = '\0';
-	two[0] = str[*p_i];
+	two[0] = str[p_node->idx];
 	if (0 == (arr = ft_strjoin(*p_temp, two)))
-        return (free_ret_zero(line, *p_temp, NULL));
+        return (free_ret_zero(line, *p_temp, NULL, p_node->my_case));
     free(*p_temp);
     *p_temp = arr;
-	(*p_i)++;
+	(p_node->idx)++;
     return (1);//free is not done in here
 }
 
@@ -62,16 +62,16 @@ int star(char **line, char **p_temp, char *buf, int my_case)
         return (0);
     two[1] = '\0';
     if (0 == (arr = malloc(ft_strlen(buf) + 1)))
-        return (free_ret_zero(line, *p_temp, buf));
+        return (free_ret_zero(line, *p_temp, buf, my_case));
 	if (my_case == 2 && (ft_strchr(buf, '-')))
     {
 		two[0] = '-';
 		if (0 == (line[1] = ft_strjoin(line[1], two)))
-            return (free_ret_zero(line, *p_temp, buf));
+            return (free_ret_zero(line, *p_temp, buf, my_case));
 		*(ft_strchr(buf, '-')) = '0';//minus is interchaned to '0'
 	}
 	if (0 == (arr = ft_strjoin(*p_temp, buf)))
-        return (free_ret_zero(line, *p_temp, buf));
+        return (free_ret_zero(line, *p_temp, buf, my_case));
     free(*p_temp);
     free(buf);
     *p_temp = arr;
@@ -81,7 +81,7 @@ int star(char **line, char **p_temp, char *buf, int my_case)
 int case_changed(char **line, char **p_temp, int *p_my_case)
 {
     if (0 == (line[*p_my_case] = ft_strdup(*p_temp)))
-        return (free_ret_zero(line, *p_temp, 0));//***
+        return (free_ret_zero(line, *p_temp, 0, *p_my_case));//***
     (*p_my_case)++;
     ft_memset(*p_temp, '\0', ft_strlen(*p_temp));
     **p_temp = '\0';
@@ -105,7 +105,7 @@ int flag_precise(char **line, char **p_temp,t_node *p_node)
     {
         two[0] = str[p_node->idx];
         if (0 == (arr = ft_strjoin(*p_temp, two)))
-            return (free_ret_zero(line, *p_temp, 0));
+            return (free_ret_zero(line, *p_temp, 0, p_node->my_case));
         (p_node->idx)++;
         free(*p_temp);
         *p_temp = arr;
@@ -122,11 +122,11 @@ int real_complete_final(t_node *p_node, char **line, char**p_temp)
     str = p_node->string;
     i = p_node->idx;
     if (0 == (line[5] = ft_strdup(*p_temp)))
-        return (free_ret_zero(line, *p_temp, NULL));
+        return (free_ret_zero(line, *p_temp, NULL, p_node->my_case));
     if (0 == (arr = make_string(p_node, line,str[i])))
         return (0);//free is done??? yes...!
     ft_putstr_fd(arr, 1);
-    free_ret_zero(line, *p_temp, 0);
+    free_ret_zero(line, *p_temp, 0, p_node->my_case);
     (p_node->idx)++;
     return (1);
 }
