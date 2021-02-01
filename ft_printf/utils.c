@@ -87,7 +87,7 @@ char *ten_unsigned(unsigned int num)
 	return (ret);
 }
 
-char *no_precision_int(char **line, int plus, int size, int lenth)
+char *precision_int(char **line, int plus, int size, int lenth)
 {
 	char *ret;
 	int i;
@@ -114,7 +114,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	return (ret);
 }
 
-char *precision_int(char **line, int plus, int size, int lenth)
+char *no_precision_int(char **line, int plus, int size, int lenth)
 {
 	char *ret;
 	int i;
