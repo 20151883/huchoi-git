@@ -27,6 +27,7 @@ char *case_d(t_node *p_node, char **line)
         ret = precision_int(line, plus, size, lenth);    
     return (ret);
 }
+
 char *case_i(t_node *p_node, char **line)
 {
     int size;//number of character
