@@ -16,6 +16,7 @@ typedef struct s_node{
     unsigned long long value;
     int num[3];
 }t_node;
+void my_putchar_fd(t_node *p_node);
 int important(t_node *p_node, char **line, char **p_temp);
 int finale(t_node*p_node, char **line, char **p_temp);
 int over_star(t_node *p_node, char **line, char**p_temp);

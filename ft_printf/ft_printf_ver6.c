@@ -43,7 +43,7 @@ int ft_printf(const char* str, ...)
 	{
 		if(str[node.idx++] != '%')
 		{
-			ft_putchar_fd(str[node.idx - 1], 1);
+			my_putchar_fd(&node);
 			continue;
 		}
 		if (0 == (temp = ft_calloc(1, sizeof(char))))

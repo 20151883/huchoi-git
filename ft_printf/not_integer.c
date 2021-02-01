@@ -30,8 +30,20 @@ char *case_c(t_node *p_node, char **line)//dot procedure is needed
 
 char *case_p(t_node *p_node, char **line)
 {
-    return (0);
+	char *ret;
+	int size;
+
+	p_node->count+=14;
+	if (0 == (ret == malloc(sizeof(char) * 15)))
+		return (0);
+	ft_memset(ret, '0', 15);
+	size = ft_strlen(line[5]);//[14 - size]
+	ft_strlcpy(&ret[14 - size], line[5], size + 1);
+	ret[0] = '0';
+	ret[1] = 'x';
+    return (ret);
 }
+
 char *case_s(t_node *p_node, char **line)
 {
 	int size;//character number
