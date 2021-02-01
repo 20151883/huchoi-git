@@ -21,7 +21,7 @@ char *ten_small_hex(unsigned int num)
 		temp[i++] = hex[as % 16];
 		as = as / 16;
 	}
-	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
+	if (0 == (ret = malloc(sizeof(char) * (i-- + 1))))
 		return (0);
 	j = 0;
 	while(i >= 0)
