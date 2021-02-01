@@ -62,7 +62,7 @@ char *ten_big_hex(unsigned int num)
 
 char *ten_unsigned(unsigned int num)
 {
-	char arr[16]
+	char arr[16];
 	char *ret;
 	int i;
 	int j;
