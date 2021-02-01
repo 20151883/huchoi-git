@@ -9,17 +9,18 @@ char *ten_small_hex(unsigned int num)
 	char *ret;
 	int i;
 	int j;
+	unsigned int as;
 
+	as = num;
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
 	ft_strlcpy(hex, "0123456789abcdef",17);
-	while(num / 16 != 0)
+	while(as > 0)
 	{
-		temp[i++] = hex[num % 16];
-		num = num / 16;
+		temp[i++] = hex[as % 16];
+		as = as / 16;
 	}
-	temp[i] = hex[num % 16];
 	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
 		return (0);
 	j = 0;
