@@ -68,18 +68,20 @@ char *ten_unsigned(unsigned int num)
 	char *ret;
 	int i;
 	int j;
+	unsigned int as;
 
+	as = num;
 	i = 0;
 	if (0 == (arr = malloc(sizeof(char) * 15)))
 		return (NULL);
-	while (num > 0)
+	while (as > 0)
 	{
-		arr[i++] = num % 10;
-		num = num / 10;
+		arr[i++] = as % 10;
+		as = as / 10;
 	}
 	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	ret[i] = '\0';
+	ret[i--] = '\0';
 	j = 0;
 	while (i >= 0)
 		ret[j++] = arr[i--];
