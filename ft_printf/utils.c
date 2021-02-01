@@ -81,7 +81,10 @@ char *ten_unsigned(unsigned int num)
 		return (NULL);
 	j = 0;
 	while (i >= 0)
+	{
 		ret[j++] = arr[i--];
+		printf("ret[%d] = %c", j-1, ret[j-1]);
+	}
 	ret[j] = '\0';
 	printf("?????%s?????", ret);
 	return (ret);
