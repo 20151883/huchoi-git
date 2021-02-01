@@ -69,7 +69,6 @@ char *ten_unsigned(unsigned int num)
 	unsigned int as;
 
 	as = num;
-	printf("as = %u", as);
 	i = 0;
 	while (as > 0)
 	{
