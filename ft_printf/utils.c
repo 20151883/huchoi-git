@@ -28,6 +28,7 @@ char *ten_small_hex(unsigned int num)
 		ret[j++] = temp[i--];
 	ret[j] = '\0';
 	free(hex);
+	printf("******%s*****",ret);
 	return (ret);
 }
 
