@@ -17,7 +17,7 @@ int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
 	    if (now_case <= 3)
 			return (3);
 	}
-    if (ft_strchr("cspdiuxX%", c) != 0)
+    if (ft_strchr("cspdiuxX%%", c) != 0)
         return (5);
     return (-1);
 }
@@ -41,15 +41,14 @@ int ft_printf(const char* str, ...)
 	va_start(ap, str);
 	while (node.string[node.idx] != '\0')
 	{
-		if(node.string[node.idx] != '%')
+		if(node.string[node.idx++] != '%')
 		{
-			ft_putchar_fd(node.string[node.idx++], 1);
+			ft_putchar_fd(node.string[node.idx - 1], 1);
 			continue;
 		}
 		if (0 == (temp = ft_calloc(1, sizeof(char))))
 			return (free_ret_zero(NULL, temp, NULL));
-		(node.idx)++;
-		while (ft_strchr("cspdiuxX%", node.string[node.idx]) == 0)
+		while (ft_strchr("cspdiuxX%%", node.string[node.idx]) == 0)
 		{   
         	if (important(&node, final, &temp) == 0)
 				return (0);
