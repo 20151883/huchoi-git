@@ -21,7 +21,7 @@ int finale(t_node*p_node, char **line, char **p_temp);
 int over_star(t_node *p_node, char **line, char**p_temp);
 void init_node(t_node* p_node, const char *str);
 int contact_with_format(t_node *p_node, char **line, char **p_temp);
-int real_complete_final(t_node *p_node, char **line, char**p_temp, t_node *p_node);
+int real_complete_final(t_node *p_node, char **line, char**p_temp);
 char *ten_unsigned(unsigned int num);
 int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tpye);
 int letter_di(char **line, char **p_temp, unsigned long long value);
