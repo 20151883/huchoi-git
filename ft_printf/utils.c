@@ -78,10 +78,10 @@ char *ten_unsigned(unsigned int num)
 	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	j = 0;
-	printf("HERE???");
 	while (i >= 0)
 		ret[j++] = arr[i--];
 	ret[j] = '\0';
+	printf("?????%s?????", ret);
 	return (ret);
 }
 
