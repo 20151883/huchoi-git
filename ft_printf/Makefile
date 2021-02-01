@@ -8,9 +8,9 @@ SRCS =  ft_printf_ver6.c make_string.c integer.c not_integer.c utils.c for_print
 		
 OBJS = $(SRCS:.c=.o)
 
-CC = gcc
+CC = gcc 
 
-FLAGS = -c 
+FLAGS = -W -Wall -Werror -c 
 
 INCLUDES = -I./includes
 
