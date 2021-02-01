@@ -119,6 +119,7 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
     }
     free(*p_temp);
     *p_temp = arr;
+    printf("?????%s????\n",*p_temp);
     return (1);
 }
 
