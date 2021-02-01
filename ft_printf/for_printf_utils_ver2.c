@@ -102,11 +102,11 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
     unsigned int num;
 
     num = (unsigned int)value;
-    printf("HERE???");
     if (the_type == 'u')
     {
         if (NULL == (arr = ten_unsigned(num)))
             return (free_ret_zero(line, *p_temp, NULL, 5));
+        printf("HERE???");
     }
     else if (the_type == 'x')
     {
