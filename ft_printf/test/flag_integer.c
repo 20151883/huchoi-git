@@ -5,7 +5,7 @@ int main(void)
 {
 	int num1,num2;
 	char *arr ="abcd";
-	unsigned int num3 = 2147483648;
+	unsigned int num3 = 2147483647;
 	ft_printf("[%-4.7d]",12345);
 	printf("[0012345]\n");
 	ft_printf("[%010.7d]",12345);

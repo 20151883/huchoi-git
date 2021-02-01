@@ -3,6 +3,7 @@
 
 int main(void)
 {
+	unsigned int num = 2147483648;
 	ft_printf("[%10.7d]",12345);
 	ft_printf("[   0012345]\n");
 	ft_printf("[%5.7d]",12345);
@@ -21,6 +22,7 @@ int main(void)
 	printf("[%20.14u]\n",0xffffffff);
 	ft_printf("[%12.15u]\n", 0xffffffff);
 	printf("[%12.15u]\n",0xffffffff);
-
+	ft_printf("[%u]*******",2147483648);
+	printf("[%u]", num);
 	return (0);
 }
