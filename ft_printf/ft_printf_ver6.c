@@ -39,16 +39,16 @@ int ft_printf(const char* str, ...)
 
 	init_node(&node, str);
 	va_start(ap, str);
-	while (node.string[node.idx] != '\0')
+	while (str[node.idx] != '\0')
 	{
-		if(node.string[node.idx++] != '%%')
+		if(str[node.idx++] != '%')
 		{
-			ft_putchar_fd(node.string[node.idx - 1], 1);
+			ft_putchar_fd(str[node.idx - 1], 1);
 			continue;
 		}
 		if (0 == (temp = ft_calloc(1, sizeof(char))))
 			return (free_ret_zero(NULL, temp, NULL));
-		while (ft_strchr("cspdiuxX%%", node.string[node.idx]) == 0)
+		while (ft_strchr("cspdiuxX%%", str[node.idx]) == 0)
 		{   
         	if (important(&node, final, &temp) == 0)
 				return (0);

@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-char *case_d(char **line)
+char *case_d(t_node *p_node, char **line)
 {
     int size;//number of character
     int plus;
@@ -19,6 +19,7 @@ char *case_d(char **line)
     {
         lenth = atoi(line[2]);
     }
+    (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
     if (*line[3] != '\0')
         ret = no_precision_int(line, plus, size, lenth);
@@ -26,7 +27,7 @@ char *case_d(char **line)
         ret = precision_int(line, plus, size, lenth);    
     return (ret);
 }
-char *case_i(char **line)
+char *case_i(t_node *p_node, char **line)
 {
     int size;//number of character
     int plus;
@@ -45,33 +46,7 @@ char *case_i(char **line)
     {
         lenth = atoi(line[2]);
     }
-    //if (*line[3] != '\0') then flag has no power..
-    if (*line[3] != '\0')
-        ret = no_precision_int(line, plus, size, lenth);
-    else//precision is nit in line.//plus is zero.. 
-        ret = precision_int(line, plus, size, lenth);    
-    return (ret);
-    return (0);
-}
-char *case_u(char **line)
-{
-    int size;//number of character
-    int plus;
-    int lenth;//buffer lenth excluded the NULL
-    char *temp;
-    char *ret;
-    int i = 0;
-
-    size = ft_strlen(line[5]);
-    if (*line[3] != '\0' && size < atoi(line[3]))
-        plus = atoi(line[3]) - size;
-    else
-        plus = 0;
-    lenth = size + plus;
-    if (*line[2] != '\0' && lenth < atoi(line[2]))
-    {
-        lenth = atoi(line[2]);
-    }
+    (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
     if (*line[3] != '\0')
         ret = no_precision_int(line, plus, size, lenth);
@@ -80,7 +55,7 @@ char *case_u(char **line)
     return (ret);
     return (0);
 }
-char *case_x(char **line)
+char *case_u(t_node *p_node, char **line)
 {
     int size;//number of character
     int plus;
@@ -99,6 +74,7 @@ char *case_x(char **line)
     {
         lenth = atoi(line[2]);
     }
+    (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
     if (*line[3] != '\0')
         ret = no_precision_int(line, plus, size, lenth);
@@ -107,7 +83,7 @@ char *case_x(char **line)
     return (ret);
     return (0);
 }
-char *case_X(char **line)
+char *case_x(t_node *p_node, char **line)
 {
     int size;//number of character
     int plus;
@@ -126,6 +102,35 @@ char *case_X(char **line)
     {
         lenth = atoi(line[2]);
     }
+    (p_node->count) += lenth;
+    //if (*line[3] != '\0') then flag has no power..
+    if (*line[3] != '\0')
+        ret = no_precision_int(line, plus, size, lenth);
+    else//precision is nit in line.//plus is zero.. 
+        ret = precision_int(line, plus, size, lenth);    
+    return (ret);
+    return (0);
+}
+char *case_X(t_node *p_node, char **line)
+{
+    int size;//number of character
+    int plus;
+    int lenth;//buffer lenth excluded the NULL
+    char *temp;
+    char *ret;
+    int i = 0;
+
+    size = ft_strlen(line[5]);
+    if (*line[3] != '\0' && size < atoi(line[3]))
+        plus = atoi(line[3]) - size;
+    else
+        plus = 0;
+    lenth = size + plus;
+    if (*line[2] != '\0' && lenth < atoi(line[2]))
+    {
+        lenth = atoi(line[2]);
+    }
+    (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
     if (*line[3] != '\0')
         ret = no_precision_int(line, plus, size, lenth);
