@@ -147,7 +147,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 		ret = arr;
 		//return (0);//change his
 	}
-	else
+	//else
 		//return (0);
 	return (ret);
 }
