@@ -65,7 +65,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	{
 		while (i < lenth)
 			ret[i++] = ' ';
-		//return (NULL);//ssh printf는 출력은 시키던데...???
+	}	//return (NULL);//ssh printf는 출력은 시키던데...???
 	else
 	{
 		while(i < lenth)
