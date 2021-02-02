@@ -138,14 +138,14 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	char two[2];
 	two[1] = '\0';
 	char *arr;
-	if (ft_atoi(line[5] < 0))
+	if (ft_atoi(line[5]) < 0)
 	{
 		two[0] = '-';
 		*(ft_strchr(ret, '-')) = '0';
-		arr = ft_strjoin(two, ret));
+		arr = ft_strjoin(two, ret);
 		free(ret);
 		ret = arr;
-		return (1);
+		return (0);//change his
 	}
 	else
 		return (0);
