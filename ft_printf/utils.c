@@ -128,9 +128,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	if(ft_strchr(line[1], '-') != 0)
 	{
 		ft_strlcpy(ret, line[5], size + 1);
-		if (ft_strchr(line[1], '0') != 0)
-			ret[size] = '0';
-		else
+		if (size != lenth)
 			ret[size] = ' ';
 	}
 	else
