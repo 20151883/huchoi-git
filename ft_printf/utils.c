@@ -135,3 +135,16 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
 	return (ret);
 }
+
+int check_zero(char **line, int *p1, int *p2, int *p3)
+{
+	if (*line[5] == '0')
+	{
+		*p1 = 0;
+		*p2 = 0;
+		*p3 = 0;
+		return (1);
+	}
+	else
+		return (0);
+}
