@@ -13,10 +13,10 @@ char *case_d(t_node *p_node, char **line)
     else
         plus = 0;
     lenth = size + plus;
+     if (p_node->is_precision == 1)
+        check_zero(line, &size, &plus, &lenth);
     if (*line[2] != '\0' && lenth < atoi(line[2]))
         lenth = atoi(line[2]);
-    if (p_node->is_precision == 1)
-        check_zero(line, &size, &plus, &lenth);
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
     if (*line[3] != '\0' || (p_node->is_precision == 1))
@@ -39,12 +39,12 @@ char *case_i(t_node *p_node, char **line)
     else
         plus = 0;
     lenth = size + plus;
+     if (p_node->is_precision == 1)
+        check_zero(line, &size, &plus, &lenth);
     if (*line[2] != '\0' && lenth < atoi(line[2]))
     {
         lenth = atoi(line[2]);
     }
-    if (p_node->is_precision == 1)
-        check_zero(line, &size, &plus, &lenth);
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
     if (*line[3] != '\0' || (p_node->is_precision == 1))
@@ -68,12 +68,12 @@ char *case_u(t_node *p_node, char **line)
     else
         plus = 0;
     lenth = size + plus;
+     if (p_node->is_precision == 1)
+        check_zero(line, &size, &plus, &lenth);
     if (*line[2] != '\0' && lenth < atoi(line[2]))
     {
         lenth = atoi(line[2]);
     }
-    if (p_node->is_precision == 1)
-        check_zero(line, &size, &plus, &lenth);
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
     if (*line[3] != '\0' || (p_node->is_precision == 1))
