@@ -92,8 +92,8 @@ char *precision_int(char **line, int plus, int size, int lenth)
 
 	i = 0;
 	ret = malloc(sizeof(char) * (lenth + 1));
-	ret[lenth] = '\0';
 	ft_memset(ret, ' ', lenth);
+	ret[lenth] = '\0';
 	if (ft_strchr(line[1], '-') != 0)
 	{
 		while (i < plus)
@@ -105,7 +105,7 @@ char *precision_int(char **line, int plus, int size, int lenth)
 	else
 	{
 		i = lenth - size - plus;
-		while (i < lenth - size)
+		while (i < lent+h - size)
 			ret[i++] = '0';
 		ft_strlcpy(&ret[i], line[5], size + 1);
 	}
