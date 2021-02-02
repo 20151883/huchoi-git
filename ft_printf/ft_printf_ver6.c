@@ -20,7 +20,7 @@ int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
     if (ft_strchr("cspdiuxX%%", c) != 0)
         return (5);
     return (-1);
-}
+}	
 
 void init_node(t_node* p_node, const char *str)
 {

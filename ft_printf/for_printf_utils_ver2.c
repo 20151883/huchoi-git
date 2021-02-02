@@ -55,6 +55,7 @@ int letter_s(char **line, char **p_temp, unsigned long long value)
         return (free_ret_zero(line, *p_temp, 0, 5));
     free(*p_temp);
     *p_temp = arr;
+    printf("\n\n%s\n\n", *p_temp);
     return (1);
 }
 
