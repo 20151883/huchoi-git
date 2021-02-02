@@ -24,5 +24,7 @@ int main(void)
 	printf("[%12.15u]\n",0xffffffff);
 	ft_printf("[%u]",2147483648);
 	printf("[%u]", num);
+	ft_printf("[%-0d]",100);
+	printf("[%-0d]",100);
 	return (0);
 }
