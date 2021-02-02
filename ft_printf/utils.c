@@ -116,6 +116,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 {
 	char *ret;
 	int i;
+	unsigned int num;
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
@@ -133,6 +134,22 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
+	//check_minus(char **line, char **p_ret)
+	char two[2];
+	two[1] = '\0';
+	char *arr;
+	if (ft_atoi(line[5] < 0))
+	{
+		two[0] = '-';
+		*(ft_strchr(*p_ret, '-')) = '0';
+		if (0 == (arr = ft_strjoin(two, *p_ret)))
+			free_ret_zero(line, *p_temp, *p_ret, 6);//is this dine in here...?
+		free(*p_ret);
+		*p_ret = arr;
+		return (1);
+	}
+	else
+		return (0)
 	return (ret);
 }
 
