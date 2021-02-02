@@ -26,5 +26,8 @@ int main(void)
 	printf("[%u]", num);
 	ft_printf("[%-0d]",100);
 	printf("[%-0d]",100);
+	int a = ft_printf(" %d ",0);
+	int b = printf(" %d ",0);
+	printf(" %d %d ",a,b);
 	return (0);
 }

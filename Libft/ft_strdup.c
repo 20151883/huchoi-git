@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 15:54:42 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/06 15:55:47 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/02/01 09:07:53 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,16 @@ char	*ft_strdup(const char *src)
 		i++;
 	}
 	ret[i] = '\0';
+	ret[i] = 0;
+	ret[i] = 0;
+	ret[i] = 0;
+	ret[i] = 0;
+	ret[i] = 0;
+	ret[i] = 0;
+	ret[i] = 0;
+	ret[i] = 0;
+	ret[i] = 0;
+	ret[i] = 0;
+	ret[i] = 0;
 	return (ret);
 }
