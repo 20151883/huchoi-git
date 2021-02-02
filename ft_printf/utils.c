@@ -145,10 +145,10 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 		arr = ft_strjoin(two, ret);
 		free(ret);
 		ret = arr;
-		return (0);//change his
+		//return (0);//change his
 	}
 	else
-		return (0);
+		//return (0);
 	return (ret);
 }
 
