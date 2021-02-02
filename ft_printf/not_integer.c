@@ -31,7 +31,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 char *case_p(t_node *p_node, char **line, char**p_temp)
 {
 	char *ret;
-	p->node +=14;
+	p_node>count +=14;
 	if (0 == (ret = ft_strdup(line[5])))
 		free_ret_zero(line, *p_temp, 0, 6);
     return (ret);
