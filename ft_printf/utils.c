@@ -129,7 +129,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	{
 		ft_strlcpy(ret, line[5], size + 1);
 		if (size != lenth)
-			ret[size] = ' ';
+			ft_memset(&ret[size], ' ', lenth - size);
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
