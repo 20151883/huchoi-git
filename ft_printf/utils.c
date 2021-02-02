@@ -105,7 +105,7 @@ char *precision_int(char **line, int plus, int size, int lenth)
 	else
 	{
 		i = lenth - size - plus;
-		while (i < lent+h - size)
+		while (i < lenth - size)
 			ret[i++] = '0';
 		ft_strlcpy(&ret[i], line[5], size + 1);
 	}
