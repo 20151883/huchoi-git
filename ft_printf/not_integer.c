@@ -63,6 +63,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	if (ft_atoi(line[3]) == 0 && p_node->is_precision == 1)
 	{
 		lenth = 0;
+		//lenth = 1???
 		size = 0;
 		//ft_putchar_fd(' ', 1);
 
@@ -89,6 +90,8 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
+	if (size == 0)
+		ft_putchar_fd(0, 1);
     return (ret);
 }
 
