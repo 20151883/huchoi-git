@@ -121,7 +121,7 @@ char *case_u(t_node *p_node, char **line)
     if (*line[5] == 0)
     {
         ft_putchar_fd('0', 1);
-        ret = ft_calloc(sizof(char),1);
+        ret = ft_calloc(sizeof(char),1);
         return (ret);
     }
     //if (*line[3] != '\0') then flag has no power..
@@ -153,7 +153,7 @@ char *case_x(t_node *p_node, char **line)
     if (*line[5] == 0)
     {
         ft_putchar_fd('0', 1);
-        ret = ft_calloc(sizof(char),1);
+        ret = ft_calloc(sizeof(char),1);
         return (ret);
     }
     //if (*line[3] != '\0') then flag has no power..
@@ -185,7 +185,7 @@ char *case_X(t_node *p_node, char **line)
     if (*line[5] == 0)
     {
         ft_putchar_fd('0', 1);
-        ret = ft_calloc(sizof(char),1);
+        ret = ft_calloc(sizeof(char),1);
         return (ret);
     }
     (p_node->count) += lenth;
