@@ -158,6 +158,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 		//return (0);
 	if (ft_atoi(line[5]) < 0)
 	{
+		printf("size : %d plus : %d lenth : %d", size,plus,lenth);
 		char swap;
 		swap = ret[lenth - size - plus];
 		ret[lenth -size - plus] = ret[lenth - size];
