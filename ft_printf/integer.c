@@ -151,7 +151,6 @@ char *case_x(t_node *p_node, char **line)
         //if (ft_atoi(line[3]) == 0)
         //    size = 0;
     }
-    printf("test lenth : %d  size : %d", lenth, size);
     if (*line[2] != '\0' && lenth < atoi_positive(line[2]))
     {
         lenth = atoi_positive(line[2]);
