@@ -25,10 +25,11 @@ void renewer_line(char **line, int num)
     char *temp;
 
     temp = ft_calloc(sizeof(char),1);
-    *temp = '0';
+    *temp = '\0';
     free(line[num]);
     line[num] = temp;
 }
+
 //***********************************************************
 int inter_type(char **line, char **p_temp, unsigned long long value, char the_type)
 {
