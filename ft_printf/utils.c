@@ -42,7 +42,6 @@ char *ten_small_hex(unsigned long long num)
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
-		if (num == 0)
 	}
 	return (ret);
 }
@@ -106,7 +105,7 @@ char *ten_unsigned(unsigned long long num)
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
-		return (rer);
+		return (ret);
 	}
 	i = 0;
 	while (as > 0)
