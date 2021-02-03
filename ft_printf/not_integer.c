@@ -60,7 +60,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	{
 		lenth = lenth + 0;
 	}//[0] ~ [size] but  at [size] NULL ...so [0] ~ [size-1] ///[0]start or [size-lenth]start
-	if (ft_atoi(line[3]) <= 0 && p_node->is_precision == 1)
+	if (ft_atoi(line[3]) == 0 && p_node->is_precision == 1)
 	{
 		if (ft_atoi(line[3]) == 0)
 		{
@@ -69,7 +69,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 			size = 0;
 			//ft_putchar_fd(' ', 1);
 		}
-		else if ((atoi_positive(line[2]) > 0))// && ft_strchr(line[2], '-')) //&& *line[1] == '\0')
+		if ((atoi_positive(line[2]) > 0) && ft_strchr(line[2], '-')) //&& *line[1] == '\0')
 		{
 			p_node->count += atoi_positive(line[2]);
 			while (size++ < atoi_positive(line[2]))
