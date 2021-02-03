@@ -84,10 +84,6 @@ char *case_i(t_node *p_node, char **line)
         else
             plus = 0;
     }
-    if (*line[3] != '\0' && size < atoi(line[3]))
-        plus = atoi(line[3]) - size;
-    else
-        plus = 0;
     lenth = size + plus;
     if (p_node->is_precision == 1)
         check_zero(line, &size, &plus, &lenth);
