@@ -28,6 +28,13 @@ char *ten_small_hex(unsigned int num)
 		ret[j++] = temp[i--];
 	ret[j] = '\0';
 	free(hex);
+	if (num == 0)
+	{
+		free[ret];
+		ret = malloc(sizeof(char) * 2);
+		ret[0] = '0';
+		ret[1] = 0;
+	}
 	return (ret);
 }
 
@@ -57,6 +64,13 @@ char *ten_big_hex(unsigned int num)
 		ret[j++] = temp[i--];
 	ret[j] = '\0';
 	free(hex);
+	if (num == 0)
+	{
+		free[ret];
+		ret = malloc(sizeof(char) * 2);
+		ret[0] = '0';
+		ret[1] = 0;
+	}
 	return (ret);
 }
 
@@ -82,6 +96,13 @@ char *ten_unsigned(unsigned int num)
 	while (i >= 0)
 		ret[j++] = arr[i--];
 	ret[j] = '\0';
+	if (num == 0)
+	{
+		free[ret];
+		ret = malloc(sizeof(char) * 2);
+		ret[0] = '0';
+		ret[1] = 0;
+	}
 	return (ret);
 }
 
