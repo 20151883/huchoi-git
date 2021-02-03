@@ -122,9 +122,9 @@ int letter_di(char **line, char **p_temp, unsigned long long value)
 int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_type)
 {
     char *arr;
-    unsigned int num;
+    unsigned long long num;
 
-    num = (unsigned int)value;
+    num = value;
     if (the_type == 'u')
     {
         if (NULL == (arr = ten_unsigned(num)))
