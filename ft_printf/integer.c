@@ -120,7 +120,7 @@ char *case_u(t_node *p_node, char **line)
     (p_node->count) += lenth;
     if (*line[5] == 0)
     {
-        ft_putchar_fd('0', 1);
+        ft_putchar_fd(0, 1);
         ret = ft_calloc(sizeof(char),1);
         return (ret);
     }
@@ -152,7 +152,7 @@ char *case_x(t_node *p_node, char **line)
     (p_node->count) += lenth;
     if (*line[5] == 0)
     {
-        ft_putchar_fd('0', 1);
+        ft_putchar_fd(0, 1);
         ret = ft_calloc(sizeof(char),1);
         return (ret);
     }
@@ -184,7 +184,7 @@ char *case_X(t_node *p_node, char **line)
     }
     if (*line[5] == 0)
     {
-        ft_putchar_fd('0', 1);
+        ft_putchar_fd(0, 1);
         ret = ft_calloc(sizeof(char),1);
         return (ret);
     }
