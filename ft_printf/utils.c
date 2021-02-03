@@ -194,8 +194,8 @@ int atoi_positive(char *str)
 {
 	int num;
 
+	if (ft_strchr(str, '-'))
+		*(ft_strchr(str, '-')) = '0';
 	num = ft_atoi(str);
-	if (num < 0)
-		num = num * (-1);
 	return (num);
 }
