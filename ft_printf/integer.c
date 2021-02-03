@@ -123,7 +123,7 @@ char *case_u(t_node *p_node, char **line)
     }
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
-    if (ft_atoi(line[3]) >= 0 || (p_node->is_precision == 1))
+    if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_unsigned(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_unsigned(line, plus, size, lenth);    
@@ -157,7 +157,7 @@ char *case_x(t_node *p_node, char **line)
     }
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
-    if (ft_atoi(line[3]) >= 0 || (p_node->is_precision == 1))
+    if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_unsigned(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_unsigned(line, plus, size, lenth);    
@@ -190,7 +190,7 @@ char *case_X(t_node *p_node, char **line)
     }
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
-    if (ft_atoi(line[3]) >= 0 || (p_node->is_precision == 1))
+    if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_unsigned(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_unsigned(line, plus, size, lenth);    
