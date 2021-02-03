@@ -46,7 +46,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 
 	i = 0;
 	size = ft_strlen(line[5] );
-	if ((0 <= ft_atoi(line[3])) && (ft_atoi(line[3]) < size))
+	if ((0 <= ft_atoi(line[3])) && (ft_atoi(line[3]) < size) &&p_node->is_precision == 1)
 	{
 		size = ft_atoi(line[3]);
 	}
