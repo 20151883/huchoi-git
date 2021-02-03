@@ -146,6 +146,40 @@ char *precision_int(char **line, int plus, int size, int lenth)
 	return (ret);
 }
 
+char *precision_unsigned(char **line, int plus, int size, int lenth)
+{
+	char *ret;
+	int i;
+	char save;
+	i = 0;
+
+	ret = malloc(sizeof(char) * (lenth + 1));
+	ft_memset(ret, ' ', lenth);
+	ret[lenth] = '\0';
+	if (ft_strchr(line[1], '-') != 0)
+	{
+		while (i < plus)
+			ret[i++] = '0';
+		ft_strlcpy(&ret[i], line[5], size + 1);
+		if (i + size != lenth)
+			ret[i + size] = ' ';
+	}
+	else
+	{
+		i = lenth - size - plus;
+		while (i < lenth - size)
+			ret[i++] = '0';
+		ft_strlcpy(&ret[i], line[5], size + 1);
+	}
+	//printf("TEST : [%s]", ret);
+	//printf("size : %d plus : %d lenth : %d", size,plus,lenth);
+		/*swap = ret[lenth - size - plus];
+		ret[lenth -size - plus] = ret[lenth - size];
+		ret[lenth - size] = swap;*/
+	}
+	return (ret);
+}
+
 char *no_precision_int(char **line, int plus, int size, int lenth)
 {
 	char *ret;
@@ -190,6 +224,49 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 			*(ft_strchr(ret, '0')) = '-';
 			*(ft_strrchr(ret, '-')) = '0';
 		}
+		/*char swap;
+		swap = ret[lenth - size - plus];
+		ret[lenth -size - plus] = ret[lenth - size];
+		ret[lenth - size] = swap;*/
+	}
+	return (ret);
+}
+
+char *no_precision_unsigned(char **line, int plus, int size, int lenth)
+{
+	char *ret;
+	int i;
+	unsigned int num;
+	char two[2];
+
+	i = 0;
+	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
+		return (0);
+	ret[lenth] = '\0';
+	if (ft_strchr(line[1], '0') != 0)
+		ft_memset(ret, '0', lenth);
+	else
+		ft_memset(ret, ' ', lenth);
+	if(ft_strchr(line[1], '-') != 0)
+	{
+		ft_strlcpy(ret, line[5], size + 1);
+		if (size != lenth)
+			ft_memset(&ret[size], ' ', lenth - size);
+	}
+	else
+		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
+	//in_minus_case_in_check(char **line, char **p_ret)
+	/*if (ft_atoi(line[5]) < 0)
+	{
+		two[0] = '-';
+		*(ft_strchr(ret, '-')) = '0';
+		arr = ft_strjoin(two, ret);
+		free(ret);
+		ret = arr;
+		//return (0);//change his
+	}*/
+	//else
+		//return (0);
 		/*char swap;
 		swap = ret[lenth - size - plus];
 		ret[lenth -size - plus] = ret[lenth - size];
