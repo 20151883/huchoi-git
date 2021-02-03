@@ -34,7 +34,7 @@ char *case_d(t_node *p_node, char **line)
     //{
     if (ft_atoi(line[5]) < 0)
     {
-        if (ft_atoi(line[3] > (size - 1)))
+        if (ft_atoi(line[3]) > (size - 1))
             plus = ft_atoi(line[3]) - size - 1;
         else
             plus = 0;
@@ -72,7 +72,7 @@ char *case_i(t_node *p_node, char **line)
     size = ft_strlen(line[5]);
     if (ft_stoi(line[5]) < 0)
     {
-        if (ft_atoi(line[3] > (size - 1)))
+        if (ft_atoi(line[3]) > (size - 1))
             plus = ft_atoi(line[3]) - size - 1;
         else
             plus = 0;
