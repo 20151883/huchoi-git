@@ -57,7 +57,7 @@ int star(char **line, char **p_temp, char *buf, int my_case)
 {
     char two[2];
     char *arr;
-
+    char *test;
     if (buf == 0)
         return (0);
     two[1] = '\0';
@@ -66,8 +66,10 @@ int star(char **line, char **p_temp, char *buf, int my_case)
 	if (my_case == 2 && (ft_strchr(buf, '-')))
     {
 		two[0] = '-';
-		if (0 == (line[1] = ft_strjoin(line[1], two)))
+		if (0 == (test = ft_strjoin(line[1], two)))
             return (free_ret_zero(line, *p_temp, buf, my_case));
+        ftee(line[1]);
+        line[1] = test;
 	}
 	if (0 == (arr = ft_strjoin(*p_temp, buf)))
         return (free_ret_zero(line, *p_temp, buf, my_case));

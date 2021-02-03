@@ -9,7 +9,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
     if (*line[2] != '\0')
-        lenth = ft_atoi(line[2]);
+        lenth = atoi_positive(line[2]);
     else
         lenth = 1;
     ret = malloc(sizeof(char) * (lenth + 1));//[0] ~ [size-1]
@@ -52,9 +52,9 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	}
 	//printf("atoi(line[3] = %d   ft_strlen(line[5] = %d", ft_atoi(line[3]), ft_atoi(line[5]));
 	lenth = size;
-	if (lenth < ft_atoi(line[2]) && *line[2] != '\0')
+	if (lenth < atoi_positive(line[2]) && *line[2] != '\0')
 	{
-		lenth = ft_atoi(line[2]);
+		lenth = atoi_positive(line[2]);
 	}
 	else
 	{
@@ -66,10 +66,10 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 		//lenth = 1???
 		size = 0;
 		//ft_putchar_fd(' ', 1);
-		if ((ft_atoi(line[2]) > 0) && *line[1] == '\0')
+		if ((atoi_positive(line[2]) > 0) && *line[1] == '\0')
 		{
-			p_node->count += ft_atoi(line[2]);
-			while (size++ < ft_atoi(line[2]))
+			p_node->count += atoi_positive(line[2]);
+			while (size++ < atoi_positive(line[2]))
 				ft_putchar_fd(' ', 1);
 		}
 
@@ -105,8 +105,8 @@ char *case_percent(t_node *p_node, char **line, char**p_temp)
 	char *ret;
 
 	lenth = 1;
-	if (ft_atoi(line[2]) > lenth)
-		lenth = ft_atoi(line[2]);
+	if (atoi_positive(line[2]) > lenth)
+		lenth = atoi_positive(line[2]);
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		free_ret_zero(line, *p_temp, 0, 6);
 	ret[lenth] = '\0';
