@@ -62,9 +62,9 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	}//[0] ~ [size] but  at [size] NULL ...so [0] ~ [size-1] ///[0]start or [size-lenth]start
 	if (ft_atoi(line[3]) == 0 && p_node->is_precision == 1)
 	{
-		lenth = 1;
+		lenth = 0;
 		size = 0;
-		ft_putchar_fd(' ', 1);
+		//ft_putchar_fd(' ', 1);
 
 	}
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
