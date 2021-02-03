@@ -41,23 +41,23 @@ char *ten_small_hex(unsigned long long num)
 char *ten_big_hex(unsigned long long num)
 {//%p할떄랑은 다른 방식을 취해야하는게 맞다..
 	char *hex;
-	char temp[12];
+	char temp[15];
 	char *ret;
 	int i;
 	int j;
+	unsigned int as;
 
+	as = num;
 	i = 0;
-	//num = (unsigned int)ft_atoi(str);//just labeling
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
 	ft_strlcpy(hex, "0123456789ABCDEF",17);
-	while(num / 16 != 0)
+	while(as > 0)
 	{
-		temp[i++] = hex[num % 16];
-		num = num / 16;
+		temp[i++] = hex[as % 16];
+		as = as / 16;
 	}
-	temp[i] = hex[num % 16];
-	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
+	if (0 == (ret = malloc(sizeof(char) * (i-- + 1))))
 		return (0);
 	j = 0;
 	while(i >= 0)
