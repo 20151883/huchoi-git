@@ -117,6 +117,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	char *ret;
 	int i;
 	unsigned int num;
+	char two[2];
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
@@ -134,11 +135,11 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
-	//check_minus(char **line, char **p_ret)
-	/*char two[2];
+	//in_minus_case_in_check(char **line, char **p_ret)
+	char two[2];
 	two[1] = '\0';
-	char *arr;*/
-	/*if (ft_atoi(line[5]) < 0)
+	char *arr;
+	if (ft_atoi(line[5]) < 0)
 	{
 		two[0] = '-';
 		*(ft_strchr(ret, '-')) = '0';
@@ -146,7 +147,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 		free(ret);
 		ret = arr;
 		//return (0);//change his
-	}*/
+	}
 	//else
 		//return (0);
 	return (ret);
@@ -154,7 +155,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 
 int check_zero(char **line, int *p1, int *p2, int *p3)
 {
-	if (ft_atoi(line[5]) == 0 && ft_atoi(line[3]) == 0)
+	if (ft_atoi(line[5]) == 0 && ft_atoi(line[3]) <= 0)
 	{
 		*p1 = 0;
 		*p2 = 0;

@@ -32,20 +32,41 @@ char *case_i(t_node *p_node, char **line)
     int plus;
     int lenth;//buffer lenth excluded the NULL
     char *ret;
+    char *temp;
 
     size = ft_strlen(line[5]);
-    if (*line[3] != '\0' && size < atoi(line[3]))
-        plus = atoi(line[3]) - size;
+    if (ft_atoi(line[5] < 0))
+    {
+        if (ft_atoi(line[3]) > size - 1)
+        {
+            plus = ft_atoi(line[3]) - (size - 1);
+            p_node->is_precision = 0;
+            temp = malloc(sizeof(char) * (size + 1));
+            temp[size] = '\0';
+            ft_memset(temp, '0', size-1);
+            ft_strlcpy(&(temp[size - ft_strlen(line[5])]), line[5], ft_strlen(line[5]) + 1);
+            temp[0] = '-';
+            free(line[5]);
+            line[5] = temp;
+        }
+        else
+            plus = 0
+    }
     else
-        plus = 0;
+    {   
+        if (*line[3] != '\0' && size < atoi(line[3]))
+            plus = atoi(line[3]) - size;
+        else
+            plus = 0;
+    }
     lenth = size + plus;
-     if (p_node->is_precision == 1)
+    if (p_node->is_precision == 1)
         check_zero(line, &size, &plus, &lenth);
     if (*line[2] != '\0' && lenth < atoi(line[2]))
         lenth = atoi(line[2]);
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
-    if (*line[3] != '\0' || (p_node->is_precision == 1))
+    if (*line[3] != '\0' && (p_node->is_precision == 1))
         ret = precision_int(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_int(line, plus, size, lenth);    
