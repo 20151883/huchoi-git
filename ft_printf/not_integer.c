@@ -50,7 +50,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	{
 		size = ft_atoi(line[3]);
 	}
-	//printf("atoi(line[3] = %d   ft_strlen(line[5] = %d", ft_atoi(line[3]), ft_atoi(line[5]));
+	printf("atoi(line[3] = %d   ft_strlen(line[5] = %d", ft_atoi(line[3]), ft_atoi(line[5]));
 	lenth = size;
 	if (lenth < ft_atoi(line[2]) && *line[2] != '\0')
 	{
