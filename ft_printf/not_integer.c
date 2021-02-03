@@ -61,7 +61,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	{
 		lenth = 0;
 		size = 0;
-		write(1, NULL, 1);
+		ft_putchar_fd(NULL, 1);
 	}
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		free_ret_zero(line, *p_temp, 0, 6);
