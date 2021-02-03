@@ -254,7 +254,7 @@ char *no_precision_unsigned(char **line, int plus, int size, int lenth)
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
-	printf("test : lenth : %d size = %d ret = %s", lenth, size, ret);
+	//printf("test : lenth : %d size = %d ret = %s", lenth, size, ret);
 	//in_minus_case_in_check(char **line, char **p_ret)
 	/*if (ft_atoi(line[5]) < 0)
 	{
