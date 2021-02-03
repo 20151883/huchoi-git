@@ -19,6 +19,7 @@ char *case_d(t_node *p_node, char **line)
             temp[size + plus] = '\0';
             ft_memset(temp, '0', size + plus);
             ft_strlcpy(&(temp[plus]), line[5], ft_strlen(line[5]) + 1);
+            *(ft_strchr(temp, '-')) = '0';
             temp[0] = '-';
             free(line[5]);
             line[5] = temp;
