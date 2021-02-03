@@ -25,7 +25,7 @@ void renewer_line(char **line, int num)
     char *temp;
 
     temp = ft_calloc(sizeof(char),1);
-    *temp = '\0';
+    *temp = ft_strdup("");
     free(line[num]);
     line[num] = temp;
 }
