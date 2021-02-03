@@ -41,8 +41,8 @@ char *case_i(t_node *p_node, char **line)
         {
             plus = size - ft_atoi(line[3]);
             p_node->is_precision = 0;
-            temp = malloc(sizeof(char) * (size + plus));
-            temp[size + plus - 1] = '\0';
+            temp = malloc(sizeof(char) * (size + plus + 1));
+            temp[size + plus] = '\0';
             ft_memset(temp, '0', size + plus);
             ft_strlcpy(&(temp[plus]), line[5], ft_strlen(line[5]) + 1);
             temp[0] = '-';
