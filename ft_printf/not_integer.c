@@ -69,7 +69,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 			size = 0;
 			//ft_putchar_fd(' ', 1);
 		}
-		if ((atoi_positive(line[2]) > 0) && ft_strchr(line[2], '-')) //&& *line[1] == '\0')
+		if ((atoi_positive(line[2]) > 0))// && ft_strchr(line[2], '-')) //&& *line[1] == '\0')
 		{
 			p_node->count += atoi_positive(line[2]);
 			while (size++ < atoi_positive(line[2]))
