@@ -87,7 +87,7 @@ char *case_i(t_node *p_node, char **line)
     lenth = size + plus;
     if (p_node->is_precision == 1)
         check_zero(line, &size, &plus, &lenth);
-    if (*atoi_positive != '\0' && lenth < atoi_positive(line[2]))
+    if (*line[2] != '\0' && lenth < atoi_positive(line[2]))
         lenth = atoi_positive(line[2]);
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
