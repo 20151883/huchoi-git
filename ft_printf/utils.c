@@ -9,7 +9,7 @@ char *ten_small_hex(unsigned long long num)
 	char *ret;
 	int i;
 	int j;
-	unsigned int as;
+	unsigned long long as;
 
 	as = num;
 	if (num == 0)
@@ -45,7 +45,7 @@ char *ten_big_hex(unsigned long long num)
 	char *ret;
 	int i;
 	int j;
-	unsigned int as;
+	unsigned long long as;
 
 	as = num;
 	if (num == 0)
@@ -80,7 +80,7 @@ char *ten_unsigned(unsigned long long num)
 	char *ret;
 	int i;
 	int j;
-	unsigned int as;
+	unsigned long long as;
 
 	as = num;
 	if (num == 0)
