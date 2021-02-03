@@ -227,8 +227,8 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 		swap = ret[lenth - size - plus];
 		ret[lenth -size - plus] = ret[lenth - size];
 		ret[lenth - size] = swap;*/
-	return (ret);
 	}
+	return (ret);
 }
 
 char *no_precision_unsigned(char **line, int plus, int size, int lenth)
