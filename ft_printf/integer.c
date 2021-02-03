@@ -42,7 +42,7 @@ char *case_d(t_node *p_node, char **line)
         lenth = atoi(line[2]);
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..
-    if (*line[3] != '\0' || (p_node->is_precision == 1))
+    if (p_node->is_precision == 1)
         ret = precision_int(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_int(line, plus, size, lenth);    
