@@ -75,6 +75,7 @@ int star(char **line, char **p_temp, char *buf, int my_case)
     free(*p_temp);
     free(buf);
     *p_temp = arr;
+    printf("\n\n\n\%s\n\n", arr);
     return (1);
 }
 
@@ -123,7 +124,7 @@ int real_complete_final(t_node *p_node, char **line, char**p_temp)
     i = p_node->idx;
     if (0 == (line[5] = ft_strdup(*p_temp)))
         return (free_ret_zero(line, *p_temp, NULL, p_node->my_case));
-    printf("\n\n\ntset : %s", line[3]);
+    //printf("\n\n\ntset : %s", line[3]);
     if (0 == (arr = make_string(p_node, line,p_temp, str[i])))
         return (0);//free is done??? yes...!
     ft_putstr_fd(arr, 1);
