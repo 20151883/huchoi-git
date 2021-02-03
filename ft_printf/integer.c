@@ -89,6 +89,7 @@ char *case_i(t_node *p_node, char **line)
         check_zero(line, &size, &plus, &lenth);
     if (*line[2] != '\0' && lenth < atoi_positive(line[2]))
         lenth = atoi_positive(line[2]);
+    printf("atoi_positive line[2] = %d", atoi_positive(line[2]));
     printf("lenth : %d", lenth);
     (p_node->count) += lenth;
     //if (*line[3] != '\0') then flag has no power..

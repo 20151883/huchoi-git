@@ -168,7 +168,7 @@ int over_star(t_node *p_node, char **line, char**p_temp)
         return (0);//free(buf) is done in star func
     p_node->buf = 0;
     line[p_node->my_case] = *p_temp;
-    printf("in star... line[2] = %s", line[2]);
+    //printf("in star... line[2] = %s", line[2]);
     if (what_my_case(p_node->string[++(p_node->idx)], p_node->my_case) == p_node->my_case)
         return (free_ret_zero(line, *p_temp, NULL, p_node->my_case));
     return (1);
