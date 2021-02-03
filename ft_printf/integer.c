@@ -35,7 +35,7 @@ char *case_i(t_node *p_node, char **line)
     char *temp;
 
     size = ft_strlen(line[5]);
-    /*if (ft_atoi(line[5]) < 0)
+    if (ft_atoi(line[5]) < 0)
     {
         if (ft_atoi(line[3]) > size - 1)
         {
@@ -43,7 +43,7 @@ char *case_i(t_node *p_node, char **line)
             p_node->is_precision = 0;
             temp = malloc(sizeof(char) * (size + 1));
             temp[size] = '\0';
-            ft_memset(temp, '0', size-1);
+            ft_memset(temp, '0', size);
             ft_strlcpy(&(temp[size - ft_strlen(line[5])]), line[5], ft_strlen(line[5]) + 1);
             temp[0] = '-';
             free(line[5]);
@@ -51,11 +51,14 @@ char *case_i(t_node *p_node, char **line)
         }
         else
             plus = 0;
-    } */
-    if (*line[3] != '\0' && size < atoi(line[3]))
-        plus = atoi(line[3]) - size;
+    } 
     else
-        plus = 0;
+    {
+        if (*line[3] != '\0' && size < atoi(line[3]))
+            plus = atoi(line[3]) - size;
+        else
+            plus = 0;
+    }
     lenth = size + plus;
     if (p_node->is_precision == 1)
         check_zero(line, &size, &plus, &lenth);
