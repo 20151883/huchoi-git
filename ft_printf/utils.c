@@ -30,7 +30,7 @@ char *ten_small_hex(unsigned int num)
 	free(hex);
 	if (num == 0)
 	{
-		free[ret];
+		free(ret);
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
@@ -66,7 +66,7 @@ char *ten_big_hex(unsigned int num)
 	free(hex);
 	if (num == 0)
 	{
-		free[ret];
+		free(ret);
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
@@ -98,7 +98,7 @@ char *ten_unsigned(unsigned int num)
 	ret[j] = '\0';
 	if (num == 0)
 	{
-		free[ret];
+		free(ret);
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
