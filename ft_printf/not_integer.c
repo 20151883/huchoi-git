@@ -60,7 +60,8 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	if (ft_atoi(line[3]) <= 0)
 	{
 		//lenth = 0;
-		size = 0;	}
+		size = 0;	
+	}
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		free_ret_zero(line, *p_temp, 0, 6);
 	ret[lenth] = '\0';//needed...!!!
