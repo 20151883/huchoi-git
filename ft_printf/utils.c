@@ -12,6 +12,14 @@ char *ten_small_hex(unsigned long long num)
 	unsigned int as;
 
 	as = num;
+	if (num == 0)
+	{
+		free(ret);
+		ret = malloc(sizeof(char) * 2);
+		ret[0] = '0';
+		ret[1] = '\0';
+		return (ret);
+	}
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
@@ -34,6 +42,7 @@ char *ten_small_hex(unsigned long long num)
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
+		if (num == 0)
 	}
 	return (ret);
 }
@@ -48,6 +57,14 @@ char *ten_big_hex(unsigned long long num)
 	unsigned int as;
 
 	as = num;
+	if (num == 0)
+	{
+		free(ret);
+		ret = malloc(sizeof(char) * 2);
+		ret[0] = '0';
+		ret[1] = '\0';
+		return (0);
+	}
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
@@ -83,6 +100,14 @@ char *ten_unsigned(unsigned long long num)
 	unsigned int as;
 
 	as = num;
+	if (num == 0)
+	{
+		free(ret);
+		ret = malloc(sizeof(char) * 2);
+		ret[0] = '0';
+		ret[1] = '\0';
+		return (rer);
+	}
 	i = 0;
 	while (as > 0)
 	{
