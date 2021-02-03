@@ -6,8 +6,8 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
         return (free_ret_zero(line, *p_temp, 0, *p_my_case));
     //printf("\n\n\n\%s\n\n", line[*p_my_case]);
     (*p_my_case)++;
-    if (ft_atoi(line[2]) < 0)
-        renewer_line(line, 2);
+    //if (ft_atoi(line[2]) < 0)
+    //    renewer_line(line, 2);
     //if (ft_atoi(line[3]) < 0)
     //    renewer_line(line, 3);
     while(*p_my_case <= 5)

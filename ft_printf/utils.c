@@ -194,10 +194,10 @@ int atoi_positive(char *str)
 {
 	int num;
 
-	printf("before action : %d", ft_atoi(str));
+	//printf("before action : %d", ft_atoi(str));
 	if (ft_strchr(str, '-'))
 		*(ft_strchr(str, '-')) = '0';
 	num = ft_atoi(str);
-	printf("after... : %d", num);
+	//printf("after... : %d", num);
 	return (num);
 }
