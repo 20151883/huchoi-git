@@ -74,6 +74,9 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 			p_node->count += atoi_positive(line[2]);
 			while (size++ < atoi_positive(line[2]))
 				ft_putchar_fd(' ', 1);
+			char *test;
+			test = ft_calloc(1,1);
+			return (test);
 		}
 	}
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
