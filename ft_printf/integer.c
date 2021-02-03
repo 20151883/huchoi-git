@@ -48,6 +48,7 @@ char *case_i(t_node *p_node, char **line)
             temp[0] = '-';
             free(line[5]);
             line[5] = temp;
+            printf("test : %s", temp);
         }
         else
             plus = 0;
