@@ -109,7 +109,7 @@ char *precision_int(char **line, int plus, int size, int lenth)
 			ret[i++] = '0';
 		ft_strlcpy(&ret[i], line[5], size + 1);
 	}
-	char *swap;
+	char swap;
 	swap = ret[lenth - size - plus];
 	ret[lenth -size - plus] = ret[lenth - size];
 	ret[lenth - size] = swap;
@@ -153,7 +153,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	}*/
 	//else
 		//return (0);
-	char *swap;
+	char swap;
 	swap = ret[lenth - size - plus];
 	ret[lenth -size - plus] = ret[lenth - size];
 	ret[lenth - size] = swap;
