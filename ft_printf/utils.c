@@ -2,14 +2,14 @@
 //minus integer case is not managed....
 //hex case does not manage minus...
 
-char *ten_small_hex(unsigned long long num)
+char *ten_small_hex(unsigned int num)
 {
 	char *hex;
 	char temp[15];
 	char *ret;
 	int i;
 	int j;
-	unsigned long long as;
+	unsigned int as;
 
 	as = num;
 	if (num == 0)
@@ -38,14 +38,14 @@ char *ten_small_hex(unsigned long long num)
 	return (ret);
 }
 
-char *ten_big_hex(unsigned long long num)
+char *ten_big_hex(unsigned int num)
 {//%p할떄랑은 다른 방식을 취해야하는게 맞다..
 	char *hex;
 	char temp[15];
 	char *ret;
 	int i;
 	int j;
-	unsigned long long as;
+	unsigned int as;
 
 	as = num;
 	if (num == 0)
@@ -74,13 +74,13 @@ char *ten_big_hex(unsigned long long num)
 	return (ret);
 }
 
-char *ten_unsigned(unsigned long long num)
+char *ten_unsigned(unsigned int num)
 {
 	char arr[16];
 	char *ret;
 	int i;
 	int j;
-	unsigned long long as;
+	unsigned int as;
 
 	as = num;
 	if (num == 0)
