@@ -68,7 +68,7 @@ int star(char **line, char **p_temp, char *buf, int my_case)
 		two[0] = '-';
 		if (0 == (test = ft_strjoin(line[1], two)))
             return (free_ret_zero(line, *p_temp, buf, my_case));
-        ftee(line[1]);
+        free(line[1]);
         line[1] = test;
 	}
 	if (0 == (arr = ft_strjoin(*p_temp, buf)))
