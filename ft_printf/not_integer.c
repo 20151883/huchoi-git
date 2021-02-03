@@ -68,9 +68,9 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 		//ft_putchar_fd(' ', 1);
 		if (ft_atoi(line[2]) > 0)
 		{
-			p_node->lenth += ft_atoi(line[2]);
+			p_node->count += ft_atoi(line[2]);
 			while (size++ < ft_atoi(line[2]))
-				ft_putchar(' ');
+				ft_putchar_fd(' ', 1);
 		}
 
 	}
