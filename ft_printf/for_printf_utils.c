@@ -68,7 +68,6 @@ int star(char **line, char **p_temp, char *buf, int my_case)
 		two[0] = '-';
 		if (0 == (line[1] = ft_strjoin(line[1], two)))
             return (free_ret_zero(line, *p_temp, buf, my_case));
-		*(ft_strchr(buf, '-')) = '0';//minus is interchaned to '0'
 	}
 	if (0 == (arr = ft_strjoin(*p_temp, buf)))
         return (free_ret_zero(line, *p_temp, buf, my_case));

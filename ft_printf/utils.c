@@ -189,3 +189,13 @@ int check_zero(char **line, int *p1, int *p2, int *p3)
 	else
 		return (0);
 }
+
+int atoi_positive(char *str)
+{
+	int num;
+
+	num = ft_atoi(str);
+	if (num < 0)
+		num = num * (-1);
+	return (num);
+}

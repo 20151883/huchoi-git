@@ -17,6 +17,7 @@ typedef struct s_node{
     int is_precision;
     int num[3];
 }t_node;
+int atoi_positive(char *str);
 void renewer_line(char **line, int num);
 int check_zero(char **line, int *p1, int *p2, int *p3);
 void my_putchar_fd(t_node *p_node);
