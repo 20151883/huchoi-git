@@ -71,7 +71,6 @@ int star(char **line, char **p_temp, char *buf, int my_case)
         free(line[1]);
         line[1] = test;
 	}
-    printf("in star... line[2] = %s", line[2]);
 	if (0 == (arr = ft_strjoin(*p_temp, buf)))
         return (free_ret_zero(line, *p_temp, buf, my_case));
     free(*p_temp);
