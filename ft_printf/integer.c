@@ -195,5 +195,4 @@ char *case_X(t_node *p_node, char **line)
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_int(line, plus, size, lenth);    
     return (ret);
-    return (0);
 }
