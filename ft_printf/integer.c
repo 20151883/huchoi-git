@@ -118,8 +118,13 @@ char *case_u(t_node *p_node, char **line)
         lenth = atoi(line[2]);
     }
     (p_node->count) += lenth;
+    if (*line[5] == 0)
+    {
+        ft_putchar_fd('0', 1);
+    
+    }
     //if (*line[3] != '\0') then flag has no power..
-    if (ft_atoi(line[3]) >= 0 || (p_node->is_precision == 1))
+    if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_int(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_int(line, plus, size, lenth);    
