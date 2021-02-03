@@ -138,7 +138,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	//in_minus_case_in_check(char **line, char **p_ret)
 	two[1] = '\0';
 	char *arr;
-	if (ft_atoi(line[5]) < 0)
+	/*if (ft_atoi(line[5]) < 0)
 	{
 		two[0] = '-';
 		*(ft_strchr(ret, '-')) = '0';
@@ -146,7 +146,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 		free(ret);
 		ret = arr;
 		//return (0);//change his
-	}
+	}*/
 	//else
 		//return (0);
 	return (ret);
