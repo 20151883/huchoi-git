@@ -109,10 +109,13 @@ char *precision_int(char **line, int plus, int size, int lenth)
 			ret[i++] = '0';
 		ft_strlcpy(&ret[i], line[5], size + 1);
 	}
-	char swap;
-	swap = ret[lenth - size - plus];
-	ret[lenth -size - plus] = ret[lenth - size];
-	ret[lenth - size] = swap;
+	if (ft_atoi(line[5]) < 0)
+	{
+		char swap;
+		swap = ret[lenth - size - plus];
+		ret[lenth -size - plus] = ret[lenth - size];
+		ret[lenth - size] = swap;
+	}
 	return (ret);
 }
 
@@ -153,10 +156,13 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	}*/
 	//else
 		//return (0);
-	char swap;
-	swap = ret[lenth - size - plus];
-	ret[lenth -size - plus] = ret[lenth - size];
-	ret[lenth - size] = swap;
+	if (ft_atoi(line[5]) < 0)
+	{
+		char swap;
+		swap = ret[lenth - size - plus];
+		ret[lenth -size - plus] = ret[lenth - size];
+		ret[lenth - size] = swap;
+	}
 	return (ret);
 }
 
