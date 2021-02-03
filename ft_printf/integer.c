@@ -139,6 +139,7 @@ char *case_x(t_node *p_node, char **line)
     char *ret;
 
     size = ft_strlen(line[5]);
+    printf("test : %s", line[5]);
     if (*line[3] != '\0' && size < atoi(line[3]))
         plus = atoi(line[3]) - size;
     else
