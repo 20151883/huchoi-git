@@ -75,7 +75,7 @@ int star(char **line, char **p_temp, char *buf, int my_case)
     free(*p_temp);
     free(buf);
     *p_temp = arr;
-    printf("\n\n\n\%s\n\n", arr);
+    //printf("\n\n\n\%s\n\n", arr);
     return (1);
 }
 
