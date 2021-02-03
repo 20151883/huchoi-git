@@ -118,9 +118,9 @@ char *precision_int(char **line, int plus, int size, int lenth)
 			*(ft_strchr(ret, '0')) = '-';
 			*(ft_strrchr(ret, '-')) = '0';
 		}
-		swap = ret[lenth - size - plus];
+		/*swap = ret[lenth - size - plus];
 		ret[lenth -size - plus] = ret[lenth - size];
-		ret[lenth - size] = swap;
+		ret[lenth - size] = swap;*/
 	}
 	return (ret);
 }
@@ -164,10 +164,15 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 		//return (0);
 	if (ft_atoi(line[5]) < 0)
 	{
-		char swap;
+		if(ft_strchr(ret, '0') != 0)
+		{
+			*(ft_strchr(ret, '0')) = '-';
+			*(ft_strrchr(ret, '-')) = '0';
+		}
+		/*char swap;
 		swap = ret[lenth - size - plus];
 		ret[lenth -size - plus] = ret[lenth - size];
-		ret[lenth - size] = swap;
+		ret[lenth - size] = swap;*/
 	}
 	return (ret);
 }
