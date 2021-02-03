@@ -156,6 +156,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	}*/
 	//else
 		//return (0);
+	printf("WHAT ?? %s", line[5]);
 	if (ft_atoi(line[5]) < 0)
 	{
 		printf("size : %d plus : %d lenth : %d", size,plus,lenth);
