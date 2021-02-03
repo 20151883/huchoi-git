@@ -24,7 +24,8 @@ char *case_d(t_node *p_node, char **line)
             free(line[5]);
             line[5] = temp;
             printf("test : %s", temp);
-            size = size - 1 + plus;
+            size = size + plus;
+            plus = 0;
         }
         else
             plus = 0;
