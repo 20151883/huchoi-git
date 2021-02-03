@@ -136,7 +136,6 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
 	//in_minus_case_in_check(char **line, char **p_ret)
-	char two[2];
 	two[1] = '\0';
 	char *arr;
 	if (ft_atoi(line[5]) < 0)
