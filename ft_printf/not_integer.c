@@ -57,7 +57,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	{
 		lenth = lenth + 0;
 	}//[0] ~ [size] but  at [size] NULL ...so [0] ~ [size-1] ///[0]start or [size-lenth]start
-	if (ft_atoi(line[3]) <= 0 && p_node->is_precision == 1)
+	if (ft_atoi(line[3]) == 0 && p_node->is_precision == 1)
 	{
 		lenth = 0;
 		size = 0;	
