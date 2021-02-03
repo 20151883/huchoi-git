@@ -167,7 +167,7 @@ int over_star(t_node *p_node, char **line, char**p_temp)
     if (0 == star(line, p_temp, p_node->buf, p_node->my_case))
         return (0);//free(buf) is done in star func
     p_node->buf = 0;
-    //line[p_node->my_case] = *p_temp;
+    line[p_node->my_case] = *p_temp;
     if (what_my_case(p_node->string[++(p_node->idx)], p_node->my_case) == p_node->my_case)
         return (free_ret_zero(line, *p_temp, NULL, p_node->my_case));
     return (1);
