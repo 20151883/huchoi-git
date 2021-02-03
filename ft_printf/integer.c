@@ -32,10 +32,20 @@ char *case_d(t_node *p_node, char **line)
     } */
     //else
     //{
+    if (ft_stoi(line[5] < 0)
+    {
+        if (ft_atoi(line[3] > (size - 1)))
+            plus = ft_atoi(line[3]) - size - 1;
+        else
+            plus = 0;
+    }
+    else
+    {
         if (*line[3] != '\0' && size < atoi(line[3]))
             plus = atoi(line[3]) - size;
         else
             plus = 0;
+    }
     //}
     lenth = size + plus;
      if (p_node->is_precision == 1)
@@ -60,6 +70,20 @@ char *case_i(t_node *p_node, char **line)
     char *temp;
 
     size = ft_strlen(line[5]);
+    if (ft_stoi(line[5] < 0)
+    {
+        if (ft_atoi(line[3] > (size - 1)))
+            plus = ft_atoi(line[3]) - size - 1;
+        else
+            plus = 0;
+    }
+    else
+    {
+        if (*line[3] != '\0' && size < atoi(line[3]))
+            plus = atoi(line[3]) - size;
+        else
+            plus = 0;
+    }
     if (*line[3] != '\0' && size < atoi(line[3]))
         plus = atoi(line[3]) - size;
     else
