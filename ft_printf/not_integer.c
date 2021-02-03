@@ -66,7 +66,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 		//lenth = 1???
 		size = 0;
 		//ft_putchar_fd(' ', 1);
-		if ((ft_atoi(line[2]) > 0) && *line[1] = '\0')
+		if ((ft_atoi(line[2]) > 0) && *line[1] == '\0')
 		{
 			p_node->count += ft_atoi(line[2]);
 			while (size++ < ft_atoi(line[2]))
