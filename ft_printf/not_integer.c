@@ -90,7 +90,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
-	char ch = 0
+	char ch = 0;
 	if (size == 0)
 		ft_putchar_fd(ch, 1);
     return (ret);
