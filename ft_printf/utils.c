@@ -110,6 +110,7 @@ char *precision_int(char **line, int plus, int size, int lenth)
 		ft_strlcpy(&ret[i], line[5], size + 1);
 	}
 	printf("TEST : [%s]", ret);
+	printf("size : %d plus : %d lenth : %d", size,plus,lenth);
 	if (ft_atoi(line[5]) < 0)
 	{
 		char swap;
