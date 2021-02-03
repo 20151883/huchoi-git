@@ -46,10 +46,10 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 
 	i = 0;
 	size = ft_strlen(line[5]);
-	if (size > ft_atoi(line[3]) && *line[3] != '\0')
+	if (size > ft_atoi(line[3]) && *line[3] != '\0' && ft_atoi(line[3]) > 0)
 		size = ft_atoi(line[3]);
 	lenth = size;
-	if (lenth < ft_atoi(line[2]) && *line[2] != '\0')
+	if (lenth < ft_atoi(line[2]) && *line[2] != '\0' && ft_atoi(line[2]) > 0)
 	{
 		lenth = ft_atoi(line[2]);
 	}
