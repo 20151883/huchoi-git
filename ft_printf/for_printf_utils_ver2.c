@@ -106,6 +106,13 @@ int letter_di(char **line, char **p_temp, unsigned long long value)
 
     if (0 == (arr = ft_itoa((int)value)))
         return (free_ret_zero(line, *p_temp, NULL, 5));
+    if (value == 0)
+    {
+        if (0 == arr = malloc(sizeof(char) * 2))
+            return (free_ret_zero(line, *p_temp, 0, 5));
+        arr[0] = '0';
+        arr[1] = '\0'
+    }
     free(*p_temp);
     *p_temp = arr;
     return (1);
