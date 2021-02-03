@@ -114,8 +114,8 @@ char *case_u(t_node *p_node, char **line)
     if (p_node->is_precision == 1)
     {
         check_zero(line, &size, &plus, &lenth);
-        if (ft_atoi(line[3]) == 0)
-            size = 0;
+        //if (ft_atoi(line[3]) == 0)
+         //   size = 0;
     }
     if (*line[2] != '\0' && lenth < atoi_positive(line[2]))
     {
@@ -146,8 +146,8 @@ char *case_x(t_node *p_node, char **line)
     if (p_node->is_precision == 1)
     {
         check_zero(line, &size, &plus, &lenth);
-        if (ft_atoi(line[3]) == 0)
-            size = 0;
+        //if (ft_atoi(line[3]) == 0)
+        //    size = 0;
     }
     if (*line[2] != '\0' && lenth < atoi_positive(line[2]))
     {
