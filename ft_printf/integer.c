@@ -35,7 +35,7 @@ char *case_i(t_node *p_node, char **line)
     char *temp;
 
     size = ft_strlen(line[5]);
-    if (ft_atoi(line[5] < 0))
+    if (ft_atoi(line[5]) < 0)
     {
         if (ft_atoi(line[3]) > size - 1)
         {
@@ -50,7 +50,7 @@ char *case_i(t_node *p_node, char **line)
             line[5] = temp;
         }
         else
-            plus = 0
+            plus = 0;
     }
     else
     {   
