@@ -154,7 +154,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 
 int check_zero(char **line, int *p1, int *p2, int *p3)
 {
-	if (ft_atoi(line[5]) == 0 && ft_atoi(line[3]) <= 0)
+	if (ft_atoi(line[5]) == 0 && ft_atoi(line[3]) == 0)
 	{
 		*p1 = 0;
 		*p2 = 0;
