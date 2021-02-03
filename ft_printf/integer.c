@@ -13,7 +13,7 @@ char *case_d(t_node *p_node, char **line)
         char *temp;
         if (ft_atoi(line[3]) > size - 1)
         {
-            plus = size - ft_atoi(line[3]);
+            plus = ft_atoi(line[3]) - (size - 1);
             p_node->is_precision = 0;
             temp = malloc(sizeof(char) * (size + plus + 1));
             temp[size + plus] = '\0';
