@@ -32,6 +32,7 @@ char *case_d(t_node *p_node, char **line)
     } */
     //else
     //{
+    printf("@@@@%s@@@@", line[5]);
     if (ft_atoi(line[5]) < 0)
     {
         if (ft_atoi(line[3]) > (size - 1))
