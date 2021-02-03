@@ -113,7 +113,11 @@ char *precision_int(char **line, int plus, int size, int lenth)
 	//printf("size : %d plus : %d lenth : %d", size,plus,lenth);
 	if (ft_atoi(line[5]) < 0)
 	{
-		char swap;
+		if(ft_strchr(ret, '0') != 0)
+		{
+			*(ft_strchr(ret, '0')) = '-';
+			*(ft_strrchr(ret, '-')) = '0';
+		}
 		swap = ret[lenth - size - plus];
 		ret[lenth -size - plus] = ret[lenth - size];
 		ret[lenth - size] = swap;
