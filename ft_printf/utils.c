@@ -9,7 +9,7 @@ char *ten_small_hex(unsigned int num)
 	char *ret;
 	int i;
 	int j;
-	unsigned int as;
+	unsigned int	 as;
 
 	as = num;
 	if (num == 0)
@@ -45,7 +45,7 @@ char *ten_big_hex(unsigned int num)
 	char *ret;
 	int i;
 	int j;
-	unsigned int as;
+	unsigned int	 as;
 
 	as = num;
 	if (num == 0)
@@ -53,7 +53,7 @@ char *ten_big_hex(unsigned int num)
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
-		return (0);
+		return (ret);
 	}
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
