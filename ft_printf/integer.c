@@ -10,6 +10,7 @@ char *case_d(t_node *p_node, char **line)
     size = ft_strlen(line[5]);
     if (ft_atoi(line[5]) < 0)
     {
+        char *temp;
         if (ft_atoi(line[3]) > size - 1)
         {
             plus = size - ft_atoi(line[3]);
