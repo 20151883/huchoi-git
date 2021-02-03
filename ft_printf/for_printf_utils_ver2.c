@@ -5,6 +5,10 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
     if (0 == (line[*p_my_case] = ft_strdup(*p_temp)))
         return (free_ret_zero(line, *p_temp, 0, *p_my_case));
     (*p_my_case)++;
+    if (ft_atoi(line[2]) < 0)
+        renewer_line(line, 2);
+    if (ft_atoi(line[3]) < 0)
+        renewer_line(line, 3);
     while(*p_my_case <= 5)
     {
         if (0 == (line[*p_my_case] = ft_strdup("")))
@@ -16,6 +20,14 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
     return (1);
 }
 
+void renewer_line(char **line, int num)
+{
+    char *temp;
+
+    temp = ft_calloc(sizeof(char),1);
+    free(line[num]);
+    line[num] = temp;
+}
 //***********************************************************
 int inter_type(char **line, char **p_temp, unsigned long long value, char the_type)
 {
