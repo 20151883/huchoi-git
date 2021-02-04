@@ -54,7 +54,10 @@ int ft_printf(const char* str, ...)
         	if (important(&node, final, &temp) == 0)
 				return (0);
 		}
-		node.value = va_arg(ap, unsigned long long);
+		if (str[node.idx] == '%')
+			node.value = '%';
+		else
+			node.value = va_arg(ap, unsigned long long);
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
