@@ -5,36 +5,32 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     int lenth;
     char *ret;
     int idx;
-	//printf("insert: line[5] = %s and positive line[2] = %d\n", line[5], atoi_positive(line[2]));
-	if (p_node->value == 0)
+
+	if (ft_strncmp(line[5], "(null)", 10) == 0)
 	{
-	//	printf("insert: line[5] = %s and positive line[2] = %d\n", line[5], atoi_positive(line[2]));
-		if (atoi_positive(line[2]) > 1)
-			lenth = atoi_positive(line[2]);
-		else
-			lenth = 1;
-		int i = 0;
-		if (ft_strchr(line[1], '-') != 0)
-		{
-			ft_putchar_fd(0,1);
-			p_node->count++;
-			while ((i++ < lenth - 1) && p_node->two_star == 0)
+			lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
+			int i = 0;
+			if (ft_strchr(line[2], '-'))
 			{
-				ft_putchar_fd(' ' ,1);
+				ft_putchar_fd(0,1);
+				p_node->count++;
+				while ((i++ < lenth - 1) && p_node->two_star == 0)
+				{
+					ft_putchar_fd(' ' ,1);
+					p_node->count++;
+				}
+			}
+			else
+			{
+				while ((i++ < lenth - 1) && p_node->two_star == 0)
+				{
+					ft_putchar_fd(' ', 1);
+					p_node->count++;
+				}
+				ft_putchar_fd(0, 1);
 				p_node->count++;
 			}
-		}
-		else
-		{
-			while ((i++ < lenth - 1) && p_node->two_star == 0)
-			{
-				ft_putchar_fd(' ', 1);
-				p_node->count++;
-			}
-			ft_putchar_fd(0, 1);
-			p_node->count++;
-		}
-		return (ft_strdup(""));
+			return (ft_strdup(""));
 	}
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
@@ -74,7 +70,7 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 	p_node->count+=lenth;
 	ret = (char *)ft_calloc(sizeof(char), (lenth + 1));
 	ft_memset(ret, ' ', lenth);
-	if (ft_strchr(line[1], '-'))//0 flag is not used...?
+	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
 	{
 		ft_strlcpy(ret, save, size + 1);
 		if (size != lenth)

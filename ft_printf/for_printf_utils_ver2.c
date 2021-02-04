@@ -53,7 +53,6 @@ int letter_c_percent(char **line, char **p_temp, unsigned long long value)
     char two[2];
     char *arr;
 
-    printf("insert !!! and value is %llu\n", value);
     if (value == 0)
         arr = ft_strdup("(null)");
     else
