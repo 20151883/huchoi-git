@@ -130,7 +130,8 @@ int real_complete_final(t_node *p_node, char **line, char**p_temp)
     //printf("\n\n\ntset : %s", line[3]);
     if (0 == (arr = make_string(p_node, line,p_temp, str[i])))
         return (0);//free is done??? yes...!
-    ft_putstr_fd(arr, 1);
+    if (!ft_strncmp(line[5], "(null)"))
+        ft_putstr_fd(arr, 1);
     //printf("line[1]%s line[2]%s line[3]%s line[4]%s line[5]%s",line[1], line[2], line[3], line[4], line[5]);
     free_ret_zero(line, *p_temp, arr, 6);
     (p_node->idx)++;
