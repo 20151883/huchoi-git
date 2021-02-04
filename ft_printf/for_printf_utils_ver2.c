@@ -234,3 +234,19 @@ void my_putchar_fd(t_node *p_node)
     ft_putchar_fd(str[(p_node->idx) - 1], 1);
     p_node->count++;
 }
+
+void tpye_case_sort(t_node *p_node, char **line)
+{
+    char *str;
+
+    str = p_node->string;
+    if (str[p_node->idx] == '%')
+        p_node->value = '%';
+    else
+    {
+        if (str[node.idx] == 'c')
+            p_node->value = va_arg(ap, int);
+        else
+            p_node->value = va_arg(ap, unsigned long long);
+    }
+}

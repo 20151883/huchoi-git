@@ -57,13 +57,14 @@ int ft_printf(const char* str, ...)
 		}
 		if (str[node.idx] == '%')
 			node.value = '%';
-		else
+		/*else
 		{
 			if (str[node.idx] == 'c')
 				node.value = va_arg(ap, int);
 			else
 				node.value = va_arg(ap, unsigned long long);
-		}
+		}*/
+		type_case_sort(&node, final);
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
