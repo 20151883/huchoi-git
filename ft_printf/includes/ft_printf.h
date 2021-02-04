@@ -43,7 +43,7 @@ char *ten_big_hex(unsigned int num);
 char *ten_small_hex(unsigned int num);
 int ft_printf(const char *str, ...);
 int what_my_case(char c, int now_case);
-char *make_string(t_node *p_node, char **final, char the_type);
+char *make_string(t_node *p_node, char **final, char **p_tmep, char the_type);
 char *case_c(t_node *p_node, char **final, char **p_temp);
 char *case_s(t_node *p_node, char **final, char **p_temp);
 char *case_p(t_node *p_node, char **final, char **p_temp);
