@@ -308,7 +308,7 @@ char *trim_the_zero(char **line)
 
 	save = ft_strchr(line[5], 'x');
 	save++;
-	while (*save != '0')
+	while (*save == '0')
 		save++;
 	printf("\n\n save = %s",save);
 	size = ft_strlen(save) + 2;//num of character
