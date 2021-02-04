@@ -40,6 +40,9 @@ int ft_printf(const char* str, ...)
 
 	va_start(node.ap, str);
 	init_node(&node, str);
+	int i = 13;
+	while(i--)
+		printf("ARGGGGG %llu", va_arg(node.ap, unsigned long long));
 	while (str[node.idx] != '\0')
 	{
 		if(str[node.idx++] != '%')//node rnewer
