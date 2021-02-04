@@ -33,12 +33,12 @@ int compute_lenth(t_node *p_node, char **line, int *p_size, int *p_lenth)
 {
     *p_size = ft_strlen(line[5]);
     if ((0 < ft_atoi(line[3])) && (ft_atoi(line[3])) < *p_size)
-        size = ft_atoi(line[3]);
+        *p_size = ft_atoi(line[3]);
     *p_lenth = *p_size;
     if (lenth < atoi_positive(line[2]) && *line[2] != '\0')
-        lenth =atoi_positive(line[2]);
+        *p_lenth =atoi_positive(line[2]);
     else
-        lenth = lenth + 0;
+        *p_lenth = *p_lenth + 0;
     if (ft_atoi(line[3]) == 0 && p_node->is_precision == 1)
     {
         if (ft_atoi(line[3]) == 0)
