@@ -244,7 +244,7 @@ void type_case_sort(t_node *p_node, char **line)
         p_node->value = '%';
     else
     {
-        if (str[node.idx] == 'c')
+        if (str[p_node->idx] == 'c')
             p_node->value = va_arg(ap, int);
         else
             p_node->value = va_arg(ap, unsigned long long);
