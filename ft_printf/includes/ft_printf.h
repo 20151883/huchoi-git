@@ -48,9 +48,9 @@ char *case_c(t_node *p_node, char **final, char **p_temp);
 char *case_s(t_node *p_node, char **final, char **p_temp);
 char *case_p(t_node *p_node, char **final, char **p_temp);
 char *case_percent(t_node *p_node, char **final, char **p_temp);
-char *case_d(t_node *p_node, char **final, char **p_temp);
-char *case_i(t_node *p_node, char **final, char **p_temp);
-char *case_u(t_node *p_node, char **final, char **p_temp);
-char *case_x(t_node *p_node, char **final, char **p_temp);
-char *case_X(t_node *p_node, char **final, char **p_temp);
+char *case_d(t_node *p_node, char **final);
+char *case_i(t_node *p_node, char **final);
+char *case_u(t_node *p_node, char **final);
+char *case_x(t_node *p_node, char **final);
+char *case_X(t_node *p_node, char **final);
 #endif
