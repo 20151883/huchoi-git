@@ -139,5 +139,6 @@ int real_complete_final(t_node *p_node, char **line, char**p_temp)
     p_node->is_precision = 0;
     p_node->buf = 0;
     p_node->two_star = 0;
+    p_node->value = 0;
     return (1);
 }
