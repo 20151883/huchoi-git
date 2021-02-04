@@ -30,7 +30,6 @@ void init_node(t_node* p_node, const char *str)
 	p_node->buf = 0;
 	p_node->is_precision = 0;
 	p_node->two_star = 0;
-	va_start(p_node->ap, str);
 }
 
 int ft_printf(const char* str, ...)
@@ -39,6 +38,7 @@ int ft_printf(const char* str, ...)
 	char *final[6];
 	t_node node;
 
+	va_start(p_node->ap, str);
 	init_node(&node, str);
 	while (str[node.idx] != '\0')
 	{
