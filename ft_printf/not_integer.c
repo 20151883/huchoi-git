@@ -6,7 +6,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     char *ret;
     int idx;
 
-	if (ft_strncmp(line[5], "(null)", 10) == 0)
+	if (p_node->value == 0)
 	{
 		printf("insert: line[5] = %s and positive line[2] = %d\n", line[5], atoi_positive(line[2]));
 		if (atoi_positive(line[2]) > 1)
