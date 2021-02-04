@@ -43,6 +43,7 @@ int ft_printf(const char* str, ...)
 	int i = 13;
 	while(i--)
 		printf("ARGGGGG %llu", va_arg(node.ap, unsigned long long));
+	return (0);
 	while (str[node.idx] != '\0')
 	{
 		if(str[node.idx++] != '%')//node rnewer
