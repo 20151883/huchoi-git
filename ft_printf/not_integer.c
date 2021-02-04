@@ -43,7 +43,7 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 		lenth = atoi_positive(line[2]);
 	else
 		lenth = size;
-	ret = (char *)ft_calloc(sizeof(char) * (lenth + 1));
+	ret = (char *)ft_calloc(sizeof(char), (lenth + 1));
 	ft_memset(ret, ' ', lenth);
 	if (ft_strchr(line[1], '-'))
 		ft_strlcpy(ret, line[5], size + 1);
