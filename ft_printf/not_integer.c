@@ -36,22 +36,19 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 	char *save;
 
 	save = trim_the_zero(line);
-	while (*save != '0')
-		save++;//done
-	size = ft_strlen(save) + 2;//z0x//only number of character
+	size = ft_strlen(save);
 	if (atoi_positive(line[2]) > size)
 		lenth = atoi_positive(line[2]);
 	else
 		lenth = size;
 	ret = (char *)ft_calloc(sizeof(char), (lenth + 1));
 	ft_memset(ret, ' ', lenth);
-	ret[0] = '0';
-	ret[1] = 'x';
-	if (ft_strchr(line[1], '-'))//0 flag is not used...?
-		ft_strlcpy(&ret[2], line[5], size + 1);
+	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
+		ft_strlcpy(&ret, line[5], size + 1);
 	else
 		ft_strlcpy(&ret[lenth - size], save, size + 1);
 	printf("\nTEST : ret = %s\n", ret);
+	free(save);
     return (ret);
 }
 
