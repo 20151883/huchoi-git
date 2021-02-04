@@ -32,7 +32,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 			}
 			return (ft_strdup(""));
 	}*/
-	check_null(p_node, line, p_temp);
+	check_null(p_node, line, p_temp, &lenth);
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
     if (*line[2] != '\0')
