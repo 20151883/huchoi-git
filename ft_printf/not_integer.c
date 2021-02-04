@@ -35,7 +35,7 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 	int plus;
 	char *save;
 
-	save = trim_the_zero(line, )
+	save = trim_the_zero(line);
 	while (*save != '0')
 		save++;//done
 	size = ft_strlen(save) + 2;//z0x//only number of character
