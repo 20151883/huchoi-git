@@ -32,6 +32,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 			}
 			return (ft_strdup(""));
 	}
+	printf("here????");
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
     if (*line[2] != '\0')
