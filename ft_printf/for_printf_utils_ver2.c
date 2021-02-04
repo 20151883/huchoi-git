@@ -66,7 +66,9 @@ int letter_s(char **line, char **p_temp, unsigned long long value)
 {
     char *arr;
 
-    if (0 == (arr = (ft_strjoin(*p_temp, (char *)value))))
+    if (value == 0)
+        arr = ft_strdup("(null)");
+    else if (0 == (arr = (ft_strjoin(*p_temp, (char *)value))))
         return (free_ret_zero(line, *p_temp, 0, 5));
     free(*p_temp);
     *p_temp = arr;
