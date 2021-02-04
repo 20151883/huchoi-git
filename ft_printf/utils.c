@@ -316,5 +316,6 @@ char *trim_the_zero(char **line)
 	ret[0] = '0';
 	ret[1] = 'x';
 	ft_strlcpy(&ret[2], save, size);
+	printf("\n\nin trim : %s", ret);
 	return (ret);
 }
