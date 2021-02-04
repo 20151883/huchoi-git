@@ -235,7 +235,7 @@ void my_putchar_fd(t_node *p_node)
     p_node->count++;
 }
 
-void tpye_case_sort(t_node *p_node, char **line)
+void type_case_sort(t_node *p_node, char **line)
 {
     char *str;
 
