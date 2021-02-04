@@ -6,7 +6,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     char *ret;
     int idx;
 
-	if (ft_strncmp(line[5], "(null)", 10) == 0)
+	/*if (ft_strncmp(line[5], "(null)", 10) == 0)
 	{
 			lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
 			int i = 0;
@@ -31,7 +31,8 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 				p_node->count++;
 			}
 			return (ft_strdup(""));
-	}
+	}*/
+	check_null(p_node, line, p_temp);
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
     if (*line[2] != '\0')
