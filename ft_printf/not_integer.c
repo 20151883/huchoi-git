@@ -6,7 +6,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     char *ret;
     int idx;
 
-	if (ft_strcmp(line[5], "(null)") == 0)
+	if (ft_strncmp(line[5], "(null)") == 0)
 	{
 			int i = 0;
 			if (ft_strchr(line[2], '-'))
