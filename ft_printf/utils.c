@@ -315,6 +315,6 @@ char *trim_the_zero(char **line)
 	ret[size] = '\0';
 	ret[0] = '0';
 	ret[1] = 'x';
-	ft_strlcpy(&ret[2], save, size);
+	ft_strlcpy(&ret[2], save, size - 1);
 	return (ret);
 }
