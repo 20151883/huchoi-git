@@ -9,7 +9,8 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 	if (ft_strncmp(line[5], "(null)", 10) == 0)
 	{
 			lenth = (1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]));
-			if (ft_strchr(line[2], '-'))
+			int i = 0;
+			if (ft_strchr(line[1], '-'))
 			{
 				ft_putchar_fd(0,1);
 				p_node->count++;
