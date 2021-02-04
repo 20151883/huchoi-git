@@ -1,6 +1,6 @@
 #include "./includes/ft_printf.h"
 
-void check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth)
+int check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth)
 {
     int i;
 
@@ -23,5 +23,8 @@ void check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth)
 			ft_putchar_fd(0, 1);
 		}
         p_node->count += lenth;
-		return (ft_strdup(""));
+		return (1);
+    }
+    else
+        return (0); 
 }
