@@ -22,6 +22,11 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
         ret[0] = *line[5];
     else
         ret[lenth - 1] = *line[5];
+	if (ft_strncmp(line[5], "(null)", 10) == 0)
+	{
+		*ret = '^@';
+		ret[1] = '\0';
+	}
     return (ret);
 }//malloc fail then return 0...
 //but if (in case malloc fail) we just ret = 0;
