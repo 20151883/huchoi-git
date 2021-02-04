@@ -36,7 +36,7 @@ int ft_printf(const char* str, ...)
 {
 	char *temp;
 	char *final[6];
-	//t_node node;
+	t_node node;
 
 	//va_start(node.ap, str);
 	init_node(&node, str);
