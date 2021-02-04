@@ -13,16 +13,16 @@ int check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth)
         if (ft_strchr(line[2], '-'))
 		{
 			ft_putchar_fd(0,1);
-			while ((i++ < lenth - 1) && p_node->two_star == 0)
+			while ((i++ < *p_lenth - 1) && p_node->two_star == 0)
 				ft_putchar_fd(' ' ,1);
 		}
 		else
 		{
-			while ((i++ < lenth - 1) && p_node->two_star == 0)
+			while ((i++ < *p_lenth - 1) && p_node->two_star == 0)
 				ft_putchar_fd(' ', 1);
 			ft_putchar_fd(0, 1);
 		}
-        p_node->count += lenth;
+        p_node->count += *p_lenth;
 		return (1);
     }
     else
