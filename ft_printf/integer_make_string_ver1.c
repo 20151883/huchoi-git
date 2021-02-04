@@ -13,7 +13,7 @@ void manage_minus_integer(t_node * p_node, char **line, int *p_size, int *p_plus
     else
     {
         if ((p_node->is_precision == 1) && *p_size < ft_atoi(line[3]))
-            *p_plus = ft_atoi(line[3]) - *p_size
+            *p_plus = ft_atoi(line[3]) - *p_size;
         else
             *p_plus = 0;
     }
