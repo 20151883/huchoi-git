@@ -45,7 +45,7 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 	ret = (char *)ft_calloc(sizeof(char), (lenth + 1));
 	ft_memset(ret, ' ', lenth);
 	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
-		ft_strlcpy(ret, line[5], size + 1);
+		ft_strlcpy(ret, save, size + 1);
 	else
 		ft_strlcpy(&ret[lenth - size], save, size + 1);
 	free(save);
