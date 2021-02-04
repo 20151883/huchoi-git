@@ -306,6 +306,8 @@ char *trim_the_zero(char **line)
 	char *save;
 	int size;
 
+	if (ft_strlen(line[5]) == 3 && line[5][2] == '0')
+		return (ft_strdup("0x0"));
 	save = ft_strchr(line[5], 'x');
 	save++;
 	while (*save == '0')
