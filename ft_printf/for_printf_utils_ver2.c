@@ -204,6 +204,7 @@ int finale(t_node *p_node, char **line, char **p_temp)
     char *str;
 
     str = p_node->string;
+    type_case_sort(p_node, line);
     if (!complete_final(line, &(p_node->my_case), p_temp))
         return (0);
     if (!inter_type(line, p_temp, p_node->value, str[p_node->idx]))
