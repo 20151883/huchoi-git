@@ -13,16 +13,23 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 			if (ft_strchr(line[2], '-'))
 			{
 				ft_putchar_fd(0,1);
+				p_node->count++;
 				while ((i++ < lenth - 1) && p_node->two_star == 0)
+				{
 					ft_putchar_fd(' ' ,1);
+					p_node->count++;
+				}
 			}
 			else
 			{
 				while ((i++ < lenth - 1) && p_node->two_star == 0)
+				{
 					ft_putchar_fd(' ', 1);
+					p_node->count++;
+				}
 				ft_putchar_fd(0, 1);
+				p_node->count++;
 			}
-			p_node->count+=lenth;
 			return (ft_strdup(""));
 	}
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
