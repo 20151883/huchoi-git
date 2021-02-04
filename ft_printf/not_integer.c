@@ -35,7 +35,7 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 	int plus;
 	char *save;
 
-	save = *line[5];
+	save = line[5];
 	save+=2;
 	while (*save != '0')
 		save++;//done
