@@ -30,6 +30,7 @@ void init_node(t_node* p_node, const char *str)
 	p_node->string = (char *)str;
 	p_node->buf = 0;
 	p_node->is_precision = 0;
+	p_node->two_star = 0;
 }
 
 int ft_printf(const char* str, ...)

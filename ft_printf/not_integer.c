@@ -8,20 +8,21 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 
 	if (ft_strncmp(line[5], "(null)", 10) == 0)
 	{
-			lenth = 1 > ft_strlen(line[2]) ? 1 : ft_strlen(line[2]);
+			lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
 			int i = 0;
 			if (ft_strchr(line[2], '-'))
 			{
 				ft_putchar_fd(0,1);
-				while (i++ < lenth - 1)
+				while ((i++ < lenth - 1) && p_node->two_str == 0)
 					ft_putchar_fd(' ' ,1);
 			}
 			else
 			{
-				while (i++ < lenth - 1)
+				while ((i++ < lenth - 1) && p_node->two_star == 0)
 					ft_putchar_fd(' ', 1);
 				ft_putchar_fd(0, 1);
 			}
+			p_node->count+=lenth;
 			return (ft_strdup(""));
 	}
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리

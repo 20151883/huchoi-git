@@ -71,6 +71,8 @@ int star(char **line, char **p_temp, char *buf, int my_case)
         free(line[1]);
         line[1] = test;
 	}
+    if (my_case == 3)
+        p_node->two_star = 1;
 	if (0 == (arr = ft_strjoin(*p_temp, buf)))
         return (free_ret_zero(line, *p_temp, buf, my_case));
     free(*p_temp);
