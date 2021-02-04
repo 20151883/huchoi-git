@@ -53,10 +53,15 @@ int letter_c_percent(char **line, char **p_temp, unsigned long long value)
     char two[2];
     char *arr;
 
-    two[0] = (char)value;
-    two[1] = '\0';
-    if (0 == (arr = ft_strjoin(*p_temp, two)))
-        return (free_ret_zero(line, *p_temp, NULL, 5));
+    if (value == 0)
+        arr = ft_strdup("?");
+    else
+    {
+        two[0] = (char)value;
+        two[1] = '\0';
+        if (0 == (arr = ft_strjoin(*p_temp, two)))
+            return (free_ret_zero(line, *p_temp, NULL, 5));
+    }
     free(*p_temp);
     *p_temp = arr;
     return (1);
