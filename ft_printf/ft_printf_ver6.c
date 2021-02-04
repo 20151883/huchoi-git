@@ -43,7 +43,7 @@ int ft_printf(const char* str, ...)
 	va_list ap;
 	va_start(ap, str);
 	while(i--)
-		printf("ARGGGGG %llu\n", va_arg(ap, unsigned long long));
+		printf("ARGGGGG %lld\n", va_arg(ap, long long));
 	return (0);
 	t_node node;
 	init_node(&node, str);
