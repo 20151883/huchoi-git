@@ -55,8 +55,7 @@ int letter_c_percent(char **line, char **p_temp, unsigned long long value)
 
     if (value < 32 && value != '%')
     {
-        arr[0] = NULL;//beter than two[2]
-        arr[1] = 0;
+        arr = ft_strdup("");
     }
     else
     {
