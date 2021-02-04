@@ -35,7 +35,7 @@ int compute_lenth(t_node *p_node, char **line, int *p_size, int *p_lenth)
     if ((0 < ft_atoi(line[3])) && (ft_atoi(line[3])) < *p_size)
         *p_size = ft_atoi(line[3]);
     *p_lenth = *p_size;
-    if (lenth < atoi_positive(line[2]) && *line[2] != '\0')
+    if (*p_lenth < atoi_positive(line[2]) && *line[2] != '\0')
         *p_lenth =atoi_positive(line[2]);
     else
         *p_lenth = *p_lenth + 0;
