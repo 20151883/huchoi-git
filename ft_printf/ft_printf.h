@@ -17,6 +17,7 @@ typedef struct s_node{
     int is_precision;
     int num[3];
 }t_node;
+char *trim_the_zero(char **line);
 char *precision_unsigned(char **line, int plus, int size, int lenth);
 char *no_precision_unsigned(char **line, int plus, int size, int lenth);
 int atoi_positive(char *str);

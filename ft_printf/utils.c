@@ -298,3 +298,23 @@ int atoi_positive(char *str)
 	//printf("after... : %d", num);
 	return (num);
 }
+
+char *trim_the_zero(char **line)
+{
+	char *temp;
+	char *ret;
+	char *save;
+	int size;
+
+	save = ft_strchr(line[5], 'x');
+	save++;
+	while (*save != '0')
+		save++;
+	size = ft_strlen(save) + 2;//num of character
+	ret = malloc(sizeof(char) * (size + 1));
+	ret[size] = '\0';
+	ret[0] = '0';
+	ret[1] = 'x';
+	ft_strlcpy(&ret[2], save, size);
+	return (ret);
+}
