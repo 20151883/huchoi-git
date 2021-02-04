@@ -38,7 +38,7 @@ int ft_printf(const char* str, ...)
 	char *final[6];
 	t_node node;
 
-	va_start(p_node->ap, str);
+	va_start(node.ap, str);
 	init_node(&node, str);
 	while (str[node.idx] != '\0')
 	{
