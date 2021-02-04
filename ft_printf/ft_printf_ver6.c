@@ -61,6 +61,6 @@ int ft_printf(const char* str, ...)
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
-	va_end(node.ap);
+	va_end(ap);
 	return (node.count);
 }
