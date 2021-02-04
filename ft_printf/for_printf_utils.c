@@ -53,7 +53,7 @@ int not_star(char **line, char *str, char **p_temp, t_node *p_node)
     return (1);//free is not done in here
 }
 
-int star(char **line, char **p_temp, char *buf, int my_case)
+int star(char **line, char **p_temp, char *buf, int my_case, t_node *p_node)
 {
     char two[2];
     char *arr;

@@ -189,7 +189,7 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
 
 int over_star(t_node *p_node, char **line, char**p_temp)
 {
-    if (0 == star(line, p_temp, p_node->buf, p_node->my_case))
+    if (0 == star(line, p_temp, p_node->buf, p_node->my_case, p_node))
         return (0);//free(buf) is done in star func
     p_node->buf = 0;
     line[p_node->my_case] = *p_temp;
