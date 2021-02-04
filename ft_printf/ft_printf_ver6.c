@@ -48,7 +48,7 @@ int ft_printf(const char* str, ...)
 	t_node node;
 	init_node(&node, str);
 	while (str[node.idx] != '\0')
-	{
+	{																
 		if(str[node.idx++] != '%')//node rnewer
 		{
 			my_putchar_fd(&node);
