@@ -59,6 +59,7 @@ int ft_printf(const char* str, ...)
 			node.value = '%';
 		else
 			node.value = va_arg(ap, unsigned long long);
+		printf("TEST : node.value = %llu\n", node.value);
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
