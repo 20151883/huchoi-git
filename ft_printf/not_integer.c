@@ -10,7 +10,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 	{
 			lenth = (1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]));
 			int i = 0;
-			if (ft_strchr(line[1], '-'))
+			if (ft_strchr(line[1], '-') != 0)
 			{
 				ft_putchar_fd(0,1);
 				p_node->count++;
@@ -32,6 +32,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 			}
 			return (ft_strdup(""));
 	}
+	printf("where???");
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
     if (*line[2] != '\0')
