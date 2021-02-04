@@ -1,5 +1,5 @@
 #include "ft_printf.h"
-
+va_list ap;
 int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
 {
     if (c == '-' || c == '0')
@@ -38,7 +38,7 @@ int ft_printf(const char* str, ...)
 	char *final[6];
 	t_node node;
 
-	va_start(node.ap, str);
+	va_start(ap, str);
 	init_node(&node, str);
 	while (str[node.idx] != '\0')
 	{																
@@ -57,7 +57,7 @@ int ft_printf(const char* str, ...)
 		if (str[node.idx] == '%')
 			node.value = '%';
 		else
-			node.value = va_arg(node.ap, unsigned long long);
+			node.value = va_arg(ap, unsigned long long);
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
