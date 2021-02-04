@@ -36,16 +36,9 @@ int ft_printf(const char* str, ...)
 {
 	char *temp;
 	char *final[6];
-
-	//va_start(node.ap, str);
-	//init_node(&node, str);
-	int i = 13;
-	va_list ap;
-	va_start(ap, str);
-	while(i--)
-		printf("ARGGGGG %lld\n", va_arg(ap, long long));
-	return (0);
 	t_node node;
+
+	va_start(node.ap, str);
 	init_node(&node, str);
 	while (str[node.idx] != '\0')
 	{																
@@ -65,7 +58,6 @@ int ft_printf(const char* str, ...)
 			node.value = '%';
 		else
 			node.value = va_arg(node.ap, unsigned long long);
-		printf("FIRST : node.value = %llu\n", node.value);
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
