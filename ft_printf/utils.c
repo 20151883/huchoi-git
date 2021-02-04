@@ -310,6 +310,7 @@ char *trim_the_zero(char **line)
 	save++;
 	while (*save != '0')
 		save++;
+	printf("\n\n save = %s",save);
 	size = ft_strlen(save) + 2;//num of character
 	ret = malloc(sizeof(char) * (size + 1));
 	ret[size] = '\0';
