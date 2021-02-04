@@ -80,6 +80,16 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
     int idx;
     char *hex;
 
+    if (value == 0)
+    {
+        arr = malloc(sizeof(char) * 4);
+        arr[0] = '0';
+        arr[1] = 'x';
+        arr[2] = '0';
+        arr[3] = '\0';
+        *p_temp = arr;
+        return (1)
+    }
     if ( 0 == (hex = ft_strdup("0123456789abcdef")))
         return (0);
     if (0 == (buf = malloc(sizeof(char) * 15)))
