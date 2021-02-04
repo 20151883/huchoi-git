@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
 char *make_string(t_node *p_node, char **final, char **p_temp, char the_type)//출력해야할 최종적 문자열을 만들어서 반환한다 (space,0채우기 &우측좌측정렬 완료된 문자열)
 {
