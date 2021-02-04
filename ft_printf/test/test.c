@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include "ft_printf.h"
+
 int main(void)
 {
-	printf("%s\n", ten_small_hex("1234567"));
-	printf("%x\n", 1234567);
-	printf("%s\n",ten_big_hex("2147483647"));
-	printf("%X\n",2147483647);
-	printf("%s\n",ten_big_hex("-2147483647"));
-	printf("%X\n",-2147483647);
+	/*ft_printf("[%.x][%.X][%.u]\n",0xfffffff4,0xfffffff4,0xfffff);
+	printf("[%-2x]\n\n\n\n", '\0');
+	ft_printf("[%02X]",0);
+	char *test = "ancd";
+	ft_printf("[%8p]\n",test);
+	printf("[%8p]\n",test);
+	ft_printf("[%%%d]",4200);
+	printf("[%%%d]",4200);*/
+	ft_printf("[%c]",NULL);
+	printf("[%c]",NULL);
 	return (0);
 }
