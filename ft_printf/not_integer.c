@@ -1,46 +1,20 @@
 #include "includes/ft_printf.h"
 
-char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
+char *case_c(t_node *p_node, char **line, char**p_temp)
 {
     int lenth;
     char *ret;
     int idx;
 
-	/*if (ft_strncmp(line[5], "(null)", 10) == 0)
-	{
-			lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
-			int i = 0;
-			if (ft_strchr(line[2], '-'))
-			{
-				ft_putchar_fd(0,1);
-				p_node->count++;
-				while ((i++ < lenth - 1) && p_node->two_star == 0)
-				{
-					ft_putchar_fd(' ' ,1);
-					p_node->count++;
-				}
-			}
-			else
-			{
-				while ((i++ < lenth - 1) && p_node->two_star == 0)
-				{
-					ft_putchar_fd(' ', 1);
-					p_node->count++;
-				}
-				ft_putchar_fd(0, 1);
-				p_node->count++;
-			}
-			return (ft_strdup(""));
-	}*/
 	if (check_null(p_node, line, p_temp, &lenth) == 1)
 		return (ft_strdup(""));
-    if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
+    if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')
         return (0);
     if (*line[2] != '\0')
         lenth = atoi_positive(line[2]);
     else
         lenth = 1;
-    ret = malloc(sizeof(char) * (lenth + 1));//[0] ~ [size-1]
+    ret = malloc(sizeof(char) * (lenth + 1));
 	ret[lenth] = '\0';
 	(p_node->count)+=lenth;
     idx = 0;
@@ -51,9 +25,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     else
         ret[lenth - 1] = *line[5];
     return (ret);
-}//malloc fail then return 0...
-//but if (in case malloc fail) we just ret = 0;
-//then return (ret)....??  
+}
 
 char *case_p(t_node *p_node, char **line, char**p_temp)
 {
@@ -92,7 +64,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	int i;
 
 	i = 0;
-	size = ft_strlen(line[5] );
+	/*size = ft_strlen(line[5] );
 	if ((0 < ft_atoi(line[3])) && (ft_atoi(line[3]) < size))
 	{
 		size = ft_atoi(line[3]);
@@ -125,7 +97,9 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 			test = ft_calloc(1,1);
 			return (test);
 		}
-	}
+	}*/
+	if (compute_lenth(p_node, line, &size, &lenth) == 0)
+		return (ft_strdup(""));
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		free_ret_zero(line, *p_temp, 0, 6);
 	ret[lenth] = '\0';//needed...!!!
