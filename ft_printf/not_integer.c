@@ -5,10 +5,10 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     int lenth;
     char *ret;
     int idx;
-
+	printf("insert: line[5] = %s and positive line[2] = %d\n", line[5], atoi_positive(line[2]));
 	if (p_node->value == 0)
 	{
-		printf("insert: line[5] = %s and positive line[2] = %d\n", line[5], atoi_positive(line[2]));
+	//	printf("insert: line[5] = %s and positive line[2] = %d\n", line[5], atoi_positive(line[2]));
 		if (atoi_positive(line[2]) > 1)
 			lenth = atoi_positive(line[2]);
 		else
