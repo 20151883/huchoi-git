@@ -88,7 +88,7 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
         arr[2] = '0';
         arr[3] = '\0';
         *p_temp = arr;
-        return (1)
+        return (1);
     }
     if ( 0 == (hex = ft_strdup("0123456789abcdef")))
         return (0);
