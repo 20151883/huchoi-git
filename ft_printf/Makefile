@@ -6,7 +6,7 @@ NAME = libftprintf.a
 
 SRCS =  ft_printf_ver6.c make_string.c integer.c not_integer.c utils.c\
 		 for_printf_utils.c for_printf_utils_ver2.c integer_make_string_ver1.c\
-
+		not_integer_make_string_ver1.c 
 		
 OBJS = $(SRCS:.c=.o)
 

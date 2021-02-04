@@ -17,6 +17,7 @@ typedef struct s_node{
 	int two_star;
 	int is_precision;
 }t_node;
+void check_null(t_node *p_node, char **line, char **p_temp);
 char *trim_the_zero(char **line);
 int atoi_positive(char *str);
 int check_zero(char **line, int *p1, int *p2, int *p3);
