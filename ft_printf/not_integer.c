@@ -35,15 +35,20 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 	int plus;
 	char *save;
 
-	save = ft_strrchr(line[5], '0') + 1;
-	size = ft_strlen(line[5]);
-	if (ft_atoi(line[2]) > ft_strlen(save))
-		lenth = ft_atoi(line[2]);
+	save = ft_strchr(&line[5][2], '0') + 1;
+	while (*save != '0')
+		save++;//done
+	size = ft_strlen(save) + 2;//0x//only number of character
+	if (atoi_positive(line[2]) > size)
+		lenth = atoi_positive(line[2]);
 	else
-		lenth = ft_strlen(save);
-	ret = malloc(sizeof(char) * (lenth + 1));
+		lenth = size;
+	ret = ft_calloc(sizeof(char) * (lenth + 1));
 	ft_memset(ret, ' ', lenth);
-	ft_strlcpy(&ret[lenth - size], line[5], size + 1);
+	if (ft_strcjr(line[1], '-')
+		ft_strlcpy(ret, line[5], size + 1);
+	else
+		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
     return (ret);
 }
 
