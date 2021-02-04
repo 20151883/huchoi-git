@@ -36,7 +36,6 @@ int ft_printf(const char* str, ...)
 {
 	char *temp;
 	char *final[6];
-	t_node node;
 
 	//va_start(node.ap, str);
 	init_node(&node, str);
@@ -46,6 +45,7 @@ int ft_printf(const char* str, ...)
 	while(i--)
 		printf("ARGGGGG %llu", va_arg(node.ap, unsigned long long));
 	return (0);
+	t_node node;
 	while (str[node.idx] != '\0')
 	{
 		if(str[node.idx++] != '%')//node rnewer
