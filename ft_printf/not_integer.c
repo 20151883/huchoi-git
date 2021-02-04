@@ -49,7 +49,7 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 		ft_strlcpy(ret, save, size + 1);
 		if (size != lenth)
 			ret[size] = ' ';
-
+	}
 	else
 		ft_strlcpy(&ret[lenth - size], save, size + 1);
 	free(save);
