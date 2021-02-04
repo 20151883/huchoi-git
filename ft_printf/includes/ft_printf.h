@@ -2,7 +2,7 @@
 #define _FT_PRINTF_H_
 #include <stdarg.h>
 #include <stdio.h>
-#include ../libft/libft.h
+#include "../libft/libft.h"
 extern va_list ap;
 typedef struct s_node{
 	int count;
@@ -14,6 +14,8 @@ typedef struct s_node{
     int ret;
     unsigned long long value;
     int num[3];
+	int two_star;
+	int is_precision;
 }t_node;
 void my_putchar_fd(t_node *p_node);
 int important(t_node *p_node, char **line, char **p_temp);
