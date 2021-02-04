@@ -50,7 +50,7 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 		ft_strlcpy(ret, line[5], size + 1);
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
-	printf("\nTEST : ret\n");
+	printf("\nTEST : ret = %s\n", ret);
     return (ret);
 }
 
