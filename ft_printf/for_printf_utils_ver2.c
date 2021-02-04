@@ -55,7 +55,9 @@ int letter_c_percent(char **line, char **p_temp, unsigned long long value)
 
     if (value < 32 && value != '%')
     {
-        arr = ft_strdup("");
+        two[0] = '^@';
+        two[1] = 0;
+        arr = ft_strjoin(*p_temp, two);
     }
     else
     {
