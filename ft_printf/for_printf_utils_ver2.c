@@ -203,7 +203,6 @@ int finale(t_node *p_node, char **line, char **p_temp)
         return (0);
     if (!real_complete_final(p_node, line, p_temp))
         return (0);
-    printf("line[1]%s line[2]%s line[3]%s line[4]%s line[5]%s",line[1], line[2], line[3], line[4], line[5]);
     return (1);
 }
 
