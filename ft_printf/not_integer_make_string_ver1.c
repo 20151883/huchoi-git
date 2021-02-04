@@ -29,7 +29,7 @@ int check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth)
         return (0); 
 }
 
-int compute_lenth(t_node *p_node, char **line, int *size, int *lenth)
+int compute_lenth(t_node *p_node, char **line, int *p_size, int *p_lenth)
 {
     *p_size = ft_strlen(line[5]);
     if ((0 < ft_atoi(line[3])) && (ft_atoi(line[3])) < *p_size)
