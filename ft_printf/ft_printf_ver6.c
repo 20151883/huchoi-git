@@ -30,7 +30,7 @@ void init_node(t_node* p_node, const char *str)
 	p_node->buf = 0;
 	p_node->is_precision = 0;
 	p_node->two_star = 0;
-	va_start(node->ap, str);
+	va_start(p_node->ap, str);
 }
 
 int ft_printf(const char* str, ...)
@@ -62,6 +62,6 @@ int ft_printf(const char* str, ...)
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
-	va_end(ap);
+	va_end(node.ap);
 	return (node.count);
 }
