@@ -9,17 +9,17 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 	if (ft_strcmp(line[5], "(null)") == 0)
 	{
 			int i = 0;
-			if (ft_strchr(line[2], '-'))				{
+			if (ft_strchr(line[2], '-'))
 			{
-					ft_putchar_fd(^@);
+				ft_putchar_fd(^@);
 				while (i++ < atoi(line[2]) - 1)
-					ft_putchar(' ');
+					ft_putchar_fd(' ' ,1);
 			}
 			else
 			{
 				while (i++ < atoi(line[2]) - 1)
-					ft_putchar(' ');
-				ft_putchar_fd(^@);
+					ft_putchar_fd(' ', 1);
+				ft_putchar_fd(^@, 1);
 			}
 	}
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
