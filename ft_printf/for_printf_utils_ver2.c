@@ -53,8 +53,8 @@ int letter_c_percent(char **line, char **p_temp, unsigned long long value)
     char two[2];
     char *arr;
 
-    if (value == 0)
-        arr = ft_strdup("?");
+    if (value < 32)
+        arr = ft_strdup("a");//beter than two[2] 
     else
     {
         two[0] = (char)value;
