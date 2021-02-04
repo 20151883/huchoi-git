@@ -41,6 +41,7 @@ char *case_p(t_node *p_node, char **line, char**p_temp)
 		lenth = atoi_positive(line[2]);
 	else
 		lenth = size;
+	p_node->count+=lenth;
 	ret = (char *)ft_calloc(sizeof(char), (lenth + 1));
 	ft_memset(ret, ' ', lenth);
 	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
