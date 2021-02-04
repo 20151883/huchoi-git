@@ -6,6 +6,22 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     char *ret;
     int idx;
 
+	if (ft_strcmp(line[5], "(null)") == 0)
+	{
+			int i = 0;
+			if (ft_strchr(line[2], '-'))				{
+			{
+					ft_putchar_fd(^@);
+				while (i++ < atoi(line[2]) - 1)
+					ft_putchar(' ');
+			}
+			else
+			{
+				while (i++ < atoi(line[2]) - 1)
+					ft_putchar(' ');
+				ft_putchar_fd(^@);
+			}
+	}
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
     if (*line[2] != '\0')
@@ -22,11 +38,6 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
         ret[0] = *line[5];
     else
         ret[lenth - 1] = *line[5];
-	if (ft_strncmp(line[5], "(null)", 10) == 0)
-	{
-		*ret = '^@';
-		ret[1] = '\0';
-	}
     return (ret);
 }//malloc fail then return 0...
 //but if (in case malloc fail) we just ret = 0;
