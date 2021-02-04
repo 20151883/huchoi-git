@@ -38,7 +38,7 @@ int inter_type(char **line, char **p_temp, unsigned long long value, char the_ty
 int complete_final(char **line, int *p_my_case, char **p_temp);
 int flag_precise(char **line, char **p_temp,char *str, int *p_i, t_node *p_node);
 int case_changed(char **line, char **p_temp, int *p_my_case);
-int star(char **line, char **p_temp, char *buf, int my_case);
+int star(char **line, char **p_temp, char *buf, int my_case, t_node *p_node);
 int not_star(char **line, char *str, char **p_temp, int *p_i, t_node *p_node);
 int free_ret_zero(char **p, char *s1, char *s2, int my_case);
 char *precision_int(char **line, int plus, int size, int lenth);
