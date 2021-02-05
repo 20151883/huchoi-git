@@ -100,7 +100,7 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 	*p_ret[lenth] = '\0';
 	if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0)
 	{
-		if (ft_strchr(line[2], '-'))
+		if (ft_strchr(line[1], '-'))
 		{
 			ft_strlcpy(*p_ret, "0x", 3);
 			if (lenth != 2)
@@ -111,7 +111,7 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 	}
 	else
 	{
-		if (ft_strchr(line[2], '-'))
+		if (ft_strchr(line[1], '-'))
 		{
 			ft_strlcpy(*p_ret, "0x0", 4);
 			if (lenth != 3)
