@@ -123,7 +123,7 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 	}
 	return (*p_ret);
 }
-/*char *is_precision_zero(char **p_ret, char **line, int lenth)
+char *is_precision_zero(char **p_ret, char **line, int lenth)
 {
 	if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0 && 0)
 	{
@@ -138,7 +138,7 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 		*p_ret[2] = '0';
 	}
 	return (*p_ret);
-}*/
+}
 char *case_s(t_node *p_node, char **line, char**p_temp)
 {
 	int size;//character number
