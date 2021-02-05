@@ -85,7 +85,6 @@ char *case_p(t_node *p_node, char **line)
 	ft_memset(ret, ' ', lenth);
 	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
 	{
-		printf("here>??");
 		ft_strlcpy(ret, save, size + 1);
 		if (size != lenth)
 			ret[size] = ' ';
