@@ -3,7 +3,7 @@
  #include <stdarg.h>
  #include <stdio.h>
 #include "../libft/libft.h"
- extern va_list ap;
+ extern va_list g_ap;
  typedef struct s_node{
 	int count;
 	int idx;
