@@ -126,22 +126,42 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 
 char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 {
+	int idx = 0;
 	if (p_node->p_p == 0)
 	{
 		if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0)
 		{
 			ft_memset(ret, ' ', lenth);
-			ret[0] = '0';
-			ret[1] = 'x';
-			if (atoi_positive(line[2]) <= 2)
-				ret[2] = 0;
+			if (ft_strchr(line[1], '-'))
+			{
+				ret[0] = '0';
+				ret[1] = 'x';
+				if (atoi_positive(line[2]) <= 2)
+					ret[2] = 0;
+			}
+			else
+			{
+				ret[lenth-2] = '0';
+				ret[lenth-1] = 'x';
+			}
 		}
 		else
 		{
 			ft_memset(ret, ' ', lenth);
-			ret[0] = '0';
-			ret[1] = 'x';
-			ret[2] = '0';
+			if (ft_strchr(line[1], '-'))
+			{
+				ret[0] = '0';
+				ret[1] = 'x';
+				ret[2] = '0';
+				if (atoi_positive(line[2]) <= 3)
+					ret[3] = 0;
+			}
+			else
+			{
+				ret[lenth-3] = '0';
+				ret[lenth-2] = 'x';
+				ret[lenth-1] = '0';
+			}
 		}
 	}
 	return (ret);
