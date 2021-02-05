@@ -73,13 +73,15 @@ char *case_p(t_node *p_node, char **line)
 	char *save;
 
 	save = trim_the_zero(line);
-	//printf("TEST : %s", save);
+	printf("TEST : %s", save);
 	size = ft_strlen(save);
 	if (atoi_positive(line[2]) > size)
 		lenth = atoi_positive(line[2]);
 	else
 		lenth = size;
 	p_node->count += lenth;
+	if (p_node->p_p == 0 && (p_node->is_precision == 1) && (ft_atoi(line[3]) == 0))
+		return (ft_strdup("0x"));
 	ret = (char *)ft_calloc(sizeof(char), (lenth + 1));
 	ret[lenth] = '\0';
 	ft_memset(ret, ' ', lenth);
