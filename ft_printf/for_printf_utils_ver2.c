@@ -98,7 +98,7 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
         return (free_ret_zero(line, *p_temp, NULL, 5));
     if (0 == (buf = malloc(sizeof(char) * 15)))
         return (free_ret_zero(line, *p_temp, hex, 5));
-    ft_memset(buf, ' ', 15);
+    ft_memset(buf, '0', 15);
     idx = 13;
     while (idx > 1 && value > 0)
     {
