@@ -102,7 +102,7 @@ char *is_precision_zero(char **p_ret, char **line)
 		*p_ret[2] = '0';
 		*p_ret[3] = '\0';
 	}*/
-	if (ft_strncmp(line[5], "0x0", 3) == 0)
+	if (ft_strncmp(line[5], "0x0", 3) == 0 && line[5][4] == 0)
 	{
 		free(*p_ret);
 		return (ft_strdup("0x0"));
