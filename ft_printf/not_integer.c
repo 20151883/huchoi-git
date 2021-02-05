@@ -72,6 +72,7 @@ char *case_p(t_node *p_node, char **line)
 	int size;
 	char *save;
 
+	ret = NULL;
 	save = trim_the_zero(line);
 	size = ft_strlen(save);
 	lenth = size;
