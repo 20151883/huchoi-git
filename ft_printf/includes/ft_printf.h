@@ -1,10 +1,10 @@
 #ifndef _FT_PRINTF_H_
-#define _FT_PRINTF_H_
-#include <stdarg.h>
-#include <stdio.h>
+ #define _FT_PRINTF_H_
+ #include <stdarg.h>
+ #include <stdio.h>
 #include "../libft/libft.h"
-extern va_list ap;
-typedef struct s_node{
+ extern va_list ap;
+ typedef struct s_node{
 	int count;
 	int idx;
 	int my_case;
@@ -15,27 +15,27 @@ typedef struct s_node{
     int num[3];
 	int two_star;
 	int is_precision;
-}t_node;
-void minus_express(char **line, int *p_size, int *p_plus, int *p_lenth);
-char *minus_manage(char **line, char **p_ret);
-int s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
-int check_is_zero(t_node *p_node, char **line, int *p_lenth);
-void type_case_sort(t_node *p_node);
-int value_is_zero(char **p_temp);
-int compute_lenth(t_node *p_node, char **line, int *size, int *lenth);
-int check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth);
-char *trim_the_zero(char **line);
-int atoi_positive(char *str);
-int check_zero(char **line, int *p1, int *p2, int *p3);
-void manage_minus_integer(t_node * p_node, char **line, int *p_size, int *p_plus);
-void my_putchar_fd(t_node *p_node);
-int important(t_node *p_node, char **line, char **p_temp);
-int finale(t_node*p_node, char **line, char **p_temp);
-int over_star(t_node *p_node, char **line, char**p_temp);
-void init_node(t_node* p_node, const char *str);
-int contact_with_format(t_node *p_node, char **line, char **p_temp);
-int real_complete_final(t_node *p_node, char **line, char**p_temp);
-char *ten_unsigned(unsigned int num);
+ }t_node;
+ void minus_express(char **line, int *p_size, int *p_plus, int *p_lenth);
+ char *minus_manage(char **line, char **p_ret);
+ int s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
+ int check_is_zero(t_node *p_node, char **line, int *p_lenth);
+ void type_case_sort(t_node *p_node);
+ int value_is_zero(char **p_temp);
+ int compute_lenth(t_node *p_node, char **line, int *size, int *lenth);
+ int check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth);
+ char *trim_the_zero(char **line);
+ int atoi_positive(char *str);
+ int check_zero(char **line, int *p1, int *p2, int *p3);
+ void manage_minus_integer(t_node * p_node, char **line, int *p_size, int *p_plus);
+ void my_putchar_fd(t_node *p_node);
+ int important(t_node *p_node, char **line, char **p_temp);
+ int finale(t_node*p_node, char **line, char **p_temp);
+ int over_star(t_node *p_node, char **line, char**p_temp);
+ void init_node(t_node* p_node, const char *str);
+ int contact_with_format(t_node *p_node, char **line, char **p_temp);
+ int real_complete_final(t_node *p_node, char **line, char**p_temp);
+ char *ten_unsigned(unsigned int num);
 int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_tpye);
 int letter_di(char **line, char **p_temp, unsigned long long value);
 int letter_p(char **line, char **p_temp, unsigned long long value);
