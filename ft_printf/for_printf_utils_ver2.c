@@ -174,14 +174,14 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
     if (ft_strchr(".-0", p_node->string[p_node->idx]) != 0)
     {
         if (flag_precise(line, p_temp, p_node))
-            return (42);//free is not done in here...
+            return (42);
         else   
             return (0);
     }
     if (p_node->string[p_node->idx] != '*')
     {
         if (1 == not_star(line, (char*)p_node->string, p_temp, p_node))
-            return (42);//free is not done in here
+            return (42);
         else   
             return (0);
     }
@@ -191,10 +191,9 @@ int contact_with_format(t_node *p_node, char **line, char **p_temp)
 int over_star(t_node *p_node, char **line, char**p_temp)
 {
     if (0 == star(line, p_temp, p_node->buf, p_node->my_case, p_node))
-        return (0);//free(buf) is done in star func
+        return (0);
     p_node->buf = 0;
     line[p_node->my_case] = *p_temp;
-    //printf("in star... line[2] = %s", line[2]);
     if (what_my_case(p_node->string[++(p_node->idx)], p_node->my_case) == p_node->my_case)
         return (free_ret_zero(line, *p_temp, NULL, p_node->my_case));
     return (1);
@@ -221,7 +220,7 @@ int finale(t_node *p_node, char **line, char **p_temp)
     char *str;
 
     str = p_node->string;
-    type_case_sort(&node);
+    type_case_sort(p_node);
     if (!complete_final(line, &(p_node->my_case), p_temp))
         return (0);
     if (!inter_type(line, p_temp, p_node->value, str[p_node->idx]))
