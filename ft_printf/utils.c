@@ -4,12 +4,12 @@ char * intger_value_is_zero(unsigned int num)
 {
 	char *arr;
 
-	if ( 0== (arr = malloc(sizeof(char) * 4)))
+	if ( 0== (arr = malloc(sizeof(char) * 2)))
 		return (0);
 	if (num != 0)
 		return (0);
 	arr[0] = '0';
-	arr[2] = '\0';
+	arr[1] = '\0';
 	return (arr);
 }
 
