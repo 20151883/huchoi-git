@@ -6,7 +6,7 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     char *ret;
     int idx;
 
-	if (ft_strncmp(line[5], "(null)", 10) == 0)
+	/*if (ft_strncmp(line[5], "(null)", 10) == 0)
 	{
 			lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
 			int i = 0;
@@ -31,7 +31,9 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 				p_node->count++;
 			}
 			return (ft_strdup(""));
-	}
+	}*/
+	if (check_is_zero(p_node, line, &lenth) == 1)
+		return (ft_strdup(""));
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
     if (*line[2] != '\0')
@@ -49,9 +51,39 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     else
         ret[lenth - 1] = *line[5];
     return (ret);
-}//malloc fail then return 0...
-//but if (in case malloc fail) we just ret = 0;
-//then return (ret)....??  
+}
+
+int check_is_zero(t_node *p_node, char **line, int *p_lenth)
+{
+	if (ft_strncmp(line[5], "(null)", 10) == 0)
+	{
+		lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
+		int i = 0;
+		if (ft_strchr(line[2], '-'))
+		{
+			ft_putchar_fd(0,1);
+			//p_node->count++;
+			while ((i++ < lenth - 1) && p_node->two_star == 0)
+			{
+				ft_putchar_fd(' ' ,1);
+				//p_node->count++;
+			}
+		}
+		else
+		{
+			while ((i++ < lenth - 1) && p_node->two_star == 0)
+			{
+				ft_putchar_fd(' ', 1);
+				//p_node->count++;
+			}
+			ft_putchar_fd(0, 1);
+			//p_node->count++;
+		}
+		p_node->count += *p_lenth;
+		return (1);
+	}
+	return (0);
+}
 
 char *case_p(t_node *p_node, char **line, char**p_temp)
 {
@@ -95,7 +127,6 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	{
 		size = ft_atoi(line[3]);
 	}
-	//printf("atoi(line[3] = %d   ft_strlen(line[5] = %d", ft_atoi(line[3]), ft_atoi(line[5]));
 	lenth = size;
 	if (lenth < atoi_positive(line[2]) && *line[2] != '\0')
 	{
@@ -110,11 +141,9 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 		if (ft_atoi(line[3]) == 0)
 		{
 			lenth = 0;
-			//lenth = 1???
 			size = 0;
-			//ft_putchar_fd(' ', 1);
 		}
-		if ((atoi_positive(line[2]) > 0))// && ft_strchr(line[2], '-')) //&& *line[1] == '\0')
+		if ((atoi_positive(line[2]) > 0))
 		{
 			p_node->count += atoi_positive(line[2]);
 			while (size++ < atoi_positive(line[2]))
@@ -132,7 +161,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	{
 		while (i < lenth)
 			ret[i++] = ' ';
-	}	//return (NULL);//ssh printf는 출력은 시키던데...???
+	}
 	else
 	{
 		while(i < lenth)
