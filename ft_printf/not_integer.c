@@ -32,7 +32,7 @@ char *case_c(t_node *p_node, char **line)//dot procedure is needed
     idx = 0;
     while(idx < lenth)
         ret[idx++] = ' ';
-    if (ft_strchr(line[1], '-') != 0)
+    if (ft_strchr(line[1], '-') != 0 || ft_atoi(line[2]) < 0)
         ret[0] = *line[5];
     else
         ret[lenth - 1] = *line[5];
