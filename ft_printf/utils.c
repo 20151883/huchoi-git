@@ -165,7 +165,7 @@ char *precision_unsigned(char **line, int plus, int size, int lenth)
 	return (ret);
 }
 
-char *no_precision_int(char **line, int plus, int size, int lenth)
+char *no_precision_int(char **line, int size, int lenth)
 {
 	char *ret;
 	int i;
@@ -189,7 +189,7 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	return (minus_manage(line, &ret));
 }
 
-char *no_precision_unsigned(char **line, int plus, int size, int lenth)
+char *no_precision_unsigned(char **line, int size, int lenth)
 {
 	char *ret;
 	int i;
@@ -238,7 +238,6 @@ int atoi_positive(char *str)
 
 char *trim_the_zero(char **line)
 {
-	char *temp;
 	char *ret;
 	char *save;
 	int size;

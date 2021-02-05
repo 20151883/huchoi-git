@@ -1,6 +1,6 @@
 #include "./includes/ft_printf.h"
 
-char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
+char *case_c(t_node *p_node, char **line)//dot procedure is needed
 {
     int lenth;
     char *ret;
@@ -53,12 +53,11 @@ int check_is_zero(t_node *p_node, char **line, int *p_lenth)
 	return (0);
 }
 
-char *case_p(t_node *p_node, char **line, char**p_temp)
+char *case_p(t_node *p_node, char **line)
 {
 	char *ret;
 	int lenth;
 	int size;
-	int plus;
 	char *save;
 
 	save = trim_the_zero(line);

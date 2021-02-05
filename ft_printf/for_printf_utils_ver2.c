@@ -83,9 +83,9 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
     if (value == 0)
         return (value_is_zero(p_temp));
     if ( 0 == (hex = ft_strdup("0123456789abcdef")))
-        return (0);
+        return (free_ret_zero(line, *p_temp, NULL, 5));
     if (0 == (buf = malloc(sizeof(char) * 15)))
-        return (free_ret_zero(0, hex, 0, 5));
+        return (free_ret_zero(line, *p_temp, hex, 5));
     ft_memset(buf, '0', 15);
     idx = 13;
     while (idx > 1 && value > 0)
@@ -142,6 +142,7 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
     char *arr;
     unsigned int num;
 
+    arr = NULL;
     num = (unsigned int)value;
     if (the_type == 'u')
     {
@@ -153,7 +154,7 @@ int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_ty
         if (0 == (arr = ten_small_hex(num)))
             return (free_ret_zero(line, *p_temp, NULL, 5));
     }
-    else if (the_type == 'X')
+    else
     {
         if (0 == (arr = ten_big_hex(num)))
             return (free_ret_zero(line, *p_temp, 0, 5));
