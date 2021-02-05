@@ -102,7 +102,7 @@ char *is_precision_zero(char **p_ret, char **line, int lenth)
 		*p_ret[2] = '0';
 		*p_ret[3] = '\0';
 	}*/
-	if (ft_strncmp(line[5], "0x0", 3) == 0 && ft_strlen(line[5]) == 3)
+	if ((ft_strncmp(line[5], "0x0", 3) == 0) && (ft_strlen(line[5]) == 3))
 	{
 		ft_memset(*p_ret, ' ', lenth);
 		*p_ret[0] = '0';
