@@ -73,20 +73,15 @@ char *case_p(t_node *p_node, char **line)
 	char *save;
 
 	save = trim_the_zero(line);
-	//printf("TEST : %s", save);
 	size = ft_strlen(save);
+	lenth  =size;
 	if (atoi_positive(line[2]) > size)
 		lenth = atoi_positive(line[2]);
-	else
-		lenth = size;
 	p_node->count += lenth;
+	if (0 == (ret = (char *)ft_calloc(sizeof(char), (lenth + 1))))
+		return (0);
 	if (p_node->p_p == 0)
 		return (man_zero(p_node, line, lenth));
-	if (p_node->p_p == 0 && (p_node->is_precision == 1) && (ft_atoi(line[3]) == 0))
-		return (ft_strdup("0x"));
-	ret = (char *)ft_calloc(sizeof(char), (lenth + 1));
-	ret[lenth] = '\0';
-	ft_memset(ret, ' ', lenth);
 	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
 	{
 		ft_strlcpy(ret, save, size + 1);
@@ -99,28 +94,31 @@ char *case_p(t_node *p_node, char **line)
     return (is_precision_zero(&ret, line, lenth));
 }
 
-char *man_zero(t_node *p_node, char **line, int lenth)
+char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 {
-	char *ret;
-
-	if (0 == (ret = ft_calloc(sizeof(char), lenth + 1)))
-		return (0);
+	ft_memset(*p_ret, ' ', lenth);
+	*p_ret[lenth] == '\0';
 	if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0)
 	{
-		if (ft_strlen(line[5]) == 3 && line[5][3] == '0')
+		if (ft_strchr(line[2], '-'))
 		{
-			if (ft_strchr(line[1], '-'))
-				ft_strlcpy(ret, "0x", 3);
-			else
-				ft_strlcpy(&ret[lenth - 2], "0x", 3);
+			ft_strlcpy(ret, "0x")
+			if (lenth != 2)
+				ret[2] =  ' ';
 		}
+		else
+			ft_strlcpy(ret[lenth - 2], "0x", 3);
 	}
 	else
 	{
-		if (ft_strchr(line[1], '-'))
-			ft_strlcpy(ret, "0x0", 4);
+		if (ft_strchr(line[2], '-'))
+		{
+			ft_strlcpy(ret, "0x0", 4)
+			if (lenth != 3)
+				ret[2] =  ' ';
+		}
 		else
-			ft_strlcpy(&ret[lenth - 3], "0x0", 4);
+			ft_strlcpy(ret[lenth - 3], "0x0", 4);
 	}
 	return (ret);
 }
