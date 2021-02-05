@@ -12,11 +12,11 @@
 
 #include "./includes/ft_printf.h"
 
-char * intger_value_is_zero(unsigned int num)
+char *intger_value_is_zero(unsigned int num)//in ten_unsigned...!
 {
 	char *arr;
 
-	if ( 0== (arr = malloc(sizeof(char) * 2)))
+	if (0 == (arr = malloc(sizeof(char) * 2)))
 		return (0);
 	if (num != 0)
 		return (0);
