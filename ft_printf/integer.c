@@ -57,7 +57,7 @@ char *case_d(t_node *p_node, char **line)
     if (p_node->is_precision == 1 && ft_atoi(line[3]) >= 0)
         ret = precision_int(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
-        ret = no_precision_int(line, plus, size, lenth);    
+        ret = no_precision_int(line, size, lenth);    
     return (ret);
 }
 
@@ -94,7 +94,7 @@ char *case_i(t_node *p_node, char **line)
     if (p_node->is_precision == 1 && ft_atoi(line[3]) >= 0)
         ret = precision_int(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
-        ret = no_precision_int(line, plus, size, lenth);    
+        ret = no_precision_int(line, size, lenth);    
     return (ret);
 }
 
@@ -126,7 +126,7 @@ char *case_u(t_node *p_node, char **line)
     if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_unsigned(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
-        ret = no_precision_unsigned(line, plus, size, lenth);    
+        ret = no_precision_unsigned(line, size, lenth);    
     return (ret);
     return (0);
 }
@@ -160,7 +160,7 @@ char *case_x(t_node *p_node, char **line)
     if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_unsigned(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
-        ret = no_precision_unsigned(line, plus, size, lenth);    
+        ret = no_precision_unsigned(line, size, lenth);    
     return (ret);
     return (0);
 }
@@ -193,7 +193,7 @@ char *case_X(t_node *p_node, char **line)
     if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_unsigned(line, plus, size, lenth);
     else//precision is nit in line.//plus is zero.. 
-        ret = no_precision_unsigned(line, plus, size, lenth);    
+        ret = no_precision_unsigned(line, size, lenth);    
     return (ret);
     return (0);
 }
