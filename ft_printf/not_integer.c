@@ -95,7 +95,7 @@ char *case_p(t_node *p_node, char **line)
 
 char *is_precision_zero(t_node *p_node, char **p_ret, char **line)
 {
-	if (p_node->is_precision == 1 && ft_atoi(line[3] == 0))
+	if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0)
 		*p_ret[2] = '\0';
 	return (*p_ret);
 }
