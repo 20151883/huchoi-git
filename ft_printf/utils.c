@@ -7,7 +7,7 @@ char * intger_value_is_zero(unsigned int num)
 	if ( 0== (arr = malloc(sizeof(char) * 4)))
 		return (0);
 	if (num != 0)
-		return (0;)
+		return (0);
 	arr[0] = '0';
 	arr[2] = '\0';
 	return (arr);
