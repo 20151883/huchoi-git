@@ -101,8 +101,10 @@ char *precision_int(char **line, int plus, int size, int lenth)
 	char *ret;
 	int i;
 	char save;
+
 	i = 0;
-	ret = malloc(sizeof(char) * (lenth + 1));
+	if ( 0 == (ret = malloc(sizeof(char) * (lenth + 1))))
+		return (0);
 	ft_memset(ret, ' ', lenth);
 	ret[lenth] = '\0';
 	if (ft_strchr(line[1], '-') != 0)
@@ -120,15 +122,30 @@ char *precision_int(char **line, int plus, int size, int lenth)
 			ret[i++] = '0';
 		ft_strlcpy(&ret[i], line[5], size + 1);
 	}
-	if (ft_atoi(line[5]) < 0)
+	/*if (ft_atoi(line[5]) < 0)
 	{
 		if(ft_strchr(ret, '0') != 0)
 		{
 			*(ft_strchr(ret, '0')) = '-';
 			*(ft_strrchr(ret, '-')) = '0';
 		}
-	}
+	}*/
+	minus_manage(line, &ret);
 	return (ret);
+}
+
+void minus_manage(char **line, char **p_ret)
+{
+	if (ft_atoi(line[5]) < 0)
+	{
+		if (ft_strchr(*p_ret, '0') != 0)
+		{
+			*(ft_strchr(*p_ret, '0')) == '-';
+			*(ft_strrchr(*p_ret, '-')) == '0';
+		}
+	}
+	else
+		return ();
 }
 
 char *precision_unsigned(char **line, int plus, int size, int lenth)
