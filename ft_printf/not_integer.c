@@ -74,14 +74,14 @@ char *case_p(t_node *p_node, char **line)
 
 	save = trim_the_zero(line);
 	size = ft_strlen(save);
-	lenth  =size;
+	lenth = size;
 	if (atoi_positive(line[2]) > size)
 		lenth = atoi_positive(line[2]);
 	p_node->count += lenth;
 	if (0 == (ret = (char *)ft_calloc(sizeof(char), (lenth + 1))))
 		return (0);
-	if (p_node->p_p == 0)
-		return (man_zero(p_node, line, &ret, lenth));
+	//if (p_node->p_p == 0)
+	//	return (man_zero(p_node, line, &ret, lenth));
 	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
 	{
 		ft_strlcpy(ret, save, size + 1);
