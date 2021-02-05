@@ -43,7 +43,7 @@ int ft_printf(const char* str, ...)
 	va_start(ap, str);
 	while (str[node.idx] != '\0')
 	{
-		if(str[node.idx++] != '%')//node rnewer
+		if(str[node.idx++] != '%')
 		{
 			my_putchar_fd(&node);
 			continue;
