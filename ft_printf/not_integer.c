@@ -47,7 +47,7 @@ int check_is_zero(t_node *p_node, char **line, int *p_lenth)
 	if (ft_strncmp(line[5], "(null)", 10) == 0)
 	{
 		*p_lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
-		if (ft_strchr(line[2], '-'))
+		if (ft_strchr(line[1], '-'))
 		{
 			ft_putchar_fd(0,1);
 			while ((i++ < *p_lenth - 1) && p_node->two_star == 0)
