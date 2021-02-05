@@ -11,23 +11,23 @@
 /* ************************************************************************** */
 
 #ifndef _FT_PRINTF_H_
-	#define _FT_PRINTF_H_
- 	#include <stdarg.h>
- 	#include <stdio.h>
-	#include "../libft/libft.h"
-	extern va_list g_ap;
+#define _FT_PRINTF_H_
+#include <stdarg.h>
+#include <stdio.h>
+#include "../libft/libft.h"
+ extern va_list g_ap;
  	typedef struct	s_node{
-	int count;
-	int idx;
-	int my_case;
-	char *string;
-	char *buf;
-	int ret;
-	unsigned long long value;
-	int num[3];
-	int two_star;
-	int is_precision;
- 	}t_node;
+		int count;
+		int idx;
+		int my_case;
+		char *string;
+		char *buf;
+		int ret;
+		unsigned long long value;
+		int num[3];
+		int two_star;
+		int is_precision;
+ 		}t_node;
  void minus_express(char **line, int *p_size, int *p_plus, int *p_lenth);
  char *minus_manage(char **line, char **p_ret);
  int s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
