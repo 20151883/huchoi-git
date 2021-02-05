@@ -32,6 +32,7 @@ typedef struct	s_node{
 		int two_star;
 		int is_precision;
  		}t_node;
+		 int hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3);
 		 char *is_precision_zero(t_node *p_node, char **p_ret, char **line);
 	void	minus_express(char **line, int *p_size, int *p_plus, int *p_lenth);
 	char	*minus_manage(char **line, char **p_ret);

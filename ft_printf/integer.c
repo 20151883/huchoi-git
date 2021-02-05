@@ -122,7 +122,7 @@ char *case_x(t_node *p_node, char **line)
     return (ret);
 }
 
-void hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3)
+int hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3)
 {
     if (p_node->un_int == 0)
 	{
