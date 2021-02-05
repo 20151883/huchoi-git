@@ -6,7 +6,7 @@ void type_case_sort(t_node *p_node)
 
 	str = p_node->string;
 	if (str[p_node->idx] == '%')
-		node.value = '%';
+		p_node->value = '%';
 	else
 	{
 		if (str[p_node->idx] == 'c')
