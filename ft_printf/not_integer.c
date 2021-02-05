@@ -55,15 +55,17 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
 
 int check_is_zero(t_node *p_node, char **line, int *p_lenth)
 {
+	int i;
+
+	i = 0;
 	if (ft_strncmp(line[5], "(null)", 10) == 0)
 	{
-		lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
-		int i = 0;
+		*p_lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
 		if (ft_strchr(line[2], '-'))
 		{
 			ft_putchar_fd(0,1);
 			//p_node->count++;
-			while ((i++ < lenth - 1) && p_node->two_star == 0)
+			while ((i++ < *p_lenth - 1) && p_node->two_star == 0)
 			{
 				ft_putchar_fd(' ' ,1);
 				//p_node->count++;
@@ -71,7 +73,7 @@ int check_is_zero(t_node *p_node, char **line, int *p_lenth)
 		}
 		else
 		{
-			while ((i++ < lenth - 1) && p_node->two_star == 0)
+			while ((i++ < *p_lenth - 1) && p_node->two_star == 0)
 			{
 				ft_putchar_fd(' ', 1);
 				//p_node->count++;
