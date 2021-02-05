@@ -92,15 +92,20 @@ char *case_p(t_node *p_node, char **line)
 	else
 		ft_strlcpy(&ret[lenth - size], save, size + 1);
 	free(save);
-    return (is_precision_zero(p_node, &ret, line));
+    return (is_precision_zero(&ret, line));
 }
 
-char *is_precision_zero(t_node *p_node, char **p_ret, char **line)
+char *is_precision_zero(char **p_ret, char **line)
 {
-	if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0 && 0)
+	/*if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0 && 0)
 	{
 		*p_ret[2] = '0';
 		*p_ret[3] = '\0';
+	}*/
+	if (line[5] == "0x0")
+	{
+		free(*p_ret);
+		return (ft_strdup("0x0"));
 	}
 	return (*p_ret);
 }
