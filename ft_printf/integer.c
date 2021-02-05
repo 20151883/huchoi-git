@@ -110,7 +110,7 @@ char *case_x(t_node *p_node, char **line)
     else
         plus = 0;
     lenth = size + plus;
-    if (p_node->is_precision == 1 && size <= 1)
+    if (p_node->is_precision == 1 && size <= 1 && ft_atoi(line[3]) == 0)
         check_zero(line, &size, &plus, &lenth);
     if (*line[2] != '\0' && lenth < atoi_positive(line[2]))
         lenth = atoi_positive(line[2]);
@@ -122,6 +122,18 @@ char *case_x(t_node *p_node, char **line)
     return (ret);
 }
 
+void hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3)
+{
+    if (p_node->un_int == 0)
+	{
+		*p1 = 0;
+		*p2 = 0;
+		*p3 = 0;
+		return (1);
+	}
+	else
+		return (0);
+}
 char *case_X(t_node *p_node, char **line)
 {
     int size;//number of character
