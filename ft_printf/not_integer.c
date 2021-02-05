@@ -133,9 +133,8 @@ char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 			ft_memset(ret, ' ', lenth);
 			ret[0] = '0';
 			ret[1] = 'x';
-			ret[2] = '0';
 		}
-		else if (p_node->p_p == 0)
+		else
 		{
 			ft_memset(ret, ' ', lenth);
 			ret[0] = '0';
