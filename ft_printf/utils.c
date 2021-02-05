@@ -136,8 +136,7 @@ char *minus_manage(char **line, char **p_ret)
 			return (*p_ret);
 		}
 	}
-	else
-		return (*p_ret);
+	return (*p_ret);
 }
 
 char *precision_unsigned(char **line, int plus, int size, int lenth)
