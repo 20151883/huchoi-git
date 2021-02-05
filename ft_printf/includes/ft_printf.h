@@ -17,7 +17,6 @@ typedef struct s_node{
 	int is_precision;
 }t_node;
 int value_is_zero(char **p_temp);
-void type_case_sort(t_node *p_node, char **line);
 int compute_lenth(t_node *p_node, char **line, int *size, int *lenth);
 int check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth);
 char *trim_the_zero(char **line);
