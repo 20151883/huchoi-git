@@ -103,7 +103,7 @@ char *man_zero(t_node *p_node, char **line, int lenth)
 {
 	char *ret;
 
-	if (0 == (ret = ft_calloc(sizeof(char) * lenth + 1)))
+	if (0 == (ret = ft_calloc(sizeof(char), lenth + 1)))
 		return (0);
 	if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0)
 	{
@@ -122,7 +122,7 @@ char *man_zero(t_node *p_node, char **line, int lenth)
 		else
 			ft_strlcpy(&ret[lenth - 3], "0x0", 4);
 	}
-	return (ret)
+	return (ret);
 }
 char *is_precision_zero(char **p_ret, char **line, int lenth)
 {
