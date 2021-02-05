@@ -20,26 +20,17 @@ char *ten_small_hex(unsigned int num)
 	char *ret;
 	int i;
 	int j;
-	unsigned int	 as;
 
-	as = num;
-	/*if (num == 0)
-	{
-		ret = malloc(sizeof(char) * 2);
-		ret[0] = '0';
-		ret[1] = '\0';
-		return (ret);
-	}*/
 	if (num == 0)
 		return (intger_value_is_zero(num));
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
 	ft_strlcpy(hex, "0123456789abcdef",17);
-	while(as > 0)
+	while(num > 0)
 	{
-		temp[i++] = hex[as % 16];
-		as = as / 16;
+		temp[i++] = hex[num % 16];
+		num = num / 16;
 	}
 	if (0 == (ret = malloc(sizeof(char) * (i-- + 1))))
 		return (0);
@@ -58,26 +49,17 @@ char *ten_big_hex(unsigned int num)
 	char *ret;
 	int i;
 	int j;
-	unsigned int	 as;
 
-	as = num;
-	/*if (num == 0)
-	{
-		ret = malloc(sizeof(char) * 2);
-		ret[0] = '0';
-		ret[1] = '\0';
-		return (ret);
-	}*/
 	if (num == 0)
 		return (intger_value_is_zero(num));
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
 	ft_strlcpy(hex, "0123456789ABCDEF",17);
-	while(as > 0)
+	while(num > 0)
 	{
-		temp[i++] = hex[as % 16];
-		as = as / 16;
+		temp[i++] = hex[num % 16];
+		num = num / 16;
 	}
 	if (0 == (ret = malloc(sizeof(char) * (i-- + 1))))
 		return (0);
@@ -95,23 +77,14 @@ char *ten_unsigned(unsigned int num)
 	char *ret;
 	int i;
 	int j;
-	unsigned int as;
 
-	as = num;
-	/*if (num == 0)
-	{
-		ret = malloc(sizeof(char) * 2);
-		ret[0] = '0';
-		ret[1] = '\0';
-		return (ret);
-	}*/
 	if (num == 0)
 		return (intger_value_is_zero(num));
 	i = 0;
-	while (as > 0)
+	while (num > 0)
 	{
-		arr[i++] = (as % 10) + '0';
-		as = as / 10;
+		arr[i++] = (num % 10) + '0';
+		num = num / 10;
 	}
 	if (0 == (ret = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
