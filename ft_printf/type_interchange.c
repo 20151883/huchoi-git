@@ -60,7 +60,6 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
     return (1);
 }
 
-
 int letter_di(char **line, char **p_temp, unsigned long long value)
 {
     char *arr;
