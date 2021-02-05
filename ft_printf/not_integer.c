@@ -22,7 +22,7 @@ char *case_c(t_node *p_node, char **line)//dot procedure is needed
 		return (ft_strdup(""));
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
         return (0);
-    if (ft_atoi(line[2]) > 0)
+    if (atoi_positive(line[2]) > 0)
         lenth = atoi_positive(line[2]);
     else
         lenth = 1;
