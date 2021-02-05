@@ -1,7 +1,24 @@
 #include "./includes/ft_printf.h"
 
 va_list ap;
-int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
+
+void type_case_sort(t_node *p_node)
+{
+	char *str;
+
+	str = p_node->string;
+	if (str[p_node->idx] == '%')
+		p_node->value = '%';
+	else
+	{
+		if (str[p_node->idx] == 'c')
+			p_node->value = va_arg(ap, int);
+		else
+			p_node->value = va_arg(ap ,unsigned long long);
+	}
+}
+
+int what_my_case(char c, int now_case)
 {
     if (c == '-' || c == '0')
     {
@@ -43,7 +60,7 @@ int ft_printf(const char* str, ...)
 	va_start(ap, str);
 	while (str[node.idx] != '\0')
 	{
-		if(str[node.idx++] != '%')//node rnewer
+		if(str[node.idx++] != '%')
 		{
 			my_putchar_fd(&node);
 			continue;
@@ -55,15 +72,6 @@ int ft_printf(const char* str, ...)
         	if (important(&node, final, &temp) == 0)
 				return (0);
 		}
-		if (str[node.idx] == '%')
-			node.value = '%';
-		/*else
-		{
-			if (str[node.idx] == 'c')
-				node.value = va_arg(ap, int);
-			else
-				node.value = va_arg(ap, unsigned long long);
-		}*/
 		type_case_sort(&node);
 		if (finale(&node, final, &temp) == 0)
 			return (0);
