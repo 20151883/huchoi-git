@@ -222,9 +222,9 @@ void type_case_sort(t_node *p_node)
 	else
 	{
 		if (str[p_node->idx] == 'c')
-			p_node->value = va_arg(ap, int);
+			p_node->value = va_arg(g_ap, int);
 		else
-			p_node->value = va_arg(ap ,unsigned long long);
+			p_node->value = va_arg(g_ap ,unsigned long long);
 	}
 }
 
