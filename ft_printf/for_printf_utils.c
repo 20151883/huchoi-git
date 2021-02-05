@@ -12,16 +12,15 @@ int not_star(char **line, char *str, char **p_temp, t_node *p_node)
     free(*p_temp);
     *p_temp = arr;
 	(p_node->idx)++;
-    return (1);//free is not done in here
+    return (1);
 }
 
 int over_star(t_node *p_node, char **line, char**p_temp)
 {
     if (0 == star(line, p_temp, p_node->buf, p_node->my_case, p_node))
-        return (0);//free(buf) is done in star func
+        return (0);
     p_node->buf = 0;
     line[p_node->my_case] = *p_temp;
-    //printf("in star... line[2] = %s", line[2]);
     if (what_my_case(p_node->string[++(p_node->idx)], p_node->my_case) == p_node->my_case)
         return (free_ret_zero(line, *p_temp, NULL, p_node->my_case));
     return (1);
@@ -52,14 +51,13 @@ int star(char **line, char **p_temp, char *buf, int my_case, t_node *p_node)
     free(*p_temp);
     free(buf);
     *p_temp = arr;
-    //printf("\n\n\n\%s\n\n", arr);
     return (1);
 }
 
 int case_changed(char **line, char **p_temp, int *p_my_case)
 {
     if (0 == (line[*p_my_case] = ft_strdup(*p_temp)))
-        return (free_ret_zero(line, *p_temp, 0, *p_my_case));//***
+        return (free_ret_zero(line, *p_temp, 0, *p_my_case));
     (*p_my_case)++;
     ft_memset(*p_temp, '\0', ft_strlen(*p_temp));
     **p_temp = '\0';

@@ -8,7 +8,6 @@ typedef struct s_node{
 	int count;
 	int idx;
 	int my_case;
-	//va_list...???
 	char *string;
 	char *buf;
     int ret;
