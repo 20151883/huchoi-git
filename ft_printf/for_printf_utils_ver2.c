@@ -80,8 +80,9 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
     int idx;
     char *hex;
 
-    /*if (value == 0)
-    {
+    if (value == 0)
+        return (value_is_zero(p_temp));
+    /*{
         arr = malloc(sizeof(char) * 4);
         arr[0] = '0';
         arr[1] = 'x';
@@ -111,6 +112,21 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
     free(*p_temp);
     free(hex);
     *p_temp = buf;
+    return (1);
+}
+
+int value_is_zero(char **p_temp)
+{
+    char *arr;
+
+    if (0== (arr = malloc(sizeof(char) * 4)))
+        return (0);
+    arr[0] = '0';
+    arr[1] ='x';
+    arr[2] = '0';
+    arr[3] = '\0';
+    free(*p_temp);
+    *p_temp = arr;
     return (1);
 }
 
