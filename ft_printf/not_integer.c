@@ -94,7 +94,7 @@ char *case_p(t_node *p_node, char **line)
 	else
 		ft_strlcpy(&ret[lenth - size], save, size + 1);
 	free(save);
-    return (is_precision_zero(&ret, line, lenth, p_node));
+    return (is_precision_zero(ret, line, lenth, p_node));
 }
 
 char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
@@ -124,26 +124,26 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 	return (*p_ret);
 }
 
-char *is_precision_zero(char **p_ret, char **line, int lenth, t_node *p_node)
+char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 {
 	if (p_node->p_p == 0)
 	{
 		if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0)
 		{
-			ft_memset(*p_ret, ' ', lenth);
-			(*p_ret)[0] = '0';
-			(*p_ret)[0] = 'x'
-			(*p_ret)[2] = '0';
+			ft_memset(ret, ' ', lenth);
+			ret[0] = '0';
+			ret[0] = 'x'
+			ret[2] = '0';
 		}
 		else if (p_node->p_p == 0)
 		{
-			ft_memset(*p_ret, ' ', lenth);
-			*p_ret[0] = '0';
-			*p_ret[1] = 'x';
-			*p_ret[2] = '0';
+			ft_memset(ret, ' ', lenth);
+			ret[0] = '0';
+			ret[1] = 'x';
+			ret[2] = '0';
 		}
 	}
-	return (*p_ret);
+	return (ret);
 }
 char *case_s(t_node *p_node, char **line, char**p_temp)
 {
