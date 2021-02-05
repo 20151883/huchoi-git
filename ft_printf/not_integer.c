@@ -116,7 +116,7 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 		{
 			ft_strlcpy(*p_ret, "0x0", 4);
 			if (lenth != 3)
-				*p_ret[2] =  ' ';
+				*p_ret[3] =  ' ';
 		}
 		else
 			ft_strlcpy(&((*p_ret)[lenth - 3]), "0x0", 4);
