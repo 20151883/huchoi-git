@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include "../libft/libft.h"
  extern va_list g_ap;
- 	typedef struct	s_node{
+typedef struct	s_node{
 		int count;
 		int idx;
 		int my_case;
@@ -28,12 +28,12 @@
 		int two_star;
 		int is_precision;
  		}t_node;
-	void 	minus_express(char **line, int *p_size, int *p_plus, int *p_lenth);
-	char 	*minus_manage(char **line, char **p_ret);
+	void	minus_express(char **line, int *p_size, int *p_plus, int *p_lenth);
+	char	*minus_manage(char **line, char **p_ret);
 	int 	s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
-	int 	check_is_zero(t_node *p_node, char **line, int *p_lenth);
-	void 	type_case_sort(t_node *p_node);
-	int 	value_is_zero(char **p_temp);
+	int		check_is_zero(t_node *p_node, char **line, int *p_lenth);
+	void	type_case_sort(t_node *p_node);
+	int		value_is_zero(char **p_temp);
 	int 	compute_lenth(t_node *p_node, char **line, int *size, int *lenth);
 	int		check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth);
 	char	*trim_the_zero(char **line);
