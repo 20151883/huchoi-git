@@ -134,7 +134,7 @@ int for_hex_check_zero(char **line, int *p1, int *p2, int *p3)
     else
         return (0);
 }
-int hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3)
+/*int hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3)
 {
     if (p_node->un_int == 0)
 	{
@@ -145,7 +145,7 @@ int hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3)
 	}
 	else
 		return (0);
-}
+}*/
 char *case_X(t_node *p_node, char **line)
 {
     int size;//number of character
@@ -160,7 +160,7 @@ char *case_X(t_node *p_node, char **line)
         plus = 0;
     lenth = size + plus;
     if (p_node->is_precision == 1 && size <= 1)
-        check_zero(line, &size, &plus, &lenth);
+        for_hex_check_zero(line, &size, &plus, &lenth);
     if (*line[2] != '\0' && lenth < atoi_positive(line[2]))
         lenth = atoi_positive(line[2]);
     (p_node->count) += lenth;
