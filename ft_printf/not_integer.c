@@ -90,44 +90,13 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	int i;
 
 	i = 0;
-	/*size = ft_strlen(line[5] );
-	if ((0 < ft_atoi(line[3])) && (ft_atoi(line[3]) < size))
-	{
-		size = ft_atoi(line[3]);
-	}
-	lenth = size;
-	if (lenth < atoi_positive(line[2]) && *line[2] != '\0')
-	{
-		lenth = atoi_positive(line[2]);
-	}
-	else
-	{
-		lenth = lenth + 0;
-	}//[0] ~ [size] but  at [size] NULL ...so [0] ~ [size-1] ///[0]start or [size-lenth]start
-	if (ft_atoi(line[3]) == 0 && p_node->is_precision == 1)
-	{
-		if (ft_atoi(line[3]) == 0)
-		{
-			lenth = 0;
-			size = 0;
-		}
-		if ((atoi_positive(line[2]) > 0))
-		{
-			p_node->count += atoi_positive(line[2]);
-			while (size++ < atoi_positive(line[2]))
-				ft_putchar_fd(' ', 1);
-			char *test;
-			test = ft_calloc(1,1);
-			return (test);
-		}
-	}*/
 	if (0 == s_lenth_size(p_node, line, &size, &lenth))
 		return ((char *)ft_calloc(1, 1));
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		free_ret_zero(line, *p_temp, 0, 6);
-	ret[lenth] = '\0';//needed...!!!
+	ret[lenth] = '\0';
 	(p_node->count)+=lenth;
-	if(ft_strchr(line[1], '0') != 0)
+	/*if(ft_strchr(line[1], '0') != 0)
 	{
 		while (i < lenth)
 			ret[i++] = ' ';
@@ -136,7 +105,9 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	{
 		while(i < lenth)
 			ret[i++] = ' ';
-	}
+	}*/
+	while (i < lenth)
+		ret[i++] = ' ';
 	if (ft_strchr(line[1], '-') != 0)
 	{
 		ft_strlcpy(&ret[0], line[5], size + 1);
