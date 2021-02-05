@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "./includes/ft_printf.h"
 
 char *case_d(t_node *p_node, char **line)
 {

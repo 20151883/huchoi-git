@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "./includes/ft_printf.h"
 
 va_list ap;
 int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
