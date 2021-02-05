@@ -67,7 +67,6 @@ char *case_i(t_node *p_node, char **line)
     int plus;
     int lenth;//buffer lenth excluded the NULL
     char *ret;
-    char *temp;
 
     size = ft_strlen(line[5]);
     if (ft_atoi(line[5]) < 0)
