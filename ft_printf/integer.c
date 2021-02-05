@@ -7,22 +7,6 @@ char *case_d(t_node *p_node, char **line)
     int lenth;//buffer lenth excluded the NULL
     char *ret;
 
-    /*size = ft_strlen(line[5]);
-    if (ft_atoi(line[5]) < 0)
-    {
-        if (ft_atoi(line[3]) > (size - 1))
-            plus = ft_atoi(line[3]) - (size - 1);
-        else
-            plus = 0;
-    }
-    else
-    {
-        if (*line[3] != '\0' && size < atoi(line[3]))
-            plus = atoi(line[3]) - size;
-        else
-            plus = 0;
-    }
-    lenth = size + plus;*/
     minus_express(line, &size, &plus, &lenth);
      if (p_node->is_precision == 1)
         check_zero(line, &size, &plus, &lenth);
@@ -63,22 +47,6 @@ char *case_i(t_node *p_node, char **line)
     int lenth;//buffer lenth excluded the NULL
     char *ret;
 
-    /*size = ft_strlen(line[5]);
-    if (ft_atoi(line[5]) < 0)
-    {
-        if (ft_atoi(line[3]) > (size - 1))
-            plus = ft_atoi(line[3]) - (size - 1);
-        else
-            plus = 0;
-    }
-    else
-    {
-        if (*line[3] != '\0' && size < atoi(line[3]))
-            plus = atoi(line[3]) - size;
-        else
-            plus = 0;
-    }
-    lenth = size + plus;*/
     minus_express(line, &size, &plus, &lenth);
     if (p_node->is_precision == 1)
         check_zero(line, &size, &plus, &lenth);
@@ -115,7 +83,6 @@ char *case_u(t_node *p_node, char **line)
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_unsigned(line, size, lenth);    
     return (ret);
-    return (0);
 }
 
 char *case_x(t_node *p_node, char **line)
@@ -141,7 +108,6 @@ char *case_x(t_node *p_node, char **line)
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_unsigned(line, size, lenth);    
     return (ret);
-    return (0);
 }
 
 char *case_X(t_node *p_node, char **line)
@@ -167,5 +133,4 @@ char *case_X(t_node *p_node, char **line)
     else//precision is nit in line.//plus is zero.. 
         ret = no_precision_unsigned(line, size, lenth);    
     return (ret);
-    return (0);
 }
