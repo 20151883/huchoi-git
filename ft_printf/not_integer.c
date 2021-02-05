@@ -167,7 +167,7 @@ char *case_percent(t_node *p_node, char **line, char**p_temp)
 	ret[lenth] = '\0';
 	(p_node->count)+=lenth;
 	if(ft_strchr(line[1], '0') != 0)
-		ft_memset(ret, '0', lenth);
+		ft_memset(ret, ' ', lenth);
 	else
 		ft_memset(ret, ' ', lenth);
 	if (ft_strchr(line[1], '-') != 0)
