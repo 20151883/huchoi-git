@@ -237,7 +237,7 @@ int finale(t_node *p_node, char **line, char **p_temp)
     if (!complete_final(line, &(p_node->my_case), p_temp))
         return (0);
     if (!inter_type(line, p_temp, p_node->value, str[p_node->idx]))
-        return (0);
+        return (0);     
     if (!real_complete_final(p_node, line, p_temp))
         return (0);
     return (1);
