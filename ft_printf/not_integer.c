@@ -94,7 +94,7 @@ char *case_p(t_node *p_node, char **line)
 	else
 		ft_strlcpy(&ret[lenth - size], save, size + 1);
 	free(save);
-    return (is_precision_zero(&ret, line, lenth, p_node));
+    return (ret);
 }
 
 char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
