@@ -200,11 +200,28 @@ int over_star(t_node *p_node, char **line, char**p_temp)
     return (1);
 }
 
+void type_case_sort(t_node *p_node)
+{
+	char *str;
+
+	str = p_node->string;
+	if (str[p_node->idx] == '%')
+		p_node->value = '%';
+	else
+	{
+		if (str[p_node->idx] == 'c')
+			p_node->value = va_arg(ap, int);
+		else
+			p_node->value = va_arg(ap ,unsigned long long);
+	}
+}
+
 int finale(t_node *p_node, char **line, char **p_temp)
 {
     char *str;
 
     str = p_node->string;
+    type_case_sort(&node);
     if (!complete_final(line, &(p_node->my_case), p_temp))
         return (0);
     if (!inter_type(line, p_temp, p_node->value, str[p_node->idx]))

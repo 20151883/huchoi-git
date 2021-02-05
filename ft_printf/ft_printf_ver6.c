@@ -2,22 +2,6 @@
 
 va_list ap;
 
-void type_case_sort(t_node *p_node)
-{
-	char *str;
-
-	str = p_node->string;
-	if (str[p_node->idx] == '%')
-		p_node->value = '%';
-	else
-	{
-		if (str[p_node->idx] == 'c')
-			p_node->value = va_arg(ap, int);
-		else
-			p_node->value = va_arg(ap ,unsigned long long);
-	}
-}
-
 int what_my_case(char c, int now_case)
 {
     if (c == '-' || c == '0')
@@ -72,7 +56,6 @@ int ft_printf(const char* str, ...)
         	if (important(&node, final, &temp) == 0)
 				return (0);
 		}
-		type_case_sort(&node);
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
