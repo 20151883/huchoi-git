@@ -110,9 +110,9 @@ char *man_zero(t_node *p_node, char **line, int lenth)
 		if (ft_strlen(line[5]) == 3 && line[5][3] == '0')
 		{
 			if (ft_strchr(line[1], '-'))
-				ft_strlcpy(ret, "0x", 4);
+				ft_strlcpy(ret, "0x", 3);
 			else
-				ft_strlcpy(&ret[lenth - 3], "0x", 4);
+				ft_strlcpy(&ret[lenth - 2], "0x", 3);
 		}
 	}
 	else
