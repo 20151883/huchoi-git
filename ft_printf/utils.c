@@ -140,12 +140,12 @@ void minus_manage(char **line, char **p_ret)
 	{
 		if (ft_strchr(*p_ret, '0') != 0)
 		{
-			*(ft_strchr(*p_ret, '0')) == '-';
-			*(ft_strrchr(*p_ret, '-')) == '0';
+			*(ft_strchr(*p_ret, '0')) = '-';
+			*(ft_strrchr(*p_ret, '-')) = '0';
 		}
 	}
 	else
-		return ();
+		return ;
 }
 
 char *precision_unsigned(char **line, int plus, int size, int lenth)
