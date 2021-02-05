@@ -13,7 +13,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc 
 
-FLAGS = -c 
+FLAGS = -c -W -Wall -Werror
 
 INCLUDES = -I./includes
 

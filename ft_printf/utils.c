@@ -100,7 +100,6 @@ char *precision_int(char **line, int plus, int size, int lenth)
 {
 	char *ret;
 	int i;
-	char save;
 
 	i = 0;
 	if ( 0 == (ret = malloc(sizeof(char) * (lenth + 1))))
@@ -143,9 +142,8 @@ char *precision_unsigned(char **line, int plus, int size, int lenth)
 {
 	char *ret;
 	int i;
-	char save;
+	
 	i = 0;
-
 	ret = malloc(sizeof(char) * (lenth + 1));
 	ft_memset(ret, ' ', lenth);
 	ret[lenth] = '\0';
@@ -171,8 +169,6 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 {
 	char *ret;
 	int i;
-	unsigned int num;
-	char two[2];
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
@@ -190,16 +186,6 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
-	two[1] = '\0';
-	char *arr;
-	/*if (ft_atoi(line[5]) < 0)
-	{
-		if(ft_strchr(ret, '0') != 0)
-		{
-			*(ft_strchr(ret, '0')) = '-';
-			*(ft_strrchr(ret, '-')) = '0';
-		}
-	}*/
 	return (minus_manage(line, &ret));
 }
 
@@ -207,8 +193,6 @@ char *no_precision_unsigned(char **line, int plus, int size, int lenth)
 {
 	char *ret;
 	int i;
-	unsigned int num;
-	char two[2];
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
