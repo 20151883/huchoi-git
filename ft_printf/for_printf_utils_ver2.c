@@ -38,23 +38,23 @@ void renewer_line(char **line, int num)
     line[num] = temp;
 }
 
-int inter_type(char **line, char **p_temp, unsigned long long value, char the_type)
+int inter_type(char **line, char **p_temp, t_node *p_node, char the_type)
 {
     if (the_type == 'c' || the_type == '%')
-        return (letter_c_percent(line, p_temp, value));
+        return (letter_c_percent(line, p_temp, p_node->for_c));
     if (the_type == 's')
-        return (letter_s(line, p_temp, value));
+        return (letter_s(line, p_temp, p_node->for_s));
     if (the_type == 'p')
-        return (letter_p(line, p_temp, value));
+        return (letter_p(line, p_temp, p_node->void_p));
     if (ft_strchr("di", the_type) != 0)
-        return (letter_di(line, p_temp, value));
+        return (letter_di(line, p_temp, p_node->yes_int));
     if (ft_strchr("uxX", the_type) != 0)
-        return (letter_uxX(line, p_temp, value, the_type));
+        return (letter_uxX(line, p_temp, p_node->un_int, the_type));
     else
         return (free_ret_zero(line, *p_temp, NULL, 5));
 }
 
-int letter_c_percent(char **line, char **p_temp, unsigned long long value)
+int letter_c_percent(char **line, char **p_temp, char value)
 {
     char two[2];
     char *arr;
@@ -73,7 +73,7 @@ int letter_c_percent(char **line, char **p_temp, unsigned long long value)
     return (1);
 }
 
-int letter_s(char **line, char **p_temp, unsigned long long value)
+int letter_s(char **line, char **p_temp, char *value)
 {
     char *arr;
 
@@ -86,7 +86,7 @@ int letter_s(char **line, char **p_temp, unsigned long long value)
     return (1);
 }
 
-int letter_p(char **line, char **p_temp, unsigned long long value)
+int letter_p(char **line, char **p_temp, void *value)
 {
     char *buf;
     int idx;
@@ -130,7 +130,7 @@ int value_is_zero(char **p_temp)
     return (1);
 }
 
-int letter_di(char **line, char **p_temp, unsigned long long value)
+int letter_di(char **line, char **p_temp, int value)
 {
     char *arr;
 
@@ -149,7 +149,7 @@ int letter_di(char **line, char **p_temp, unsigned long long value)
     return (1);
 }
 
-int letter_uxX(char **line, char **p_temp, unsigned long long value, char the_type)
+int letter_uxX(char **line, char **p_temp, unsigned int value, char the_type)
 {
     char *arr;
     unsigned int num;
@@ -218,13 +218,19 @@ void type_case_sort(t_node *p_node)
 
 	str = p_node->string;
 	if (str[p_node->idx] == '%')
-		p_node->value = '%';
+		p_node->for_c = '%';
 	else
 	{
 		if (str[p_node->idx] == 'c')
-			p_node->value = va_arg(g_ap, int);
-		else
-			p_node->value = va_arg(g_ap ,unsigned long long);
+			p_node->for_c = (char)va_arg(g_ap, int);
+		else if (str[p_node->idx] == 's')
+			p_node->for_s = va_arg(g_ap , char *);//
+        else if (str[p_node->idx] == 'p')
+            p_node->void_p = va_arg(g_ap, void *);
+        else if (ft_strdup("di", str[p_node->idx]) != 0)
+            p_node->yes_int = va_arg(g_ap, int);
+        else
+            p_node->un_int = va_arg(g_ap, unsigned int)
 	}
 }
 
@@ -236,7 +242,7 @@ int finale(t_node *p_node, char **line, char **p_temp)
     type_case_sort(p_node);
     if (!complete_final(line, &(p_node->my_case), p_temp))
         return (0);
-    if (!inter_type(line, p_temp, p_node->value, str[p_node->idx]))
+    if (!inter_type(line, p_temp, p_node->value//p_node, str[p_node->idx]))
         return (0);     
     if (!real_complete_final(p_node, line, p_temp))
         return (0);
