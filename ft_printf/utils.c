@@ -122,19 +122,10 @@ char *precision_int(char **line, int plus, int size, int lenth)
 			ret[i++] = '0';
 		ft_strlcpy(&ret[i], line[5], size + 1);
 	}
-	/*if (ft_atoi(line[5]) < 0)
-	{
-		if(ft_strchr(ret, '0') != 0)
-		{
-			*(ft_strchr(ret, '0')) = '-';
-			*(ft_strrchr(ret, '-')) = '0';
-		}
-	}*/
-	minus_manage(line, &ret);
-	return (ret);
+	return (minus_manage(line, &ret));
 }
 
-void minus_manage(char **line, char **p_ret)
+char *minus_manage(char **line, char **p_ret)
 {
 	if (ft_atoi(line[5]) < 0)
 	{
@@ -142,10 +133,11 @@ void minus_manage(char **line, char **p_ret)
 		{
 			*(ft_strchr(*p_ret, '0')) = '-';
 			*(ft_strrchr(*p_ret, '-')) = '0';
+			return (*p_ret);
 		}
 	}
 	else
-		return ;
+		return (*p_ret);
 }
 
 char *precision_unsigned(char **line, int plus, int size, int lenth)
