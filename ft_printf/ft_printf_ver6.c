@@ -55,7 +55,6 @@ int ft_printf(const char* str, ...)
         	if (important(&node, final, &temp) == 0)
 				return (0);
 		}
-		//type_case_sort(&node, final);
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}

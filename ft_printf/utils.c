@@ -2,6 +2,47 @@
 //minus integer case is not managed....
 //hex case does not manage minus...
 
+int free_ret_zero(char **p, char *s1, char *s2, int my_case)
+{
+    int i;
+
+    i = 1;
+    while(i < my_case)
+    {
+        free(p[i++]);
+    }
+    if (s1 != 0)
+        free(s1);
+    if (s2 != 0)
+        free(s2);
+    return (0);
+}
+
+void my_putchar_fd(t_node *p_node)
+{
+    char *str;
+
+    str = p_node->string;
+    ft_putchar_fd(str[(p_node->idx) - 1], 1);
+    p_node->count++;
+}
+
+void type_case_sort(t_node *p_node, char **line)
+{
+    char *str;
+
+    str = p_node->string;
+    if (str[p_node->idx] == '%')
+        p_node->value = '%';
+    else
+    {
+        if (str[p_node->idx] == 'c')
+            p_node->value = va_arg(ap, int);
+        else
+            p_node->value = va_arg(ap, unsigned long long);
+    }
+}
+
 char *ten_small_hex(unsigned int num)
 {
 	char *hex;
