@@ -1,5 +1,18 @@
 #include "./includes/ft_printf.h"
 
+char * intger_value_is_zero(unsigned int num)
+{
+	char *arr;
+
+	if ( 0== (arr = malloc(sizeof(char) * 4)))
+		return (0);
+	if (num != 0)
+		return (0;)
+	arr[0] = '0';
+	arr[2] = '\0';
+	return (arr);
+}
+
 char *ten_small_hex(unsigned int num)
 {
 	char *hex;
@@ -10,13 +23,15 @@ char *ten_small_hex(unsigned int num)
 	unsigned int	 as;
 
 	as = num;
-	if (num == 0)
+	/*if (num == 0)
 	{
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
 		return (ret);
-	}
+	}*/
+	if (num == 0)
+		return (intger_value_is_zero(num));
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
@@ -46,13 +61,15 @@ char *ten_big_hex(unsigned int num)
 	unsigned int	 as;
 
 	as = num;
-	if (num == 0)
+	/*if (num == 0)
 	{
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
 		return (ret);
-	}
+	}*/
+	if (num == 0)
+		return (intger_value_is_zero(num));
 	i = 0;
 	if (0 == (hex = malloc(sizeof(char) *17)))
 		return (0);
@@ -81,13 +98,15 @@ char *ten_unsigned(unsigned int num)
 	unsigned int as;
 
 	as = num;
-	if (num == 0)
+	/*if (num == 0)
 	{
 		ret = malloc(sizeof(char) * 2);
 		ret[0] = '0';
 		ret[1] = '\0';
 		return (ret);
-	}
+	}*/
+	if (num == 0)
+		return (intger_value_is_zero(num));
 	i = 0;
 	while (as > 0)
 	{
