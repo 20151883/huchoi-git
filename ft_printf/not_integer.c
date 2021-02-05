@@ -102,25 +102,25 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 	{
 		if (ft_strchr(line[2], '-'))
 		{
-			ft_strlcpy(ret, "0x")
+			ft_strlcpy(*p_ret, "0x", 3)
 			if (lenth != 2)
 				ret[2] =  ' ';
 		}
 		else
-			ft_strlcpy(ret[lenth - 2], "0x", 3);
+			ft_strlcpy(&ret[lenth - 2], "0x", 3);
 	}
 	else
 	{
 		if (ft_strchr(line[2], '-'))
 		{
-			ft_strlcpy(ret, "0x0", 4)
+			ft_strlcpy(*p_ret, "0x0", 4)
 			if (lenth != 3)
 				ret[2] =  ' ';
 		}
 		else
 			ft_strlcpy(ret[lenth - 3], "0x0", 4);
 	}
-	return (ret);
+	return (*p_ret);
 }
 char *is_precision_zero(char **p_ret, char **line, int lenth)
 {
