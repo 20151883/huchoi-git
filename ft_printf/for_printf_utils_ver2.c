@@ -227,10 +227,10 @@ void type_case_sort(t_node *p_node)
 			p_node->for_s = va_arg(g_ap , char *);//
         else if (str[p_node->idx] == 'p')
             p_node->p_p = va_arg(g_ap, unsigned long long);
-        else if (ft_strdup("di", str[p_node->idx]) != 0)
+        else if (ft_strchr("di", str[p_node->idx]) != 0)
             p_node->yes_int = va_arg(g_ap, int);
         else
-            p_node->un_int = va_arg(g_ap, unsigned int)
+            p_node->un_int = va_arg(g_ap, unsigned int);
 	}
 }
 
@@ -242,7 +242,7 @@ int finale(t_node *p_node, char **line, char **p_temp)
     type_case_sort(p_node);
     if (!complete_final(line, &(p_node->my_case), p_temp))
         return (0);
-    if (!inter_type(line, p_temp, p_node, str[p_node->idx])//p_node, str[p_node->idx]))
+    if (!inter_type(line, p_temp, p_node, str[p_node->idx]))//p_node, str[p_node->idx]))
         return (0);     
     if (!real_complete_final(p_node, line, p_temp))
         return (0);

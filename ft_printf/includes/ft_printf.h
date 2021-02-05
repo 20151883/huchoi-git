@@ -26,7 +26,7 @@ typedef struct	s_node{
 		unsigned int un_int;
 		int 		yes_int;
 		char			for_c;
-		unsigned long long		*p_p;
+		unsigned long long		p_p;
 		char		*for_s;
 		int num[3];
 		int two_star;
