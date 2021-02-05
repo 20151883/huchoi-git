@@ -78,9 +78,9 @@ char *case_p(t_node *p_node, char **line)
 	lenth = size;
 	if (atoi_positive(line[2]) > size)
 		lenth = atoi_positive(line[2]);
-	if (p_node->p_p == 0 && ft_atoi(line[2]) == 0 && p_node->is_precision == 1 && lenth < 2)
+	if (p_node->p_p == 0 && ft_atoi(line[2]) == 0 && p_node->is_precision == 1 && atoi_positive(line[2]) < 2)
 		lenth = 2;
-	else if (p_node->p_p == 0 && lenth < 3 && p_node->is_precision == 1)
+	else if (p_node->p_p == 0 && atoi_positive(line[2]) < 3 && p_node->is_precision == 1)
 		lenth = 3;
 	p_node->count += lenth;
 	//printf("lenth : %d", lenth);
