@@ -118,7 +118,7 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 				*p_ret[2] =  ' ';
 		}
 		else
-			ft_strlcpy(*p_ret[lenth - 3], "0x0", 4);
+			ft_strlcpy(&(*p_ret[lenth - 3]), "0x0", 4);
 	}
 	return (*p_ret);
 }
