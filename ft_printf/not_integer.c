@@ -121,7 +121,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 			return (test);
 		}
 	}*/
-	if (0 == s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth))
+	if (0 == s_lenth_size(p_node, line, &size, &lenth))
 		return ((char *)ft_calloc(1, 1));
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		free_ret_zero(line, *p_temp, 0, 6);
