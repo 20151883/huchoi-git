@@ -36,7 +36,7 @@ char *case_d(t_node *p_node, char **line)
     return (ret);
 }
 
-void minus_express(char **line, int *p_size, int *p_plus, int *lenth)
+void minus_express(char **line, int *p_size, int *p_plus, int *p_lenth)
 {
     *p_size = ft_strlen(line[5]);
     if (ft_atoi(line[5]) < 0)
