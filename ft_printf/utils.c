@@ -1,45 +1,6 @@
-#include "includes/ft_printf.h"
-
-int free_ret_zero(char **p, char *s1, char *s2, int my_case)
-{
-    int i;
-
-    i = 1;
-    while(i < my_case)
-    {
-        free(p[i++]);
-    }
-    if (s1 != 0)
-        free(s1);
-    if (s2 != 0)
-        free(s2);
-    return (0);
-}
-
-void my_putchar_fd(t_node *p_node)
-{
-    char *str;
-
-    str = p_node->string;
-    ft_putchar_fd(str[(p_node->idx) - 1], 1);
-    p_node->count++;
-}
-
-void type_case_sort(t_node *p_node, char **line)
-{
-    char *str;
-
-    str = p_node->string;
-    if (str[p_node->idx] == '%')
-        p_node->value = '%';
-    else
-    {
-        if (str[p_node->idx] == 'c')
-            p_node->value = va_arg(ap, int);
-        else
-            p_node->value = va_arg(ap, unsigned long long);
-    }
-}
+#include "ft_printf.h"
+//minus integer case is not managed....
+//hex case does not manage minus...
 
 char *ten_small_hex(unsigned int num)
 {
@@ -169,6 +130,8 @@ char *precision_int(char **line, int plus, int size, int lenth)
 			ret[i++] = '0';
 		ft_strlcpy(&ret[i], line[5], size + 1);
 	}
+	//printf("TEST : [%s]", ret);
+	//printf("size : %d plus : %d lenth : %d", size,plus,lenth);
 	if (ft_atoi(line[5]) < 0)
 	{
 		if(ft_strchr(ret, '0') != 0)
@@ -176,6 +139,9 @@ char *precision_int(char **line, int plus, int size, int lenth)
 			*(ft_strchr(ret, '0')) = '-';
 			*(ft_strrchr(ret, '-')) = '0';
 		}
+		/*swap = ret[lenth - size - plus];
+		ret[lenth -size - plus] = ret[lenth - size];
+		ret[lenth - size] = swap;*/
 	}
 	return (ret);
 }
@@ -205,6 +171,11 @@ char *precision_unsigned(char **line, int plus, int size, int lenth)
 			ret[i++] = '0';
 		ft_strlcpy(&ret[i], line[5], size + 1);
 	}
+	//printf("TEST : [%s]", ret);
+	//printf("size : %d plus : %d lenth : %d", size,plus,lenth);
+		/*swap = ret[lenth - size - plus];
+		ret[lenth -size - plus] = ret[lenth - size];
+		ret[lenth - size] = swap;*/
 	return (ret);
 }
 
@@ -231,8 +202,20 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
+	//in_minus_case_in_check(char **line, char **p_ret)
 	two[1] = '\0';
 	char *arr;
+	/*if (ft_atoi(line[5]) < 0)
+	{
+		two[0] = '-';
+		*(ft_strchr(ret, '-')) = '0';
+		arr = ft_strjoin(two, ret);
+		free(ret);
+		ret = arr;
+		//return (0);//change his
+	}*/
+	//else
+		//return (0);
 	if (ft_atoi(line[5]) < 0)
 	{
 		if(ft_strchr(ret, '0') != 0)
@@ -240,6 +223,10 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 			*(ft_strchr(ret, '0')) = '-';
 			*(ft_strrchr(ret, '-')) = '0';
 		}
+		/*char swap;
+		swap = ret[lenth - size - plus];
+		ret[lenth -size - plus] = ret[lenth - size];
+		ret[lenth - size] = swap;*/
 	}
 	return (ret);
 }
@@ -267,6 +254,23 @@ char *no_precision_unsigned(char **line, int plus, int size, int lenth)
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
+	//printf("test : lenth : %d size = %d ret = %s", lenth, size, ret);
+	//in_minus_case_in_check(char **line, char **p_ret)
+	/*if (ft_atoi(line[5]) < 0)
+	{
+		two[0] = '-';
+		*(ft_strchr(ret, '-')) = '0';
+		arr = ft_strjoin(two, ret);
+		free(ret);
+		ret = arr;
+		//return (0);//change his
+	}*/
+	//else
+		//return (0);
+		/*char swap;
+		swap = ret[lenth - size - plus];
+		ret[lenth -size - plus] = ret[lenth - size];
+		ret[lenth - size] = swap;*/
 	return (ret);
 }
 
@@ -287,9 +291,11 @@ int atoi_positive(char *str)
 {
 	int num;
 
+	//printf("before action : %d", ft_atoi(str));
 	if (ft_strchr(str, '-'))
 		*(ft_strchr(str, '-')) = '0';
 	num = ft_atoi(str);
+	//printf("after... : %d", num);
 	return (num);
 }
 
@@ -306,7 +312,7 @@ char *trim_the_zero(char **line)
 	save++;
 	while (*save == '0')
 		save++;
-	size = ft_strlen(save) + 2;
+	size = ft_strlen(save) + 2;//num of character
 	ret = malloc(sizeof(char) * (size + 1));
 	ret[size] = '\0';
 	ret[0] = '0';

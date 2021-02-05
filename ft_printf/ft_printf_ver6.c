@@ -1,4 +1,4 @@
-#include "includes/ft_printf.h"
+#include "ft_printf.h"
 
 va_list ap;
 int what_my_case(char c, int now_case)//처리의 목적을 밝히시오....
@@ -43,7 +43,7 @@ int ft_printf(const char* str, ...)
 	va_start(ap, str);
 	while (str[node.idx] != '\0')
 	{
-		if(str[node.idx++] != '%')
+		if(str[node.idx++] != '%')//node rnewer
 		{
 			my_putchar_fd(&node);
 			continue;
@@ -54,6 +54,15 @@ int ft_printf(const char* str, ...)
 		{   
         	if (important(&node, final, &temp) == 0)
 				return (0);
+		}
+		if (str[node.idx] == '%')
+			node.value = '%';
+		else
+		{
+			if (str[node.idx] == 'c')
+				node.value = va_arg(ap, int);
+			else
+				node.value = va_arg(ap, unsigned long long);
 		}
 		if (finale(&node, final, &temp) == 0)
 			return (0);
