@@ -4,12 +4,7 @@ int complete_final(char **line, int *p_my_case, char **p_temp)
 {
     if (0 == (line[*p_my_case] = ft_strdup(*p_temp)))
         return (free_ret_zero(line, *p_temp, 0, *p_my_case));
-    //printf("\n\n\n\%s\n\n", line[*p_my_case]);
     (*p_my_case)++;
-    //if (ft_atoi(line[2]) < 0)
-    //    renewer_line(line, 2);
-    //if (ft_atoi(line[3]) < 0)
-    //    renewer_line(line, 3);
     while(*p_my_case <= 5)
     {
         if (0 == (line[*p_my_case] = ft_strdup("")))
@@ -31,7 +26,6 @@ void renewer_line(char **line, int num)
     line[num] = temp;
 }
 
-//***********************************************************
 int inter_type(char **line, char **p_temp, unsigned long long value, char the_type)
 {
     if (the_type == 'c' || the_type == '%')
@@ -45,7 +39,7 @@ int inter_type(char **line, char **p_temp, unsigned long long value, char the_ty
     if (ft_strchr("uxX", the_type) != 0)
         return (letter_uxX(line, p_temp, value, the_type));
     else
-        return (free_ret_zero(line, *p_temp, NULL, 5));//******!!!!
+        return (free_ret_zero(line, *p_temp, NULL, 5));
 }
 
 int letter_c_percent(char **line, char **p_temp, unsigned long long value)
@@ -82,12 +76,11 @@ int letter_s(char **line, char **p_temp, unsigned long long value)
 
 int letter_p(char **line, char **p_temp, unsigned long long value)
 {
-    char *arr;
-    char *buf;//not array declare buf malloc declare****
+    char *buf;
     int idx;
     char *hex;
 
-    if (value == 0)
+    /*if (value == 0)
     {
         arr = malloc(sizeof(char) * 4);
         arr[0] = '0';
@@ -96,21 +89,25 @@ int letter_p(char **line, char **p_temp, unsigned long long value)
         arr[3] = '\0';
         *p_temp = arr;
         return (1);
-    }
+    }*/
     if ( 0 == (hex = ft_strdup("0123456789abcdef")))
         return (0);
     if (0 == (buf = malloc(sizeof(char) * 15)))
         return (free_ret_zero(0, hex, 0, 5));
     ft_memset(buf, '0', 15);
-    buf[0] = '0';
+    /*buf[0] = '0';
     buf[1] = 'x';
-    buf[14] = '\0';
+    buf[14] = '\0';*/
     idx = 13;
     while (idx > 1 && value > 0)
     {
         buf[idx--] = hex[value % 16];
         value = value / 16;
     }
+    buf[idx] = '0';
+    buf[0] = '0';
+    buf[1] = 'x';
+    buf[14] = '\0';
     free(*p_temp);
     free(hex);
     *p_temp = buf;
