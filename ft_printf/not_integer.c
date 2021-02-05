@@ -73,6 +73,7 @@ char *case_p(t_node *p_node, char **line)
 	char *save;
 
 	save = trim_the_zero(line);
+	printf("TEST : %s", save);
 	size = ft_strlen(save);
 	if (atoi_positive(line[2]) > size)
 		lenth = atoi_positive(line[2]);
