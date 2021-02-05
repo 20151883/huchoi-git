@@ -192,15 +192,15 @@ char *no_precision_int(char **line, int plus, int size, int lenth)
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
 	two[1] = '\0';
 	char *arr;
-	if (ft_atoi(line[5]) < 0)
+	/*if (ft_atoi(line[5]) < 0)
 	{
 		if(ft_strchr(ret, '0') != 0)
 		{
 			*(ft_strchr(ret, '0')) = '-';
 			*(ft_strrchr(ret, '-')) = '0';
 		}
-	}
-	return (ret);
+	}*/
+	return (minus_manage(line, &ret));
 }
 
 char *no_precision_unsigned(char **line, int plus, int size, int lenth)
