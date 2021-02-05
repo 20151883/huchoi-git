@@ -82,7 +82,7 @@ char *case_p(t_node *p_node, char **line)
 	//printf("lenth : %d", lenth);
 	if (0 == (ret = (char *)ft_calloc(sizeof(char), (lenth + 1))))
 		return (0);
-		ft_memset(ret, ' ', lenth);
+	ft_memset(ret, ' ', lenth);
 	if (p_node->p_p == 0)
 		return (man_zero(p_node, line, &ret, lenth));
 	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
