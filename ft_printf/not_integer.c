@@ -125,7 +125,7 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 }
 /*char *is_precision_zero(char **p_ret, char **line, int lenth)
 {
-	/*if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0 && 0)
+	if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0 && 0)
 	{
 		*p_ret[2] = '0';
 		*p_ret[3] = '\0';
