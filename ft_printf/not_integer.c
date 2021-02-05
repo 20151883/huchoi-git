@@ -120,7 +120,7 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 		else
 			ft_strlcpy(&((*p_ret)[lenth - 3]), "0x0", 4);
 	}
-	return (
+	return (*p_ret);
 }
 char *is_precision_zero(char **p_ret, char **line, int lenth, t_node *p_node)
 {
