@@ -133,6 +133,8 @@ char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 			ft_memset(ret, ' ', lenth);
 			ret[0] = '0';
 			ret[1] = 'x';
+			if (atoi_positive(line[2]) <= 2)
+				ret[2] = 0;
 		}
 		else
 		{
