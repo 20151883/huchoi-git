@@ -54,7 +54,7 @@ int		ft_printf(const char *str, ...)
 	t_node	node;
 
 	init_node(&node, str);
-	va_start(ap, str);
+	va_start(g_ap, str);
 	while (str[node.idx] != '\0')
 	{
 		if (str[node.idx++] != '%')
@@ -72,6 +72,6 @@ int		ft_printf(const char *str, ...)
 		if (finale(&node, final, &temp) == 0)
 			return (0);
 	}
-	va_end(ap);
+	va_end(g_ap);
 	return (node.count);
 }
