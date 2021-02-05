@@ -6,32 +6,6 @@ char *case_c(t_node *p_node, char **line, char**p_temp)//dot procedure is needed
     char *ret;
     int idx;
 
-	/*if (ft_strncmp(line[5], "(null)", 10) == 0)
-	{
-			lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
-			int i = 0;
-			if (ft_strchr(line[2], '-'))
-			{
-				ft_putchar_fd(0,1);
-				p_node->count++;
-				while ((i++ < lenth - 1) && p_node->two_star == 0)
-				{
-					ft_putchar_fd(' ' ,1);
-					p_node->count++;
-				}
-			}
-			else
-			{
-				while ((i++ < lenth - 1) && p_node->two_star == 0)
-				{
-					ft_putchar_fd(' ', 1);
-					p_node->count++;
-				}
-				ft_putchar_fd(0, 1);
-				p_node->count++;
-			}
-			return (ft_strdup(""));
-	}*/
 	if (check_is_zero(p_node, line, &lenth) == 1)
 		return (ft_strdup(""));
     if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
@@ -116,7 +90,7 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	int i;
 
 	i = 0;
-	size = ft_strlen(line[5] );
+	/*size = ft_strlen(line[5] );
 	if ((0 < ft_atoi(line[3])) && (ft_atoi(line[3]) < size))
 	{
 		size = ft_atoi(line[3]);
@@ -146,7 +120,9 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 			test = ft_calloc(1,1);
 			return (test);
 		}
-	}
+	}*/
+	if (0 == s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth))
+		return ((char *)ft_calloc(1, 1));
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		free_ret_zero(line, *p_temp, 0, 6);
 	ret[lenth] = '\0';//needed...!!!
@@ -172,6 +148,31 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
     return (ret);
 }
 
+int s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth)
+{
+	*p_size = ft_strlen(line[5]);
+	if ((0 < ft_atoi(line[3])) && (ft_atoi(line[3]) < *p_size))
+		*p_size = ft_atoi(line[3]);
+	*p_lenth = *p_size;
+	if (*p_lenth < atoi_positive(line[2]) && *line[2] != '\0')
+		*p_lenth = atoi_positive(line[2]);
+	if (ft_atoi(line[3]) == 0 && p_node->is_precision == 1)
+	{
+		if (ft_atoi(line[3]) == 0)
+		{
+			*p_lenth = 0;
+			*p_size = 0;
+		}
+		if ((atoi_positive(line[2]) > 0))
+		{
+			p_node->count += atoi_positive(line[2]);
+			while ((*p_size)++ < atoi_positive(line[2]))
+				ft_putchar_fd(' ', 1);
+			return (0);
+		}
+	}
+	return (1);
+}
 char *case_percent(t_node *p_node, char **line, char**p_temp)
 {
 	int lenth;

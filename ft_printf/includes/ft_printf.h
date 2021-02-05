@@ -16,6 +16,7 @@ typedef struct s_node{
 	int two_star;
 	int is_precision;
 }t_node;
+int s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
 int check_is_zero(t_node *p_node, char **line, int *p_lenth);
 void type_case_sort(t_node *p_node);
 int value_is_zero(char **p_temp);
