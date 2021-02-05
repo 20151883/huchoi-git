@@ -1,6 +1,20 @@
 #include "./includes/ft_printf.h"
-//minus integer case is not managed....
-//hex case does not manage minus...
+
+void type_case_sort(t_node *p_node)
+{
+	char *str;
+
+	str = p_node->string;
+	if (str[p_node->idx] == '%')
+		node.value = '%';
+	else
+	{
+		if (str[p_node->idx] == 'c')
+			p_node->value = va_arg(ap, int);
+		else
+			p_node->value = va_arg(ap ,unsigned long long);
+	}
+}
 
 char *ten_small_hex(unsigned int num)
 {
