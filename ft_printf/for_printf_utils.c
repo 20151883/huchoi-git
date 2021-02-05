@@ -16,28 +16,6 @@ int free_ret_zero(char **p, char *s1, char *s2, int my_case)
     return (0);
 }
 
-/*char *renewer_str(char**p_dest, char *dest, char *joined_str)
-{
-    char *temp;
-    if (p_dest != 0)
-    {
-        if (0 == (temp = (ft_strjoin(*p_dest, joined_str))))
-        {
-             free_ret_zero(p_dest, 0, 0);
-             return (NULL);
-        }
-        *p_dest = temp;
-    }
-    else if (dest != 0)
-    {
-        if (0 == (temp =(ft_strjoin(dest))))
-        {
-            free_ret_zero(0, dest, 0);
-            return (NULL);
-        }
-    }
-}//renewer str... if error it rturn (0) (free is done)
-*/
 int not_star(char **line, char *str, char **p_temp, t_node *p_node)
 {
     char two[2];
@@ -78,7 +56,6 @@ int star(char **line, char **p_temp, char *buf, int my_case, t_node *p_node)
     free(*p_temp);
     free(buf);
     *p_temp = arr;
-    //printf("\n\n\n\%s\n\n", arr);
     return (1);
 }
 
