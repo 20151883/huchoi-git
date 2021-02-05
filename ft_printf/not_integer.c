@@ -64,22 +64,14 @@ int check_is_zero(t_node *p_node, char **line, int *p_lenth)
 		if (ft_strchr(line[2], '-'))
 		{
 			ft_putchar_fd(0,1);
-			//p_node->count++;
 			while ((i++ < *p_lenth - 1) && p_node->two_star == 0)
-			{
 				ft_putchar_fd(' ' ,1);
-				//p_node->count++;
-			}
 		}
 		else
 		{
 			while ((i++ < *p_lenth - 1) && p_node->two_star == 0)
-			{
 				ft_putchar_fd(' ', 1);
-				//p_node->count++;
-			}
 			ft_putchar_fd(0, 1);
-			//p_node->count++;
 		}
 		p_node->count += *p_lenth;
 		return (1);
