@@ -45,7 +45,7 @@ int inter_type(char **line, char **p_temp, t_node *p_node, char the_type)
     if (the_type == 's')
         return (letter_s(line, p_temp, p_node->for_s));
     if (the_type == 'p')
-        return (letter_p(line, p_temp, p_node->void_p));
+        return (letter_p(line, p_temp, p_node->p_p));
     if (ft_strchr("di", the_type) != 0)
         return (letter_di(line, p_temp, p_node->yes_int));
     if (ft_strchr("uxX", the_type) != 0)
@@ -86,7 +86,7 @@ int letter_s(char **line, char **p_temp, char *value)
     return (1);
 }
 
-int letter_p(char **line, char **p_temp, void *value)
+int letter_p(char **line, char **p_temp, unsigned long long value)
 {
     char *buf;
     int idx;
@@ -94,7 +94,7 @@ int letter_p(char **line, char **p_temp, void *value)
 
     if (value == 0)
         return (value_is_zero(p_temp));
-    if ( 0 == (hex = ft_strdup("0123456789abcdef")))
+    if (0 == (hex = ft_strdup("0123456789abcdef")))
         return (free_ret_zero(line, *p_temp, NULL, 5));
     if (0 == (buf = malloc(sizeof(char) * 15)))
         return (free_ret_zero(line, *p_temp, hex, 5));
@@ -226,7 +226,7 @@ void type_case_sort(t_node *p_node)
 		else if (str[p_node->idx] == 's')
 			p_node->for_s = va_arg(g_ap , char *);//
         else if (str[p_node->idx] == 'p')
-            p_node->void_p = va_arg(g_ap, void *);
+            p_node->p_p = va_arg(g_ap, unsigned long long);
         else if (ft_strdup("di", str[p_node->idx]) != 0)
             p_node->yes_int = va_arg(g_ap, int);
         else
@@ -242,7 +242,7 @@ int finale(t_node *p_node, char **line, char **p_temp)
     type_case_sort(p_node);
     if (!complete_final(line, &(p_node->my_case), p_temp))
         return (0);
-    if (!inter_type(line, p_temp, p_node->value//p_node, str[p_node->idx]))
+    if (!inter_type(line, p_temp, p_node, str[p_node->idx])//p_node, str[p_node->idx]))
         return (0);     
     if (!real_complete_final(p_node, line, p_temp))
         return (0);

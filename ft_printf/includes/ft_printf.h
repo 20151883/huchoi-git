@@ -26,7 +26,7 @@ typedef struct	s_node{
 		unsigned int un_int;
 		int 		yes_int;
 		char			for_c;
-		void		*void_p;
+		unsigned long long		*p_p;
 		char		*for_s;
 		int num[3];
 		int two_star;
@@ -54,7 +54,7 @@ typedef struct	s_node{
 	char	*ten_unsigned(unsigned int num);
 	int		letter_uxX(char **line, char **p_temp, unsigned int value, char the_tpye);
 	int 	letter_di(char **line, char **p_temp, int value);
-	int		letter_p(char **line, char **p_temp, void *value);
+	int		letter_p(char **line, char **p_temp, unsigned long long value);
 	int		letter_s(char **line, char **p_temp, char *value);
 	int		letter_c_percent(char **line, char **p_temp, char value);
 	int		inter_type(char **line, char **p_temp, t_node *p_node, char the_type);
