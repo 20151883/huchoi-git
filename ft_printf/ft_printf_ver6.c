@@ -4,7 +4,7 @@ va_list ap;
 int 	what_my_case(char c, int now_case)
 {
 	if (c == '-' || c == '0')
-	{}
+	{
 		if (now_case <= 1)
 			return (1);
 	}
