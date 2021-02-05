@@ -128,8 +128,8 @@ int for_hex_check_zero(char **line, int *p1, int *p2, int *p3)
     {
         *p1 = 0;
         *p2 = 0;
-        *pe = 0;
-        return (1)
+        *p3 = 0;
+        return (1);
     }
     else
         return (0);
