@@ -1,29 +1,29 @@
 #include "./includes/ft_printf.h"
 
 va_list ap;
-
-int what_my_case(char c, int now_case)
+int 	what_my_case(char c, int now_case)
 {
-    if (c == '-' || c == '0')
-    {
+	if (c == '-' || c == '0')
+	{}
 		if (now_case <= 1)
 			return (1);
 	}
-    if(('0' <= c && c <= '9') || c == '*')
-    {    if ((now_case <= 2))
+	if(('0' <= c && c <= '9') || c == '*')
+	{
+		if ((now_case <= 2))
 			return (2);
 	}
-    if(('0' <= c && c <= '9') || c == '.' || c == '*')
-    {
-	    if (now_case <= 3)
+	if(('0' <= c && c <= '9') || c == '.' || c == '*')
+	{
+		if (now_case <= 3)
 			return (3);
 	}
-    if (ft_strchr("cspdiuxX%%", c) != 0)
-        return (5);
-    return (-1);
+	if (ft_strchr("cspdiuxX%%", c) != 0)
+		return (5);
+	return (-1);
 }	
 
-void init_node(t_node* p_node, const char *str)
+void 	init_node(t_node* p_node, const char *str)
 {
 	p_node->count = 0;
 	p_node->idx = 0;
@@ -34,11 +34,11 @@ void init_node(t_node* p_node, const char *str)
 	p_node->two_star = 0;
 }
 
-int ft_printf(const char* str, ...)
+int 	ft_printf(const char* str, ...)
 {
-	char *temp;
-	char *final[6];
-	t_node node;
+	char	*temp;
+	char	*final[6];
+	t_node	node;
 
 	init_node(&node, str);
 	va_start(ap, str);
