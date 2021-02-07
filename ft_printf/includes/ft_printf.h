@@ -10,30 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FT_PRINTF_H_
-# define _FT_PRINTF_H_
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <stdarg.h>
 # include <stdio.h>
 # include "../libft/libft.h"
 
-extern 							va_list g_ap;
+extern							va_list g_ap;
 
 typedef struct					s_node
 {
-		int						count;
-		int 					idx;
-		int 					my_case;
-		int						ret;
-		int						yes_int;
-		int						num[3];
-		int						two_star;
-		int						is_precision;
-		char 					*string;
-		char 					*buf;
-		char					for_c;
-		char					*for_s;
-		unsigned int			un_int;
-		unsigned long long		p_p;
+	int						count;
+	int 					idx;
+	int 					my_case;
+	int						ret;
+	int						yes_int;
+	int						num[3];
+	int						two_star;
+	int						is_precision;
+	char 					*string;
+	char 					*buf;
+	char					for_c;
+	char					*for_s;
+	unsigned int			un_int;
+	unsigned long long		p_p;
 }								t_node;
 
 int								s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
