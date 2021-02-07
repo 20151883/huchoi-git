@@ -18,9 +18,9 @@
 
 extern va_list g_ap;
 
-typedef struct	s_node
+typedef struct					s_node
 {
-		int 					count;
+		int						count;
 		int 					idx;
 		int 					my_case;
 		char 					*string;
@@ -36,20 +36,20 @@ typedef struct	s_node
 		int						is_precision;
 }								t_node;
 int 	define_lenth(t_node *p_node,char **line, int size);
-void 	make_0x(char **line, char *ret, int lenth);
-void 	make_0x0(char **line, char *ret, int lenth);
-char 	*intger_value_is_zero(unsigned int num);
-char 	*man_zero(t_node *p_node, char **line, char **p_ret, int lenth);
-int 	for_hex_check_zero(char **line, int *p1, int *p2, int *p3);
-int 	hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3);
-char 	*is_precision_zero(char *ret, char **line, int lenth, t_node *p_node);
+void	make_0x(char **line, char *ret, int lenth);
+void	make_0x0(char **line, char *ret, int lenth);
+char	*intger_value_is_zero(unsigned int num);
+char	*man_zero(t_node *p_node, char **line, char **p_ret, int lenth);
+int		for_hex_check_zero(char **line, int *p1, int *p2, int *p3);
+int		hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3);
+char	*is_precision_zero(char *ret, char **line, int lenth, t_node *p_node);
 void	minus_express(char **line, int *p_size, int *p_plus, int *p_lenth);
 char	*minus_manage(char **line, char **p_ret);
-int 	s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
+int		s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
 int		check_is_zero(t_node *p_node, char **line, int *p_lenth);
 void	type_case_sort(t_node *p_node);
 int		value_is_zero(char **p_temp);
-int 	compute_lenth(t_node *p_node, char **line, int *size, int *lenth);
+int		compute_lenth(t_node *p_node, char **line, int *size, int *lenth);
 int		check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth);
 char	*trim_the_zero(char **line);
 int		atoi_positive(char *str);
@@ -64,7 +64,7 @@ int		contact_with_format(t_node *p_node, char **line, char **p_temp);
 int		real_complete_final(t_node *p_node, char **line, char**p_temp);
 char	*ten_unsigned(unsigned int num);
 int		letter_uxX(char **line, char **p_temp, unsigned int value, char the_tpye);
-int 	letter_di(char **line, char **p_temp, int value);
+int		letter_di(char **line, char **p_temp, int value);
 int		letter_p(char **line, char **p_temp, unsigned long long value);
 int		letter_s(char **line, char **p_temp, char *value);
 int		letter_c_percent(char **line, char **p_temp, char value);
