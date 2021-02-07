@@ -18,11 +18,11 @@
 
 extern							va_list g_ap;
 
-typedef struct					s_node
+typedef struct				s_node
 {
 	int						count;
-	int 					idx;
-	int 					my_case;
+	int						idx;
+	int						my_case;
 	int						ret;
 	int						yes_int;
 	int						num[3];
