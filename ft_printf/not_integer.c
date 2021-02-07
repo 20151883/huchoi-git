@@ -114,6 +114,8 @@ int define_lenth(t_node *p_node,char **line, int size)
 		else if (width <= 3 && p_node->is_precision == 1)
 			return (3);
 	}
+	else
+		return (size);
 }
 
 /*char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
