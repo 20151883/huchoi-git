@@ -54,12 +54,13 @@ int		check_null(t_node *p_node, char **line, char **p_temp, int *p_lenth);
 char	*trim_the_zero(char **line);
 int		atoi_positive(char *str);
 int		check_zero(char **line, int *p1, int *p2, int *p3);
-void	manage_minus_integer(t_node * p_node, char **line, int *p_size, int *p_plus);
+void	manage_minus_integer(t_node *p_node, char **line, int *p_size, \
+		int *p_plus);
 void	my_putchar_fd(t_node *p_node);
 int		important(t_node *p_node, char **line, char **p_temp);
 int		finale(t_node*p_node, char **line, char **p_temp);
 int		over_star(t_node *p_node, char **line, char**p_temp);
-void	init_node(t_node* p_node, const char *str);
+void	init_node(t_node *p_node, const char *str);
 int		contact_with_format(t_node *p_node, char **line, char **p_temp);
 int		real_complete_final(t_node *p_node, char **line, char**p_temp);
 char	*ten_unsigned(unsigned int num);
