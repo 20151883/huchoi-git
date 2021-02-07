@@ -77,12 +77,13 @@ char *case_p(t_node *p_node, char **line)
 	save = trim_the_zero(line);
 	size = ft_strlen(save);
 	lenth = size;
-	if (atoi_positive(line[2]) > size)
+	lenth = define_lenth(p_node, line, size);
+	/*if (atoi_positive(line[2]) > size)
 		lenth = atoi_positive(line[2]);
 	if (p_node->p_p == 0 && p_node->is_precision == 1 && atoi_positive(line[2]) <= 2)
 		lenth = 2;
 	else if (p_node->p_p == 0 && atoi_positive(line[2]) <= 3 && p_node->is_precision == 1)
-		lenth = 3;
+		lenth = 3;*/
 	p_node->count += lenth;
 	if (0 == (ret = (char *)ft_calloc(sizeof(char), (lenth + 1))))
 		return (0);
@@ -97,6 +98,22 @@ char *case_p(t_node *p_node, char **line)
 		ft_strlcpy(&ret[lenth - size], save, size + 1);
 	free(save);
     return (is_precision_zero(ret, line, lenth, p_node));
+}
+
+int define_lenth(t_node *p_node,char **line, int size)
+{
+	int width;
+
+	width = atoi_positive(line[2]);
+	if (atoi_positive(line[2]) > size)
+		lenth = atoi_positive(line[2]);
+	else if (p_node->p_p == 0)
+	{
+		if (p_node->is_precision == 1 && width <= 2)
+			lenth = 2;
+		else if (width <= 3 && p_node->is_precision == 1)
+			lenth = 3;
+	}
 }
 
 /*char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)

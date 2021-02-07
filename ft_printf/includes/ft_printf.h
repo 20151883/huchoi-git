@@ -32,6 +32,7 @@ typedef struct	s_node{
 		int two_star;
 		int is_precision;
  		}t_node;
+		 int define_lenth(t_node *p_node,char **line, int size);
 		 void make_0x(char **line, char *ret, int lenth);
 		 void make_0x0(char **line, char *ret, int lenth);
 		 char *intger_value_is_zero(unsigned int num);
