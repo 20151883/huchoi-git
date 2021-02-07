@@ -51,7 +51,8 @@ int							real_complete_final(t_node *p_node, \
 int							important(t_node *p_node, \
 							char **line, char **p_temp);
 int							finale(t_node*p_node, char **line, char **p_temp);
-int							over_star(t_node *p_node, char **line, char**p_temp);
+int							over_star(t_node *p_node, char **line, \
+							char**p_temp);
 int							for_hex_check_zero(char **line, \
 							int *p1, int *p2, int *p3);
 int							hex_zero_check(t_node *p_node, \
@@ -73,7 +74,7 @@ int							letter_c_percent(char **line, \
 							char **p_temp, char value);
 int							inter_type(char **line, char **p_temp, \
 							t_node *p_node, char the_type);
-int							complete_final(char **line, 
+int							complete_final(char **line, \
 							int *p_my_case, char **p_temp);
 int							flag_precise(char **line, \
 							char **p_temp, t_node *p_node);
