@@ -1,8 +1,9 @@
 #include "./includes/ft_printf.h"
-char *precision_int(char **line, int plus, int size, int lenth)
+
+char    *precision_int(char **line, int plus, int size, int lenth)
 {
-	char    *ret;
-	int     i;
+    int     i;
+    char    *ret;
 
 	i = 0;
 	if ( 0 == (ret = malloc(sizeof(char) * (lenth + 1))))
@@ -27,7 +28,7 @@ char *precision_int(char **line, int plus, int size, int lenth)
 	return (minus_manage(line, &ret));
 }
 
-char *minus_manage(char **line, char **p_ret)
+char    *minus_manage(char **line, char **p_ret)
 {
 	if (ft_atoi(line[5]) < 0)
 	{
@@ -41,10 +42,10 @@ char *minus_manage(char **line, char **p_ret)
 	return (*p_ret);
 }
 
-char *precision_unsigned(char **line, int plus, int size, int lenth)
+char    *precision_unsigned(char **line, int plus, int size, int lenth)
 {
+    int     i;
 	char    *ret;
-	int     i;
 	
 	i = 0;
 	ret = malloc(sizeof(char) * (lenth + 1));
@@ -68,10 +69,10 @@ char *precision_unsigned(char **line, int plus, int size, int lenth)
 	return (ret);
 }
 
-char *no_precision_int(char **line, int size, int lenth)
+char    *no_precision_int(char **line, int size, int lenth)
 {
+    int     i;
 	char    *ret;
-	int     i;
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
@@ -92,10 +93,10 @@ char *no_precision_int(char **line, int size, int lenth)
 	return (minus_manage(line, &ret));
 }
 
-char *no_precision_unsigned(char **line, int size, int lenth)
+char    *no_precision_unsigned(char **line, int size, int lenth)
 {
-	char    *ret;
 	int     i;
+	char    *ret;
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
