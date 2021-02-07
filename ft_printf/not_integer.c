@@ -76,14 +76,7 @@ char *case_p(t_node *p_node, char **line)
 	ret = NULL;
 	save = trim_the_zero(line);
 	size = ft_strlen(save);
-	lenth = size;
 	lenth = define_lenth(p_node, line, size);
-	/*if (atoi_positive(line[2]) > size)
-		lenth = atoi_positive(line[2]);
-	if (p_node->p_p == 0 && p_node->is_precision == 1 && atoi_positive(line[2]) <= 2)
-		lenth = 2;
-	else if (p_node->p_p == 0 && atoi_positive(line[2]) <= 3 && p_node->is_precision == 1)
-		lenth = 3;*/
 	p_node->count += lenth;
 	if (0 == (ret = (char *)ft_calloc(sizeof(char), (lenth + 1))))
 		return (0);
@@ -117,73 +110,14 @@ int define_lenth(t_node *p_node,char **line, int size)
 	return (size);
 }
 
-/*char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
-{
-	if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0)
-	{
-		if (ft_strchr(line[1], '-'))
-		{
-			ft_strlcpy(*p_ret, "0x", 3);
-			if (lenth != 2)
-				*p_ret[2] =  ' ';
-		}
-		else
-			ft_strlcpy(&((*p_ret)[lenth - 3]), "0x", 3);
-	}
-	else
-	{
-		if (ft_strchr(line[1], '-'))
-		{
-			ft_strlcpy(*p_ret, "0x0", 4);
-			if (lenth != 3)
-				*p_ret[3] =  ' ';
-		}
-		else
-			ft_strlcpy(&((*p_ret)[lenth - 3]), "0x0", 4);
-	}
-	return (*p_ret);
-}*/
-
 char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 {
 	if (p_node->p_p == 0)
 	{
 		if (p_node->is_precision == 1 && ft_atoi(line[3]) <= 2)
-		{
-			/*ft_memset(ret, ' ', lenth);
-			if (ft_strchr(line[1], '-'))
-			{
-				ret[0] = '0';
-				ret[1] = 'x';
-				if (atoi_positive(line[2]) <= 2)
-					ret[2] = 0;
-			}
-			else
-			{
-				ret[lenth-2] = '0';
-				ret[lenth-1] = 'x';
-			}*/
 			make_0x(line, ret, lenth);
-		}
 		else
-		{
-			/*ft_memset(ret, ' ', lenth);
-			if (ft_strchr(line[1], '-'))
-			{
-				ret[0] = '0';
-				ret[1] = 'x';
-				ret[2] = '0';
-				if (atoi_positive(line[2]) <= 3)
-					ret[3] = 0;
-			}
-			else
-			{
-				ret[lenth-3] = '0';
-				ret[lenth-2] = 'x';
-				ret[lenth-1] = '0';
-			}*/
 			make_0x0(line, ret, lenth);
-		}
 	}
 	return (ret);
 }
