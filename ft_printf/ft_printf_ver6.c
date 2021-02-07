@@ -12,7 +12,7 @@
 
 #include "./includes/ft_printf.h"
 
-va_list g_ap;
+va_list	g_ap;
 
 int		what_my_case(char c, int now_case)
 {
