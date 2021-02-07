@@ -1,3 +1,4 @@
+#include "./includes/ft_printf.h"
 char *precision_int(char **line, int plus, int size, int lenth)
 {
 	char *ret;
