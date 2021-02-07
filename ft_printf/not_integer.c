@@ -106,13 +106,13 @@ int define_lenth(t_node *p_node,char **line, int size)
 
 	width = atoi_positive(line[2]);
 	if (atoi_positive(line[2]) > size)
-		lenth = atoi_positive(line[2]);
+		return (width);
 	else if (p_node->p_p == 0)
 	{
 		if (p_node->is_precision == 1 && width <= 2)
-			lenth = 2;
+			return (2);
 		else if (width <= 3 && p_node->is_precision == 1)
-			lenth = 3;
+			return (3);
 	}
 }
 
