@@ -1,8 +1,8 @@
 #include "./includes/ft_printf.h"
 char *precision_int(char **line, int plus, int size, int lenth)
 {
-	char *ret;
-	int i;
+	char    *ret;
+	int     i;
 
 	i = 0;
 	if ( 0 == (ret = malloc(sizeof(char) * (lenth + 1))))
@@ -81,7 +81,7 @@ char *no_precision_int(char **line, int size, int lenth)
 		ft_memset(ret, '0', lenth);
 	else
 		ft_memset(ret, ' ', lenth);
-	if(ft_strchr(line[1], '-') != 0)
+	if (ft_strchr(line[1], '-') != 0)
 	{
 		ft_strlcpy(ret, line[5], size + 1);
 		if (size != lenth)
@@ -105,7 +105,7 @@ char *no_precision_unsigned(char **line, int size, int lenth)
 		ft_memset(ret, '0', lenth);
 	else
 		ft_memset(ret, ' ', lenth);
-	if(ft_strchr(line[1], '-') != 0)
+	if (ft_strchr(line[1], '-') != 0)
 	{
 		ft_strlcpy(ret, line[5], size + 1);
 		if (size != lenth)
