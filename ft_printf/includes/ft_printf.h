@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 
-extern							va_list g_ap;
+extern						va_list g_ap;
 
 typedef struct				s_node
 {
