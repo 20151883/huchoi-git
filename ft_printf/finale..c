@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "./includes/ft_printf.h"
+
 /*void renewer_line(char **line, int num)
 {
     char *temp;
