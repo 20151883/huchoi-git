@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   about_precision.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/07 15:59:45 by huchoi            #+#    #+#             */
+/*   Updated: 2021/02/07 16:02:14 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./includes/ft_printf.h"
 
-char    *precision_int(char **line, int plus, int size, int lenth)
+char	*precision_int(char **line, int plus, int size, int lenth)
 {
-    int     i;
-    char    *ret;
+	int		i;
+	char	*ret;
 
 	i = 0;
-	if ( 0 == (ret = malloc(sizeof(char) * (lenth + 1))))
+	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		return (0);
 	ft_memset(ret, ' ', lenth);
 	ret[lenth] = '\0';
@@ -28,7 +40,7 @@ char    *precision_int(char **line, int plus, int size, int lenth)
 	return (minus_manage(line, &ret));
 }
 
-char    *minus_manage(char **line, char **p_ret)
+char	*minus_manage(char **line, char **p_ret)
 {
 	if (ft_atoi(line[5]) < 0)
 	{
@@ -42,11 +54,11 @@ char    *minus_manage(char **line, char **p_ret)
 	return (*p_ret);
 }
 
-char    *precision_unsigned(char **line, int plus, int size, int lenth)
+char	*precision_unsigned(char **line, int plus, int size, int lenth)
 {
-    int     i;
-	char    *ret;
-	
+	int		i;
+	char	*ret;
+
 	i = 0;
 	ret = malloc(sizeof(char) * (lenth + 1));
 	ft_memset(ret, ' ', lenth);
@@ -69,10 +81,10 @@ char    *precision_unsigned(char **line, int plus, int size, int lenth)
 	return (ret);
 }
 
-char    *no_precision_int(char **line, int size, int lenth)
+char	*no_precision_int(char **line, int size, int lenth)
 {
-    int     i;
-	char    *ret;
+	int		i;
+	char	*ret;
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
@@ -93,10 +105,10 @@ char    *no_precision_int(char **line, int size, int lenth)
 	return (minus_manage(line, &ret));
 }
 
-char    *no_precision_unsigned(char **line, int size, int lenth)
+char	*no_precision_unsigned(char **line, int size, int lenth)
 {
-	int     i;
-	char    *ret;
+	int		i;
+	char	*ret;
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
