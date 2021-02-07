@@ -7,7 +7,7 @@ int important(t_node *p_node, char **line, char **p_temp)
         return (1);//free is not done in here
     else if (p_node->ret == 0)
         return (0);
-    if (0 == (p_node->buf = ft_itoa(va_arg(g_ap, int))))//itoa malloc is done...
+    if (0 == (p_node->buf = ft_itoa(va_arg(g_ap, int))))
         return (free_ret_zero(line,*p_temp, 0, p_node->my_case));
     if (over_star(p_node, line, p_temp) == 0)
         return (0);
@@ -16,7 +16,10 @@ int important(t_node *p_node, char **line, char **p_temp)
 
 int contact_with_format(t_node *p_node, char **line, char **p_temp)
 {
-    if (p_node->my_case != what_my_case((p_node->string)[p_node->idx], p_node->my_case))
+    int case_my;
+
+    case_my = p_node->my_case;
+    if (case_my != what_my_case((p_node->string)[p_node->idx], case_my))
     {
         if (!case_changed(line, p_temp, &(p_node->my_case)))
             return (0);

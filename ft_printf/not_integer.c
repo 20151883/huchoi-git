@@ -99,7 +99,7 @@ char *case_p(t_node *p_node, char **line)
     return (is_precision_zero(ret, line, lenth, p_node));
 }
 
-char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
+/*char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 {
 	if (p_node->is_precision == 1 && ft_atoi(line[3]) == 0)
 	{
@@ -124,7 +124,7 @@ char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth)
 			ft_strlcpy(&((*p_ret)[lenth - 3]), "0x0", 4);
 	}
 	return (*p_ret);
-}
+}*/
 
 char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 {
@@ -132,7 +132,7 @@ char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 	{
 		if (p_node->is_precision == 1 && ft_atoi(line[3]) <= 2)
 		{
-			ft_memset(ret, ' ', lenth);
+			/*ft_memset(ret, ' ', lenth);
 			if (ft_strchr(line[1], '-'))
 			{
 				ret[0] = '0';
@@ -144,11 +144,12 @@ char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 			{
 				ret[lenth-2] = '0';
 				ret[lenth-1] = 'x';
-			}
+			}*/
+			make_0x(line, ret, lenth);
 		}
 		else
 		{
-			ft_memset(ret, ' ', lenth);
+			/*ft_memset(ret, ' ', lenth);
 			if (ft_strchr(line[1], '-'))
 			{
 				ret[0] = '0';
@@ -162,10 +163,47 @@ char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 				ret[lenth-3] = '0';
 				ret[lenth-2] = 'x';
 				ret[lenth-1] = '0';
-			}
+			}*/
+			make_0x0(line, ret, lenth);
 		}
 	}
 	return (ret);
+}
+
+void make_0x(char **line, char *ret, int lenth)
+{
+	ft_memset(ret, ' ', lenth);
+	if (ft_strchr(line[1], '-'))
+	{
+		ret[0] = '0';
+		ret[1] = 'x';
+		if (atoi_positive(line[2]) <= 2)
+			ret[2] = 0;
+	}
+	else
+	{
+		ret[lenth-2] = '0';
+		ret[lenth-1] = 'x';
+	}
+}
+
+void make_0x0(char **line, char *ret, int lenth)
+{
+	ft_memset(ret, ' ', lenth);
+	if (ft_strchr(line[1], '-'))
+	{
+		ret[0] = '0';
+		ret[1] = 'x';
+		ret[2] = '0';
+		if (atoi_positive(line[2]) <= 3)
+			ret[3] = 0;
+	}
+	else
+	{
+		ret[lenth-3] = '0';
+		ret[lenth-2] = 'x';
+		ret[lenth-1] = '0';
+	}
 }
 char *case_s(t_node *p_node, char **line, char**p_temp)
 {

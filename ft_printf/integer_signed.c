@@ -2,9 +2,9 @@
 
 char *case_d(t_node *p_node, char **line)
 {
-    int size;//number of character
+    int size;
     int plus;
-    int lenth;//buffer lenth excluded the NULL
+    int lenth;
     char *ret;
 
     minus_express(line, &size, &plus, &lenth);
@@ -15,7 +15,7 @@ char *case_d(t_node *p_node, char **line)
     (p_node->count) += lenth;
     if (p_node->is_precision == 1 && ft_atoi(line[3]) >= 0)
         ret = precision_int(line, plus, size, lenth);
-    else//precision is nit in line.//plus is zero.. 
+    else
         ret = no_precision_int(line, size, lenth);    
     return (ret);
 }
@@ -55,9 +55,9 @@ void minus_express(char **line, int *p_size, int *p_plus, int *p_lenth)
 
 char *case_i(t_node *p_node, char **line)
 {
-    int size;//number of character
+    int size;
     int plus;
-    int lenth;//buffer lenth excluded the NULL
+    int lenth;
     char *ret;
 
     minus_express(line, &size, &plus, &lenth);

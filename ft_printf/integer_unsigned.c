@@ -2,9 +2,9 @@
 
 char *case_u(t_node *p_node, char **line)
 {
-    int size;//number of character
+    int size;
     int plus;
-    int lenth;//buffer lenth excluded the NULL
+    int lenth;
     char *ret;
 
     size = ft_strlen(line[5]);
@@ -20,16 +20,16 @@ char *case_u(t_node *p_node, char **line)
     (p_node->count) += lenth;
     if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_unsigned(line, plus, size, lenth);
-    else//precision is nit in line.//plus is zero.. 
+    else
         ret = no_precision_unsigned(line, size, lenth);    
     return (ret);
 }
 
 char *case_x(t_node *p_node, char **line)
 {
-    int size;//number of character
+    int size;
     int plus;
-    int lenth;//buffer lenth excluded the NULL
+    int lenth;
     char *ret;
 
     size = ft_strlen(line[5]);
@@ -45,7 +45,7 @@ char *case_x(t_node *p_node, char **line)
     (p_node->count) += lenth;
     if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_unsigned(line, plus, size, lenth);
-    else//precision is nit in line.//plus is zero.. 
+    else
         ret = no_precision_unsigned(line, size, lenth);    
     return (ret);
 }
@@ -65,9 +65,9 @@ int for_hex_check_zero(char **line, int *p1, int *p2, int *p3)
 
 char *case_X(t_node *p_node, char **line)
 {
-    int size;//number of character
+    int size;
     int plus;
-    int lenth;//buffer lenth excluded the NULL
+    int lenth;
     char *ret;
 
     size = ft_strlen(line[5]);
@@ -83,7 +83,7 @@ char *case_X(t_node *p_node, char **line)
     (p_node->count) += lenth;
     if (ft_atoi(line[3]) >= 0 && (p_node->is_precision == 1))
         ret = precision_unsigned(line, plus, size, lenth);
-    else//precision is nit in line.//plus is zero.. 
+    else
         ret = no_precision_unsigned(line, size, lenth);    
     return (ret);
 }

@@ -32,6 +32,8 @@ typedef struct	s_node{
 		int two_star;
 		int is_precision;
  		}t_node;
+		 void make_0x(char **line, char *ret, int lenth);
+		 void make_0x0(char **line, char *ret, int lenth);
 		 char *intger_value_is_zero(unsigned int num);
 		 char *man_zero(t_node *p_node, char **line, char **p_ret, int lenth);
 		 int for_hex_check_zero(char **line, int *p1, int *p2, int *p3);
