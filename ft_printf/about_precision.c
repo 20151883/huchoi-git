@@ -43,8 +43,8 @@ char *minus_manage(char **line, char **p_ret)
 
 char *precision_unsigned(char **line, int plus, int size, int lenth)
 {
-	char *ret;
-	int i;
+	char    *ret;
+	int     i;
 	
 	i = 0;
 	ret = malloc(sizeof(char) * (lenth + 1));
@@ -70,8 +70,8 @@ char *precision_unsigned(char **line, int plus, int size, int lenth)
 
 char *no_precision_int(char **line, int size, int lenth)
 {
-	char *ret;
-	int i;
+	char    *ret;
+	int     i;
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
@@ -94,8 +94,8 @@ char *no_precision_int(char **line, int size, int lenth)
 
 char *no_precision_unsigned(char **line, int size, int lenth)
 {
-	char *ret;
-	int i;
+	char    *ret;
+	int     i;
 
 	i = 0;
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
