@@ -34,7 +34,7 @@ typedef struct					s_node
 	char					*for_s;
 	unsigned int			un_int;
 	unsigned long long		p_p;
-}								t_node;
+}							t_node;
 
 int								s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
 int								check_is_zero(t_node *p_node, char **line, int *p_lenth);
