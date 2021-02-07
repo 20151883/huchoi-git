@@ -1,15 +1,5 @@
 #include "./includes/ft_printf.h"
 
-/*void renewer_line(char **line, int num)
-{
-    char *temp;
-
-    temp = ft_calloc(sizeof(char),1);
-    temp = ft_strdup("");
-    free(line[num]);
-    line[num] = temp;
-}*/
-
 int finale(t_node *p_node, char **line, char **p_temp)
 {
     char *str;
