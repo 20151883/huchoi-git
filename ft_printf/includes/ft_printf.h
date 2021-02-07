@@ -28,8 +28,8 @@ typedef struct				s_node
 	int						num[3];
 	int						two_star;
 	int						is_precision;
-	char 					*string;
-	char 					*buf;
+	char					*string;
+	char					*buf;
 	char					for_c;
 	char					*for_s;
 	unsigned int			un_int;
