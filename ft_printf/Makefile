@@ -5,7 +5,7 @@ N_TEMP = temp.a
 NAME = libftprintf.a
 
 SRCS =  ft_printf_ver6.c make_string.c integer.c not_integer.c utils.c\
-		 for_printf_utils.c for_printf_utils_ver2.c 
+		 important.c finale.c  utils_ver2.c about_precision.c
 		
 
 		

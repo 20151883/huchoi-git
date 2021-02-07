@@ -26,7 +26,8 @@ char *case_c(t_node *p_node, char **line)//dot procedure is needed
         lenth = atoi_positive(line[2]);
     else
         lenth = 1;
-    ret = malloc(sizeof(char) * (lenth + 1));//[0] ~ [size-1]
+    if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
+		return (0);
 	ret[lenth] = '\0';
 	(p_node->count)+=lenth;
     idx = 0;
@@ -83,12 +84,9 @@ char *case_p(t_node *p_node, char **line)
 	else if (p_node->p_p == 0 && atoi_positive(line[2]) <= 3 && p_node->is_precision == 1)
 		lenth = 3;
 	p_node->count += lenth;
-	//printf("lenth : %d", lenth);
 	if (0 == (ret = (char *)ft_calloc(sizeof(char), (lenth + 1))))
 		return (0);
 	ft_memset(ret, ' ', lenth);
-	//if (p_node->p_p == 0)
-	//	return (man_zero(p_node, line, &ret, lenth));
 	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
 	{
 		ft_strlcpy(ret, save, size + 1);
