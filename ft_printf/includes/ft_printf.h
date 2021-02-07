@@ -11,27 +11,28 @@
 /* ************************************************************************** */
 
 #ifndef _FT_PRINTF_H_
-#define _FT_PRINTF_H_
-#include <stdarg.h>
-#include <stdio.h>
-#include "../libft/libft.h"
+# define _FT_PRINTF_H_
+# include <stdarg.h>
+# include <stdio.h>
+# include "../libft/libft.h"
  extern va_list g_ap;
-typedef struct	s_node{
-		int count;
-		int idx;
-		int my_case;
-		char *string;
-		char *buf;
-		int ret;
-		unsigned int un_int;
-		int 		yes_int;
-		char			for_c;
+typedef struct	s_node
+{
+		int 					count;
+		int 					idx;
+		int 					my_case;
+		char 					*string;
+		char 					*buf;
+		int						ret;
+		unsigned int			un_int;
+		int						yes_int;
+		char					for_c;
 		unsigned long long		p_p;
-		char		*for_s;
-		int num[3];
-		int two_star;
-		int is_precision;
- 		}t_node;
+		char					*for_s;
+		int						num[3];
+		int						two_star;
+		int						is_precision;
+}								t_node;
 		 int define_lenth(t_node *p_node,char **line, int size);
 		 void make_0x(char **line, char *ret, int lenth);
 		 void make_0x0(char **line, char *ret, int lenth);
@@ -40,7 +41,7 @@ typedef struct	s_node{
 		 int for_hex_check_zero(char **line, int *p1, int *p2, int *p3);
 		 int hex_zero_check(t_node *p_node, int *p1, int *p2, int *p3);
 		 char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node);
-	void	minus_express(char **line, int *p_size, int *p_plus, int *p_lenth);
+	void	minus_express(char **line, int *p_size, int *p_plus, \int *p_lenth);
 	char	*minus_manage(char **line, char **p_ret);
 	int 	s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth);
 	int		check_is_zero(t_node *p_node, char **line, int *p_lenth);
