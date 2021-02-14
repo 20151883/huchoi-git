@@ -1,22 +1,34 @@
-#include "./includes/ft_printf.h"
-test
-int free_ret_zero(char **p, char *s1, char *s2, int my_case)
-{
-    int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_ver2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/07 17:25:47 by huchoi            #+#    #+#             */
+/*   Updated: 2021/02/07 17:27:32 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 1;
-    while(i < my_case)
-    {
-        free(p[i++]);
-    }
-    if (s1 != 0)
-        free(s1);
-    if (s2 != 0)
-        free(s2);
-    return (0);
+#include "./includes/ft_printf.h"
+
+int		free_ret_zero(char **p, char *s1, char *s2, int my_case)
+{
+	int i;
+
+	i = 1;
+	while (i < my_case)
+	{
+		free(p[i++]);
+	}
+	if (s1 != 0)
+		free(s1);
+	if (s2 != 0)
+		free(s2);
+	return (0);
 }
 
-int atoi_positive(char *str)
+int		atoi_positive(char *str)
 {
 	int num;
 
@@ -26,11 +38,11 @@ int atoi_positive(char *str)
 	return (num);
 }
 
-char *trim_the_zero(char **line)
+char	*trim_the_zero(char **line)
 {
-	char *ret;
-	char *save;
-	int size;
+	int		size;
+	char	*ret;
+	char	*save;
 
 	if (ft_strlen(line[5]) == 3 && line[5][2] == '0')
 		return (ft_strdup("0x0"));

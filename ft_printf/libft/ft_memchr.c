@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:34:11 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/04 14:34:15 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/02/07 17:48:13 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return (str + i);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 16:38:20 by huchoi            #+#    #+#             */
-/*   Updated: 2021/02/07 16:47:59 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/02/07 18:18:48 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		for_hex_check_zero(char **line, int *p1, int *p2, int *p3)
 		return (0);
 }
 
-char	*case_X(t_node *p_node, char **line)
+char	*case_big_x(t_node *p_node, char **line)
 {
 	int		size;
 	int		plus;

@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 16:14:50 by huchoi            #+#    #+#             */
-/*   Updated: 2021/02/07 16:25:10 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/02/07 18:17:59 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		inter_type(char **line, char **p_temp, t_node *p_node, char the_type)
 	if (ft_strchr("di", the_type) != 0)
 		return (letter_di(line, p_temp, p_node->yes_int));
 	if (ft_strchr("uxX", the_type) != 0)
-		return (letter_uxX(line, p_temp, p_node->un_int, the_type));
+		return (letter_uxx(line, p_temp, p_node->un_int, the_type));
 	else
 		return (free_ret_zero(line, *p_temp, NULL, 5));
 }

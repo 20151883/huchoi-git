@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   not_integer_p.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/07 17:05:51 by huchoi            #+#    #+#             */
+/*   Updated: 2021/02/07 17:08:26 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "./includes/ft_printf.h"
 
-char *case_p(t_node *p_node, char **line)
+char	*case_p(t_node *p_node, char **line)
 {
-	char *ret;
-	int lenth;
-	int size;
-	char *save;
+	int		lenth;
+	int		size;
+	char	*ret;
+	char	*save;
 
 	ret = NULL;
 	save = trim_the_zero(line);
@@ -16,7 +27,7 @@ char *case_p(t_node *p_node, char **line)
 	if (0 == (ret = (char *)ft_calloc(sizeof(char), (lenth + 1))))
 		return (0);
 	ft_memset(ret, ' ', lenth);
-	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
+	if (ft_strchr(line[1], '-'))
 	{
 		ft_strlcpy(ret, save, size + 1);
 		if (size != lenth)
@@ -25,10 +36,10 @@ char *case_p(t_node *p_node, char **line)
 	else
 		ft_strlcpy(&ret[lenth - size], save, size + 1);
 	free(save);
-    return (is_precision_zero(ret, line, lenth, p_node));
+	return (is_precision_zero(ret, line, lenth, p_node));
 }
 
-int define_lenth(t_node *p_node,char **line, int size)
+int		define_lenth(t_node *p_node, char **line, int size)
 {
 	int width;
 
@@ -45,7 +56,7 @@ int define_lenth(t_node *p_node,char **line, int size)
 	return (size);
 }
 
-char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
+char	*is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 {
 	if (p_node->p_p == 0)
 	{
@@ -57,7 +68,7 @@ char *is_precision_zero(char *ret, char **line, int lenth, t_node *p_node)
 	return (ret);
 }
 
-void make_0x(char **line, char *ret, int lenth)
+void	make_0x(char **line, char *ret, int lenth)
 {
 	ft_memset(ret, ' ', lenth);
 	if (ft_strchr(line[1], '-'))
@@ -69,12 +80,12 @@ void make_0x(char **line, char *ret, int lenth)
 	}
 	else
 	{
-		ret[lenth-2] = '0';
-		ret[lenth-1] = 'x';
+		ret[lenth - 2] = '0';
+		ret[lenth - 1] = 'x';
 	}
 }
 
-void make_0x0(char **line, char *ret, int lenth)
+void	make_0x0(char **line, char *ret, int lenth)
 {
 	ft_memset(ret, ' ', lenth);
 	if (ft_strchr(line[1], '-'))
@@ -87,8 +98,8 @@ void make_0x0(char **line, char *ret, int lenth)
 	}
 	else
 	{
-		ret[lenth-3] = '0';
-		ret[lenth-2] = 'x';
-		ret[lenth-1] = '0';
+		ret[lenth - 3] = '0';
+		ret[lenth - 2] = 'x';
+		ret[lenth - 1] = '0';
 	}
 }

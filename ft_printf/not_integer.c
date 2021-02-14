@@ -6,41 +6,41 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 15:08:12 by huchoi            #+#    #+#             */
-/*   Updated: 2021/02/05 15:08:13 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/02/07 17:21:24 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/ft_printf.h"
 
-char *case_c(t_node *p_node, char **line)//dot procedure is needed
+char	*case_c(t_node *p_node, char **line)
 {
-    int lenth;
-    char *ret;
-    int idx;
+	int		idx;
+	int		lenth;
+	char	*ret;
 
 	if (check_is_zero(p_node, line, &lenth) == 1)
 		return (ft_strdup(""));
-    if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')//error처리
-        return (0);
-    if (atoi_positive(line[2]) > 0)
-        lenth = atoi_positive(line[2]);
-    else
-        lenth = 1;
-    if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
+	if (ft_strchr(line[1], '0') != 0 || *line[3] != '\0')
+		return (0);
+	if (atoi_positive(line[2]) > 0)
+		lenth = atoi_positive(line[2]);
+	else
+		lenth = 1;
+	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		return (0);
 	ret[lenth] = '\0';
-	(p_node->count)+=lenth;
-    idx = 0;
-    while(idx < lenth)
-        ret[idx++] = ' ';
-    if (ft_strchr(line[1], '-') != 0 || ft_atoi(line[2]) < 0)
-        ret[0] = *line[5];
-    else
-        ret[lenth - 1] = *line[5];
-    return (ret);
+	(p_node->count) += lenth;
+	idx = 0;
+	while (idx < lenth)
+		ret[idx++] = ' ';
+	if (ft_strchr(line[1], '-') != 0 || ft_atoi(line[2]) < 0)
+		ret[0] = *line[5];
+	else
+		ret[lenth - 1] = *line[5];
+	return (ret);
 }
 
-int check_is_zero(t_node *p_node, char **line, int *p_lenth)
+int		check_is_zero(t_node *p_node, char **line, int *p_lenth)
 {
 	int i;
 
@@ -50,9 +50,9 @@ int check_is_zero(t_node *p_node, char **line, int *p_lenth)
 		*p_lenth = 1 > atoi_positive(line[2]) ? 1 : atoi_positive(line[2]);
 		if (ft_strchr(line[1], '-'))
 		{
-			ft_putchar_fd(0,1);
+			ft_putchar_fd(0, 1);
 			while ((i++ < *p_lenth - 1) && p_node->two_star == 0)
-				ft_putchar_fd(' ' ,1);
+				ft_putchar_fd(' ', 1);
 		}
 		else
 		{
@@ -66,12 +66,12 @@ int check_is_zero(t_node *p_node, char **line, int *p_lenth)
 	return (0);
 }
 
-char *case_s(t_node *p_node, char **line, char**p_temp)
+char	*case_s(t_node *p_node, char **line, char **p_temp)
 {
-	int size;//character number
-	int lenth;//buffer size
-	char *ret;
-	int i;
+	int		i;
+	int		size;
+	int		lenth;
+	char	*ret;
 
 	i = 0;
 	if (0 == s_lenth_size(p_node, line, &size, &lenth))
@@ -90,10 +90,10 @@ char *case_s(t_node *p_node, char **line, char**p_temp)
 	}
 	else
 		ft_strlcpy(&ret[lenth - size], line[5], size + 1);
-    return (ret);
+	return (ret);
 }
 
-int s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth)
+int		s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth)
 {
 	*p_size = ft_strlen(line[5]);
 	if ((0 < ft_atoi(line[3])) && (ft_atoi(line[3]) < *p_size))
@@ -118,10 +118,11 @@ int s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth)
 	}
 	return (1);
 }
-char *case_percent(t_node *p_node, char **line, char**p_temp)
+
+char	*case_percent(t_node *p_node, char **line, char **p_temp)
 {
-	int lenth;
-	char *ret;
+	int		lenth;
+	char	*ret;
 
 	lenth = 1;
 	if (atoi_positive(line[2]) > lenth)
@@ -129,8 +130,8 @@ char *case_percent(t_node *p_node, char **line, char**p_temp)
 	if (0 == (ret = malloc(sizeof(char) * (lenth + 1))))
 		free_ret_zero(line, *p_temp, 0, 6);
 	ret[lenth] = '\0';
-	(p_node->count)+=lenth;
-	if(ft_strchr(line[1], '0') && !ft_strchr(line[1], '-'))
+	(p_node->count) += lenth;
+	if (ft_strchr(line[1], '0') && !ft_strchr(line[1], '-'))
 		ft_memset(ret, '0', lenth);
 	else
 		ft_memset(ret, ' ', lenth);
@@ -138,5 +139,5 @@ char *case_percent(t_node *p_node, char **line, char**p_temp)
 		ret[0] = '%';
 	else
 		ret[lenth - 1] = '%';
-    return (ret);
+	return (ret);
 }

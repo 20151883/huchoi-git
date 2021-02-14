@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 15:08:26 by huchoi            #+#    #+#             */
-/*   Updated: 2021/02/05 15:08:28 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/02/08 16:32:36 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int							compute_lenth(t_node *p_node, char **line, \
 							int *size, int *lenth);
 int							check_null(t_node *p_node, char **line, \
 							char **p_temp, int *p_lenth);
-int							letter_uxX(char **line, char **p_temp, \
+int							letter_uxx(char **line, char **p_temp, \
 							unsigned int value, char the_tpye);
 int							letter_di(char **line, \
 							char **p_temp, int value);
@@ -81,7 +81,7 @@ int							flag_precise(char **line, \
 int							case_changed(char **line, char **p_temp, \
 							int *p_my_case);
 int							star(char **line, char **p_temp, \
-							char *buf, int my_case, t_node *p_node);
+							char *buf, t_node *p_node);
 int							not_star(char **line, char *str, char **p_temp, \
 							t_node *p_node);
 int							free_ret_zero(char **p, char *s1, \
@@ -125,5 +125,5 @@ char						*case_d(t_node *p_node, char **final);
 char						*case_i(t_node *p_node, char **final);
 char						*case_u(t_node *p_node, char **final);
 char						*case_x(t_node *p_node, char **final);
-char						*case_X(t_node *p_node, char **final);
+char						*case_big_x(t_node *p_node, char **final);
 #endif

@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 16:50:27 by huchoi            #+#    #+#             */
-/*   Updated: 2021/02/07 16:59:26 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/02/07 18:21:38 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,6 @@ int		letter_p(char **line, char **p_temp, unsigned long long value)
 	return (1);
 }
 
-int		value_is_zero(char **p_temp)
-{
-	char	*arr;
-
-	if (0 == (arr = malloc(sizeof(char) * 4)))
-		return (0);
-	arr[0] = '0';
-	arr[1] = 'x';
-	arr[2] = '0';
-	arr[3] = '\0';
-	free(*p_temp);
-	*p_temp = arr;
-	return (1);
-}
-
 int		letter_di(char **line, char **p_temp, int value)
 {
 	char *arr;
@@ -107,7 +92,7 @@ int		letter_di(char **line, char **p_temp, int value)
 	return (1);
 }
 
-int		letter_uxX(char **line, char **p_temp, unsigned int value, \
+int		letter_uxx(char **line, char **p_temp, unsigned int value, \
 		char the_type)
 {
 	char			*arr;
