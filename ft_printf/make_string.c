@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 15:07:40 by huchoi            #+#    #+#             */
-/*   Updated: 2021/02/07 17:01:18 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/02/07 18:19:37 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*make_string(t_node *p_node, char **final, char **p_temp, char the_type)
 	else if (the_type == 'x')
 		return (case_x(p_node, final));
 	else if (the_type == 'X')
-		return (case_X(p_node, final));
+		return (case_big_x(p_node, final));
 	else
 		return (0);
 }
