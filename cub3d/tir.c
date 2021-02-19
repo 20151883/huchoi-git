@@ -8,8 +8,8 @@ int get_y_rotate(int *vec, double theta);
 typedef struct s_tri{
     int pos[2];
     int dir[2];
-    int left[2];
-    int right[2];
+    double left[2];
+    double right[2];
     double theta;
 }t_tri;
 
@@ -23,10 +23,9 @@ void renewer_tri(t_tri *test, int *new_pos, int *new_dir)///&********&
     if (new_dir != NULL)
     {
         test->dir[0] = new_dir[0];
-        test->dir[1] = new_dir[1];
+        test->dir[1] = new_dir[1];                  
     }
 }
-
 //************************************************************************************/
 void get_tri(t_tri *p_tria)
 {
@@ -41,11 +40,11 @@ void get_tri(t_tri *p_tria)
     dir_x = p_tria->dir[0];
     dir_y = p_tria->dir[1];
 
-    p_tria->left[0] = pos_x + get_x_rotate(dir, p_tria->theta);
-    p_tria->left[1] = pos_y + get_y_rotate(dir, p_tria->theta); 
+    p_tria->left[0] = pos_x + get_x_rotate(p_tria->dir, p_tria->theta);
+    p_tria->left[1] = pos_y + get_y_rotate(p_tria->dir, p_tria->theta); 
 
-    p_tria->right[0] = pos_x + get_x_rotate(dir, -(p_tria->theta));
-    p_tria->right[1] = pos_y + get_y_rotate(dir, -(p_tria->theta)); 
+    p_tria->right[0] = pos_x + get_x_rotate(p_tria->dir, -(p_tria->theta));
+    p_tria->right[1] = pos_y + get_y_rotate(p_tria->dir, -(p_tria->theta)); 
 }
 
 int get_x_rotate(int *vec, double theta)
@@ -66,7 +65,7 @@ int get_y_rotate(int *vec, double theta)
     x = vec[0];
     y = vec[1];
     return (x * sin(theta) + y * cos(theta));
-}
+}   
 
 void init_tria(t_tri *tria)
 {
