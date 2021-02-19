@@ -9,14 +9,14 @@ char *case_p(t_node *p_node, char **line)
 	char *save;
 
 	ret = NULL;
-	save = trim_the_zero(line);
+	save = trim_the_zero(line);0x000000FDA231  0xFD231 = save 
 	size = ft_strlen(save);
 	lenth = define_lenth(p_node, line, size);
 	p_node->count += lenth;
 	if (0 == (ret = (char *)ft_calloc(sizeof(char), (lenth + 1))))
 		return (0);
 	ft_memset(ret, ' ', lenth);
-	if (ft_strchr(line[1], '-'))//0 flag is not used...?00...
+	if (ft_strchr(line[1], '-'))
 	{
 		ft_strlcpy(ret, save, size + 1);
 		if (size != lenth)

@@ -44,10 +44,10 @@ char	*minus_manage(char **line, char **p_ret)
 {
 	if (ft_atoi(line[5]) < 0)
 	{
-		if (ft_strchr(*p_ret, '0') != 0)
+		if (ft_strchr(*p_ret, '0') != 0)//0이 있으면...
 		{
 			*(ft_strchr(*p_ret, '0')) = '-';
-			*(ft_strrchr(*p_ret, '-')) = '0';
+			*(ft_strrchr(*p_ret, '-')) = '0';//두가지 case를 모두 커버할수있는... -103   00-103
 			return (*p_ret);
 		}
 	}

@@ -12,7 +12,7 @@
 
 #include "./includes/ft_printf.h"
 
-char *case_c(t_node *p_node, char **line)//dot procedure is needed
+char *case_c(t_node *p_node, char **line)//check zero 하는건 어느 case에서나 다 해야하나 보다
 {
     int lenth;
     char *ret;
@@ -118,6 +118,7 @@ int s_lenth_size(t_node *p_node, char **line, int *p_size, int *p_lenth)
 	}
 	return (1);
 }
+
 char *case_percent(t_node *p_node, char **line, char**p_temp)
 {
 	int lenth;
@@ -130,7 +131,7 @@ char *case_percent(t_node *p_node, char **line, char**p_temp)
 		free_ret_zero(line, *p_temp, 0, 6);
 	ret[lenth] = '\0';
 	(p_node->count)+=lenth;
-	if(ft_strchr(line[1], '0') && !ft_strchr(line[1], '-'))
+	if(ft_strchr(line[1], '0') && !ft_strchr(line[1], '-'))//뒤에 조건 왜썼는지 순간 생각이 안남
 		ft_memset(ret, '0', lenth);
 	else
 		ft_memset(ret, ' ', lenth);

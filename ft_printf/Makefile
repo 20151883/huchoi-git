@@ -23,7 +23,7 @@ $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
 	ar -rcs $(NAME) $(OBJS)
 
-all : $(NAME)
+all : $(NAME)	
 
 clean :
 	$(MAKE) clean -C ./libft

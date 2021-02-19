@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "./includes/ft_printf.h"
-test
 
 void my_putchar_fd(t_node *p_node)
 {

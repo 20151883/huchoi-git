@@ -12,7 +12,7 @@
 
 #include "./includes/ft_printf.h"
 
-int		letter_c_percent(char **line, char **p_temp, char value)
+int		letter_c_percent(char **line, char **p_temp, char value)//from iner_type to thiss function
 {
 	char two[2];
 	char *arr;

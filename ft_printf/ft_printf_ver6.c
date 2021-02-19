@@ -50,12 +50,12 @@ void	init_node(t_node *p_node, const char *str)
 int		ft_printf(const char *str, ...)
 {
 	char	*temp;
-	char	*final[6];
+	char	*final[6];//final[1] = flag, final[2] = width, final[3] = precision,  final[5] = transformed string
 	t_node	node;
 
 	init_node(&node, str);
 	va_start(g_ap, str);
-	while (str[node.idx] != '\0')
+	while (str[node.idx] != '\0')//ft_printf("test: %-10.5c",'a');
 	{
 		if (str[node.idx++] != '%')
 		{
@@ -69,8 +69,8 @@ int		ft_printf(const char *str, ...)
 			if (important(&node, final, &temp) == 0)
 				return (0);
 		}
-		if (finale(&node, final, &temp) == 0)
-			return (0);
+		if (finale(&node, final, &temp) == 0)//final[1] = "-", final[2] = "10", final[3] = "5", final[5] = "a"
+			return (0);//"a         "  count = count + 10;
 	}
 	va_end(g_ap);
 	return (node.count);

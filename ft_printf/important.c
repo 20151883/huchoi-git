@@ -9,16 +9,16 @@
 /*   Updated: 2021/02/07 16:33:00 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+//적절히 정보를 저장하는 함수.. 이 기능에 초점을 맞추자
+#include "./includes/ft_printf.h"//final[1] = flag, final[2] = width, final[3] = precision,  final[5] = transformed string
 
-#include "./includes/ft_printf.h"
-
-int		important(t_node *p_node, char **line, char **p_temp)
+int		important(t_node *p_node, char **line, char **p_temp)//ft_printf("test: %-10.5c",'a');
 {
 	if (42 == (p_node->ret = contact_with_format(p_node, line, p_temp)))
 		return (1);
 	else if (p_node->ret == 0)
 		return (0);
-	if (0 == (p_node->buf = ft_itoa(va_arg(g_ap, int))))
+	if (0 == (p_node->buf = ft_itoa(va_arg(g_ap, int))))//if reach here, the character is *.. so va_arg function is needed
 		return (free_ret_zero(line, *p_temp, 0, p_node->my_case));
 	if (over_star(p_node, line, p_temp) == 0)
 		return (0);
@@ -43,7 +43,7 @@ int		contact_with_format(t_node *p_node, char **line, char **p_temp)
 		else
 			return (0);
 	}
-	if (p_node->string[p_node->idx] != '*')
+	if (p_node->string[p_node->idx] != '*')//excluded -, 0, . for instance integer, character
 	{
 		if (1 == not_star(line, (char*)p_node->string, p_temp, p_node))
 			return (42);
@@ -63,7 +63,7 @@ int		case_changed(char **line, char **p_temp, int *p_my_case)
 	return (1);
 }
 
-int		flag_precise(char **line, char **p_temp, t_node *p_node)
+int		flag_precise(char **line, char **p_temp, t_node *p_node)//적절히 정보를 저장
 {
 	char	two[2];
 	char	*arr;

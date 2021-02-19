@@ -12,7 +12,7 @@
 
 #include "./includes/ft_printf.h"
 
-char	*case_u(t_node *p_node, char **line)
+char	*case_u(t_node *p_node, char **line)//부호가 없으니 minus_express가 없는거 빼고는 case_d와 동일할것이다.
 {
 	int		size;
 	int		plus;
@@ -51,7 +51,7 @@ char	*case_x(t_node *p_node, char **line)
 		plus = 0;
 	lenth = size + plus;
 	if (p_node->is_precision == 1 && size <= 1 && ft_atoi(line[3]) == 0)
-		for_hex_check_zero(line, &size, &plus, &lenth);
+		for_hex_check_zero(line, &size, &plus, &lenth);//이 부분만 다르지 나머지는 다 동일하다
 	if (*line[2] != '\0' && lenth < atoi_positive(line[2]))
 		lenth = atoi_positive(line[2]);
 	(p_node->count) += lenth;
@@ -64,7 +64,7 @@ char	*case_x(t_node *p_node, char **line)
 
 int		for_hex_check_zero(char **line, int *p1, int *p2, int *p3)
 {
-	if (*line[5] == '0' && ft_atoi(line[3]) == 0)
+	if (*line[5] == '0' && ft_atoi(line[3]) == 0)//ft_atoi(line[5])하면 안된다. line[5] = "D"일때 ft_atoi하면 0으로 처리해버림
 	{
 		*p1 = 0;
 		*p2 = 0;

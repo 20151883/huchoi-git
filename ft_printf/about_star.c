@@ -29,11 +29,11 @@ int		not_star(char **line, char *str, char **p_temp, t_node *p_node)
 
 int		over_star(t_node *p_node, char **line, char **p_temp)
 {
-	if (0 == star(line, p_temp, p_node->buf, p_node->my_case, p_node))
+	if (0 == star(line, p_temp, p_node->buf, p_node->my_case, p_node))//buf has the data from va_arg func
 		return (0);
 	p_node->buf = 0;
 	line[p_node->my_case] = *p_temp;
-	if (what_my_case(p_node->string[++(p_node->idx)], \
+	if (what_my_case(p_node->string[++(p_node->idx)], \        \\"%10*.10d", 110, 100
 				p_node->my_case) == p_node->my_case)
 		return (free_ret_zero(line, *p_temp, NULL, p_node->my_case));
 	return (1);
