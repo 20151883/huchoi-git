@@ -2,16 +2,18 @@
 #include <math.h>
 
 #define PIE (double)3.14
+int get_x_rotate(int *vec, double theta);
+int get_y_rotate(int *vec, double theta);
 
 typedef struct s_tri{
-    int pos[2]
+    int pos[2];
     int dir[2];
     int left[2];
     int right[2];
     double theta;
 }t_tri;
 
-void renewer_tri(t_tri *test, int *new_pos, int new_dir)///&********&
+void renewer_tri(t_tri *test, int *new_pos, int *new_dir)///&********&
 {
     if (new_pos != NULL)
     {
@@ -33,11 +35,11 @@ void get_tri(t_tri *p_tria)
     int dir_x;
     int dir_y;
 
-    pos_x = t_tria->pos[0];
-    pos_y = t_tria->pos[1];
+    pos_x = p_tria->pos[0];
+    pos_y = p_tria->pos[1];
 
-    dir_x = t_tria->dir[0];
-    dir_y = t_tria->dir[1];
+    dir_x = p_tria->dir[0];
+    dir_y = p_tria->dir[1];
 
     p_tria->left[0] = pos_x + get_x_rotate(dir, p_tria->theta);
     p_tria->left[1] = pos_y + get_y_rotate(dir, p_tria->theta); 
@@ -69,7 +71,7 @@ int get_y_rotate(int *vec, double theta)
 void init_tria(t_tri *tria)
 {
     tria->pos[0] = 2;
-    troa->pos[1] = 3;
+    tria->pos[1] = 3;
     tria->dir[0] = 1;
     tria->dir[1] = 0;
     tria->theta = PIE / 4.0;
@@ -79,7 +81,7 @@ int main(void)
 {
     t_tri test;
     init_tria(&test);
-    get_tri(&test)
+    get_tri(&test);
     printf("pos : %d %d\ndir : %d %d\nleft: %lf %lf right: %lf %lf", test.pos[0], \
     test.pos[1], test.dir[0], test.dir[1], test.left[0], test.left[1], test.right[0], test.right[1]);
 
