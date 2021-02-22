@@ -82,7 +82,7 @@ void main_loop(t_syn *p_syn)
     int color;
     int w = screenWidth;
 
-    while(i < w)
+    while (i < w)
     {
         weight = 2 * i / double(w) - 1;
         syn->dda.raydir_x = syn->tri.dir[0] + syn->tri.plane[0] * weight;
