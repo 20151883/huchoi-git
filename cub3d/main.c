@@ -1,43 +1,45 @@
 #include "cub3d.h"
 
-int worldMap[mapWidth][mapHeight] =
-    {
-    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,2,2,2,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-    {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,3,0,0,0,3,0,0,0,1},
-    {1,0,0,0,0,0,2,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,2,2,0,2,2,0,0,0,0,3,0,3,0,3,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,0,0,0,5,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-    };
+
 
 void init_tri(t_tri *p_tri)
 {
-    p_tri->pos[0] = 2;
-    p_tri->pos[1] = 3;
-    p_tri->dir[0] = 1;
-    p_tri->dir[1] = 0;
-    abs_must_epual_one(p_tri);
-    p_tri->theta = PIE / 180.0;
-    p_tri->plane[0] = 0;
-    p_tri->plane[1] = 0.66;
+    p_tri->pos[0] = 5;
+    p_tri->pos[1] = 5;
+    p_tri->dir[0] = 0;
+    p_tri->dir[1] = 1;
+    //abs_must_epual_one(p_tri);
+    p_tri->plane[0] = 0.77;
+    p_tri->plane[1] = 0;
+    int arr[mapWidth][mapHeight] =
+    {
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+    {1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,3,0,3,0,3,0,0,0,1},
+    {1,0,0,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,2,0,0,0,1,0,0,0,0,3,0,0,0,3,0,0,0,1},
+    {1,0,0,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,2,2,0,2,1,0,0,0,0,1,0,3,0,3,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,4,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,4,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,4,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,4,0,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+    };
+    memcpy(p_tri->worldMap, arr, mapWidth * mapHeight);
+    ///printf("%d %d %d", p_tri->worldMap[0][0])
 }
 
 void dda_init(t_tri *p_tri)
@@ -49,13 +51,13 @@ void dda_init(t_tri *p_tri)
     p_dd->deltadist_x = fabs(1.0 / p_tri->dda.raydir_x);
     p_dd->deltadist_y = fabs(1.0 / p_tri->dda.raydir_y);
     if (p_dd->raydir_x > 0)
-        p_dd->sidedist_x = (p_dd->map_x + 1 - p_tri->pos_x) * p_dd->deltadist_x;
+        p_dd->sidedist_x = (p_dd->map_x + 1 - p_tri->pos[0]) * p_dd->deltadist_x;
     else
-        p_dd->sidedist_x = (p_tri->pos_x - p_dd->map_x) * p_dd->deltadist_x;
+        p_dd->sidedist_x = (p_tri->pos[0] - p_dd->map_x) * p_dd->deltadist_x;
     if (p_dd->raydir_y > 0)
-        p_dd->sidedist_y = (p_dd->map_y + 1 - p_tri->pos_y) * p_dd->deltadist_y;
+        p_dd->sidedist_y = (p_dd->map_y + 1 - p_tri->pos[1]) * p_dd->deltadist_y;
     else
-        p_dd->sidedist_y = (p_tri->pos_y - p_dd->map_y) * p_dd->deltadist_y;
+        p_dd->sidedist_y = (p_tri->pos[1] - p_dd->map_y) * p_dd->deltadist_y;
 }
 
 void dda_init_second(t_tri *p_tri)
@@ -72,7 +74,17 @@ void dda_init_second(t_tri *p_tri)
         p_dd->step_y = -1;
 }
 
-void main_loop(t_syn *p_syn)
+void make_clean(t_syn *p_syn)
+{
+    int x = 0;
+
+    while (x <= screenHeight)
+    {
+        make_line(p_syn, x, 0, screenHeight, 0x00);
+        x++;
+    }
+}
+int main_loop(t_syn *p_syn)
 {
     int i = 0;
     double weight;
@@ -82,46 +94,51 @@ void main_loop(t_syn *p_syn)
     int color;
     int w = screenWidth;
 
+    make_clean(p_syn);
     while (i < w)
     {
-        weight = 2 * i / double(w) - 1;
-        syn->dda.raydir_x = syn->tri.dir[0] + syn->tri.plane[0] * weight;
-        syn->dda.raydir_y = syn->tri.dir[1] + syn->tri.plane[1] * weight;
+        weight = 2 * i / (double)w - 1;
+        p_syn->tri.dda.raydir_x = p_syn->tri.dir[0] + p_syn->tri.plane[0] * weight;
+        p_syn->tri.dda.raydir_y = p_syn->tri.dir[1] + p_syn->tri.plane[1] * weight;
         dda_init(&(p_syn->tri));
         dda_init_second(&(p_syn->tri));
         dda_loop(&(p_syn->tri));
         change_uclied_vertical(&(p_syn->tri));//strcut->walldist에 값이 저장된다.
-        lineHeight = (double)H / (syn->tri.dda.walldist);
+        lineHeight = (double)H / (p_syn->tri.dda.walldist);
 
         drawStart = -lineHeight / 2 + screenHeight / 2;//int연산
         if(drawStart < 0)
             drawStart = 0;
         drawEnd = lineHeight / 2 + screenHeight / 2;//int 연산
-        if(drawEnd >= h)
-            drawEnd = h - 1;
-        switch(worldMap[mapX][mapY])
+        if(drawEnd >= H)
+            drawEnd = H - 1;
+        /*switch(p_syn->tri.worldMap[p_syn->tri.dda.map_x][p_syn->tri.dda.map_y])
         {
             case 1:  color = 0xFF0000;  break; //red
             case 2:  color = 0xFF00;  break; //green
             case 3:  color = 0xFF;   break; //blue
             case 4:  color = 0xFFFFFF;  break; //white
             default: color = 0xFFFF00; break; //yellow
-        }
+        }*/
+        
         //give x and y sides different brightness
-        if (side == 1) 
-            color = color / 2;
-        make_line(p_syn, w/2.0 + (w*weight)/2.0, drawStart, drawEnd, color);//w를 아주크게 해서 라인과 라인사이의 간격이 아주 촘촘하면 구분구적법의 느낌이 날것.//image에 그리는거..
+        if (p_syn->tri.dda.side == 1) 
+            color = 0xFFFF00;
+        else
+            color = 0xFF0000;
+        make_line(p_syn, w / 2.0 + (w * weight)/2.0, drawStart, drawEnd, color);//w를 아주크게 해서 라인과 라인사이의 간격이 아주 촘촘하면 구분구적법의 느낌이 날것.//image에 그리는거..
         i++;
     }
-    mlx_put_image_to_window(p_syn->mlx_ptr, p_syn->wid_ptr, p_syn->img_ptr.img, 0, 0);//딱 한번만 호출하는...
+    mlx_put_image_to_window(p_syn->mlx_ptr, p_syn->win_ptr, p_syn->img.img_ptr, 0, 0);//딱 한번만 호출하는...
+    return (0);
 }
 
-void make_line(t_syn *p_syn, double x_pos, double start, double end, int color)
+void make_line(t_syn *p_syn, int x_pos, int start, int end, int color)
 {
     int y;
 
     y = start;
-    whie (y <= end)
+    while (y <= end)
     {
         my_mlx_pixel_put(&(p_syn->img), x_pos, y, color);
         y++;
@@ -131,26 +148,117 @@ void make_line(t_syn *p_syn, double x_pos, double start, double end, int color)
 void    my_mlx_pixel_put(t_img *p_img, int x, int y, int color)
 {
     char *dst;
-
     dst = p_img->data_ptr + (y * p_img->lenth + x * (p_img->bpp / 8));
     // 괄호 == offset
     *(unsigned int *)dst = color;
+}
+
+void close(t_syn *p_syn)
+{
+    mlx_destroy_window(p_syn->mlx_ptr, p_syn->win_ptr);
+}
+
+int key_func(int keycode, t_syn *p_syn)
+{
+    double temp;
+    int mapx = (int)p_syn->tri.pos[0];
+    int mapy = (int)p_syn->tri.pos[1];
+    double speed = 1;
+    printf ("test");
+    if (keycode == KEY_A)
+    {
+        p_syn->tri.pos[0] -= p_syn->tri.plane[0] *speed;
+        p_syn->tri.pos[1] -= p_syn->tri.plane[1] *speed;
+        /*if (p_syn->tri.worldMap[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
+        {
+            p_syn->tri.pos[0] += p_syn->tri.plane[0] *speed;
+            p_syn->tri.pos[1] += p_syn->tri.plane[1] *speed;
+        }*/
+    }
+    else if (keycode == KEY_W)
+    {
+        p_syn->tri.pos[0] += p_syn->tri.dir[0] *speed;
+        p_syn->tri.pos[1] += p_syn->tri.dir[1] *speed;
+        /*if (p_syn->tri.worldMap[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
+        {
+            p_syn->tri.pos[0] -= p_syn->tri.dir[0] *speed;
+            p_syn->tri.pos[1] -= p_syn->tri.dir[1] *speed;
+        }*/
+    }
+    else if(keycode == KEY_D)
+    {
+        p_syn->tri.pos[0] += p_syn->tri.plane[0] *speed;
+        p_syn->tri.pos[1] += p_syn->tri.plane[1] *speed;
+        /*if (p_syn->tri.worldMap[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
+        {
+            p_syn->tri.pos[0] -= p_syn->tri.plane[0] *speed;
+            p_syn->tri.pos[1] -= p_syn->tri.plane[1] *speed;
+        } */ 
+    }
+    else if (keycode == KEY_S)
+    {
+        p_syn->tri.pos[0] -= p_syn->tri.dir[0] *speed;
+        p_syn->tri.pos[1] -= p_syn->tri.dir[1] *speed;
+        /*if (p_syn->tri.worldMap[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
+        {
+            p_syn->tri.pos[0] += p_syn->tri.dir[0] *speed;
+            p_syn->tri.pos[1] += p_syn->tri.dir[1] *speed;
+        }*/
+    }
+    else if(keycode == KEY_LEFT)
+    {
+        temp = p_syn->tri.dir[0];
+        p_syn->tri.dir[0] = p_syn->tri.dir[0] * cos(-0.3) - p_syn->tri.dir[1] * sin(-0.3);
+        p_syn->tri.dir[1] = temp * sin(-0.3) + p_syn->tri.dir[1] * cos(-0.3);
+        temp = p_syn->tri.plane[0];
+        p_syn->tri.plane[0] = p_syn->tri.plane[0] * cos(-0.3) - p_syn->tri.plane[1] * sin(-0.3);
+        p_syn->tri.plane[1] = temp * sin(-0.3) + p_syn->tri.plane[1] * cos(-0.3);
+    }
+    else if (keycode == KEY_RIGHT)
+    {
+        temp = p_syn->tri.dir[0];
+       p_syn->tri.dir[0] = p_syn->tri.dir[0] * cos(0.3) - p_syn->tri.dir[1] * sin(0.3);
+        p_syn->tri.dir[1] = temp * sin(0.3) + p_syn->tri.dir[1] * cos(0.3);
+        temp = p_syn->tri.plane[0];
+        p_syn->tri.plane[0] = p_syn->tri.plane[0] * cos(0.3) - p_syn->tri.plane[1] * sin(0.3);
+        p_syn->tri.plane[1] = temp * sin(0.3) + p_syn->tri.plane[1] * cos(0.3);
+    }
+    /*else if (keycode == KEY_DOWN)
+    {
+        p_syn->tri.dir[0] += p_syn->tri.dir[0] * cos(0.3) - p_syn->tri.dir[1] * sin(0.3);
+        p_syn->tri.dir[1] += p_syn->tri.dir[0] * sin(0.3) + p_syn->tri.dir[1] * cos(0.3);
+        p_syn->tri.plane[0] += p_syn->tri.plane[0] * cos(0.3) - p_syn->tri.plane[1] * sin(0.3);
+        p_syn->tri.plane[1] += p_syn->tri.plane[0] * sin(0.3) + p_syn->tri.plane[1] * cos(0.3);
+    }
+    else if (keycode == KEY_UP)
+    {
+        p_syn->tri.dir[0] += p_syn->tri.dir[0] * cos(0.3) - p_syn->tri.dir[1] * sin(0.3);
+        p_syn->tri.dir[1] += p_syn->tri.dir[0] * sin(0.3) + p_syn->tri.dir[1] * cos(0.3);
+        p_syn->tri.plane[0] += p_syn->tri.plane[0] * cos(0.3) - p_syn->tri.plane[1] * sin(0.3);
+        p_syn->tri.plane[1] += p_syn->tri.plane[0] * sin(0.3) + p_syn->tri.plane[1] * cos(0.3);
+    }*/
+    /*else if (key_num == KEY_ESC)
+        close(p_syn);
+    else
+        exit(0);*/
+    else
+        return (0);
+    return (0);
 }
 
 int main(int argc, char *argv[])
 {
     t_syn syn;
 
-    sym.mlx_ptr = mlx_init();
-    syn.win_ptr = mlx_new_window(mlx_ptr, 1080, 1080, "hello");
-    syn.img.img_ptr = mlx_new_image(img.img_ptr, 1080, 1080);
-    syn.img.data_ptr = mlx_get_data_addr(syn.img.img, &(syn.img.bpp), &(syn.img.length), &(syn.img.endian));
+    syn.mlx_ptr = mlx_init();
+    syn.win_ptr = mlx_new_window(syn.mlx_ptr, 640, 640, "hello");
+    syn.img.img_ptr = mlx_new_image(syn.mlx_ptr, 640, 640);
+    syn.img.data_ptr = mlx_get_data_addr(syn.img.img_ptr, &(syn.img.bpp), &(syn.img.lenth), &(syn.img.endian));
     init_tri(&(syn.tri));
 
-    //mlx_hook(syn.mlx_ptr, key, mask, &key_function, &syn);//change pos, dir, plane....
-    //mlx_hook(syn.mlx_ptr, key, mask, &close_function, &syn);
-
-    mlx_loop_hook(syn.mlx_ptr, main_loop, &syn);
+    mlx_hook(syn.win_ptr, 2, 0, &key_func, &syn);
+    mlx_loop_hook(syn.mlx_ptr, &main_loop, &syn);
     mlx_loop(syn.mlx_ptr);
+    perror("where..?");
     return (0);
 }
