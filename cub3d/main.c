@@ -38,7 +38,7 @@ void init_tri(t_tri *p_tri)
     };
     memcpy(p_tri->worldMap, arr, sizeof(int) * mapWidth * mapHeight);
     ///printf("%d %d %d", p_tri->worldMap[0][0])
-    /*p_tri->tex[0].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/eagle.xpm", &(p_tri->tex[0].width), &(p_tri->tex[0].height));
+    p_tri->tex[0].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/eagle.xpm", &(p_tri->tex[0].width), &(p_tri->tex[0].height));
 	p_tri->tex[0].data = (int *)mlx_get_data_addr(p_tri->tex[0].ptr, &p_tri->tex[0].bpp, &p_tri->tex[0].size_l, &p_tri->tex[0].endian);
     
     p_tri->tex[1].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/wall_1.xpm", &p_tri->tex[1].width, &p_tri->tex[1].height);
@@ -48,13 +48,13 @@ void init_tri(t_tri *p_tri)
 	p_tri->tex[2].data = (int *)mlx_get_data_addr(p_tri->tex[2].ptr, &p_tri->tex[2].bpp, &p_tri->tex[2].size_l, &p_tri->tex[2].endian);
     
     p_tri->tex[3].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/wall_3.xpm", &p_tri->tex[3].width, &p_tri->tex[3].height);
-	p_tri->tex[3].data = (int *)mlx_get_data_addr(p_tri->tex[3].ptr, &p_tri->tex[3].bpp, &p_tri->tex[3].size_l, &p_tri->tex[3].endian);*/
+	p_tri->tex[3].data = (int *)mlx_get_data_addr(p_tri->tex[3].ptr, &p_tri->tex[3].bpp, &p_tri->tex[3].size_l, &p_tri->tex[3].endian);
 }
 
 void dda_init(t_tri *p_tri)
 {
     t_dda *p_dd = &(p_tri->dda);
-    
+
     p_dd->map_x = (int)p_tri->pos[0];
     p_dd->map_y = (int)p_tri->pos[1];
     p_dd->deltadist_x = fabs(1.0 / p_tri->dda.raydir_x);
@@ -127,77 +127,59 @@ int main_loop(t_syn *p_syn)
             drawEnd = H - 1;
         if (p_syn->tri.dda.side == 0) 
             wallX = p_syn->tri.pos[1] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_y;
-        else           
+        else            
             wallX = p_syn->tri.pos[0] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_x;
         wallX -= floor((wallX));
         //x coordinate on the texture
-        /*if (p_syn->tri.dda.raydir_x >= (1 / sqrt(2)))//조건 문제가 있다..
+        if ((p_syn->tri.dda.raydir_x >= 0) && p_syn->tri.dda.side == 0)//조건 문제가 있다..
         {
             idx = 0;
-            texX = (int)wallX * (double)p_syn->tri.tex[0].width;
+            texX = (int)(wallX * (double)p_syn->tri.tex[0].width);
             if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
                 texX = p_syn->tri.tex[0].width - texX - 1;
             if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
                 texX = p_syn->tri.tex[0].width - texX - 1;
             step = 1.0 * p_syn->tri.tex[0].height / lineHeight;
         }
-        else if (p_syn->tri.dda.raydir_x <= (-1) *(1 / sqrt(2)))
+        else if (p_syn->tri.dda.raydir_x <= 0 && p_syn->tri.dda.side == 0)
          {   
             idx = 1;
-            texX = (int)wallX * (double)p_syn->tri.tex[1].width;
+            texX = (int)(wallX * (double)p_syn->tri.tex[1].width);
             if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
                 texX = p_syn->tri.tex[1].width - texX - 1;
             if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
                 texX = p_syn->tri.tex[1].width - texX - 1;
             step = 1.0 * p_syn->tri.tex[1].height / lineHeight;
         }   
-        else if (p_syn->tri.dda.raydir_y >= (1 / sqrt(2)))
+        else if (p_syn->tri.dda.raydir_y >= 0 && p_syn->tri.dda.side == 1)
         {    
             idx= 2;
-            texX = (int)wallX * (double)p_syn->tri.tex[2].width;
+            texX = (int)(wallX * (double)p_syn->tri.tex[2].width);
             if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
                 texX = p_syn->tri.tex[2].width - texX - 1;
             if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
                 texX = p_syn->tri.tex[2].width - texX - 1;
             step = 1.0 * p_syn->tri.tex[2].height / lineHeight;
         }
-        else //(p_syn->tri.dda.raydir_y <= (-1) * (1 / sqrt(2)))
+        else 
         {
             idx = 3;
-            texX = (int)wallX * (double)p_syn->tri.tex[3].width;
+            texX = (int)(wallX * (double)p_syn->tri.tex[3].width);
             if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
                 texX = p_syn->tri.tex[3].width - texX - 1;
             if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
                 texX = p_syn->tri.tex[3].width - texX - 1;
             step = 1.0 * p_syn->tri.tex[3].height / lineHeight;
-        }*/
-        idx = 3;
-        texX = (int)wallX * (double)p_syn->tri.tex[3].width;
-        if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
-            texX = p_syn->tri.tex[3].width - texX - 1;
-        if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
-            texX = p_syn->tri.tex[3].width - texX - 1;
-        step = 1.0 * p_syn->tri.tex[3].height / lineHeight;
-        // Starting texture coordinate
+        }
         texPos = (drawStart - H / 2 + lineHeight / 2) * step;
-        for(int y = drawStart; y<drawEnd; y++)
+        for (int y = drawStart; y<drawEnd; y++)
         {
              // Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
             texY = (int)texPos & (p_syn->tri.tex[idx].height - 1);
             texPos += step;
             color = p_syn->tri.tex[idx].data[p_syn->tri.tex[idx].height * texY + texX];
-             //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-            if(p_syn->tri.dda.side == 1) 
-                color = (color >> 1) & 8355711;
-            /*p_syn->img.data_ptr[y * screenWidth + i] = color;*/
             my_mlx_pixel_put(&(p_syn->img), i, y, color);
         }
-        /*if (p_syn->tri.dda.side == 1) 
-            color = 0xFFFF00;
-        else
-            color = 0xFF0000;
-        make_line(p_syn, i, drawStart, drawEnd, color);//w를 아주크게 해서 라인과 라인사이의 간격이 아주 촘촘하면 구분구적법의 느낌이 날것.//image에 그리는거..
-        */
         i++;
     }
     mlx_put_image_to_window(p_syn->tri.mlx_ptr, p_syn->tri.win_ptr, p_syn->img.img_ptr, 0, 0);//딱 한번만 호출하는...
@@ -279,23 +261,23 @@ int key_func(int keycode, t_syn *p_syn)
     else if(keycode == KEY_LEFT)
     {
         temp = p_syn->tri.dir[0];
-        p_syn->tri.dir[0] = p_syn->tri.dir[0] * cos(-0.3) - p_syn->tri.dir[1] * sin(-0.3);
-        p_syn->tri.dir[1] = temp * sin(-0.3) + p_syn->tri.dir[1] * cos(-0.3);
-        temp = p_syn->tri.plane[0];
-        p_syn->tri.plane[0] = p_syn->tri.plane[0] * cos(-0.3) - p_syn->tri.plane[1] * sin(-0.3);
-        p_syn->tri.plane[1] = temp * sin(-0.3) + p_syn->tri.plane[1] * cos(-0.3);
-    }
-    else if (keycode == KEY_RIGHT)
-    {
-        temp = p_syn->tri.dir[0];
         p_syn->tri.dir[0] = p_syn->tri.dir[0] * cos(0.3) - p_syn->tri.dir[1] * sin(0.3);
         p_syn->tri.dir[1] = temp * sin(0.3) + p_syn->tri.dir[1] * cos(0.3);
         temp = p_syn->tri.plane[0];
         p_syn->tri.plane[0] = p_syn->tri.plane[0] * cos(0.3) - p_syn->tri.plane[1] * sin(0.3);
         p_syn->tri.plane[1] = temp * sin(0.3) + p_syn->tri.plane[1] * cos(0.3);
     }
+    else if (keycode == KEY_RIGHT)
+    {
+        temp = p_syn->tri.dir[0];
+        p_syn->tri.dir[0] = p_syn->tri.dir[0] * cos(-0.3) - p_syn->tri.dir[1] * sin(-0.3);
+        p_syn->tri.dir[1] = temp * sin(-0.3) + p_syn->tri.dir[1] * cos(-0.3);
+        temp = p_syn->tri.plane[0];
+        p_syn->tri.plane[0] = p_syn->tri.plane[0] * cos(-0.3) - p_syn->tri.plane[1] * sin(-0.3);
+        p_syn->tri.plane[1] = temp * sin(-0.3) + p_syn->tri.plane[1] * cos(-0.3);
+    }
     else if (keycode == KEY_ESC)
-        close(p_syn);
+        ft_close(p_syn);
     else
         exit(0);
     return (0);
@@ -310,11 +292,8 @@ int main(int argc, char *argv[])
     syn.img.img_ptr = mlx_new_image(syn.tri.mlx_ptr, 640, 640);
     syn.img.data_ptr = mlx_get_data_addr(syn.img.img_ptr, &(syn.img.bpp), &(syn.img.lenth), &(syn.img.endian));
     init_tri(&(syn.tri));
-    t_tex test;
-    test.ptr = mlx_xpm_file_to_image(syn.tri.mlx_ptr, "/Users/huchoi/huchoi-git/cub3d/pics/wall_1.xpm", &test.width, &test.height);
-	test.data = (int *)mlx_get_data_addr(test.ptr, &test.bpp, &test.size_l, &test.endian);
-    //mlx_hook(syn.tri.win_ptr, 2, 0, &key_func, &syn);
-    //mlx_loop_hook(syn.tri.mlx_ptr, &main_loop, &syn);
+    mlx_hook(syn.tri.win_ptr, 2, 0, &key_func, &syn);
+    mlx_loop_hook(syn.tri.mlx_ptr, &main_loop, &syn);
     mlx_loop(syn.tri.mlx_ptr);
     return (0);
 }
