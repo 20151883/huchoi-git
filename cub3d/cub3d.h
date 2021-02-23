@@ -9,6 +9,7 @@
 #define screenWidth 640
 #define screenHeight 640
 #define H 640
+
 # define KEY_A				0
 # define KEY_S				1
 # define KEY_D				2
@@ -18,6 +19,17 @@
 # define KEY_RIGHT			124
 #define KEY_ESC             53
 # define KEY_UP				126
+
+typedef struct s_tex
+{
+	void		*ptr;
+	int			*data;
+	int			width;
+	int			height;
+	int			size_l;
+	int			bpp;
+	int			endian;
+}t_tex;
 
 typedef struct s_dda{//this struct will be included in t_tri struct...!!
     int step_x;
@@ -35,11 +47,14 @@ typedef struct s_dda{//this struct will be included in t_tri struct...!!
 }t_dda;
 
 typedef struct s_tri{//tri has dda structure..!
+    void *mlx_ptr;
+    void *win_ptr;
     double pos[2];
     double dir[2];
     double plane[2];
     int worldMap[mapWidth][mapHeight];
     t_dda dda;
+    t_tex tex[4];
 }t_tri;
 
 typedef struct image{
@@ -51,8 +66,6 @@ typedef struct image{
 }t_img;
 
 typedef struct s_syn{
-    void *mlx_ptr;
-    void *win_ptr;
     t_tri tri;//tri has dda struct...!
     t_img img;
 }t_syn;

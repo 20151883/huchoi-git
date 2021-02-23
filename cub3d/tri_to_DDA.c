@@ -12,7 +12,7 @@ void change_uclied_vertical(t_tri *p_tri)
         p_dd->walldist = (p_dd->map_y - p_tri->pos[1] + (1 - p_dd->step_y) / 2) / (p_dd->raydir_y);
 }
 
-void dda_loop(t_tri *p_tri)
+void dda_loop(t_tri *p_tri)//&(p_tri->dda) = p_dd
 {
     t_dda *p_dd;
     int hit = 0;
