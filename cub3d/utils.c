@@ -15,49 +15,10 @@ void make_block(t_syn *p_syn, int *p_idx, int i)
         p_syn->drawEnd = H - 1;
     if (p_syn->tri.dda.side == 0) 
         p_syn->wallX = p_syn->tri.pos[1] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_y;
-    else            
+    else
         p_syn->wallX = p_syn->tri.pos[0] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_x;
     p_syn->wallX -= floor((p_syn->wallX));
-    if ((p_syn->tri.dda.raydir_x >= 0) && p_syn->tri.dda.side == 0)//]
-    {
-        *p_idx = 0;
-        p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[0].width);
-        if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
-            p_syn->texX = p_syn->tri.tex[0].width - p_syn->texX - 1;
-        if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
-            p_syn->texX = p_syn->tri.tex[0].width - p_syn->texX - 1;
-        p_syn->step = 1.0 * p_syn->tri.tex[0].height / p_syn->lineHeight;
-    }
-    else if (p_syn->tri.dda.raydir_x <= 0 && p_syn->tri.dda.side == 0)
-    {   
-        *p_idx = 1;
-         p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[1].width);
-        if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
-            p_syn->texX = p_syn->tri.tex[1].width - p_syn->texX - 1;
-        if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
-            p_syn->texX = p_syn->tri.tex[1].width - p_syn->texX - 1;
-        p_syn->step = 1.0 * p_syn->tri.tex[1].height / p_syn->lineHeight;
-    }   
-    else if (p_syn->tri.dda.raydir_y >= 0 && p_syn->tri.dda.side == 1)
-    {    
-        *p_idx= 2;
-        p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[2].width);
-        if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
-            p_syn->texX = p_syn->tri.tex[2].width - p_syn->texX - 1;
-        if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
-            p_syn->texX = p_syn->tri.tex[2].width - p_syn->texX - 1;
-        p_syn->step = 1.0 * p_syn->tri.tex[2].height / p_syn->lineHeight;
-    }
-    else if (p_syn->tri.dda.raydir_y <= 0 && p_syn->tri.dda.side == 1)
-    {
-        *p_idx = 3;
-        p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[3].width);
-        if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
-            p_syn->texX = p_syn->tri.tex[3].width - p_syn->texX - 1;
-        if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
-            p_syn->texX = p_syn->tri.tex[3].width - p_syn->texX - 1;
-        p_syn->step = 1.0 * p_syn->tri.tex[3].height / p_syn->lineHeight;
-    }
+    news(p_syn, p_idx);
     p_syn->texPos = (p_syn->drawStart - H / 2 + p_syn->lineHeight / 2) * p_syn->step;
     for (int y = p_syn->drawStart; y<p_syn->drawEnd; y++)
     {
@@ -67,6 +28,43 @@ void make_block(t_syn *p_syn, int *p_idx, int i)
         my_mlx_pixel_put(&(p_syn->img), i, y, p_syn->color);
     }
 }
+
+void news(t_syn *p_syn, int *p_idx)
+{
+    if ((p_syn->tri.dda.raydir_x >= 0) && p_syn->tri.dda.side == 0)//
+    {
+        *p_idx = 0;
+        before_make_texture(p_syn, p_idx);
+    }
+    else if (p_syn->tri.dda.raydir_x <= 0 && p_syn->tri.dda.side == 0)
+    {   
+        *p_idx = 1;
+        before_make_texture(p_syn, p_idx);
+    }   
+    else if (p_syn->tri.dda.raydir_y >= 0 && p_syn->tri.dda.side == 1)
+    {    
+        *p_idx= 2;
+        before_make_texture(p_syn, p_idx);
+    }
+    else if (p_syn->tri.dda.raydir_y <= 0 && p_syn->tri.dda.side == 1)
+    {
+        *p_idx = 3;
+        before_make_texture(p_syn, p_idx);
+    }
+    else
+        return;
+}
+
+void before_make_texture(t_syn *p_syn, int *p_idx)
+{
+    p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[3].width);
+    if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
+        p_syn->texX = p_syn->tri.tex[3].width - p_syn->texX - 1;
+    if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
+        p_syn->texX = p_syn->tri.tex[3].width - p_syn->texX - 1;
+    p_syn->step = 1.0 * p_syn->tri.tex[3].height / p_syn->lineHeight;
+}
+
 void make_sprite(t_syn *p_syn, Sprite *sprite)
 {
     for(int i = 0; i < numSprites; i++)
@@ -83,20 +81,16 @@ void make_sprite(t_syn *p_syn, Sprite *sprite)
         p_syn->transformX = p_syn->invDet * (p_syn->tri.dir[1] * p_syn->spriteX - p_syn->tri.dir[0] * p_syn->spriteY);
         p_syn->transformY = p_syn->invDet * (-p_syn->tri.plane[1] * p_syn->spriteX + p_syn->tri.plane[0] * p_syn->spriteY);
         p_syn->spriteScreenX = (int)((screenWidth / 2) * (1 + p_syn->transformX / p_syn->transformY));
-
         p_syn->spriteHeight = abs((int)(H / (p_syn->transformY)));
-      
         p_syn->drawStartY = -p_syn->spriteHeight / 2 + H / 2;
         if(p_syn->drawStartY < 0) p_syn->drawStartY = 0;
         p_syn->drawEndY = p_syn->spriteHeight / 2 + H / 2;
         if(p_syn->drawEndY >= H) p_syn->drawEndY = H - 1;
-
         p_syn->spriteWidth = abs((int)(H / (p_syn->transformY)));
         p_syn->drawStartX = -p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
         if(p_syn->drawStartX < 0) p_syn->drawStartX = 0;
         p_syn->drawEndX = p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
         if(p_syn->drawEndX >= screenWidth) p_syn->drawEndX = screenWidth - 1;
-
         for(p_syn->stripe = p_syn->drawStartX; p_syn->stripe < p_syn->drawEndX; (p_syn->stripe)++)
         {
             p_syn->texX = (int)(256 * (p_syn->stripe - (-p_syn->spriteWidth / 2 + p_syn->spriteScreenX)) * p_syn->tri.tex[sprite[p_syn->spriteOrder[i]].texture].width / p_syn->spriteWidth) / 256;

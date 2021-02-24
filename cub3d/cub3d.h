@@ -109,7 +109,7 @@ void make_sprite(t_syn *p_syn, Sprite *sprite);
 void init_tri(t_tri *p_tri);
 void dda_init(t_tri *p_tri);
 void dda_init_second(t_tri *p_tri);
-
+void before_make_texture(t_syn *p_syn, int *p_idx);
 void renewer_tri(t_tri *test, int *new_pos, int *new_dir);
 void get_tri(t_tri *p_tria);
 void abs_must_equal_one(t_tri *p_tri);
@@ -117,5 +117,5 @@ void change_uclied_vertical(t_tri *p_tri);
 void make_line(t_syn *p_syn, int x_pos, int start, int end, int color);
 void my_mlx_pixel_put(t_img *p_img, int x, int y, int color);
 void dda_loop(t_tri *p_tri);
-
+void news(t_syn *p_syn, int *p_idx);
 
