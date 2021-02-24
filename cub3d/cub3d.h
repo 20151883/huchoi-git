@@ -20,6 +20,12 @@
 #define KEY_ESC             53
 # define KEY_UP				126
 
+typedef struct Sprite
+{
+  double x;
+  double y;
+  int texture;
+}Sprite;
 typedef struct s_tex
 {
 	void		*ptr;
@@ -99,7 +105,7 @@ typedef struct s_syn{
     //int texY;
 }t_syn;
 void make_block(t_syn *p_syn, int *p_idx, int i);
-
+void make_sprite(t_syn *p_syn, Sprite *sprite);
 void init_tri(t_tri *p_tri);
 void dda_init(t_tri *p_tri);
 void dda_init_second(t_tri *p_tri);

@@ -67,3 +67,49 @@ void make_block(t_syn *p_syn, int *p_idx, int i)
         my_mlx_pixel_put(&(p_syn->img), i, y, p_syn->color);
     }
 }
+void make_sprite(t_syn *p_syn, Sprite *sprite)
+{
+    for(int i = 0; i < numSprites; i++)
+    {
+        p_syn->spriteOrder[i] = i;
+        p_syn->spriteDistance[i] = ((p_syn->tri.pos[0] - sprite[i].x) * (p_syn->tri.pos[0] - sprite[i].x) + (p_syn->tri.pos[1] - sprite[i].y) * (p_syn->tri.pos[1] - sprite[i].y));
+    }
+    //sortSprites(spriteOrder, spriteDistance, numSprites);
+    for(int i = 0; i < 10; i++)
+    {
+        p_syn->spriteX = sprite[p_syn->spriteOrder[i]].x - p_syn->tri.pos[0];
+        p_syn->spriteY = sprite[p_syn->spriteOrder[i]].y - p_syn->tri.pos[1];
+        p_syn->invDet = 1.0 / (p_syn->tri.plane[0] * p_syn->tri.dir[1] - p_syn->tri.dir[0] * p_syn->tri.plane[1]);
+        p_syn->transformX = p_syn->invDet * (p_syn->tri.dir[1] * p_syn->spriteX - p_syn->tri.dir[0] * p_syn->spriteY);
+        p_syn->transformY = p_syn->invDet * (-p_syn->tri.plane[1] * p_syn->spriteX + p_syn->tri.plane[0] * p_syn->spriteY);
+        p_syn->spriteScreenX = (int)((screenWidth / 2) * (1 + p_syn->transformX / p_syn->transformY));
+
+        p_syn->spriteHeight = abs((int)(H / (p_syn->transformY)));
+      
+        p_syn->drawStartY = -p_syn->spriteHeight / 2 + H / 2;
+        if(p_syn->drawStartY < 0) p_syn->drawStartY = 0;
+        p_syn->drawEndY = p_syn->spriteHeight / 2 + H / 2;
+        if(p_syn->drawEndY >= H) p_syn->drawEndY = H - 1;
+
+        p_syn->spriteWidth = abs((int)(H / (p_syn->transformY)));
+        p_syn->drawStartX = -p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
+        if(p_syn->drawStartX < 0) p_syn->drawStartX = 0;
+        p_syn->drawEndX = p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
+        if(p_syn->drawEndX >= screenWidth) p_syn->drawEndX = screenWidth - 1;
+
+        for(p_syn->stripe = p_syn->drawStartX; p_syn->stripe < p_syn->drawEndX; (p_syn->stripe)++)
+        {
+            p_syn->texX = (int)(256 * (p_syn->stripe - (-p_syn->spriteWidth / 2 + p_syn->spriteScreenX)) * p_syn->tri.tex[sprite[p_syn->spriteOrder[i]].texture].width / p_syn->spriteWidth) / 256;
+            if(p_syn->transformY > 0 && p_syn->stripe > 0 && p_syn->stripe < screenWidth && p_syn->transformY < p_syn->ZBuffer[p_syn->stripe])
+            {
+                for(p_syn->y = p_syn->drawStartY; p_syn->y < p_syn->drawEndY; (p_syn->y)++)
+                {
+                    p_syn->d = (p_syn->y) * 256 - H * 128 + p_syn->spriteHeight * 128;
+                    p_syn->texY = ((p_syn->d * p_syn->tri.tex[sprite[p_syn->spriteOrder[i]].texture].height) / p_syn->spriteHeight) / 256;
+                    p_syn->color = p_syn->tri.tex[sprite[p_syn->spriteOrder[i]].texture].data[p_syn->tri.tex[sprite[p_syn->spriteOrder[i]].texture].width * p_syn->texY + p_syn->texX];
+                    if((p_syn->color & 0x00FFFFFF) != 0) my_mlx_pixel_put(&(p_syn->img), p_syn->stripe, p_syn->y, p_syn->color);
+                }
+            }
+        }
+    }
+}
