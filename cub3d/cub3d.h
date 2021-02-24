@@ -54,7 +54,7 @@ typedef struct s_tri{//tri has dda structure..!
     double plane[2];
     int worldMap[mapWidth][mapHeight];
     t_dda dda;
-    t_tex tex[4];
+    t_tex tex[4 + 3];
 }t_tri;
 
 typedef struct image{
