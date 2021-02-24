@@ -6,7 +6,6 @@ typedef struct Sprite
   double y;
   int texture;
 }Sprite;
-#define numSprites 19
 void init_tri(t_tri *p_tri)
 {
     p_tri->pos[0] = 20;
@@ -143,8 +142,7 @@ int main_loop(t_syn *p_syn)
 {
     Sprite sprite[numSprites] =
     {
-        {20.5, 11.5, 4}, //green light in front of playerstart
-         //green lights in every room
+        {20.5, 11.5, 4},
         {18.5,4.5, 4},
         {10.0,4.5, 4},
         {10.0,12.5,4},
@@ -152,13 +150,9 @@ int main_loop(t_syn *p_syn)
         {3.5, 20.5,4},
         {3.5, 14.5,4},
         {14.5,20.5,4},
-
-  //row of pillars in front of wall: fisheye test
         {18.5, 10.5, 5},
         {18.5, 11.5, 5},
         {18.5, 12.5, 5},
-
-  //some barrels around the map
         {21.5, 1.5, 6},
         {15.5, 1.5, 6},
         {16.0, 1.8, 6},
@@ -168,226 +162,132 @@ int main_loop(t_syn *p_syn)
         {10.0, 15.1,6},
         {10.5, 15.8,6},
     };
-    double ZBuffer[screenWidth];
-    int spriteOrder[numSprites];
-    double spriteDistance[numSprites];
-
-
+    //double ZBuffer[screenWidth];
     int i = 0;
     double weight;
-    int lineHeight;
-    int drawStart;
-    int drawEnd;
-    int color;
-    int w = screenWidth;
-    int texX;
-    double step;
     int idx;
-    double wallX; //where exactly the wall was hit
-    double texPos;
-    int texY;
     make_clean(p_syn);
     make_over(p_syn);
     make_under(p_syn);
-    //my_mlx_pixel_put(p_syn->img.img_ptr, 1, 1, 0x3300CC);
-    while (i < w)
+    
+    while (i < screenWidth)
     {
-        weight = 2 * i / (double)w - 1;
+        weight = 2 * i / (double)screenWidth - 1;
         p_syn->tri.dda.raydir_x = p_syn->tri.dir[0] + p_syn->tri.plane[0] * weight;
         p_syn->tri.dda.raydir_y = p_syn->tri.dir[1] + p_syn->tri.plane[1] * weight;
-        dda_init(&(p_syn->tri));
+        /*dda_init(&(p_syn->tri));
         dda_init_second(&(p_syn->tri));
         dda_loop(&(p_syn->tri));
         change_uclied_vertical(&(p_syn->tri));//strcut->walldist에 값이 저장된다.
-        lineHeight = (double)H / (p_syn->tri.dda.walldist);
-        drawStart = -lineHeight / 2 + screenHeight / 2;//int연산
-        if(drawStart < 0)
-            drawStart = 0;
-        drawEnd = lineHeight / 2 + screenHeight / 2;//int 연산
-        if(drawEnd >= H)
-            drawEnd = H - 1;
-        //int textNum = p_syn->tri.worldMap[p_syn->tri.dda.map_x][p_syn->tri.dda.map_y];
+        p_syn->lineHeight = (double)H / (p_syn->tri.dda.walldist);
+        p_syn->drawStart = -p_syn->lineHeight / 2 + screenHeight / 2;//int연산
+        if(p_syn->drawStart < 0)
+            p_syn->drawStart = 0;
+        p_syn->drawEnd = p_syn->lineHeight / 2 + screenHeight / 2;//int 연산
+        if(p_syn->drawEnd >= H)
+            p_syn->drawEnd = H - 1;
         if (p_syn->tri.dda.side == 0) 
-            wallX = p_syn->tri.pos[1] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_y;
+            p_syn->wallX = p_syn->tri.pos[1] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_y;
         else            
-            wallX = p_syn->tri.pos[0] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_x;
-        wallX -= floor((wallX));
-        //x coordinate on the texture
+            p_syn->wallX = p_syn->tri.pos[0] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_x;
+        p_syn->wallX -= floor((p_syn->wallX));
         if ((p_syn->tri.dda.raydir_x >= 0) && p_syn->tri.dda.side == 0)//]
         {
             idx = 0;
-            texX = (int)(wallX * (double)p_syn->tri.tex[0].width);
+            p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[0].width);
             if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
-                texX = p_syn->tri.tex[0].width - texX - 1;
+                p_syn->texX = p_syn->tri.tex[0].width - p_syn->texX - 1;
             if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
-                texX = p_syn->tri.tex[0].width - texX - 1;
-            step = 1.0 * p_syn->tri.tex[0].height / lineHeight;
+                p_syn->texX = p_syn->tri.tex[0].width - p_syn->texX - 1;
+            p_syn->step = 1.0 * p_syn->tri.tex[0].height / p_syn->lineHeight;
         }
         else if (p_syn->tri.dda.raydir_x <= 0 && p_syn->tri.dda.side == 0)
          {   
             idx = 1;
-            texX = (int)(wallX * (double)p_syn->tri.tex[1].width);
+            p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[1].width);
             if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
-                texX = p_syn->tri.tex[1].width - texX - 1;
+                p_syn->texX = p_syn->tri.tex[1].width - p_syn->texX - 1;
             if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
-                texX = p_syn->tri.tex[1].width - texX - 1;
-            step = 1.0 * p_syn->tri.tex[1].height / lineHeight;
+                p_syn->texX = p_syn->tri.tex[1].width - p_syn->texX - 1;
+            p_syn->step = 1.0 * p_syn->tri.tex[1].height / p_syn->lineHeight;
         }   
         else if (p_syn->tri.dda.raydir_y >= 0 && p_syn->tri.dda.side == 1)
         {    
             idx= 2;
-            texX = (int)(wallX * (double)p_syn->tri.tex[2].width);
+            p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[2].width);
             if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
-                texX = p_syn->tri.tex[2].width - texX - 1;
+                p_syn->texX = p_syn->tri.tex[2].width - p_syn->texX - 1;
             if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
-                texX = p_syn->tri.tex[2].width - texX - 1;
-            step = 1.0 * p_syn->tri.tex[2].height / lineHeight;
+                p_syn->texX = p_syn->tri.tex[2].width - p_syn->texX - 1;
+            p_syn->step = 1.0 * p_syn->tri.tex[2].height / p_syn->lineHeight;
         }
         else if (p_syn->tri.dda.raydir_y <= 0 && p_syn->tri.dda.side == 1)
         {
             idx = 3;
-            texX = (int)(wallX * (double)p_syn->tri.tex[3].width);
+            p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[3].width);
             if(p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0) 
-                texX = p_syn->tri.tex[3].width - texX - 1;
+                p_syn->texX = p_syn->tri.tex[3].width - p_syn->texX - 1;
             if(p_syn->tri.dda.side == 1 && p_syn->tri.dda.raydir_y < 0) 
-                texX = p_syn->tri.tex[3].width - texX - 1;
-            step = 1.0 * p_syn->tri.tex[3].height / lineHeight;
+                p_syn->texX = p_syn->tri.tex[3].width - p_syn->texX - 1;
+            p_syn->step = 1.0 * p_syn->tri.tex[3].height / p_syn->lineHeight;
         }
-        texPos = (drawStart - H / 2 + lineHeight / 2) * step;
-        for (int y = drawStart; y<drawEnd; y++)
+        p_syn->texPos = (p_syn->drawStart - H / 2 + p_syn->lineHeight / 2) * p_syn->step;
+        for (int y = p_syn->drawStart; y<p_syn->drawEnd; y++)
         {
-             // Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-            texY = (int)texPos & (p_syn->tri.tex[idx].height - 1);
-            texPos += step;
-            color = p_syn->tri.tex[idx].data[p_syn->tri.tex[idx].height * texY + texX];
-            my_mlx_pixel_put(&(p_syn->img), i, y, color);
-        }
-        /*ZBuffer[i] = p_syn->tri.dda.walldist; //perpendicular distance is used
-        for(int i = 0; i < numSprites; i++)
-        {
-            spriteOrder[i] = i;
-            spriteDistance[i] = ((p_syn->tri.pos[0] - sprite[i].x) * (p_syn->tri.pos[0] - sprite[i].x) + (p_syn->tri.pos[1] - sprite[i].y) * (p_syn->tri.pos[1] - sprite[i].y)); //sqrt not taken, unneeded
-        }
-        //sortSprites(spriteOrder, spriteDistance, numSprites);//*******************&********************(************)
-        for(int i = 0; i < 1; i++)
-        {
-      //translate sprite position to relative to camera
-            double spriteX = sprite[spriteOrder[i]].x - p_syn->tri.pos[0];
-            double spriteY = sprite[spriteOrder[i]].y - p_syn->tri.pos[1];
-
-      //transform sprite with the inverse camera matrix
-      // [ planeX   dirX ] -1                                       [ dirY      -dirX ]
-      // [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
-      // [ planeY   dirY ]                                          [ -planeY  planeX ]
-
-            double invDet = 1.0 / (p_syn->tri.plane[0] * p_syn->tri.dir[1] - p_syn->tri.dir[0] * p_syn->tri.plane[1]); //required for correct matrix multiplication
-
-            double transformX = invDet * (p_syn->tri.dir[1] * spriteX - p_syn->tri.dir[0] * spriteY);
-            double transformY = invDet * (-p_syn->tri.plane[1] * spriteX + p_syn->tri.plane[0] * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
-
-            int spriteScreenX = (int)((w / 2) * (1 + transformX / transformY));
-
-      //calculate height of the sprite on screen
-            int spriteHeight = abs((int)(H / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
-      //calculate lowest and highest pixel to fill in current stripe
-            int drawStartY = -spriteHeight / 2 + H / 2;
-            if(drawStartY < 0) drawStartY = 0;
-            int drawEndY = spriteHeight / 2 + H / 2;
-            if(drawEndY >= H) drawEndY = H - 1;
-
-      //calculate width of the sprite
-            int spriteWidth = abs((int)(H / (transformY)));
-            int drawStartX = -spriteWidth / 2 + spriteScreenX;
-            if(drawStartX < 0) drawStartX = 0;
-            int drawEndX = spriteWidth / 2 + spriteScreenX;
-            if(drawEndX >= w) drawEndX = w - 1;
-
-      //loop through every vertical stripe of the sprite on screen
-            for(int stripe = drawStartX; stripe < drawEndX; stripe++)
-            {
-                int texX = (int)(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * p_syn->tri.tex[sprite[spriteOrder[i]].texture].width / spriteWidth) / 256;
-        //the conditions in the if are:
-        //1) it's in front of camera plane so you don't see things behind you
-        //2) it's on the screen (left)
-        //3) it's on the screen (right)
-        //4) ZBuffer, with perpendicular distance
-                if(transformY > 0 && stripe > 0 && stripe < w && transformY < ZBuffer[stripe])
-                {
-                    for(int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
-                    {
-                        int d = (y) * 256 - H * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
-                        int texY = ((d * p_syn->tri.tex[sprite[spriteOrder[i]].texture].height) / spriteHeight) / 256;
-                        int color = p_syn->tri.tex[sprite[spriteOrder[i]].texture].data[p_syn->tri.tex[sprite[spriteOrder[i]].texture].width * texY + texX]; //get current color from the texture
-                        if((color & 0x00FFFFFF) != 0) my_mlx_pixel_put(&(p_syn->img), stripe, y, color); //buffer[y][stripe] = color; //paint pixel if it isn't black, black is the invisible color
-                    }
-                }
-            }
+            p_syn->texY = (int)p_syn->texPos & (p_syn->tri.tex[idx].height - 1);
+            p_syn->texPos += p_syn->step;
+            p_syn->color = p_syn->tri.tex[idx].data[p_syn->tri.tex[idx].height * p_syn->texY + p_syn->texX];
+            my_mlx_pixel_put(&(p_syn->img), i, y, p_syn->color);
         }*/
-        ZBuffer[i] = p_syn->tri.dda.walldist; //perpendicular distance is used
+        make_block(p_syn, &idx, i);
+        p_syn->ZBuffer[i] = p_syn->tri.dda.walldist;
         i++;
     }
         
     for(int i = 0; i < numSprites; i++)
     {
-        spriteOrder[i] = i;
-        spriteDistance[i] = ((p_syn->tri.pos[0] - sprite[i].x) * (p_syn->tri.pos[0] - sprite[i].x) + (p_syn->tri.pos[1] - sprite[i].y) * (p_syn->tri.pos[1] - sprite[i].y)); //sqrt not taken, unneeded
+        p_syn->spriteOrder[i] = i;
+        p_syn->spriteDistance[i] = ((p_syn->tri.pos[0] - sprite[i].x) * (p_syn->tri.pos[0] - sprite[i].x) + (p_syn->tri.pos[1] - sprite[i].y) * (p_syn->tri.pos[1] - sprite[i].y));
     }
-        //sortSprites(spriteOrder, spriteDistance, numSprites);//*******************&********************(************)
+    //sortSprites(spriteOrder, spriteDistance, numSprites);
     for(int i = 0; i < 10; i++)
     {
-      //translate sprite position to relative to camera
-        double spriteX = sprite[spriteOrder[i]].x - p_syn->tri.pos[0];
-        double spriteY = sprite[spriteOrder[i]].y - p_syn->tri.pos[1];
+        p_syn->spriteX = sprite[p_syn->spriteOrder[i]].x - p_syn->tri.pos[0];
+        p_syn->spriteY = sprite[p_syn->spriteOrder[i]].y - p_syn->tri.pos[1];
+        p_syn->invDet = 1.0 / (p_syn->tri.plane[0] * p_syn->tri.dir[1] - p_syn->tri.dir[0] * p_syn->tri.plane[1]);
+        p_syn->transformX = p_syn->invDet * (p_syn->tri.dir[1] * p_syn->spriteX - p_syn->tri.dir[0] * p_syn->spriteY);
+        p_syn->transformY = p_syn->invDet * (-p_syn->tri.plane[1] * p_syn->spriteX + p_syn->tri.plane[0] * p_syn->spriteY);
+        p_syn->spriteScreenX = (int)((screenWidth / 2) * (1 + p_syn->transformX / p_syn->transformY));
 
-      //transform sprite with the inverse camera matrix
-      // [ planeX   dirX ] -1                                       [ dirY      -dirX ]
-      // [               ]       =  1/(planeX*dirY-dirX*planeY) *   [                 ]
-      // [ planeY   dirY ]                                          [ -planeY  planeX ]
+        p_syn->spriteHeight = abs((int)(H / (p_syn->transformY)));
+      
+        p_syn->drawStartY = -p_syn->spriteHeight / 2 + H / 2;
+        if(p_syn->drawStartY < 0) p_syn->drawStartY = 0;
+        p_syn->drawEndY = p_syn->spriteHeight / 2 + H / 2;
+        if(p_syn->drawEndY >= H) p_syn->drawEndY = H - 1;
 
-        double invDet = 1.0 / (p_syn->tri.plane[0] * p_syn->tri.dir[1] - p_syn->tri.dir[0] * p_syn->tri.plane[1]); //required for correct matrix multiplication
+        p_syn->spriteWidth = abs((int)(H / (p_syn->transformY)));
+        p_syn->drawStartX = -p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
+        if(p_syn->drawStartX < 0) p_syn->drawStartX = 0;
+        p_syn->drawEndX = p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
+        if(p_syn->drawEndX >= screenWidth) p_syn->drawEndX = screenWidth - 1;
 
-        double transformX = invDet * (p_syn->tri.dir[1] * spriteX - p_syn->tri.dir[0] * spriteY);
-        double transformY = invDet * (-p_syn->tri.plane[1] * spriteX + p_syn->tri.plane[0] * spriteY); //this is actually the depth inside the screen, that what Z is in 3D
-
-        int spriteScreenX = (int)((w / 2) * (1 + transformX / transformY));
-
-      //calculate height of the sprite on screen
-        int spriteHeight = abs((int)(H / (transformY))); //using 'transformY' instead of the real distance prevents fisheye
-      //calculate lowest and highest pixel to fill in current stripe
-        int drawStartY = -spriteHeight / 2 + H / 2;
-        if(drawStartY < 0) drawStartY = 0;
-        int drawEndY = spriteHeight / 2 + H / 2;
-        if(drawEndY >= H) drawEndY = H - 1;
-
-      //calculate width of the sprite
-        int spriteWidth = abs((int)(H / (transformY)));
-        int drawStartX = -spriteWidth / 2 + spriteScreenX;
-        if(drawStartX < 0) drawStartX = 0;
-        int drawEndX = spriteWidth / 2 + spriteScreenX;
-        if(drawEndX >= w) drawEndX = w - 1;
-
-      //loop through every vertical stripe of the sprite on screen
-        for(int stripe = drawStartX; stripe < drawEndX; stripe++)
+        for(p_syn->stripe = p_syn->drawStartX; p_syn->stripe < p_syn->drawEndX; (p_syn->stripe)++)
         {
-            int texX = (int)(256 * (stripe - (-spriteWidth / 2 + spriteScreenX)) * p_syn->tri.tex[sprite[spriteOrder[i]].texture].width / spriteWidth) / 256;
-        //the conditions in the if are:
-        //1) it's in front of camera plane so you don't see things behind you
-        //2) it's on the screen (left)
-        //3) it's on the screen (right)
-        //4) ZBuffer, with perpendicular distance
-            if(transformY > 0 && stripe > 0 && stripe < w && transformY < ZBuffer[stripe])
+            p_syn->texX = (int)(256 * (p_syn->stripe - (-p_syn->spriteWidth / 2 + p_syn->spriteScreenX)) * p_syn->tri.tex[sprite[p_syn->spriteOrder[i]].texture].width / p_syn->spriteWidth) / 256;
+            if(p_syn->transformY > 0 && p_syn->stripe > 0 && p_syn->stripe < screenWidth && p_syn->transformY < p_syn->ZBuffer[p_syn->stripe])
             {
-                for(int y = drawStartY; y < drawEndY; y++) //for every pixel of the current stripe
+                for(p_syn->y = p_syn->drawStartY; p_syn->y < p_syn->drawEndY; (p_syn->y)++)
                 {
-                    int d = (y) * 256 - H * 128 + spriteHeight * 128; //256 and 128 factors to avoid floats
-                    int texY = ((d * p_syn->tri.tex[sprite[spriteOrder[i]].texture].height) / spriteHeight) / 256;
-                    int color = p_syn->tri.tex[sprite[spriteOrder[i]].texture].data[p_syn->tri.tex[sprite[spriteOrder[i]].texture].width * texY + texX]; //get current color from the texture
-                    if((color & 0x00FFFFFF) != 0) my_mlx_pixel_put(&(p_syn->img), stripe, y, color); //buffer[y][stripe] = color; //paint pixel if it isn't black, black is the invisible color
+                    p_syn->d = (p_syn->y) * 256 - H * 128 + p_syn->spriteHeight * 128;
+                    p_syn->texY = ((p_syn->d * p_syn->tri.tex[sprite[p_syn->spriteOrder[i]].texture].height) / p_syn->spriteHeight) / 256;
+                    p_syn->color = p_syn->tri.tex[sprite[p_syn->spriteOrder[i]].texture].data[p_syn->tri.tex[sprite[p_syn->spriteOrder[i]].texture].width * p_syn->texY + p_syn->texX];
+                    if((p_syn->color & 0x00FFFFFF) != 0) my_mlx_pixel_put(&(p_syn->img), p_syn->stripe, p_syn->y, p_syn->color);
                 }
             }
         }
     }
-    mlx_put_image_to_window(p_syn->tri.mlx_ptr, p_syn->tri.win_ptr, p_syn->img.img_ptr, 0, 0);//딱 한번만 호출하는...
+    mlx_put_image_to_window(p_syn->tri.mlx_ptr, p_syn->tri.win_ptr, p_syn->img.img_ptr, 0, 0);
     return (0);
 }
 
@@ -422,7 +322,7 @@ int key_func(int keycode, t_syn *p_syn)
     double temp;
     int mapx = (int)p_syn->tri.pos[0];
     int mapy = (int)p_syn->tri.pos[1];
-    double speed = 1;//속도를 너무 빨리해버리면 비스듬하게 기둥을 바라보는 방향으로 앞으로 이동한다면 기둥을 통과하는 문제가 생긴다.
+    double speed = 1;//속도를 너무 빨리해버리면 비스듬하게 기둥을 바라보는 방향으로 앞으로 이동할때 기둥을 통과하는 문제가 생긴다.
     if (keycode == KEY_A)
     {
         p_syn->tri.pos[0] -= p_syn->tri.plane[0] *speed;

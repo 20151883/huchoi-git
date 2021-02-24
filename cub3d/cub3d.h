@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "./mlx.h"
 #include <string.h>
-
+#define numSprites 19
 #define mapWidth 24
 #define mapHeight 24
 #define screenWidth 640
@@ -68,7 +68,41 @@ typedef struct image{
 typedef struct s_syn{
     t_tri tri;//tri has dda struct...!
     t_img img;
+    double ZBuffer[screenWidth];
+    int drawStart;
+    int drawEnd;
+    int color;
+    double spriteX;
+    double spriteY;
+    double invDet;
+    double transformX;
+    double transformY;
+    int spriteScreenX;
+    int spriteHeight;
+    int drawStartY;
+    int drawEndY;
+    int spriteWidth;
+    int drawStartX;
+    int drawEndX;
+    int stripe;
+    int texX;
+    int y;
+    int d;
+    int texY;
+    int spriteOrder[numSprites];
+    double spriteDistance[numSprites];
+    int lineHeight;
+    //int texX;
+    double step;
+    double wallX; //where exactly the wall was hit
+    double texPos;
+    //int texY;
 }t_syn;
+void make_block(t_syn *p_syn, int *p_idx, int i);
+
+void init_tri(t_tri *p_tri);
+void dda_init(t_tri *p_tri);
+void dda_init_second(t_tri *p_tri);
 
 void renewer_tri(t_tri *test, int *new_pos, int *new_dir);
 void get_tri(t_tri *p_tria);
