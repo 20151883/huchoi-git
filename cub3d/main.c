@@ -1,8 +1,8 @@
 #include "cub3d.h"
 void init_tri(t_tri *p_tri)
 {
-    p_tri->pos[0] = 20;
-    p_tri->pos[1] = 20;
+    p_tri->pos[0] = 1;
+    p_tri->pos[1] = 1;
     p_tri->dir[0] = -1;
     p_tri->dir[1] = 0;
     //abs_must_epual_one(p_tri);
@@ -12,7 +12,7 @@ void init_tri(t_tri *p_tri)
     {
     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
     {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-    {1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
     {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
     {1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,3,0,3,0,3,0,0,0,1},
     {1,0,0,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
@@ -37,6 +37,8 @@ void init_tri(t_tri *p_tri)
     };
     memcpy(p_tri->worldMap, arr, sizeof(int) * mapWidth * mapHeight);
     ///printf("%d %d %d", p_tri->worldMap[0][0])
+    /*int fd = open("./pics/eagle11.xpm", O_RDONLY);
+    printf("fd %d\n", fd);*/
     p_tri->tex[0].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/eagle.xpm", &(p_tri->tex[0].width), &(p_tri->tex[0].height));
 	p_tri->tex[0].data = (int *)mlx_get_data_addr(p_tri->tex[0].ptr, &p_tri->tex[0].bpp, &p_tri->tex[0].size_l, &p_tri->tex[0].endian);
     
@@ -135,7 +137,7 @@ int main_loop(t_syn *p_syn)
 {
     Sprite sprite[numSprites] =
     {
-        {20.5, 11.5, 4},
+        {3, 3, 4},
         {18.5,4.5, 4},
         {10.0,4.5, 4},
         {10.0,12.5,4},

@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include "./mlx.h"
 #include <string.h>
+#include <sys/types.h> 
+#include <sys/stat.h> 
+#include <fcntl.h>
 #define numSprites 19
 #define mapWidth 24
 #define mapHeight 24
@@ -104,6 +107,12 @@ typedef struct s_syn{
     double texPos;
     //int texY;
 }t_syn;
+int get_end(char *buf, int start, int *p_flag);
+int check_first(char *buf, int *p_flag);
+int check_num_part(char *cur,char *before, int start, int end);
+int get_start(char *buf,char *before, int end);
+int is_valid_map(void);
+
 void make_block(t_syn *p_syn, int *p_idx, int i);
 void make_sprite(t_syn *p_syn, Sprite *sprite);
 void init_tri(t_tri *p_tri);
