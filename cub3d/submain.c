@@ -1,54 +1,75 @@
 #include "cub3d.h"
-void init_tri(t_syn *p_syn)
+void init_tri(t_tri *p_tri)
 {
-    //par(p_syn);
-    t_tri *p_tri = &p_syn->tri;
-    /*p_tri->pos[0] = 1;
+    p_tri->pos[0] = 1;
     p_tri->pos[1] = 1;
     p_tri->dir[0] = -1;
     p_tri->dir[1] = 0;
     //abs_must_epual_one(p_tri);
     p_tri->plane[0] = 0;
-    p_tri->plane[1] = 0;
-    if (p_tri->dir[1] != 0)
-        p_tri->plane[0] = 0.66;
-    else
-        p_tri->plane[1] = 0.66;*/
-    p_syn->ZBuffer = (double*)malloc(sizeof (double) * p_syn->R[0]);
-    //printf("IN INIT TRI \n pos[0] = %f pos[1] = %f", p_syn->tri.pos[0], p_syn->tri.pos[1]);
-    //memcpy(p_tri->worldMap, arr, sizeof(int) * mapWidth * mapHeight);
+    p_tri->plane[1] = 0.66;
+    int arr[mapWidth][mapHeight] =
+    {
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,3,0,3,0,3,0,0,0,1},
+    {1,0,0,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,2,0,0,0,1,0,0,0,0,3,0,0,0,3,0,0,0,1},
+    {1,0,0,0,0,0,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,2,2,0,2,1,0,0,0,0,1,0,3,0,3,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,4,4,4,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,4,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+    };
+    memcpy(p_tri->worldMap, arr, sizeof(int) * mapWidth * mapHeight);
     ///printf("%d %d %d", p_tri->worldMap[0][0])
     /*int fd = open("./pics/eagle11.xpm", O_RDONLY);
     printf("fd %d\n", fd);*/
-
-    //printf("test : %s", p_syn->tri.tex[0].path);
-
-    p_tri->tex[0].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[0].path, &(p_tri->tex[0].width), &(p_tri->tex[0].height));
+    p_tri->tex[0].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/eagle.xpm", &(p_tri->tex[0].width), &(p_tri->tex[0].height));
 	p_tri->tex[0].data = (int *)mlx_get_data_addr(p_tri->tex[0].ptr, &p_tri->tex[0].bpp, &p_tri->tex[0].size_l, &p_tri->tex[0].endian);
     
-    p_tri->tex[1].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[1].path, &p_tri->tex[1].width, &p_tri->tex[1].height);
+    p_tri->tex[1].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/wall_1.xpm", &p_tri->tex[1].width, &p_tri->tex[1].height);
 	p_tri->tex[1].data = (int *)mlx_get_data_addr(p_tri->tex[1].ptr, &p_tri->tex[1].bpp, &p_tri->tex[1].size_l, &p_tri->tex[1].endian);
     
-    p_tri->tex[2].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[2].path, &p_tri->tex[2].width, &p_tri->tex[2].height);
+    p_tri->tex[2].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/wall_2.xpm", &p_tri->tex[2].width, &p_tri->tex[2].height);
 	p_tri->tex[2].data = (int *)mlx_get_data_addr(p_tri->tex[2].ptr, &p_tri->tex[2].bpp, &p_tri->tex[2].size_l, &p_tri->tex[2].endian);
     
-    p_tri->tex[3].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[3].path, &p_tri->tex[3].width, &p_tri->tex[3].height);
+    p_tri->tex[3].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/wall_3.xpm", &p_tri->tex[3].width, &p_tri->tex[3].height);
 	p_tri->tex[3].data = (int *)mlx_get_data_addr(p_tri->tex[3].ptr, &p_tri->tex[3].bpp, &p_tri->tex[3].size_l, &p_tri->tex[3].endian);
 
-    p_tri->tex[4].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[4].path, &p_tri->tex[4].width, &p_tri->tex[4].height);
+    p_tri->tex[4].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/sprite_1.xpm", &p_tri->tex[4].width, &p_tri->tex[4].height);
 	p_tri->tex[4].data = (int *)mlx_get_data_addr(p_tri->tex[4].ptr, &p_tri->tex[4].bpp, &p_tri->tex[4].size_l, &p_tri->tex[4].endian);
-}
 
+    p_tri->tex[5].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/sprite_2.xpm", &p_tri->tex[5].width, &p_tri->tex[5].height);
+	p_tri->tex[5].data = (int *)mlx_get_data_addr(p_tri->tex[5].ptr, &p_tri->tex[5].bpp, &p_tri->tex[5].size_l, &p_tri->tex[5].endian);
+
+    p_tri->tex[6].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, "./pics/sprite_3.xpm", &p_tri->tex[6].width, &p_tri->tex[6].height);
+	p_tri->tex[6].data = (int *)mlx_get_data_addr(p_tri->tex[6].ptr, &p_tri->tex[6].bpp, &p_tri->tex[6].size_l, &p_tri->tex[6].endian);
+
+}
 
 void dda_init(t_tri *p_tri)
 {
-    //printf("IN DDA  INIT  pos[0] = %f pos[1] = %f", p_tri->pos[0], p_tri->pos[1]);
     t_dda *p_dd = &(p_tri->dda);
 
     p_dd->map_x = (int)p_tri->pos[0];
     p_dd->map_y = (int)p_tri->pos[1];
-    p_dd->deltadist_x = (p_dd->raydir_y == 0) ? 0 : ((p_dd->raydir_x == 0) ? 1 : fabs(1 / p_dd->raydir_x));
-    p_dd->deltadist_y = (p_dd->raydir_x == 0) ? 0 : ((p_dd->raydir_x == 0) ? 1 : fabs(1 / p_dd->raydir_y));
+    p_dd->deltadist_x = fabs(1.0 / p_tri->dda.raydir_x);
+    p_dd->deltadist_y = fabs(1.0 / p_tri->dda.raydir_y);
     if (p_dd->raydir_x > 0)
         p_dd->sidedist_x = (p_dd->map_x + 1 - p_tri->pos[0]) * p_dd->deltadist_x;
     else
@@ -57,8 +78,6 @@ void dda_init(t_tri *p_tri)
         p_dd->sidedist_y = (p_dd->map_y + 1 - p_tri->pos[1]) * p_dd->deltadist_y;
     else
         p_dd->sidedist_y = (p_tri->pos[1] - p_dd->map_y) * p_dd->deltadist_y;
-    //printf("dda init delta = %f\n", p_tri->dda.deltadist_x);
-    //printf("dda init side = %f\n", p_tri->dda.sidedist_x);
 }
 
 void dda_init_second(t_tri *p_tri)
@@ -79,23 +98,23 @@ void make_clean(t_syn *p_syn)
 {
     int x = 0;
 
-    while (x <= p_syn->R[1])
+    while (x <= screenHeight)
     {
-        make_line(p_syn, x, 0, p_syn->R[1], 0x00);
+        make_line(p_syn, x, 0, screenHeight, 0x00);
         x++;
     }
 }
 
 void make_under(t_syn *p_syn)
 {
-    int i = p_syn->R[1] / 2;
+    int i = screenHeight / 2;
     int j;
 
-    while (i <= p_syn->R[1])
+    while (i <= screenHeight)
     {
         j = 0;
-        while (j <= p_syn->R[0])
-            my_mlx_pixel_put(&(p_syn->img), j++, i, p_syn->f_color);
+        while (j <= screenWidth)
+            my_mlx_pixel_put(&(p_syn->img), j++, i, 0x663300);
         i++;
     }
 }
@@ -105,17 +124,40 @@ void make_over(t_syn *p_syn)
     int i = 0;
     int j;
 
-    while (i <= p_syn->R[1] / 2)
+    while (i <= screenHeight / 2)
     {
         j = 0;
-        while (j <= p_syn->R[0])
-            my_mlx_pixel_put(&(p_syn->img), j++, i, p_syn->c_color);
+        while (j <= screenWidth)
+            my_mlx_pixel_put(&(p_syn->img), j++, i, 0x3300CC);
         i++;
     }
 }
 
 int main_loop(t_syn *p_syn)
 {
+    Sprite sprite[numSprites] =
+    {
+        {3, 3, 4},
+        {18.5,4.5, 4},
+        {10.0,4.5, 4},
+        {10.0,12.5,4},
+        {3.5, 6.5, 4},
+        {3.5, 20.5,4},
+        {3.5, 14.5,4},
+        {14.5,20.5,4},
+        {18.5, 10.5, 5},
+        {18.5, 11.5, 5},
+        {18.5, 12.5, 5},
+        {21.5, 1.5, 6},
+        {15.5, 1.5, 6},
+        {16.0, 1.8, 6},
+        {16.2, 1.2, 6},
+        {3.5,  2.5, 6},
+        {9.5, 15.5, 6},
+        {10.0, 15.1,6},
+        {10.5, 15.8,6},
+    };
+    //double ZBuffer[screenWidth];
     int i = 0;
     double weight;
     int idx;
@@ -123,21 +165,16 @@ int main_loop(t_syn *p_syn)
     make_over(p_syn);
     make_under(p_syn);
     
-    //printf("test\n");
-    //printf("p_syn->tri.pos[0] : %d\n", p_syn->tri.pos[0]);
-    //printf("IN MAIN LOOP \n pos[0] = %f pos[1] = %f", p_syn->tri.pos[0], p_syn->tri.pos[1]);
-    //printf("IN MAIN LOOP \n plane[0] = %f plane[1] = %f", p_syn->tri.plane[0], p_syn->tri.plane[1]);
-    //printf("R = %d\n", p_syn->R[0]);
-    while (i < p_syn->R[0])
+    while (i < screenWidth)
     {
-        weight = 2 * i / (double)p_syn->R[0] - 1;
+        weight = 2 * i / (double)screenWidth - 1;
         p_syn->tri.dda.raydir_x = p_syn->tri.dir[0] + p_syn->tri.plane[0] * weight;
         p_syn->tri.dda.raydir_y = p_syn->tri.dir[1] + p_syn->tri.plane[1] * weight;
         make_block(p_syn, &idx, i);
         p_syn->ZBuffer[i] = p_syn->tri.dda.walldist;
         i++;
     }
-    make_sprite(p_syn);
+    make_sprite(p_syn, sprite);
     mlx_put_image_to_window(p_syn->tri.mlx_ptr, p_syn->tri.win_ptr, p_syn->img.img_ptr, 0, 0);
     return (0);
 }
@@ -174,12 +211,11 @@ int key_func(int keycode, t_syn *p_syn)
     int mapx = (int)p_syn->tri.pos[0];
     int mapy = (int)p_syn->tri.pos[1];
     double speed = 1;//속도를 너무 빨리해버리면 비스듬하게 기둥을 바라보는 방향으로 앞으로 이동할때 기둥을 통과하는 문제가 생긴다.
-    //printf(" posx %f posy %f  dirx %f diry %f panex plnaey \n", p_syn->tri.pos[0], p_syn->tri.pos[1], p_syn->tri.dir[0], p_syn->tri.dir[1]);
     if (keycode == KEY_A)
     {
         p_syn->tri.pos[0] -= p_syn->tri.plane[0] *speed;
         p_syn->tri.pos[1] -= p_syn->tri.plane[1] *speed;
-        if (p_syn->tri.test_map[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
+        if (p_syn->tri.worldMap[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
         {
             p_syn->tri.pos[0] += p_syn->tri.plane[0] *speed;
             p_syn->tri.pos[1] += p_syn->tri.plane[1] *speed;
@@ -189,7 +225,7 @@ int key_func(int keycode, t_syn *p_syn)
     {
         p_syn->tri.pos[0] += p_syn->tri.dir[0] *speed;
         p_syn->tri.pos[1] += p_syn->tri.dir[1] *speed;
-        if (p_syn->tri.test_map[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
+        if (p_syn->tri.worldMap[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
         {
             p_syn->tri.pos[0] -= p_syn->tri.dir[0] *speed;
             p_syn->tri.pos[1] -= p_syn->tri.dir[1] *speed;
@@ -209,7 +245,7 @@ int key_func(int keycode, t_syn *p_syn)
     {
         p_syn->tri.pos[0] += p_syn->tri.plane[0] *speed;
         p_syn->tri.pos[1] += p_syn->tri.plane[1] *speed;
-        if (p_syn->tri.test_map[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
+        if (p_syn->tri.worldMap[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
         {
             p_syn->tri.pos[0] -= p_syn->tri.plane[0] *speed;
             p_syn->tri.pos[1] -= p_syn->tri.plane[1] *speed;
@@ -219,7 +255,7 @@ int key_func(int keycode, t_syn *p_syn)
     {
         p_syn->tri.pos[0] -= p_syn->tri.dir[0] *speed;
         p_syn->tri.pos[1] -= p_syn->tri.dir[1] *speed;
-        if (p_syn->tri.test_map[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
+        if (p_syn->tri.worldMap[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
         {
             p_syn->tri.pos[0] += p_syn->tri.dir[0] *speed;
             p_syn->tri.pos[1] += p_syn->tri.dir[1] *speed;
@@ -253,18 +289,14 @@ int key_func(int keycode, t_syn *p_syn)
 int main(int argc, char *argv[])
 {
     t_syn syn;
-    par(&syn);
-    printf("test\n");
-    //printf("IN first \n pos[0] = %f pos[1] = %f", syn.tri.pos[0], syn.tri.pos[1]);
+
     syn.tri.mlx_ptr = mlx_init();
-    syn.tri.win_ptr = mlx_new_window(syn.tri.mlx_ptr, syn.R[0], syn.R[1], "hello");
-    syn.img.img_ptr = mlx_new_image(syn.tri.mlx_ptr, syn.R[0], syn.R[1]);
+    syn.tri.win_ptr = mlx_new_window(syn.tri.mlx_ptr, 640, 640, "hello");
+    syn.img.img_ptr = mlx_new_image(syn.tri.mlx_ptr, 640, 640);
     syn.img.data_ptr = mlx_get_data_addr(syn.img.img_ptr, &(syn.img.bpp), &(syn.img.lenth), &(syn.img.endian));
-    init_tri(&syn);
-    //printf("IN MAIN LOOP \n plane[0] = %f plane[1] = %f", syn.tri.plane[0], syn.tri.plane[1]);
+    init_tri(&(syn.tri));
     mlx_hook(syn.tri.win_ptr, 2, 0, &key_func, &syn);
     mlx_loop_hook(syn.tri.mlx_ptr, &main_loop, &syn);
-    //printf(" posx %f posy %f  dirx %f diry %f panex plnaey \n", syn.tri.pos[0], syn.tri.pos[1], syn.tri.dir[0], syn.tri.dir[1]);
     mlx_loop(syn.tri.mlx_ptr);
     return (0);
 }

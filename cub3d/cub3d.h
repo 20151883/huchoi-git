@@ -6,12 +6,10 @@
 #include <sys/types.h> 
 #include <sys/stat.h> 
 #include <fcntl.h>
-#define numSprites 19
-#define mapWidth 24
-#define mapHeight 24
-#define screenWidth 640
-#define screenHeight 640
-#define H 640
+#include <unistd.h>
+//#define screenWidth p_syn->R[0]
+//#define screenHeight p_syn->R[1]
+#define H p_syn->R[1]
 
 # define KEY_A				0
 # define KEY_S				1
@@ -27,8 +25,9 @@ typedef struct Sprite
 {
   double x;
   double y;
-  int texture;
+  //int texture;//this must be the 4...!!
 }Sprite;
+
 typedef struct s_tex
 {
 	void		*ptr;
@@ -38,84 +37,92 @@ typedef struct s_tex
 	int			size_l;
 	int			bpp;
 	int			endian;
+    char        *path;
 }t_tex;
 
 typedef struct s_dda{//this struct will be included in t_tri struct...!!
-    int step_x;
-    int step_y;
-    int map_x;
-    int map_y;
-    int side;
-    double raydir_x;
-    double raydir_y;
-    double sidedist_x;
-    double sidedist_y;
-    double deltadist_x;
-    double deltadist_y;
-    double walldist; 
+    int         step_x;
+    int         step_y;
+    int         map_x;
+    int         map_y;
+    int         side;
+    double      raydir_x;
+    double      raydir_y;
+    double      sidedist_x;
+    double      sidedist_y;
+    double      deltadist_x;
+    double      deltadist_y;
+    double      walldist; 
 }t_dda;
 
 typedef struct s_tri{//tri has dda structure..!
-    void *mlx_ptr;
-    void *win_ptr;
-    double pos[2];
-    double dir[2];
-    double plane[2];
-    int worldMap[mapWidth][mapHeight];
-    t_dda dda;
-    t_tex tex[4 + 3];
+    void    *mlx_ptr;
+    void    *win_ptr;
+    double  pos[2];
+    double  dir[2];
+    double  plane[2];
+    //int worldMap[mapWidth][mapHeight];
+    int     **test_map;
+    t_dda   dda;
+    t_tex   tex[4 + 1];//tex[4+1] is correct!!
 }t_tri;
 
 typedef struct image{
-    void *img_ptr;
-    char *data_ptr;
-    int bpp;
-    int lenth;
-    int endian;
+    void    *img_ptr;
+    char    *data_ptr;
+    int     bpp;
+    int     lenth;
+    int     endian;
 }t_img;
 
 typedef struct s_syn{
-    t_tri tri;//tri has dda struct...!
-    t_img img;
-    double ZBuffer[screenWidth];
-    int drawStart;
-    int drawEnd;
-    int color;
-    double spriteX;
-    double spriteY;
-    double invDet;
-    double transformX;
-    double transformY;
-    int spriteScreenX;
-    int spriteHeight;
-    int drawStartY;
-    int drawEndY;
-    int spriteWidth;
-    int drawStartX;
-    int drawEndX;
-    int stripe;
-    int texX;
-    int y;
-    int d;
-    int texY;
-    int spriteOrder[numSprites];
-    double spriteDistance[numSprites];
-    int lineHeight;
+    t_tri   tri;//tri has dda struct...!
+    t_img   img;
+    int     c_color;
+    int     f_color;
+    double  **sprites;
+    int     R[2];
+    int     num_of_sprite;
+    double  *ZBuffer;
+    int     drawStart;
+    int     drawEnd;
+    int     color;
+    double  spriteX;
+    double  spriteY;
+    double  invDet;
+    double  transformX;
+    double  transformY;
+    int     spriteScreenX;
+    int     spriteHeight;
+    int     drawStartY;
+    int     drawEndY;
+    int     spriteWidth;
+    int     drawStartX;
+    int     drawEndX;
+    int     stripe;
+    int     texX;
+    int     y;
+    int     d;
+    int     texY;
+    double  *spriteDistance;
+    int     lineHeight;
     //int texX;
     double step;
     double wallX; //where exactly the wall was hit
     double texPos;
+    //Sprite *sprite;
     //int texY;
 }t_syn;
+int par(t_syn *p_syn);
 int get_end(char *buf, int start, int *p_flag);
 int check_first(char *buf, int *p_flag);
 int check_num_part(char *cur,char *before, int start, int end);
 int get_start(char *buf,char *before, int end);
-int is_valid_map(void);
+int is_valid_map(int fd, t_syn *p_syn);
 
 void make_block(t_syn *p_syn, int *p_idx, int i);
-void make_sprite(t_syn *p_syn, Sprite *sprite);
-void init_tri(t_tri *p_tri);
+void make_sprite(t_syn *p_syn);
+void init_tri(t_syn *p_syn);
 void dda_init(t_tri *p_tri);
 void dda_init_second(t_tri *p_tri);
 void before_make_texture(t_syn *p_syn, int *p_idx);

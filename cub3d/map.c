@@ -3,110 +3,29 @@
 #include <sys/types.h> 
 #include <sys/stat.h> 
 #include <fcntl.h>
+#define TT  printf("test!!\n")
+
 int get_end(char *buf, int start, int *p_flag);
+int is_only_zero_blank_one(char *arr);
 int check_first(char *buf, int *p_flag)
 {
     if (strchr(buf, '0') != 0)
         return (-1);
     return (1);
 }
-
-int get_end(char *buf, int start, int *p_flag)
-{
-    int i;
-    i = start;
-    while (buf[i] != '\0')
-    {
-        if (ft_strchr("NEWS", buf[i]) != 0 )
-        {
-            if (*p_flag == 1)
-                return (-1);
-            else//해당 방향정보 저장하고 해당문자를 0으로 바꾸어주는 작업이 필요할듯
-            {// 후자부분은 매우 간단..
-            // 전자 부분은.. 방법이 매우 다양할수있다. 
-                *p_flag = 1;
-            }
-            i++;
-            continue;
-        }
-        if (ft_strchr("012 ", buf[i]) == 0)//만약 buf[i]가 이 라인을 넘어갈수있다면 그때 buf[i] = '0' ' ' '1' '2' 중 하나이다.
-            return (-1);
-        if (buf[i] == ' ')
-            return (i - 1);
-        i++;
-    }//if break this loop buf[i] is NULL character// so end idx is (i-1);
-    return (i - 1);
-}
-
-int check_num_part(char *cur,char *before, int start, int end)// is the flag is need...?   this function not will be in get_end_fuction
-{
-    int idx = start;
-    if (cur[start] != '1')//part 1
-        return (-1);
-    if (cur[end] != '1')
-        return (-1);
-    while (idx <= end)//part2
-    {
-        if (cur[idx] == '0')
-        {
-            if (strlen(before) < idx)
-                return (-1);
-            if (before[idx] == ' ')
-                return (-1);
-            else
-                idx++;
-        }
-        else
-            idx++;
-    }
-    return (1);
-}
-
 /*int sub_get_start_func(char cur, char before)//this fuction will be incldued in get_start function..!!
 {//this function is error check funcion // this function is compare just one character
     if ()
 }*/
-int get_start(char *buf,char *before, int end)
-{
-    int i;
-    i = end + 1;
-
-    while(buf[i] != '\0')
-    {
-        printf("\nidx : %d buf[i] = %c\n", i, buf[i]);
-        if (ft_strchr("NEWS", buf[i]) != 0)//in the part of blank, this is the error...
-            return (-1);
-        if (buf[i] == ' ')
-        {
-            if (strlen(buf) < i)
-                return (-1);
-            else if (strchr("02", before[i]) != 0)
-                return (-1);
-        }
-        /*else if (buf[i] == '0' || buf[i] == '1' || buf[i] == '2')
-            return (i);*/
-        else if (buf[i] == '1')
-            return (i);
-        else
-            return (-1);
-        i++;
-        
-    }//if break this loop buf[i] is NULL character// so end_idx is (i-1);
-    if (buf[i] == '\0')
-        return (i);
-    else
-        return (i);
-}
-
 int check_last(char *buf)
 {
-    printf("\n%s\n", buf);
-    if (strchr(buf, '0') != 0)
+    //printf("\n%s\n", buf);
+    if (ft_strchr(buf, '0') != 0)
         return (-1);
     return (1);
 }
 
-int is_only_zero_blank_one(char *arr)
+/*int is_only_zero_blank_one(char *arr)
 {
     int idx=0;
     while (arr[idx])
@@ -115,15 +34,112 @@ int is_only_zero_blank_one(char *arr)
             return (-1);
     }
     return (1);
+}*/
+
+int **renewer_map(t_syn *p_syn, int **map, char *add_line)//생각보다 복잡하네....
+{
+    int **new_map;
+    int size=0;
+    int idx = -1;
+
+    //part 1
+    while (map[size] != NULL)
+        size++;
+    //free(&map[size]);//NULL이 존재하는 메모리 공간 프리...
+    if (NULL == (new_map = (int **)calloc(1, sizeof(int *) * (size + 2))))
+        return (NULL);
+    int *temp = malloc(sizeof(int) * ft_strlen(add_line));
+    while (add_line[++idx])
+    {
+        if (ft_strchr("NEWS", add_line[idx]) != 0)
+        {
+            p_syn->tri.pos[1] = idx;
+            printf("\n\n\np_syn->tri.pos[1] = %f\n\n\n\n", p_syn->tri.pos[1]);
+            printf(" idx = %d", idx);
+            if (add_line[idx] == 'N')
+            {
+                p_syn->tri.dir[0] = -1;
+                p_syn->tri.dir[1] = 0;
+                p_syn->tri.plane[0] = 0;
+                p_syn->tri.plane[1] = 0.66;
+            }
+            if (add_line[idx] == 'E')
+            {
+                p_syn->tri.dir[0] = 0;
+                p_syn->tri.dir[1] = 1;
+                p_syn->tri.plane[0] = 0.66;
+                p_syn->tri.plane[1] = 0;
+            }
+            if (add_line[idx] == 'W')
+            {
+                p_syn->tri.dir[0] = 0;
+                p_syn->tri.dir[1] = -1;
+                 p_syn->tri.plane[0] = 0.66;
+                p_syn->tri.plane[1] = 0;
+            }
+            if (add_line[idx] == 'S')
+            {
+                p_syn->tri.dir[0] = 1;
+                p_syn->tri.dir[1] = 0;
+                p_syn->tri.plane[0] = 0;
+                p_syn->tri.plane[1] = 0.66;
+            }
+            //add_line[idx] = '0';
+            p_syn->tri.pos[0] = size;
+            printf("진입\n");
+            printf("\n\n\n\nsize = %d\n\n\n",size);
+            temp[idx] = 0;
+            continue;
+        }
+        else if (add_line[idx] == '2')
+        {
+            p_syn->num_of_sprite++;
+            int x=0;
+            while (p_syn->sprites[x] != NULL)
+                x++;
+            double **new_sprites = calloc(x+2, sizeof(double *));
+            new_sprites[x+1] = NULL;
+            new_sprites[x] = malloc(sizeof(int) * 2);
+            new_sprites[x][0] = size;
+            new_sprites[x][1] = idx;
+            while (--x >= 0)
+            {
+                //new_sprites[x] = malloc(sizeof(int) * 2);
+                new_sprites[x] = p_syn->sprites[x];
+            }
+            free(p_syn->sprites);
+            p_syn->sprites = new_sprites;
+        }
+        temp[idx] = add_line[idx]- '0';
+    }
+    //temp[idx] = '\0';
+    //new_map[size+1] = *(int **)calloc(1, sizeof(int *));
+    new_map[size+1] = NULL;
+    new_map[size] = temp;
+    //printf("\n\n\n\n size = %d\n\n\n", size);
+    //part 2
+    while (--size >= 0)
+    {
+        new_map[size] = map[size];
+    }
+    free(map);
+    //TT;
+    return (new_map);
 }
 
-int is_valid_map(void)
+int is_valid_map(int fd, t_syn *p_syn)
 {
+    //printf("why..???\n");
     int ret = 1;
+    int idx=0;
+    int *temp;
     char *cur_buf;
     char *before_buf;
     int start_idx;
     int end_idx;
+    p_syn->sprites = (double **)calloc(1, sizeof(double *));
+    *(p_syn->sprites) = NULL;
+    p_syn->num_of_sprite = 0;
     int dir_alpha_is_exist = 0;//매 (숫자부 체크)(<- no) 숫자부 범위 결정 부분과 빈칸부 체크부분 문자 각각에 대해 검사해야겠다.... 빈칸부에 존재하면 유호하지 않은 맵일것.
     int **map_used_in_dda;//매우 중요한 부분...! 이 부분 나중에 구현.. 일단 이렇게 저장해놓기로 결정
     //맵에서 빈칸부분이나 방향지시 문자를 0으로 바꾸어 줄껀데, 문자상태로 저장해 놓은건 절대 변경 안하고, 숫자로 저장해놓는 곳에서만 공백이나 방향지시문자를 숫자0으로 변경하자
@@ -135,50 +151,64 @@ int is_valid_map(void)
         else
             return (invalid map)//macro will be used and the num will be -1
     */
-    int fd = open("test.txt",  O_RDONLY);//일단 test.cub에 맵정보만 담겨있다고 생각하고 작성...
+    //int fd = open("test.txt",  O_RDONLY);//일단 test.cub에 맵정보만 담겨있다고 생각하고 작성...
     get_next_line(fd, &cur_buf);
+    p_syn->tri.test_map = (int **)calloc(1, sizeof(int *));
+    //p_syn->tri.test_map[0] = NULL
+    while (strcmp(cur_buf, "") == 0)
+        get_next_line(fd, &cur_buf);
+    while (ft_strchr(cur_buf, ' '))
+        *(ft_strchr(cur_buf, ' ')) = '1';
     if (-1 == (check_first(cur_buf, &dir_alpha_is_exist)))
         return (-1);
+    /*while (cur_buf[idx])
+    {
+        if (cur_buf[idx] == '0')
+            return (-1);//free is needed...!!! free_ret_zero will be used 
+        idx++;
+    }*/
+    p_syn->tri.test_map = renewer_map(p_syn, p_syn->tri.test_map, cur_buf);
+    //printf("what?       %s\n", cur_buf);
+    int i = 0;
+    while (i < 3)
+    {
+        i = i + 0;
+        printf("%d\n",p_syn->tri.test_map[0][i]);
+        i++;
+    }
     before_buf = cur_buf;
     while(get_next_line(fd, &(cur_buf)))
     {
-        printf("!!!!\n");
+        //printf("in here!!!!\n");
+        while (ft_strchr(cur_buf, ' '))
+            *(ft_strchr(cur_buf, ' ')) = '1';
+        //printf("cur_buf = %s\n", cur_buf);
         if (is_only_zero_blank_one(cur_buf) != 1)
             return (-1);
-        printf("here? %s\n", cur_buf);
-        start_idx = 0;
+        //printf("here? %s\n", cur_buf);
+        /*start_idx = 0;
         while(cur_buf[start_idx] == ' ')
-            start_idx++;
-        while(cur_buf[start_idx] != '\0')
-        {
-            printf(">???");
-            if (-1 == (end_idx = get_end(cur_buf, start_idx, &dir_alpha_is_exist)))
-                return (-1);
-            printf("2 here? %s\n", cur_buf);
-            if ( -1 == (check_num_part(cur_buf, before_buf, start_idx, end_idx)))
-                return (-1);
-            printf("3 here? %s\n", cur_buf);
-            if (-1 == (start_idx = get_start(cur_buf, before_buf, end_idx)))
-                return (-1);
-            //printf("strar_idx = %d\n", start_idx);
-        }
-        printf("test : %s\n", cur_buf);
+            start_idx++;*/
+        if ((cur_buf[0] != '1') || (cur_buf[ft_strlen(cur_buf) - 1] != '1'))
+            return (-1);
+        //printf("here\n");
         free(before_buf);
+        p_syn->tri.test_map = renewer_map(p_syn, p_syn->tri.test_map, cur_buf);
         before_buf = cur_buf;
     }
+    //printf("is this?\n");
+    p_syn->spriteDistance = (double *)malloc(sizeof(double) * p_syn->num_of_sprite);
     close(fd);
     free(before_buf);
+    while (ft_strchr(cur_buf, ' '))
+        *(ft_strchr(cur_buf, ' ')) = '1';
     if (-1 == (check_last(cur_buf)))
         return (-1);
-    printf("reach\n");
+    //printf("reach\n");
+    p_syn->tri.test_map = renewer_map(p_syn, p_syn->tri.test_map, cur_buf);
     free(cur_buf);
     if (dir_alpha_is_exist == 0)
         return (-1);
+    printf("is this?\n");
     return (ret);// if reach this line the map is valid map
-}
-
-int main(void)
-{
-    printf("%d", is_valid_map());
-    return (0);
 }
