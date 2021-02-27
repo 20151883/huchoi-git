@@ -1,15 +1,25 @@
-#include <stdio.h>
-
-void ft_merge(double *arr, int start, int mid, int end)
+double compute_dis(t_syn *p_syn, double *sprite)
 {
-    double temp[end - start + 1];
+    double ret;
+    double x_pos;
+    double y_pos;
+
+    ret = (x_pos - p_syn->tri.pos[0]) * (x_pos - p_syn->tri.pos[0]);
+    ret +=  (y_pos - p_syn->tri.pos[1]) * (y_pos - p_syn->tri.pos[1]);
+    ret = sqrt(ret);
+    return (ret);
+}
+
+void ft_merge(double **arr, int start, int mid, int end)
+{
+    double *temp[end - start + 1];
     int idx = 0;
     int left = start;
     int right = mid + 1;
 
     while (left <= mid && right <= end)
     {
-        if (arr[left] < arr[right])
+        if (compute_dis(arr[left]) < compute_dis(arr[right]))
             temp[idx] = arr[left++];
         else
             temp[idx] = arr[right++];
@@ -33,7 +43,7 @@ void ft_merge(double *arr, int start, int mid, int end)
     }
 }
 
-void ft_mergesort(double *arr, int start, int end)
+void ft_mergesort(double **arr, int start, int end)
 {
     int mid;
 
@@ -47,9 +57,6 @@ void ft_mergesort(double *arr, int start, int end)
 
 int main(void)
 {
-    double arr[10] = {9,2,0,1,5,6,7,8,4,3};
-    ft_mergesort(arr, 0, 9);
-    int i = 0;
-    while (i < 10)
-        printf("%f", arr[i++]);
+    double arr[5][2] = {9,4,0,5,1,7,6,3,2,8};
+    double **ptr = arr;
 }

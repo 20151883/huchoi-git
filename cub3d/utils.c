@@ -97,17 +97,29 @@ void sort_sprites(t_syn *p_syn)
     ft_mergesort(p_syn->sprites, 0, p_syn->num_of_sprite-1);
 }
 
-void ft_merge(double arr, int start, int mid, int end)
+double compute_dis(t_syn *p_syn, double *sprite)
 {
-    char temp[end - start + 1];
-    int idx;
+    double ret;
+    double x_pos;
+    double y_pos;
+
+    ret = (x_pos - p_syn->tri.pos[0]) * (x_pos - p_syn->tri.pos[0]);
+    ret +=  (y_pos - p_syn->tri.pos[1]) * (y_pos - p_syn->tri.pos[1]);
+    ret = sqrt(ret);
+    return (ret);
+}
+
+void ft_merge(double **arr, int start, int mid, int end)
+{
+    double *temp[end - start + 1];
+    int idx = 0;
     int left = start;
     int right = mid + 1;
 
     while (left <= mid && right <= end)
     {
-        if (arr[left] < arr[right])
-            temp[idx] = arr[left++]
+        if (compute_dis(arr[left]) < compute_dis(arr[right]))
+            temp[idx] = arr[left++];
         else
             temp[idx] = arr[right++];
         idx++;
@@ -119,7 +131,7 @@ void ft_merge(double arr, int start, int mid, int end)
     }
     else if (right <= end)
     {
-        while (right <= mid)
+        while (right <= end)
             temp[idx++] = arr[right++];
     }
     idx= start;
@@ -140,17 +152,7 @@ void ft_mergesort(double **arr, int start, int end)
     ft_mergesort(arr, start, mid);
     ft_mergesort(arr, mid+1, end);
     ft_merge(arr, start, mid, end);
-}
-
-double compute_dis(t_syn *p_syn, double sprite_x, double sprite_y)
-{
-    double ret;
-
-    ret = (sprite_x - p_syn->tri.pos[0]) * (sprite_x - p_syn->tri.pos[0]);
-    ret +=  (sprite_y - p_syn->tri.pos[1]) * (sprite_y - p_syn->tri.pos[1]);
-    ret = sqrt(ret);
-    return (ret);
-}
+}//git petch...?
 
 void make_sprite(t_syn *p_syn)
 {
