@@ -43,7 +43,7 @@ void ft_mergesort(double *arr, int start, int end)
     ft_mergesort(arr, start, mid);
     ft_mergesort(arr, mid+1, end);
     ft_merge(arr, start, mid, end);
-}
+}//git petch...?
 
 int main(void)
 {
@@ -51,5 +51,5 @@ int main(void)
     ft_mergesort(arr, 0, 9);
     int i = 0;
     while (i < 10)
-        printf("%f", arr[i]);
+        printf("%f", arr[i++]);
 }
