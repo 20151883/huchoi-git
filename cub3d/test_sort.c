@@ -2,8 +2,8 @@
 
 void ft_merge(double *arr, int start, int mid, int end)
 {
-    char temp[end - start + 1];
-    int idx;
+    double temp[end - start + 1];
+    int idx = 0;
     int left = start;
     int right = mid + 1;
 
@@ -22,7 +22,7 @@ void ft_merge(double *arr, int start, int mid, int end)
     }
     else if (right <= end)
     {
-        while (right <= mid)
+        while (right <= end)
             temp[idx++] = arr[right++];
     }
     idx= start;
