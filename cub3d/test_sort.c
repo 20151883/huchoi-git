@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void ft_merge(double arr, int start, int mid, int end)
+void ft_merge(double *arr, int start, int mid, int end)
 {
     char temp[end - start + 1];
     int idx;
@@ -33,7 +33,7 @@ void ft_merge(double arr, int start, int mid, int end)
     }
 }
 
-void ft_mergesort(double **arr, int start, int end)
+void ft_mergesort(double *arr, int start, int end)
 {
     int mid;
 
