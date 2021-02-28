@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 01:06:15 by huchoi            #+#    #+#             */
-/*   Updated: 2021/03/01 01:24:08 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/03/01 04:20:34 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void message_exit(void)
+{
+	printf("error\nwhy you paly this game...???");
+	exit(0);
+}
 void		make_block(t_syn *p_syn, int *p_idx, int i)
 {
 	dda_init(&(p_syn->tri));

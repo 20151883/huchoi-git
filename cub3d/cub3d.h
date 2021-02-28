@@ -115,7 +115,8 @@ typedef struct s_syn{
     //Sprite *sprite;
     //int texY;
 }t_syn;
-
+void    message_exit(void);
+int		is_only_zero_blank_one(char *arr);
 void ft_mergesort(t_syn *p_syn, double **arr, int start, int end);
 
 void ctrl_pos(int keycode, t_syn *p_syn);

@@ -170,13 +170,7 @@ int		check_news_sprite(char **split, t_syn *p_syn)
 		return (-1);
 	return (1);
 }
-/*
-    .cub 파일에 내용이 저장될 변수들 각각은 널값으로 초기화가 되어있어야함
-    
-    
-    
-*/
-
+//.cub 파일에 내용이 저장될 변수들 각각은 널값으로 초기화가 되어있어야함
 int		check_r(char **split, t_syn *p_syn)
 {
 	if (*split[0] == 'R' && strlen(split[0]) == 1)//먼저 해당변수에 저장된 값이 널인지 아닌지 체크하자.
@@ -285,39 +279,3 @@ int		par(t_syn *p_syn)
 		return (-1);
 	return (1);
 }
-
-/*int main(void)
-{
-    t_syn syn;
-
-    if (par(&syn) == 1)
-        printf("TRUE\n");
-    else 
-        printf("FALSE\n");
-    printf("IN LAST\nR %d %d\n", syn.R[0], syn.R[1]);
-    printf("NO %s\n", syn.tri.tex[0].path);
-    printf("SO %s\n", syn.tri.tex[3].path);
-    printf("WE %s\n", syn.tri.tex[1].path);
-    printf("EA %s\n", syn.tri.tex[2].path);
-    printf("S %s\n", syn.tri.tex[4].path);
-    printf("F %d\n", syn.f_color);
-    printf("C %d\n", syn.c_color);
-    int i;
-    int j = 0;
-    while (j <= 13)
-    {
-        i = 0;
-        while (i < 30)
-        {
-            printf("%d",syn.tri.test_map[j][i]);
-            i++;
-        }
-        printf("\n");
-        j++;
-    }
-    printf("num of sprite : %d", syn.num_of_sprite);
-    printf("1st sprite : %f %f\n", syn.sprites[0][1], syn.sprites[0][1]);
-    printf("2st sprite : %f %f\n", syn.sprites[1][0], syn.sprites[1][1]);
-   printf("IN LAST\n %f %f", syn.tri.pos[0], syn.tri.pos[0]);
-    return (0);
-}*/
