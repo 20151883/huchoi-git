@@ -153,10 +153,10 @@ int		is_valid_path(char *path)
 }
 
 int		check_news_sprite(char **split, t_syn *p_syn)
-{//north [0] east [1] west [2] south [3] 
+{
 	if (is_valid_path(split[1]) == -1)
 		return (-1);
-	else if (strcmp(split[0], "NO") == 0)//먼저 변수에 저장된 값이 널인지 아닌지 체크하자.
+	else if (strcmp(split[0], "NO") == 0)
 		p_syn->tri.tex[0].path = strdup(split[1]);
 	else if (strcmp(split[0], "EA") == 0)
 		p_syn->tri.tex[1].path = strdup(split[1]);
@@ -173,8 +173,8 @@ int		check_news_sprite(char **split, t_syn *p_syn)
 //.cub 파일에 내용이 저장될 변수들 각각은 널값으로 초기화가 되어있어야함
 int		check_r(char **split, t_syn *p_syn)
 {
-	if (*split[0] == 'R' && strlen(split[0]) == 1)//먼저 해당변수에 저장된 값이 널인지 아닌지 체크하자.
-	{
+	if (*split[0] == 'R' && strlen(split[0]) == 1)
+	{//먼저 해당변수에 저장된 값이 널인지 아닌지 체크하자.
 		if ((0 > atoi(split[1]) || atoi(split[1]) > 7680))
 			return (-1);
 		p_syn->R[0] = atoi(split[1]);
@@ -186,6 +186,7 @@ int		check_r(char **split, t_syn *p_syn)
 		return (-1);
 	return (1);
 }
+
 int		is_valid_color(char **split)
 {
 	if ((0 > atoi(split[1]) || atoi(split[1]) > 255))
@@ -210,8 +211,8 @@ int		check_f_c(char **split, t_syn *p_syn)
 	}
 	else if (*split[0] == 'C' && strlen(split[0]) == 1)
 	{
-		p_syn->c_color += (atoi(split[1])<<16);
-		p_syn->c_color += (atoi(split[2])<<8);
+		p_syn->c_color += (atoi(split[1]) << 16);
+		p_syn->c_color += (atoi(split[2]) << 8);
 		p_syn->c_color += (atoi(split[3]));
 	}
 	else
@@ -242,40 +243,35 @@ int		case_by_lenth(char **split, t_syn *p_syn, int lenth)
 		ret = check_r(split, p_syn);
 	else if (lenth == 4)
 		ret = check_f_c(split, p_syn);
-	else 
-		ret = -1;
-	if (ret == -1)
-		return (-1);
+	else
+		message_exit();
 	return (1);
 }
 
 int		par(t_syn *p_syn)
 {
-	int     fd;
-	int     count;
-	int     lenth;
-	char    *buf;
-	char    **split;
+	int		fd;
+	int		count;
+	int		lenth;
+	char	*buf;
+	char	**split;
 
 	count = 0;
-	fd = open("test.txt", O_RDONLY);
-	if (fd == -1)
-		return (-1);
+	if (-1 == (fd = open("test.txt", O_RDONLY)))
+		message_exit();
 	while (get_next_line(fd, &buf) && count < 8)
 	{
 		lenth = 0;
 		if (strcmp(buf, "") == 0)
 			continue;
-		if (is_only_zero_blank_one(buf) == 1)//count 가 8이 되기도 전에 맵이 나온상황이니 에러임.
-			return (-1);
+		if (is_only_zero_blank_one(buf) == 1)
+			message_exit();
 		split = ft_split(buf, ' ');
-		while(split[lenth] != 0)
+		while (split[lenth] != 0)
 			lenth++;
-		if (case_by_lenth(split, p_syn, lenth) == -1)
-			return (-1);
+		case_by_lenth(split, p_syn, lenth);
 		count++;
 	}
-	if (-1 == (is_valid_map(fd, p_syn)))//해당함수에서 맵을 int 이차원 배열에 차곡차곡 저장해나가자 여기서 동적할당을 적극활용하면 된다.
-		return (-1);
+	is_valid_map(fd, p_syn);
 	return (1);
 }
