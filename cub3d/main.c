@@ -10,36 +10,11 @@ void init_tri(t_syn *p_syn)
     load_texture_sprite(p_tri, 3);
     load_texture_sprite(p_tri, 4);
     //load_texture_sprite(p_tri, 5);
-
-    /*p_tri->tex[0].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[0].path, \
-                        &(p_tri->tex[0].width), &(p_tri->tex[0].height));
-	p_tri->tex[0].data = (int *)mlx_get_data_addr(p_tri->tex[0].ptr, &p_tri->tex[0].bpp, \
-                        &p_tri->tex[0].size_l, &p_tri->tex[0].endian);
-    
-    p_tri->tex[1].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[1].path, \
-                        &p_tri->tex[1].width, &p_tri->tex[1].height);
-	p_tri->tex[1].data = (int *)mlx_get_data_addr(p_tri->tex[1].ptr, &p_tri->tex[1].bpp, \
-                        &p_tri->tex[1].size_l, &p_tri->tex[1].endian);
-    
-    p_tri->tex[2].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[2].path, \
-                        &p_tri->tex[2].width, &p_tri->tex[2].height);
-	p_tri->tex[2].data = (int *)mlx_get_data_addr(p_tri->tex[2].ptr, &p_tri->tex[2].bpp, \
-                        &p_tri->tex[2].size_l, &p_tri->tex[2].endian);
-    
-    p_tri->tex[3].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[3].path, \
-                        &p_tri->tex[3].width, &p_tri->tex[3].height);
-	p_tri->tex[3].data = (int *)mlx_get_data_addr(p_tri->tex[3].ptr, &p_tri->tex[3].bpp, \
-                        &p_tri->tex[3].size_l, &p_tri->tex[3].endian);
-
-    p_tri->tex[4].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[4].path, \
-                        &p_tri->tex[4].width, &p_tri->tex[4].height);
-	p_tri->tex[4].data = (int *)mlx_get_data_addr(p_tri->tex[4].ptr, &p_tri->tex[4].bpp, \
-                        &p_tri->tex[4].size_l, &p_tri->tex[4].endian);*/
 }
 
 void load_texture_sprite(t_tri *p_tri, int idx)
 {
-    p_tri->tex[idx].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_syn->tri.tex[idx].path, \
+    p_tri->tex[idx].ptr = mlx_xpm_file_to_image(p_tri->mlx_ptr, p_tri->tex[idx].path, \
                         &(p_tri->tex[idx].width), &(p_tri->tex[idx].height));
 	p_tri->tex[idx].data = (int *)mlx_get_data_addr(p_tri->tex[idx].ptr, &p_tri->tex[idx].bpp,\
                         &p_tri->tex[idx].size_l, &p_tri->tex[idx].endian);
@@ -112,6 +87,7 @@ int main_loop(t_syn *p_syn)
 {
     int i;
     double weight;
+    int idx;
 
     i = 0;
     make_over(p_syn);
@@ -158,66 +134,13 @@ void ft_close(t_syn *p_syn)//free action is needed******************************
 
 int key_func(int keycode, t_syn *p_syn)
 {
-    ctrl_pos(p_syn);
-    ctrl_dir(p_syn);
+    double temp;
+    double speed = 0.3;
+    ctrl_pos(keycode, p_syn);
+    ctrl_dir(keycode, p_syn);
     if (keycode == KEY_ESC || keycode == KEY_1)
         ft_close(p_syn);
     return (0);
-    //속도를 너무 빨리해버리면 비스듬하게 기둥을 바라보는 방향으로 앞으로 이동할때 기둥을 통과하는 문제가 생긴다.
-    //printf(" posx %f posy %f  dirx %f diry %f panex plnaey \n", p_syn->tri.pos[0], p_syn->tri.pos[1], p_syn->tri.dir[0], p_syn->tri.dir[1]);
-    /*if (keycode == KEY_A)
-    {
-        p_syn->tri.pos[0] -= p_syn->tri.plane[0] *speed;
-        p_syn->tri.pos[1] -= p_syn->tri.plane[1] *speed;
-        if (p_syn->tri.test_map[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
-        {
-            p_syn->tri.pos[0] += p_syn->tri.plane[0] *speed;
-            p_syn->tri.pos[1] += p_syn->tri.plane[1] *speed;
-        }
-    }
-    else if (keycode == KEY_W)
-    {
-        p_syn->tri.pos[0] += p_syn->tri.dir[0] *speed;
-        p_syn->tri.pos[1] += p_syn->tri.dir[1] *speed;
-    }
-    else if(keycode == KEY_D)
-    {
-        p_syn->tri.pos[0] += p_syn->tri.plane[0] *speed;
-        p_syn->tri.pos[1] += p_syn->tri.plane[1] *speed;
-        if (p_syn->tri.test_map[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
-        {
-            p_syn->tri.pos[0] -= p_syn->tri.plane[0] *speed;
-            p_syn->tri.pos[1] -= p_syn->tri.plane[1] *speed;
-        } 
-    }
-    else if (keycode == KEY_S)
-    {
-        p_syn->tri.pos[0] -= p_syn->tri.dir[0] *speed;
-        p_syn->tri.pos[1] -= p_syn->tri.dir[1] *speed;
-        if (p_syn->tri.test_map[(int)(p_syn->tri.pos[0])][(int)(p_syn->tri.pos[1])] > 0)
-        {
-            p_syn->tri.pos[0] += p_syn->tri.dir[0] *speed;
-            p_syn->tri.pos[1] += p_syn->tri.dir[1] *speed;
-        }
-    }
-    else if (keycode == KEY_LEFT)
-    {
-        temp = p_syn->tri.dir[0];
-        p_syn->tri.dir[0] = p_syn->tri.dir[0] * cos(0.3) - p_syn->tri.dir[1] * sin(0.3);
-        p_syn->tri.dir[1] = temp * sin(0.3) + p_syn->tri.dir[1] * cos(0.3);
-        temp = p_syn->tri.plane[0];
-        p_syn->tri.plane[0] = p_syn->tri.plane[0] * cos(0.3) - p_syn->tri.plane[1] * sin(0.3);
-        p_syn->tri.plane[1] = temp * sin(0.3) + p_syn->tri.plane[1] * cos(0.3);
-    }
-    else if (keycode == KEY_RIGHT)
-    {
-        temp = p_syn->tri.dir[0];
-        p_syn->tri.dir[0] = p_syn->tri.dir[0] * cos(-0.3) - p_syn->tri.dir[1] * sin(-0.3);
-        p_syn->tri.dir[1] = temp * sin(-0.3) + p_syn->tri.dir[1] * cos(-0.3);
-        temp = p_syn->tri.plane[0];
-        p_syn->tri.plane[0] = p_syn->tri.plane[0] * cos(-0.3) - p_syn->tri.plane[1] * sin(-0.3);
-        p_syn->tri.plane[1] = temp * sin(-0.3) + p_syn->tri.plane[1] * cos(-0.3);
-    }*/
 }
 
 int main(int argc, char *argv[])

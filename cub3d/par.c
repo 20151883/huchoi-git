@@ -145,7 +145,7 @@ int is_valid_path(char *path)
     int ret;
 
     ret = 1;
-    fd = open(path, O_RDONLY)
+    fd = open(path, O_RDONLY);
     if (fd == -1)
         ret = -1;
     close(fd);
@@ -206,37 +206,19 @@ int is_valid_color(char **split)
 int check_f_c(char **split, t_syn *p_syn)
 {
     p_syn->color = 0;
-    if (-1 == is_valid_color(spkit))
+    if (-1 == is_valid_color(split))
         return (-1);
     if (*split[0] == 'F' && strlen(split[0]) == 1)
     {
         p_syn->f_color += (atoi(split[1])<<16);
         p_syn->f_color += (atoi(split[2])<<8);
         p_syn->f_color += (atoi(split[3]));
-        /*if ((0 > atoi(split[1]) || atoi(split[1]) > 255))
-            return (-1);
-        p_syn->f_color += (atoi(split[1])<<16);
-        if ((0 > atoi(split[2]) || atoi(split[2]) > 255))
-            return (-1);
-        p_syn->f_color += (atoi(split[2])<<8);
-        if ((0 > atoi(split[3]) || atoi(split[3]) > 255))
-            return (-1);
-        p_syn->f_color += (atoi(split[3]));*/
     }
     else if (*split[0] == 'C' && strlen(split[0]) == 1)
     {
         p_syn->c_color += (atoi(split[1])<<16);
         p_syn->c_color += (atoi(split[2])<<8);
         p_syn->c_color += (atoi(split[3]));
-        /*if ((0 > atoi(split[1]) || atoi(split[1]) > 255))
-            return (-1);
-        p_syn->c_color += (atoi(split[1])<<16);
-        if ((0 > atoi(split[2]) || atoi(split[2]) > 255))
-            return (-1);
-        p_syn->c_color += (atoi(split[2])<<8);
-        if ((0 > atoi(split[3]) || atoi(split[3]) > 255))
-            return (-1);
-        p_syn->c_color += (atoi(split[3]));*/
     }
     else
         return (-1);
@@ -253,6 +235,7 @@ int is_only_zero_blank_one(char *arr)
     }
     return (1);
 }
+
 int case_by_lenth(char **split, t_syn *p_syn, int lenth)
 {
     int ret;
@@ -272,14 +255,16 @@ int case_by_lenth(char **split, t_syn *p_syn, int lenth)
 
 int par(t_syn *p_syn)
 {
-    int fd;
-    int count;
-    char *buf;
-    char **split;
-    int lenth;
+    int     fd;
+    int     count;
+    int     lenth;
+    char    *buf;
+    char    **split;
 
     count = 0;
     fd = open("test.txt", O_RDONLY);
+    if (fd == -1)
+        return (-1);
     while (get_next_line(fd, &buf) && count < 8)
     {
         lenth = 0;
@@ -291,38 +276,8 @@ int par(t_syn *p_syn)
         while(split[lenth] != 0)
             lenth++;
         if (case_by_lenth(split, p_syn, lenth) == -1)
-            return (-1)
-        /*if (lenth == 2)
-            ret = check_news_sprite(split, p_syn);
-        else if (lenth == 3)
-            ret = check_r(split, p_syn);
-        else if (lenth == 4)
-            ret = check_f_c(split, p_syn);
-        else 
-            ret = -1;
-        if (ret == -1)
-            return (-1);*/
-        count++;
-        /*if (2 == lenth)
-        {
-            if (-1 == check_news_sprite(split, p_syn))
-                return -1; 
-        }
-        else if (lenth == 3)
-        {
-            if (-1 == (check_r(split, p_syn)))
-                return (-1);
-        }
-        else if (lenth == 4)
-        {
-            if (-1 == check_f_c(split, p_syn))
-                return (-1);
-        }
-        else
             return (-1);
         count++;
-        if (count == 8)//this break syntax must be here
-            break;*/
     }
     if (-1 == (is_valid_map(fd, p_syn)))//해당함수에서 맵을 int 이차원 배열에 차곡차곡 저장해나가자 여기서 동적할당을 적극활용하면 된다.
         return (-1);

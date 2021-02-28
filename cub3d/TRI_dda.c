@@ -26,12 +26,6 @@ void get_tri(t_tri *p_tria)
 
     dir_x = p_tria->dir[0];
     dir_y = p_tria->dir[1];
-
-    //p_tria->left[0] = pos_x + (get_x_rotate(p_tria->dir, p_tria->theta)* fabs((1.0 / cos(p_tria->theta));
-    //p_tria->left[1] = pos_y + (get_y_rotate(p_tria->dir, p_tria->theta)* fabs((1.0 / cos(p_tria->theta));
-
-    //p_tria->right[0] = pos_x + get_x_rotate(p_tria->dir, -(p_tria->theta));
-    //p_tria->right[1] = pos_y + get_y_rotate(p_tria->dir, -(p_tria->theta)); 
 }
 
 int get_x_rotate(double *vec, double theta)

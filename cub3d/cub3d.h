@@ -20,7 +20,7 @@
 # define KEY_RIGHT			124
 #define KEY_ESC             53
 # define KEY_UP				126
-#define kEY_1               18
+#define KEY_1               18
 
 typedef struct Sprite
 {
@@ -79,7 +79,7 @@ typedef struct image{
 typedef struct s_syn{
     t_tri   tri;//tri has dda struct...!
     t_img   img;
-    dir_alpha_is_exist;
+    int     dir_alpha_is_exist;
     int     c_color;
     int     f_color;
     double  **sprites;
@@ -116,11 +116,13 @@ typedef struct s_syn{
     //int texY;
 }t_syn;
 
-void ctrl_pos(int keycode, t_Syn *p_syn);
-void pos_WS(t_syn*p_syn, int weight);
-void pos_AD(t_syn *p_syn, int weight);
+void ft_mergesort(t_syn *p_syn, double **arr, int start, int end);
+
+void ctrl_pos(int keycode, t_syn *p_syn);
+void pos_WS(t_syn*p_syn, double weight);
+void pos_AD(t_syn *p_syn, double weight);
 void ctrl_dir(int keycode, t_syn *p_syn);
-void rotate_dir(t_syn *p_syn, int theta);
+void rotate_dir(t_syn *p_syn, double theta);
 
 void load_texture_sprite(t_tri *p_tri, int idx);
 int par(t_syn *p_syn);
