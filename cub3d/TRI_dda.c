@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	renewer_tri(t_tri *test, int *new_pos, int *new_dir)///&********&
+void	renewer_tri(t_tri *test, int *new_pos, int *new_dir)
 {
 	if (new_pos != NULL)
 	{
@@ -10,10 +10,10 @@ void	renewer_tri(t_tri *test, int *new_pos, int *new_dir)///&********&
 	if (new_dir != NULL)
 	{
 		test->dir[0] = new_dir[0];
-		test->dir[1] = new_dir[1];                  
+		test->dir[1] = new_dir[1];
 	}
 }
-//************************************************************************************/
+
 void	get_tri(t_tri *p_tria)
 {
 	int pos_x;
@@ -45,15 +45,16 @@ int		get_y_rotate(int *vec, double theta)
 	x = vec[0];
 	y = vec[1];
 	return (x * sin(theta) + y * cos(theta));
-} 
+}
 
 void	abs_must_equal_one(t_tri *p_tri)
 {
 	double weight;
+
 	weight = sqrt(pow(p_tri->dir[0], 2) + pow(p_tri->dir[1], 2));
 	if (weight != 1)
 	{
-		p_tri->dir[0] /= weight; 
+		p_tri->dir[0] /= weight;
 		p_tri->dir[1] /= weight;
 	}
 }
