@@ -79,6 +79,14 @@ typedef struct image{
 typedef struct s_syn{
     t_tri   tri;//tri has dda struct...!
     t_img   img;
+    int     so_flag;
+    int     no_flag;
+    int     ea_flag;
+    int		we_flag;
+	int		s_flag;
+	int		r_flag;
+	int		c_flag;
+	int		f_flag;
     int     dir_alpha_is_exist;
     int     c_color;
     int     f_color;
@@ -115,15 +123,25 @@ typedef struct s_syn{
     //Sprite *sprite;
     //int texY;
 }t_syn;
+void	ft_mergesort(t_syn *p_syn, double **arr, int start, int end);
+void	ft_merge(t_syn *p_syn, double **arr, int start, int mid, int end);
+int		is_valid_path(char *path);
+int		case_by_lenth(char **split, t_syn *p_syn, int lenth);
+int		is_valid_path(char *path);
+int		is_valid_color(char **split);
+void	check_flag(t_syn *p_syn);
+int		check_news_sprite(char **split, t_syn *p_syn);
+int		check_r(char **split, t_syn *p_syn);
+int		check_f_c(char **split, t_syn *p_syn);
 void    message_exit(void);
 int		is_only_zero_blank_one(char *arr);
-void ft_mergesort(t_syn *p_syn, double **arr, int start, int end);
+void 	t_mergesort(t_syn *p_syn, double **arr, int start, int end);
 
-void ctrl_pos(int keycode, t_syn *p_syn);
-void pos_WS(t_syn*p_syn, double weight);
-void pos_AD(t_syn *p_syn, double weight);
-void ctrl_dir(int keycode, t_syn *p_syn);
-void rotate_dir(t_syn *p_syn, double theta);
+void	ctrl_pos(int keycode, t_syn *p_syn);
+void	pos_WS(t_syn*p_syn, double weight);
+void	pos_AD(t_syn *p_syn, double weight);
+void	ctrl_dir(int keycode, t_syn *p_syn);
+void	rotate_dir(t_syn *p_syn, double theta);
 
 void load_texture_sprite(t_tri *p_tri, int idx);
 int par(t_syn *p_syn);

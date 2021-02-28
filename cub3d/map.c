@@ -10,8 +10,15 @@ int		check_first(char *buf, int *p_flag)
 
 int		check_last(char *buf)
 {
-	if (ft_strchr(buf, '0') != 0)
-		message_exit();
+	int i;
+	int j;
+
+	i = 0;
+	while (buf[i])
+	{
+		if (buf[i++] != '1')
+			message_exit();
+	}
 	return (1);
 }
 
@@ -142,11 +149,11 @@ int		valid_check(t_syn *p_syn, char **p_cur_buf, char **p_before_buf, int flag)
 
 int		get_last(t_syn *p_syn, char *cur_buf, char *before_buf, int ret)
 {
+	if (-1 == (check_last(before_buf)))
+		message_exit();
 	free(before_buf);
 	while (ft_strchr(cur_buf, ' '))
 		*(ft_strchr(cur_buf, ' ')) = '1';
-	if (-1 == (check_last(cur_buf)))
-		message_exit();
 	p_syn->tri.test_map = renewer_map(p_syn, p_syn->tri.test_map, cur_buf);
 	free(cur_buf);
 	if (ret == -1)
@@ -176,10 +183,10 @@ int		is_valid_map(int fd, t_syn *p_syn)
 	before_buf = cur_buf;
 	while (get_next_line(fd, &(cur_buf)))
 		ret = valid_check(p_syn, &cur_buf, &before_buf, ret);
+	if (p_syn->dir_alpha_is_exist == 0)
+		message_exit();
 	if (NULL == (p_syn->spriteDistance = (double *)malloc(sizeof(double) * p_syn->num_of_sprite)))
 		message_exit();
 	ret = get_last(p_syn, cur_buf, before_buf, ret);
-	if (p_syn->dir_alpha_is_exist == 0)
-		message_exit();
 	return (ret);
 }

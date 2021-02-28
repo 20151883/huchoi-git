@@ -139,6 +139,19 @@ char	**ft_split(char const *s1, char const c)
 	return (ret);
 }
 
+int		is_valid_path(char *path)
+{
+	int fd;
+	int ret;
+
+	ret = 1;
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		message_exit;
+	close(fd);
+	return (ret);
+}
+
 void get_tex_path_by_idx(t_syn *p_syn, char **split, int idx)
 {
 	if (0 == (p_syn->tri.tex[idx].path = strdup(split[1])))
@@ -161,15 +174,35 @@ int		check_news_sprite(char **split, t_syn *p_syn)
 	if (is_valid_path(split[1]) == -1)
 		return (-1);
 	else if (strcmp(split[0], "NO") == 0 && p_syn->no_flag == 0)
+	{
 		get_tex_path_by_idx(p_syn, split, 0);
+		/*p_syn->tri.tex[0].path = strdup(split[1]);
+		p_syn->no_flag = 1;*/
+	}
 	else if (strcmp(split[0], "EA") == 0)
+	{
 		get_tex_path_by_idx(p_syn, split, 1);
+		/*p_syn->tri.tex[1].path = strdup(split[1]);
+		p_syn->ea_flag = 1;*/
+	}
 	else if (strcmp(split[0], "WE") == 0)
+	{
 		get_tex_path_by_idx(p_syn, split, 2);
+		/*p_syn->tri.tex[2].path = strdup(split[1]);
+		p_syn->we_flag = 1;*/
+	}
 	else if (strcmp(split[0], "SO") == 0)
+	{
 		get_tex_path_by_idx(p_syn, split, 3);
+		/*p_syn->tri.tex[3].path = strdup(split[1]);
+		p_syn->so_flag = 1;*/
+	}
 	else if (strcmp(split[0], "S") == 0)
+	{
 		get_tex_path_by_idx(p_syn, split, 4);
+		/*p_syn->tri.tex[4].path = strdup(split[1]);
+		p_syn->s_flag = 1;*/
+	}
 	else
 		return (-1);
 	return (1);
@@ -188,6 +221,17 @@ int		check_r(char **split, t_syn *p_syn)
 		p_syn->r_flag = 1;
 	}
 	else
+		return (-1);
+	return (1);
+}
+
+int		is_valid_color(char **split)
+{
+	if ((0 > atoi(split[1]) || atoi(split[1]) > 255))
+		return (-1);
+	if ((0 > atoi(split[2]) || atoi(split[2]) > 255))
+		return (-1);
+	if ((0 > atoi(split[3]) || atoi(split[3]) > 255))
 		return (-1);
 	return (1);
 }
@@ -214,6 +258,63 @@ int		check_f_c(char **split, t_syn *p_syn)
 	else
 		return (-1);
 	return (1);
+}
+
+int		is_only_zero_blank_one(char *arr)
+{
+	int idx;
+
+	idx = 0;
+	while (arr[idx])
+	{
+		if (strchr("012 NEWS", arr[idx++]) == 0)
+			return (-1);
+	}
+	return (1);
+}
+
+void	check_flag(t_syn *p_syn)
+{
+	int num;
+
+	num = 0;
+	num += p_syn->r_flag;
+	num += p_syn->c_flag;
+	num += p_syn->f_flag;
+	num += p_syn->s_flag;
+	num += p_syn->no_flag;
+	num += p_syn->so_flag;
+	num += p_syn->we_flag;
+	num += p_syn->ea_flag;
+	if (num != 8)
+		message_exit();
+}
+
+int		case_by_lenth(char **split, t_syn *p_syn, int lenth)
+{
+	int ret;
+
+	if (lenth == 2)
+		ret = check_news_sprite(split, p_syn);
+	else if (lenth == 3)
+		ret = check_r(split, p_syn);
+	else if (lenth == 4)
+		ret = check_f_c(split, p_syn);
+	else
+		message_exit();
+	return (1);
+}
+
+void	init_flags(t_syn *p_syn)
+{
+	p_syn->we_flag = 0;
+	p_syn->so_flag = 0;
+	p_syn->ea_flag = 0;
+	p_syn->no_flag = 0;
+	p_syn->s_flag = 0;
+	p_syn->c_flag = 0;
+	p_syn->f_flag = 0;
+	p_syn->r_flag = 0;
 }
 
 int		par(t_syn *p_syn)
