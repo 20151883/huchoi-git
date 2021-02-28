@@ -123,6 +123,16 @@ typedef struct s_syn{
     //Sprite *sprite;
     //int texY;
 }t_syn;
+int		**renewer_map(t_syn *p_syn, int **map, char *add_line);
+void	get_first(int fd, char *cur_buf);
+int		valid_check(t_syn *p_syn, char **p_cur_buf, char **p_before_buf, int flag);
+int		get_last(t_syn *p_syn, char *cur_buf, char *before_buf, int ret);
+int		check_first(char *buf, int *p_flag);
+int		check_last(char *buf);
+void	get_dir(t_syn *p_syn, int idx, char *add_line);
+int		renewer_sprites(t_syn *p_syn, int size, int idx);
+void	make_new_map(int **new_map, int **map, int *new_line, int size);
+void	manage_news_sprite(t_syn *p_syn, char *add_line, int size, int idx);
 void	ft_mergesort(t_syn *p_syn, double **arr, int start, int end);
 void	ft_merge(t_syn *p_syn, double **arr, int start, int mid, int end);
 int		is_valid_path(char *path);
