@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 01:06:15 by huchoi            #+#    #+#             */
-/*   Updated: 2021/03/01 01:17:04 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/03/01 01:24:08 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		make_block(t_syn *p_syn, int *p_idx, int i)
 	if (p_syn->drawEnd >= H)
 		p_syn->drawEnd = H - 1;
 	if (p_syn->tri.dda.side == 0)
-	p_syn->wallX = p_syn->tri.pos[1] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_y;
+		p_syn->wallX = p_syn->tri.pos[1] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_y;
 	else
 		p_syn->wallX = p_syn->tri.pos[0] + p_syn->tri.dda.walldist * p_syn->tri.dda.raydir_x;
 	p_syn->wallX -= floor((p_syn->wallX));
@@ -41,7 +41,7 @@ void		make_block(t_syn *p_syn, int *p_idx, int i)
 	}
 }
 
-void	news(t_syn *p_syn, int *p_idx)
+void		news(t_syn *p_syn, int *p_idx)
 {
 	if ((p_syn->tri.dda.raydir_x >= 0) && p_syn->tri.dda.side == 0)
 	{
@@ -67,7 +67,7 @@ void	news(t_syn *p_syn, int *p_idx)
 		return ;
 }
 
-void	before_make_texture(t_syn *p_syn, int *p_idx)
+void		before_make_texture(t_syn *p_syn, int *p_idx)
 {
 	p_syn->texX = (int)(p_syn->wallX * (double)p_syn->tri.tex[3].width);
 	if (p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0)
@@ -77,7 +77,7 @@ void	before_make_texture(t_syn *p_syn, int *p_idx)
 	p_syn->step = 1.0 * p_syn->tri.tex[3].height / p_syn->lineHeight;
 }
 
-void	init_for_sprite(t_syn *p_syn, int i)
+void		init_for_sprite(t_syn *p_syn, int i)
 {
 	p_syn->spriteX = p_syn->sprites[i][0] - p_syn->tri.pos[0];
 	p_syn->spriteY = p_syn->sprites[i][1] - p_syn->tri.pos[1];
@@ -88,25 +88,25 @@ void	init_for_sprite(t_syn *p_syn, int i)
 	p_syn->transformY = p_syn->invDet * (-p_syn->tri.plane[1] * p_syn->spriteX + \
 			p_syn->tri.plane[0] * p_syn->spriteY);
 	p_syn->spriteScreenX = (int)((p_syn->R[0] / 2) * \
-                                (1 + p_syn->transformX / p_syn->transformY));
+			(1 + p_syn->transformX / p_syn->transformY));
 	p_syn->spriteHeight = abs((int)(H / (p_syn->transformY)));
 	p_syn->drawStartY = -p_syn->spriteHeight / 2 + H / 2;
-	if (p_syn->drawStartY < 0) 
+	if (p_syn->drawStartY < 0)
 		p_syn->drawStartY = 0;
 	p_syn->drawEndY = p_syn->spriteHeight / 2 + H / 2;
-	if (p_syn->drawEndY >= H) 
+	if (p_syn->drawEndY >= H)
 		p_syn->drawEndY = H - 1;
 	p_syn->spriteWidth = abs((int)(H / (p_syn->transformY)));
 	p_syn->drawStartX = -p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
-	if (p_syn->drawStartX < 0) 
+	if (p_syn->drawStartX < 0)
 		p_syn->drawStartX = 0;
 	p_syn->drawEndX = p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
-	if (p_syn->drawEndX >= p_syn->R[0]) 
+	if (p_syn->drawEndX >= p_syn->R[0])
 		p_syn->drawEndX = p_syn->R[0] - 1;
 }
 void		sort_sprites(t_syn *p_syn)
 {
-    ft_mergesort(p_syn, p_syn->sprites, 0, p_syn->num_of_sprite-1);
+	ft_mergesort(p_syn, p_syn->sprites, 0, p_syn->num_of_sprite - 1);
 }
 
 double		compute_dis(t_syn *p_syn, double *sprite)
@@ -149,7 +149,7 @@ void		ft_merge(t_syn *p_syn, double **arr, int start, int mid, int end)
 		arr[idx] = temp[idx - start];
 }
 
-void	ft_mergesort(t_syn *p_syn, double **arr, int start, int end)
+void		ft_mergesort(t_syn *p_syn, double **arr, int start, int end)
 {
 	int	mid;
 
@@ -161,7 +161,7 @@ void	ft_mergesort(t_syn *p_syn, double **arr, int start, int end)
 	ft_merge(p_syn, arr, start, mid, end);
 }
 
-void	make_sprite(t_syn *p_syn)
+void		make_sprite(t_syn *p_syn)
 {
 	for (int i = 0; i < p_syn->num_of_sprite; i++)
 		p_syn->spriteDistance[i] = ((p_syn->tri.pos[0] - p_syn->sprites[i][0]) * \
@@ -183,7 +183,7 @@ void	make_sprite(t_syn *p_syn)
 					p_syn->d = (p_syn->y) * 256 - H * 128 + p_syn->spriteHeight * 128;
 					p_syn->texY = ((p_syn->d * p_syn->tri.tex[4].height) / p_syn->spriteHeight) / 256;
 					p_syn->color = p_syn->tri.tex[4].data[p_syn->tri.tex[4].width * p_syn->texY + p_syn->texX];
-					if((p_syn->color & 0x00FFFFFF) != 0)
+					if ((p_syn->color & 0x00FFFFFF) != 0)
 						my_mlx_pixel_put(&(p_syn->img), p_syn->stripe, p_syn->y, p_syn->color);
 				}
 			}
