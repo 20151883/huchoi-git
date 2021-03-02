@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
-#include "./mlx.h"
+#include "./mlx/mlx.h"
+#include "./Libft/libft.h"
+#include "./get_next_line.h"
 #include <string.h>
 #include <sys/types.h> 
 #include <sys/stat.h> 
@@ -123,6 +125,7 @@ typedef struct s_syn{
     //Sprite *sprite;
     //int texY;
 }t_syn;
+
 int		**renewer_map(t_syn *p_syn, int **map, char *add_line);
 void	get_first(int fd, char *cur_buf);
 int		valid_check(t_syn *p_syn, char **p_cur_buf, char **p_before_buf, int flag);

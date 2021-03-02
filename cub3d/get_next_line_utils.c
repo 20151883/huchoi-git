@@ -6,13 +6,13 @@
 /*   By: huchoi <huchoi@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:49:41 by huchoi            #+#    #+#             */
-/*   Updated: 2021/01/20 17:17:13 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/03/03 01:30:30 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*ret;
 	int		i;
@@ -31,7 +31,7 @@ char	*ft_strdup(char *src)
 	return (ret);
 }
 
-int		ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	int ret;
 
@@ -43,7 +43,7 @@ int		ft_strlen(char *str)
 	return (ret);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*ret;
 	int		i;
@@ -71,7 +71,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (ret);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
