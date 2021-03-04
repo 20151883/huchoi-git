@@ -112,6 +112,5 @@ char	**my_split(char const *s1, char *deli)
 		start = give_start(s1, deli, end);
 		end = give_end(s1, deli, start);
 	}
-	//printf("%s   %s     %s\n", ret[0], ret[1], ret[2]);
 	return (ret);
 }

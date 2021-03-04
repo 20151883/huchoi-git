@@ -95,9 +95,7 @@ int		main(int argc, char *argv[])
 	else
 		message_exit();
 	par(&syn);
-	while (1)
-		printf("");
-	/*syn.tri.mlx_ptr = mlx_init();
+	syn.tri.mlx_ptr = mlx_init();
 	syn.tri.win_ptr = mlx_new_window(syn.tri.mlx_ptr, syn.R[0], \
 	syn.R[1], "cub3D");
 	syn.img.img_ptr = mlx_new_image(syn.tri.mlx_ptr, syn.R[0], syn.R[1]);
@@ -107,6 +105,6 @@ int		main(int argc, char *argv[])
 	mlx_hook(syn.tri.win_ptr, 2, 0, &key_func, &syn);
 	mlx_hook(syn.tri.win_ptr, 17, 0, &close_function, &syn);
 	mlx_loop_hook(syn.tri.mlx_ptr, &main_loop, &syn);
-	mlx_loop(syn.tri.mlx_ptr);*/
+	mlx_loop(syn.tri.mlx_ptr);
 	return (0);
 }
