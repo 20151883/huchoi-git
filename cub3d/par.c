@@ -93,13 +93,13 @@ int		par(t_syn *p_syn)
 	free(p_syn->cub_path);
 	while (get_next_line(fd, &buf) && count < 8)
 	{
-		printf(">>\n");
+		//printf(">>\n");
 		lenth = 0;
 		if (*buf == '\0')
 			continue;
 		if (is_only_zero_blank_one(buf) == 1)
 			message_exit();
-		split = ft_split(buf, ' ');
+		split = my_split(buf, " ,\t\v\r\f");
 		free(buf);
 		while (split[lenth] != 0)
 			lenth++;

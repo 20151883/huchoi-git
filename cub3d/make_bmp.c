@@ -19,13 +19,7 @@ void	ft_bdata(t_syn *s, int fd)
 	{
 		j = 0;
 		while (j++ < s->R[0])
-		{
-			/*buffer[0] = (unsigned char)(s->img.adr[i] % 256);
-			buffer[1] = (unsigned char)(s->img.adr[i] / 256 % 256);
-			buffer[2] = (unsigned char)(s->img.adr[i] / 256 / 256 % 256);
-			buffer[3] = (unsigned char)(0);*/
 			write(fd, get_color_from_img(s, j, i), 4);
-		}
 	}
 }
 
@@ -63,7 +57,7 @@ void	ft_bfile(t_syn *s, int fd)
 		header[n++] = (unsigned char)(0);
 	header[0] = (unsigned char)(66);
 	header[1] = (unsigned char)(77);
-	n = s->R[0] * s->R[1] * 4 + 54;//4->3
+	n = s->R[0] * s->R[1] * 4 + 54;
 	header[2] = (unsigned char)(n % 256);
 	header[3] = (unsigned char)(n / 256 % 256);
 	header[4] = (unsigned char)(n / 256 / 256 % 256);
@@ -71,24 +65,6 @@ void	ft_bfile(t_syn *s, int fd)
 	header[10] = (unsigned char)(54);
 	write(fd, header, 14);
 }
-
-/*void	ft_bdraw(t_syn *s)
-{
-	t_ray	ray;
-	t_hit	hit;
-
-	ray.x = 0;
-	ray.y = 0;
-	ray.i = 0;
-	ray.v = 0;
-	ray.w = 0;
-	hit.x = 0;
-	hit.y = 0;
-	hit.d = 0;
-	s->ray = ray;
-	s->hit = hit;
-	ft_screen(s);
-}*/
 
 int		ft_bitmap(t_syn *s)
 {
@@ -100,8 +76,5 @@ int		ft_bitmap(t_syn *s)
 	ft_binfo(s, fd);
 	ft_bdata(s, fd);
 	close(fd);
-	//free(s->img.data_ptr);
-	//free(s->img.data_ptr);
-	//ft_close(s, 0);
 	return (1);
 }

@@ -9,8 +9,6 @@
 #include <sys/stat.h> 
 #include <fcntl.h>
 #include <unistd.h>
-//#define screenWidth p_syn->R[0]
-//#define screenHeight p_syn->R[1]
 #define H p_syn->R[1]
 
 # define KEY_A				0
@@ -24,14 +22,7 @@
 # define KEY_UP				126
 #define KEY_1               17
 
-typedef struct Sprite
-{
-  double x;
-  double y;
-  //int texture;//this must be the 4...!!
-}Sprite;
-
-typedef struct s_tex
+typedef	struct	s_tex
 {
 	void		*ptr;
 	int			*data;
@@ -40,34 +31,33 @@ typedef struct s_tex
 	int			size_l;
 	int			bpp;
 	int			endian;
-    char        *path;
-}t_tex;
+	char		*path;
+}				t_tex;
 
-typedef struct s_dda{//this struct will be included in t_tri struct...!!
-    int         step_x;
-    int         step_y;
-    int         map_x;
-    int         map_y;
-    int         side;
-    double      raydir_x;
-    double      raydir_y;
-    double      sidedist_x;
-    double      sidedist_y;
-    double      deltadist_x;
-    double      deltadist_y;
-    double      walldist; 
-}t_dda;
+typedef	struct	s_dda{
+	int			step_x;
+	int			step_y;
+	int			map_x;
+	int			map_y;
+	int			side;
+	double		raydir_x;
+	double		raydir_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	double		walldist; 
+}				t_dda;
 
-typedef struct s_tri{//tri has dda structure..!
+typedef struct s_tri{
     void    *mlx_ptr;
     void    *win_ptr;
     double  pos[2];
     double  dir[2];
     double  plane[2];
-    //int worldMap[mapWidth][mapHeight];
     int     **test_map;
     t_dda   dda;
-    t_tex   tex[4 + 1];//tex[4+1] is correct!!
+    t_tex   tex[4 + 1];
 }t_tri;
 
 typedef struct image{
@@ -79,7 +69,7 @@ typedef struct image{
 }t_img;
 
 typedef struct s_syn{
-    t_tri   tri;//tri has dda struct...!
+    t_tri   tri;
     t_img   img;
     char    *cub_path;
     int     bmp_flag;
@@ -120,13 +110,11 @@ typedef struct s_syn{
     int     texY;
     double  *spriteDistance;
     int     lineHeight;
-    //int texX;
     double step;
-    double wallX; //where exactly the wall was hit
+    double wallX;
     double texPos;
-    //Sprite *sprite;
-    //int texY;
 }t_syn;
+
 char	**my_split(char const *s1, char *deli);
 int		ft_bitmap(t_syn *s);
 void	make_over(t_syn *p_syn);
