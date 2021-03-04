@@ -61,8 +61,8 @@ void	dda_init_second(t_tri *p_tri)
 void check_path(t_syn *p_syn, char *path)
 {
 	int fd;
-	/*if (-1 == (fd = is_valid_path(path)))
-		message_exit();*/
+	if (-1 == (fd = is_valid_path(path)))
+		message_exit();
 	p_syn->cub_path = ft_strdup(path);
 }
 

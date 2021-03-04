@@ -1,14 +1,10 @@
 R 		1400 	1401
-
 NO /Users/huchoi/huchoi-git-6/cub3d/pics/wall_1.xpm
 SO /Users/huchoi/huchoi-git-6/cub3d/pics/wall_2.xpm
-
-
 WE /Users/huchoi/huchoi-git-6/cub3d/pics/wall_3.xpm
 EA /Users/huchoi/huchoi-git-6/cub3d/pics/wall_4.xpm
 S /Users/huchoi/huchoi-git-6/cub3d/pics/sprite_3.xpm
 F 220, 100, 0
-
 C 225, 30, 3
 
         1111111111111111111111111

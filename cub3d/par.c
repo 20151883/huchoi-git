@@ -93,6 +93,7 @@ int		par(t_syn *p_syn)
 	free(p_syn->cub_path);
 	while (get_next_line(fd, &buf) && count < 8)
 	{
+		printf(">>\n");
 		lenth = 0;
 		if (*buf == '\0')
 			continue;
@@ -110,6 +111,6 @@ int		par(t_syn *p_syn)
 	}
 	free(buf);
 	check_flag(p_syn);
-	//is_valid_map(fd, p_syn);
+	is_valid_map(fd, p_syn);
 	return (1);
 }

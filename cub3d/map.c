@@ -35,9 +35,9 @@ int				is_valid_map(int fd, t_syn *p_syn)
 		ret = valid_check(p_syn, &cur_buf, &before_buf, ret);
 	if (p_syn->dir_alpha_is_exist == 0)
 		message_exit();
-	if (NULL == (p_syn->spriteDistance = \
+	/*if (NULL == (p_syn->spriteDistance = \
 	(double *)malloc(sizeof(double) * p_syn->num_of_sprite)))
-		message_exit();
+		message_exit();*/
 	ret = get_last(p_syn, cur_buf, before_buf, ret);
-	return (ret);//
+	return (ret);
 }
