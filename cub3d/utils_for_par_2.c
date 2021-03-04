@@ -26,7 +26,7 @@ void	my_clear(char **lst)
 	}
 }
 
-int		give_start(char const *s1, char const c, int end)
+int		give_start(char const *s1, char *deli, int end)
 {
 	int ret;
 	int i;
@@ -37,7 +37,7 @@ int		give_start(char const *s1, char const c, int end)
 	i = 0;
 	while (s1[ret + i] != '\0')
 	{
-		if (s1[ret + i] != c)
+		if (ft_strchr(deli, s1[ret + i]) == 0)
 			return (ret + i);
 		else
 			i++;
@@ -45,7 +45,7 @@ int		give_start(char const *s1, char const c, int end)
 	return (-1);
 }
 
-int		give_end(char const *s1, char const c, int start)
+int		give_end(char const *s1, char *deli, int start)
 {
 	int ret;
 	int i;
@@ -56,7 +56,7 @@ int		give_end(char const *s1, char const c, int start)
 	i = 0;
 	while (s1[ret + i] != '\0')
 	{
-		if (c == (s1[ret + i]))
+		if (ft_strchr(deli, s1[ret + i]) != 0)
 			return (ret + i - 1);
 		else
 			i++;
@@ -92,7 +92,7 @@ char	**new_ret(char **ret, char const *s1, int start, int end)
 	return (return_value);
 }
 
-char	**ft_split(char const *s1, char const c)
+char	**my_split(char const *s1, char *deli)
 {
 	char	**ret;
 	int		start;
@@ -102,15 +102,16 @@ char	**ft_split(char const *s1, char const c)
 	if (ret == 0)
 		return (0);
 	*ret = 0;
-	start = give_start(s1, c, -1);
-	end = give_end(s1, c, start);
+	start = give_start(s1, deli, -1);
+	end = give_end(s1, deli, start);
 	while (start != -1)
 	{
 		ret = new_ret(ret, s1, start, end);
 		if (ret == 0)
 			return (0);
-		start = give_start(s1, c, end);
-		end = give_end(s1, c, start);
+		start = give_start(s1, deli, end);
+		end = give_end(s1, deli, start);
 	}
+	//printf("%s   %s     %s\n", ret[0], ret[1], ret[2]);
 	return (ret);
 }

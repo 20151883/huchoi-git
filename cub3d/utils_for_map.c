@@ -9,17 +9,17 @@ void	get_dir(t_syn *p_syn, int idx, char *add_line)
 	p_syn->tri.plane[1] = 0;
 	if (add_line[idx] == 'N')
 	{
-		p_syn->tri.dir[0] = +1;
-		p_syn->tri.plane[1] = 0.66;
+		p_syn->tri.dir[1] = -1;
+		p_syn->tri.plane[0] = 0.66;
 	}
 	if (add_line[idx] == 'E')
 	{
-		p_syn->tri.dir[1] = 1;
+		p_syn->tri.dir[0] = 1;
 		p_syn->tri.plane[0] = 0.66;
 	}
 	if (add_line[idx] == 'W')
 	{
-		p_syn->tri.dir[1] = -1;
+		p_syn->tri.dir[1] = +1;
 		p_syn->tri.plane[0] = 0.66;
 	}
 	if (add_line[idx] == 'S')

@@ -110,6 +110,6 @@ int		par(t_syn *p_syn)
 	}
 	free(buf);
 	check_flag(p_syn);
-	is_valid_map(fd, p_syn);
+	//is_valid_map(fd, p_syn);
 	return (1);
 }

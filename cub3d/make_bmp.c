@@ -15,10 +15,10 @@ void	ft_bdata(t_syn *s, int fd)
 	unsigned char	buffer[4];
 
 	i = s->R[1];
-	while (--i >= 0)
+	while (--i > 0)
 	{
-		j = s->R[0];
-		while (--j >= 0)
+		j = 0;
+		while (j++ < s->R[0])
 		{
 			/*buffer[0] = (unsigned char)(s->img.adr[i] % 256);
 			buffer[1] = (unsigned char)(s->img.adr[i] / 256 % 256);
@@ -102,6 +102,6 @@ int		ft_bitmap(t_syn *s)
 	close(fd);
 	//free(s->img.data_ptr);
 	//free(s->img.data_ptr);
-	ft_close(s, 0);
+	//ft_close(s, 0);
 	return (1);
 }

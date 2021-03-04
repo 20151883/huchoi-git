@@ -36,7 +36,7 @@ void	get_first(int fd, char *cur_buf)
 		*(ft_strchr(cur_buf, ' ')) = '1';
 }
 
-void check_upper_zero_is_null(char *cur, char *before)
+void	check_upper_zero_is_null(char *cur, char *before)
 {
 	int idx;
 	
@@ -48,18 +48,38 @@ void check_upper_zero_is_null(char *cur, char *before)
 	}
 }
 
+void	check_upper_is_longer(char *cur, char *before)
+{
+	int cur_lenth;
+	int before_lenth;
+	int idx;
+
+	cur_lenth = ft_strlen(cur);
+	before_lenth = ft_strlen(before);
+	if (before_lenth > cur_lenth)
+	{
+		idx = cur_lenth;
+		while (before[idx])
+		{
+			if (before[idx++] == '0')
+				message_exit();
+		}
+	}
+}
+
 int		valid_check(t_syn *p_syn, char **p_cur_buf, \
 char **p_before_buf, int flag)
 {
 	while (ft_strchr(*p_cur_buf, ' '))
 		*(ft_strchr(*p_cur_buf, ' ')) = '1';
-	printf("%s\n", *p_cur_buf);
+	//printf("%s\n", *p_cur_buf);
 	if (is_only_zero_blank_one(*p_cur_buf) != 1)
 		message_exit();
 	if (((*p_cur_buf)[0] != '1') || \
 	((*p_cur_buf)[ft_strlen(*p_cur_buf) - 1] != '1'))
 		message_exit();
-	//check_upper_zero_is_null(*p_cur_buf, *p_before_buf);
+	check_upper_zero_is_null(*p_cur_buf, *p_before_buf);
+	check_upper_is_longer(*p_cur_buf, *p_before_buf);
 	free(*p_before_buf);
 	if (NULL == (p_syn->tri.test_map = \
 	renewer_map(p_syn, p_syn->tri.test_map, *p_cur_buf)))

@@ -127,6 +127,7 @@ typedef struct s_syn{
     //Sprite *sprite;
     //int texY;
 }t_syn;
+char	**my_split(char const *s1, char *deli);
 int		ft_bitmap(t_syn *s);
 void	make_over(t_syn *p_syn);
 void	make_under(t_syn *p_syn);

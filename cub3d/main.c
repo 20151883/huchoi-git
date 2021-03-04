@@ -61,8 +61,8 @@ void	dda_init_second(t_tri *p_tri)
 void check_path(t_syn *p_syn, char *path)
 {
 	int fd;
-	if (-1 == (fd = is_valid_path(path)))
-		message_exit();
+	/*if (-1 == (fd = is_valid_path(path)))
+		message_exit();*/
 	p_syn->cub_path = ft_strdup(path);
 }
 
@@ -79,6 +79,11 @@ void check_path_save(t_syn *p_syn, char *path, char *s)
 		message_exit();
 }
 
+int		close_function(void)
+{
+	exit(0);
+}
+
 int		main(int argc, char *argv[])
 {
 	t_syn	syn;
@@ -90,7 +95,9 @@ int		main(int argc, char *argv[])
 	else
 		message_exit();
 	par(&syn);
-	syn.tri.mlx_ptr = mlx_init();
+	while (1)
+		printf("");
+	/*syn.tri.mlx_ptr = mlx_init();
 	syn.tri.win_ptr = mlx_new_window(syn.tri.mlx_ptr, syn.R[0], \
 	syn.R[1], "cub3D");
 	syn.img.img_ptr = mlx_new_image(syn.tri.mlx_ptr, syn.R[0], syn.R[1]);
@@ -98,7 +105,8 @@ int		main(int argc, char *argv[])
 	&(syn.img.bpp), &(syn.img.lenth), &(syn.img.endian));
 	init_tri(&syn);
 	mlx_hook(syn.tri.win_ptr, 2, 0, &key_func, &syn);
+	mlx_hook(syn.tri.win_ptr, 17, 0, &close_function, &syn);
 	mlx_loop_hook(syn.tri.mlx_ptr, &main_loop, &syn);
-	mlx_loop(syn.tri.mlx_ptr);
+	mlx_loop(syn.tri.mlx_ptr);*/
 	return (0);
 }
