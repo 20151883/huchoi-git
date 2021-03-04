@@ -31,11 +31,11 @@ void	init_flags(t_syn *p_syn)
 
 int		is_valid_color(char **split)
 {
-	if ((0 > atoi(split[1]) || atoi(split[1]) > 255))
+	if ((0 > ft_atoi(split[1]) || ft_atoi(split[1]) > 255))
 		return (-1);
-	if ((0 > atoi(split[2]) || atoi(split[2]) > 255))
+	if ((0 > ft_atoi(split[2]) || ft_atoi(split[2]) > 255))
 		return (-1);
-	if ((0 > atoi(split[3]) || atoi(split[3]) > 255))
+	if ((0 > ft_atoi(split[3]) || ft_atoi(split[3]) > 255))
 		return (-1);
 	return (1);
 }

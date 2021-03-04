@@ -38,7 +38,7 @@ int		renewer_sprites(t_syn *p_syn, int size, int idx)
 	p_syn->num_of_sprite++;
 	while (p_syn->sprites[x] != NULL)
 		x++;
-	if (NULL == (new_sprites = (double **)calloc(x + 2, sizeof(double *))))
+	if (NULL == (new_sprites = (double **)ft_calloc(x + 2, sizeof(double *))))
 		message_exit();
 	new_sprites[x + 1] = NULL;
 	if (0 == (new_sprites[x] = malloc(sizeof(int) * 2)))

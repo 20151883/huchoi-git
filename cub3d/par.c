@@ -40,12 +40,14 @@ int		check_r(char **split, t_syn *p_syn)
 {
 	if (*split[0] == 'R' && strlen(split[0]) == 1)
 	{
-		if ((0 > atoi(split[1]) || atoi(split[1]) > 7680))
-			return (-1);
-		p_syn->R[0] = atoi(split[1]);
-		if ((0 > atoi(split[2]) || atoi(split[2]) > 4320))
-			return (-1);
-		p_syn->R[1] = atoi(split[2]);
+		if ((0 > atoi(split[1]) || atoi(split[1]) >= 2560))
+			p_syn->R[0] = 2560;
+		else
+			p_syn->R[0] = ft_atoi(split[1]);
+		if ((0 > ft_atoi(split[2]) || ft_atoi(split[2]) > 1440))
+			p_syn->R[1] = 1440;
+		else
+			p_syn->R[1] = atoi(split[2]);
 		p_syn->r_flag = 1;
 	}
 	else
@@ -92,16 +94,21 @@ int		par(t_syn *p_syn)
 	while (get_next_line(fd, &buf) && count < 8)
 	{
 		lenth = 0;
-		if (strcmp(buf, "") == 0)
+		if (*buf == '\0')
 			continue;
 		if (is_only_zero_blank_one(buf) == 1)
 			message_exit();
 		split = ft_split(buf, ' ');
+		free(buf);
 		while (split[lenth] != 0)
 			lenth++;
 		case_by_lenth(split, p_syn, lenth);
+		while (--lenth >= 0)
+			free(split[lenth]);
+		free(split);
 		count++;
 	}
+	free(buf);
 	check_flag(p_syn);
 	is_valid_map(fd, p_syn);
 	return (1);

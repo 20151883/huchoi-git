@@ -84,7 +84,8 @@ char	**new_ret(char **ret, char const *s1, int start, int end)
 	while (ret[++i] != '\0')
 		return_value[i] = ret[i];
 	free(ret);
-	str = (char *)malloc(sizeof(char) * (end - start + 2));
+	if (NULL == (str = (char *)malloc(sizeof(char) * (end - start + 2))))
+		message_exit();
 	strlcpy(str, &s1[start], end - start + 2);
 	return_value[i++] = str;
 	return_value[i] = 0;

@@ -19,6 +19,7 @@ void	load_texture_sprite(t_tri *p_tri, int idx)
 	p_tri->tex[idx].path, &(p_tri->tex[idx].width), &(p_tri->tex[idx].height));
 	p_tri->tex[idx].data = (int *)mlx_get_data_addr(p_tri->tex[idx].ptr, \
 	&p_tri->tex[idx].bpp, &p_tri->tex[idx].size_l, &p_tri->tex[idx].endian);
+	free(p_tri->tex[idx].path);
 }
 
 void	dda_init(t_tri *p_tri)
@@ -91,7 +92,7 @@ int		main(int argc, char *argv[])
 	par(&syn);
 	syn.tri.mlx_ptr = mlx_init();
 	syn.tri.win_ptr = mlx_new_window(syn.tri.mlx_ptr, syn.R[0], \
-	syn.R[1], "CUB3D");
+	syn.R[1], "cub3D");
 	syn.img.img_ptr = mlx_new_image(syn.tri.mlx_ptr, syn.R[0], syn.R[1]);
 	syn.img.data_ptr = mlx_get_data_addr(syn.img.img_ptr, \
 	&(syn.img.bpp), &(syn.img.lenth), &(syn.img.endian));

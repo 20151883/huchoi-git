@@ -2,7 +2,7 @@
 
 void	message_exit(void)
 {
-	printf("error\nwhy you paly this game...???");
+	printf("Error\nwhy you want to play this game...???");
 	exit(0);
 }
 
@@ -13,7 +13,7 @@ int		is_only_zero_blank_one(char *arr)
 	idx = 0;
 	while (arr[idx])
 	{
-		if (strchr("012 NEWS", arr[idx++]) == 0)
+		if (ft_strchr("012 NEWS", arr[idx++]) == 0)
 			return (-1);
 	}
 	return (1);

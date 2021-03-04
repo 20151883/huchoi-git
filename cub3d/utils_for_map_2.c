@@ -28,7 +28,10 @@ int		**renewer_map(t_syn *p_syn, int **map, char *add_line)
 void	get_first(int fd, char *cur_buf)
 {
 	while (strcmp(cur_buf, "") == 0)
+	{
+		free(cur_buf);
 		get_next_line(fd, &cur_buf);
+	}
 	while (ft_strchr(cur_buf, ' '))
 		*(ft_strchr(cur_buf, ' ')) = '1';
 }

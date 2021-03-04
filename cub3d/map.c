@@ -5,12 +5,12 @@ static	void	init_the_var(int *p_idx, t_syn *p_syn)
 {
 	*p_idx = 0;
 	if (NULL == (p_syn->sprites = (double **)\
-	calloc(1, sizeof(double *))))
+	ft_calloc(1, sizeof(double *))))
 		message_exit();
 	p_syn->num_of_sprite = 0;
 	p_syn->dir_alpha_is_exist = 0;
 	if (NULL == (p_syn->tri.test_map = \
-	(int **)calloc(1, sizeof(int *))))
+	(int **)ft_calloc(1, sizeof(int *))))
 		message_exit();
 }
 
@@ -35,9 +35,9 @@ int				is_valid_map(int fd, t_syn *p_syn)
 		ret = valid_check(p_syn, &cur_buf, &before_buf, ret);
 	if (p_syn->dir_alpha_is_exist == 0)
 		message_exit();
-	if (NULL == (p_syn->spriteDistance = \
+	/*if (NULL == (p_syn->spriteDistance = \
 	(double *)malloc(sizeof(double) * p_syn->num_of_sprite)))
-		message_exit();
+		message_exit();*/
 	ret = get_last(p_syn, cur_buf, before_buf, ret);
-	return (ret);
+	return (ret);//
 }
