@@ -28,8 +28,8 @@ void	dda_init(t_tri *p_tri)
 	p_dd = &(p_tri->dda);
 	p_dd->map_x = (int)p_tri->pos[0];
 	p_dd->map_y = (int)p_tri->pos[1];
-	p_dd->deltadist_x = (p_dd->raydir_y == 0) ? 0 : ((p_dd->raydir_x == 0) ? 1 : fabs(1 / p_dd->raydir_x));
-	p_dd->deltadist_y = (p_dd->raydir_x == 0) ? 0 : ((p_dd->raydir_x == 0) ? 1 : fabs(1 / p_dd->raydir_y));
+	p_dd->deltadist_x = fabs(1 / p_dd->raydir_x);
+	p_dd->deltadist_y = fabs(1 / p_dd->raydir_y);
 	if (p_dd->raydir_x > 0)
 		p_dd->sidedist_x = (p_dd->map_x + 1 - \
 		p_tri->pos[0]) * p_dd->deltadist_x;
@@ -57,105 +57,37 @@ void	dda_init_second(t_tri *p_tri)
 		p_dd->step_y = -1;
 }
 
-void	make_under(t_syn *p_syn)
+void check_path(t_syn *p_syn, char *path)
 {
-	int i;
-	int j;
-
-	i = p_syn->R[1] / 2;
-	while (i <= p_syn->R[1])
-	{
-		j = 0;
-		while (j <= p_syn->R[0])
-			my_mlx_pixel_put(&(p_syn->img), j++, i, p_syn->f_color);
-		i++;
-	}
+	int fd;
+	if (-1 == (fd = is_valid_path(path)))
+		message_exit();
+	p_syn->cub_path = ft_strdup(path);
 }
 
-void	make_over(t_syn *p_syn)
+void check_path_save(t_syn *p_syn, char *path, char *s)
 {
-	int	i;
-	int	j;
+	int fd;
 
-	i = 0;
-	while (i <= p_syn->R[1] / 2)
-	{
-		j = 0;
-		while (j <= p_syn->R[0])
-			my_mlx_pixel_put(&(p_syn->img), j++, i, p_syn->c_color);
-		i++;
-	}
-}
-
-int		main_loop(t_syn *p_syn)
-{
-	int		idx;
-	int		i;
-	double	weight;
-
-	i = 0;
-	make_over(p_syn);
-	make_under(p_syn);
-	while (i < p_syn->R[0])
-	{
-		weight = 2 * i / (double)p_syn->R[0] - 1;
-		p_syn->tri.dda.raydir_x = p_syn->tri.dir[0] + \
-		p_syn->tri.plane[0] * weight;
-		p_syn->tri.dda.raydir_y = p_syn->tri.dir[1] + \
-		p_syn->tri.plane[1] * weight;
-		make_block(p_syn, &idx, i);
-		p_syn->ZBuffer[i] = p_syn->tri.dda.walldist;
-		i++;
-	}
-	make_sprite(p_syn);
-	mlx_put_image_to_window(p_syn->tri.mlx_ptr, \
-	p_syn->tri.win_ptr, p_syn->img.img_ptr, 0, 0);
-	return (0);
-}
-
-void	make_line(t_syn *p_syn, int x_pos, int start, int end, int color)
-{
-	int y;
-
-	y = start;
-	while (y <= end)
-	{
-		my_mlx_pixel_put(&(p_syn->img), x_pos, y, color);
-		y++;
-	}
-}
-
-void	my_mlx_pixel_put(t_img *p_img, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = p_img->data_ptr + (y * p_img->lenth + x * (p_img->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
-void	ft_close(t_syn *p_syn)
-{
-	mlx_destroy_window(p_syn->tri.mlx_ptr, p_syn->tri.win_ptr);
-	exit(0);
-}
-
-int		key_func(int keycode, t_syn *p_syn)
-{
-	double	temp;
-	double	speed;
-
-	speed = 0.3;
-	ctrl_pos(keycode, p_syn);
-	ctrl_dir(keycode, p_syn);
-	if (keycode == KEY_ESC || keycode == KEY_1)
-		ft_close(p_syn);
-	return (0);
+	if (-1 == (fd = is_valid_path(path)))
+		message_exit();
+	p_syn->cub_path = ft_strdup(path);
+	if (ft_strncmp("--save", s, 6) == 0 && ft_strlen(s) == 6)
+		p_syn->bmp_flag = 1;
+	else 
+		message_exit();
 }
 
 int		main(int argc, char *argv[])
 {
 	t_syn	syn;
 
+	if (argc == 2)
+		check_path(&syn, argv[1]);
+	else if (argc == 3)
+		check_path_save(&syn, argv[1], argv[2]);
+	else
+		message_exit();
 	par(&syn);
 	syn.tri.mlx_ptr = mlx_init();
 	syn.tri.win_ptr = mlx_new_window(syn.tri.mlx_ptr, syn.R[0], \

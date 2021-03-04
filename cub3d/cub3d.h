@@ -22,7 +22,7 @@
 # define KEY_RIGHT			124
 #define KEY_ESC             53
 # define KEY_UP				126
-#define KEY_1               18
+#define KEY_1               17
 
 typedef struct Sprite
 {
@@ -81,6 +81,8 @@ typedef struct image{
 typedef struct s_syn{
     t_tri   tri;//tri has dda struct...!
     t_img   img;
+    char    *cub_path;
+    int     bmp_flag;
     int     so_flag;
     int     no_flag;
     int     ea_flag;
@@ -125,7 +127,13 @@ typedef struct s_syn{
     //Sprite *sprite;
     //int texY;
 }t_syn;
-
+int		ft_bitmap(t_syn *s);
+void	make_over(t_syn *p_syn);
+void	make_under(t_syn *p_syn);
+int		key_func(int keycode, t_syn *p_syn);
+int		main_loop(t_syn *p_syn);
+void	init_for_sprite(t_syn *p_syn, int i);
+void	sort_sprites(t_syn *p_syn);
 int		**renewer_map(t_syn *p_syn, int **map, char *add_line);
 void	get_first(int fd, char *cur_buf);
 int		valid_check(t_syn *p_syn, char **p_cur_buf, char **p_before_buf, int flag);
@@ -137,7 +145,7 @@ int		renewer_sprites(t_syn *p_syn, int size, int idx);
 void	make_new_map(int **new_map, int **map, int *new_line, int size);
 void	manage_news_sprite(t_syn *p_syn, char *add_line, int size, int idx);
 void	ft_mergesort(t_syn *p_syn, double **arr, int start, int end);
-void	ft_merge(t_syn *p_syn, double **arr, int start, int mid, int end);
+void	ft_merge(t_syn *p_syn, double **arr, int start, int end);
 int		is_valid_path(char *path);
 int		case_by_lenth(char **split, t_syn *p_syn, int lenth);
 int		is_valid_path(char *path);
@@ -151,8 +159,8 @@ int		is_only_zero_blank_one(char *arr);
 void 	t_mergesort(t_syn *p_syn, double **arr, int start, int end);
 
 void	ctrl_pos(int keycode, t_syn *p_syn);
-void	pos_WS(t_syn*p_syn, double weight);
-void	pos_AD(t_syn *p_syn, double weight);
+void	pos_ws(t_syn*p_syn, double weight);
+void	pos_ad(t_syn *p_syn, double weight);
 void	ctrl_dir(int keycode, t_syn *p_syn);
 void	rotate_dir(t_syn *p_syn, double theta);
 

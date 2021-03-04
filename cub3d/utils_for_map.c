@@ -1,26 +1,5 @@
 #include "cub3d.h"
 
-int		check_first(char *buf, int *p_flag)
-{
-	if (strchr(buf, '0') != 0)
-		message_exit();
-	return (1);
-}
-
-int		check_last(char *buf)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while (buf[i])
-	{
-		if (buf[i++] != '1')
-			message_exit();
-	}
-	return (1);
-}
-
 void	get_dir(t_syn *p_syn, int idx, char *add_line)
 {
 	p_syn->tri.pos[1] = idx + 0.5;
@@ -30,7 +9,7 @@ void	get_dir(t_syn *p_syn, int idx, char *add_line)
 	p_syn->tri.plane[1] = 0;
 	if (add_line[idx] == 'N')
 	{
-		p_syn->tri.dir[0] = -1;
+		p_syn->tri.dir[0] = +1;
 		p_syn->tri.plane[1] = 0.66;
 	}
 	if (add_line[idx] == 'E')
@@ -45,7 +24,7 @@ void	get_dir(t_syn *p_syn, int idx, char *add_line)
 	}
 	if (add_line[idx] == 'S')
 	{
-		p_syn->tri.dir[0] = 1;
+		p_syn->tri.dir[0] = -1;
 		p_syn->tri.plane[1] = 0.66;
 	}
 }

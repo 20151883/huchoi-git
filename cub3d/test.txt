@@ -1,17 +1,17 @@
 R 1920 1080
-NO /Users/huchoi/huchoi-git/cub3d/pics/wall_1.xpm
-SO /Users/huchoi/huchoi-git/cub3d/pics/wall_2.xpm
-WE /Users/huchoi/huchoi-git/cub3d/pics/wall_3.xpm
-EA /Users/huchoi/huchoi-git/cub3d/pics/wall_4.xpm
-S /Users/huchoi/huchoi-git/cub3d/pics/sprite_1.xpm
+NO /Users/huchoi/huchoi-git-6/cub3d/pics/wall_1.xpm
+SO /Users/huchoi/huchoi-git-6/cub3d/pics/wall_2.xpm
+WE /Users/huchoi/huchoi-git-6/cub3d/pics/wall_3.xpm
+EA /Users/huchoi/huchoi-git-6/cub3d/pics/wall_4.xpm
+S /Users/huchoi/huchoi-git-6/cub3d/pics/sprite_3.xpm
 F 220, 100, 0
 C 225, 30, 0
 
         1111111111111111111111111
-        1000000000110000000000001
-        1011000001110000002000001
+        100E000000110000000000001
+        1011002221110000002000001
         1001000000000000000000001
-111111111011000001110N00000000001
+111111111011000001110000000000001
 1000000000110000011101111000111111
 11110111111111011100010010001
 11110111111111011101010010001
