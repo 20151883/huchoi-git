@@ -1,6 +1,5 @@
 #include <unistd.h>
 #include <stdlib.h>
-
 int ft_test(void);
 int ft_strlen(char *str);
 char *ft_strcpy(char *dest, char *src);
