@@ -1,20 +1,20 @@
 from debian:buster
 
 RUN apt-get update
-RUN apt-get install -y nginx
+RUN apt-get -y install nginx
 RUN nginx
 
-RUN apt-get install openssl
+RUN apt-get -y install openssl
 RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=Lee/CN=localhost" -keyout localhost.dev.key -out localhost.dev.crt
 RUN mv localhost.dev.crt /etc/ssl/certs/
 RUN mv localhost.dev.key /etc/ssl/private/
 RUN chmod 600 etc/ssl/certs/localhost.dev.crt etc/ssl/private/localhost.dev.key
 
-RUN apt-get install -y vim
+RUN apt-get -y install vim
 COPY ./srcs/default /etc/nginx/sites-available/default
 COPY ./srcs/index.php /var/www/html/index.php
 
-RUN apt-get install php-fpm
+RUN apt-get -y install php-fpm
 
 RUN apt-get -y install mariadb-server php-mysql php-mbstring
 RUN apt-get -y install wget
