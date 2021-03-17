@@ -11,7 +11,7 @@ RUN mv localhost.dev.key /etc/ssl/private/
 RUN chmod 600 etc/ssl/certs/localhost.dev.crt etc/ssl/private/localhost.dev.key
 
 RUN apt-get install -y vim
-COPY ./srcs/defalut /etc/nginx/sites-available/default
+COPY ./srcs/default /etc/nginx/sites-available/default
 COPY ./srcs/index.php /var/www/html/index.php
 
 RUN apt-get install php-fpm
