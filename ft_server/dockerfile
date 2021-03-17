@@ -22,6 +22,7 @@ RUN wget https://wordpress.org/latest.tar.gz
 RUN tar -xvf latest.tar.gz
 RUN mv wordpress/ /var/www/html/
 RUN chown -R www-data:www-data /var/www/html/wordpress
+COPY ./srcs/wp-config.php /var/www/html/wordpress/wp-config.php 
 
 RUN service mysql start
 RUN CREATE DATABASE wordpress;
