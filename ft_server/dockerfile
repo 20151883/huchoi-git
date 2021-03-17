@@ -25,12 +25,12 @@ RUN chown -R www-data:www-data /var/www/html/wordpress
 COPY ./src/wp-config.php /var/www/html/wordpress/wp-config.php
 
 RUN service mysql start
-CREATE DATABASE wordpress;
-CREATE USER 'huchoi'@'localhost' IDENTIFIED BY 'huchoi';
-GRANT ALL PRIVILEGES ON wordpress.* TO 'huchoi'@'localhost' WITH GRANT OPTION;
-USE wordpress;
-SHOW TABLES;
-exit
+RUN CREATE DATABASE wordpress;
+RUN CREATE USER 'huchoi'@'localhost' IDENTIFIED BY 'huchoi';
+RUN GRANT ALL PRIVILEGES ON wordpress.* TO 'huchoi'@'localhost' WITH GRANT OPTION;
+RUN USE wordpress;
+RUN SHOW TABLES;
+RUN exit
 
 RUN service php7.3-fpm restart
 
