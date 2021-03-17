@@ -1,0 +1,42 @@
+from debian:buster
+
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN nginx
+
+RUN apt-get install openssl
+RUN openssl req -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=Lee/CN=localhost" -keyout localhost.dev.key -out localhost.dev.crt
+RUN mv localhost.dev.crt /etc/ssl/certs/
+RUN mv localhost.dev.key /etc/ssl/private/
+RUN chmod 600 etc/ssl/certs/localhost.dev.crt etc/ssl/private/localhost.dev.key
+
+RUN apt-get install -y vim
+COPY ./src/defalut /etc/nginx/sites-available/default
+COPY ./src/index.php /var/www/html/index.php
+
+RUN apt-get install php-fpm
+
+RUN apt-get -y install mariadb-server php-mysql php-mbstring
+RUN apt-get -y install wget
+wget https://wordpress.org/latest.tar.gz
+RUN tar -xvf latest.tar.gz
+RUN mv wordpress/ /var/www/html/
+RUN chown -R www-data:www-data /var/www/html/wordpress
+COPY ./src/wp-config.php /var/www/html/wordpress/wp-config.php
+
+RUN service mysql start
+CREATE DATABASE wordpress;
+CREATE USER 'huchoi'@'localhost' IDENTIFIED BY 'huchoi';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'huchoi'@'localhost' WITH GRANT OPTION;
+USE wordpress;
+SHOW TABLES;
+exit
+
+RUN service php7.3-fpm restart
+
+RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz
+RUN tar -xvf phpMyAdmin-5.0.2-all-languages.tar.gz
+COPY ./src/phpmyadmin /var/www/html/
+RUN service nginx reload
+RUN service mysql start
+RUN mysql < var/www/html/phpmyadmin/sql/create_tables.sql
