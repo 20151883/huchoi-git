@@ -25,8 +25,8 @@ RUN chown -R www-data:www-data /var/www/html/wordpress
 COPY ./srcs/wp-config.php /var/www/html/wordpress/wp-config.php 
 
 RUN	service mysql start &&\
-	echo "CREATE DATABASE IF NOT EXITS wordpress;" | mysql -u root --skip-password && \
-	echo "CREATE USER IF NOT EXITS 'huchoi'@'localhost' IDENTIFIED BY 'huchoi';" | mysql -u root --skip-password &&\
+	echo "CREATE DATABASE wordpress;" | mysql -u root --skip-password && \
+	echo "CREATE USER 'huchoi'@'localhost' IDENTIFIED BY 'huchoi';" | mysql -u root --skip-password &&\
 	echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'huchoi'@'localhost' WITH GRANT OPTION;" | mysql -u root --skip-password &&\
 	echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password
 
