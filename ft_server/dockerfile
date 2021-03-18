@@ -42,4 +42,4 @@ RUN service mysql start
 
 EXPOSE 80 443
 
-CMD ./my_start.sh
+CMD bash my_start.sh
