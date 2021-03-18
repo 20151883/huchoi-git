@@ -41,6 +41,6 @@ RUN service nginx reload
 RUN service mysql start
 RUN mysql < var/www/html/phpmyadmin/sql/create_tables.sql
 
-EXPOS 80 443
+EXPOSE 80 443
 
 CMD ./my_start.sh
