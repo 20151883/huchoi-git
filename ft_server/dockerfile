@@ -24,13 +24,11 @@ RUN mv wordpress/ /var/www/html/
 RUN chown -R www-data:www-data /var/www/html/wordpress
 COPY ./srcs/wp-config.php /var/www/html/wordpress/wp-config.php 
 
-RUN service mysql start
-RUN CREATE DATABASE wordpress;
-RUN CREATE USER 'huchoi'@'localhost' IDENTIFIED BY 'huchoi';
-RUN GRANT ALL PRIVILEGES ON wordpress.* TO 'huchoi'@'localhost' WITH GRANT OPTION;
-RUN USE wordpress;
-RUN SHOW TABLES;
-RUN exit
+RUN	service mysql start &&\
+	echo "CREATE DATABASE if not exits wordpress;" | mysql -u root --skip-password && \
+	echo "CREATE USER if not exits 'huchoi'@'localhost' IDENTIFIED BY 'huchoi';" | mysql -u root --skip-password &&\
+	echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'huchoi'@'localhost' WITH GRANT OPTION;" | mysql -u root --skip-password &&\
+	echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password
 
 RUN service php7.3-fpm restart
 
@@ -42,3 +40,7 @@ COPY ./srcs/config.inc.php /var/www/html/phpmyadmin/config.inc.php
 RUN service nginx reload
 RUN service mysql start
 RUN mysql < var/www/html/phpmyadmin/sql/create_tables.sql
+
+EXPOS 80 443
+
+CMD ./my_start.sh
