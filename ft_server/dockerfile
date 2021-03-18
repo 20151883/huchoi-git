@@ -39,7 +39,6 @@ RUN mv phpmyadmin /var/www/html/
 COPY ./srcs/config.inc.php /var/www/html/phpmyadmin/config.inc.php 
 RUN service nginx reload
 RUN service mysql start
-RUN mysql < var/www/html/phpmyadmin/sql/create_tables.sql
 
 EXPOSE 80 443
 
