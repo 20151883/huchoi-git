@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 10:45:54 by huchoi            #+#    #+#             */
-/*   Updated: 2021/04/02 16:51:14 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/04/02 17:41:32 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void		ft_bitmap(t_syn *m)
 	t_bmp	bmp;
 	int		imgsize;
 
-	main_loop(m);
 	imgsize = 4 * m->r[0] * m->r[1];
 	bmp.size = 54 + imgsize;
 	bmp.fd = open("cub3D.bmp", O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
