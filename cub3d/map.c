@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 10:49:13 by huchoi            #+#    #+#             */
+/*   Updated: 2021/03/10 14:10:56 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
-#include "get_next_line.h"
 
 static	void	init_the_var(int *p_idx, t_syn *p_syn)
 {
@@ -24,7 +35,7 @@ int				is_valid_map(int fd, t_syn *p_syn)
 
 	init_the_var(&idx, p_syn);
 	get_next_line(fd, &cur_buf);
-	get_first(fd, cur_buf);
+	get_first(fd, &cur_buf);
 	if (-1 == (check_first(cur_buf, &(p_syn->dir_alpha_is_exist))))
 		message_exit();
 	if (NULL == (p_syn->tri.test_map = \

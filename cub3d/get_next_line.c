@@ -6,13 +6,14 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:48:31 by huchoi            #+#    #+#             */
-/*   Updated: 2021/02/26 00:00:08 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/03/08 12:48:04 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #define BUFFER_SIZE  1
-void	free_back_buf(char *p1, char *p2)
+
+static	void	free_back_buf(char *p1, char *p2)
 {
 	if (p1 != 0)
 		free(p1);
@@ -20,7 +21,8 @@ void	free_back_buf(char *p1, char *p2)
 		free(p2);
 }
 
-int		renewer_backup(char **line, char **p_backup, char **p_buf, char *p)
+static	int		renewer_backup(char **line, char **p_backup, char **p_buf,\
+								char *p)
 {
 	char *temp;
 
@@ -40,7 +42,7 @@ int		renewer_backup(char **line, char **p_backup, char **p_buf, char *p)
 	return (1);
 }
 
-int		case_ret_zero(char **line, char **p_backup, char **p_buf)
+static	int		case_ret_zero(char **line, char **p_backup, char **p_buf)
 {
 	char *p;
 
@@ -66,7 +68,7 @@ int		case_ret_zero(char **line, char **p_backup, char **p_buf)
 	return (0);
 }
 
-int		case_ret_non_zero(char **line, char **p_backup, char **p_buf)
+static	int		case_ret_non_zero(char **line, char **p_backup, char **p_buf)
 {
 	char *p;
 	char *temp;
@@ -95,7 +97,7 @@ int		case_ret_non_zero(char **line, char **p_backup, char **p_buf)
 	return (renewer_backup(line, p_backup, p_buf, p));
 }
 
-int		get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	static char *backup[256];
 	char		*buf;

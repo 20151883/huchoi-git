@@ -93,7 +93,7 @@ static	char	**new_ret(char **ret, char const *s1, int start, int end)
 		return (0);
 	}
 	i = -1;
-	while (ret[++i] != '\0')
+	while (ret[++i] != NULL)
 		return_value[i] = ret[i];
 	free(ret);
 	str = (char *)malloc(sizeof(char) * (end - start + 2));

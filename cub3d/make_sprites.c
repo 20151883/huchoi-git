@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 01:06:15 by huchoi            #+#    #+#             */
-/*   Updated: 2021/03/04 09:55:30 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/03/10 10:59:12 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	get_sprites(t_syn *p_syn)
 {
-	p_syn->y = p_syn->drawStartY;
-	while (p_syn->y < p_syn->drawEndY)
+	p_syn->y = p_syn->drawstarty;
+	while (p_syn->y < p_syn->drawendy)
 	{
-		p_syn->d = (p_syn->y) * 256 - H * 128 + p_syn->spriteHeight * 128;
-		p_syn->texY = ((p_syn->d * p_syn->tri.tex[4].height) / \
-		p_syn->spriteHeight) / 256;
+		p_syn->d = (p_syn->y) * 256 - p_syn->r[1] * 128 + \
+		p_syn->spriteheight * 128;
+		p_syn->texy = ((p_syn->d * p_syn->tri.tex[4].height) / \
+		p_syn->spriteheight) / 256;
 		p_syn->color = p_syn->tri.tex[4].data[p_syn->tri.tex[4].width \
-		* p_syn->texY + p_syn->texX];
+		* p_syn->texy + p_syn->texx];
 		if ((p_syn->color & 0x00FFFFFF) != 0)
 			my_mlx_pixel_put(&(p_syn->img), \
 			p_syn->stripe, p_syn->y, p_syn->color);
@@ -31,14 +32,14 @@ void	get_sprites(t_syn *p_syn)
 
 void	procedure_for_sprite(t_syn *p_syn)
 {
-	p_syn->stripe = p_syn->drawStartX;
-	while (p_syn->stripe < p_syn->drawEndX)
+	p_syn->stripe = p_syn->drawstartx;
+	while (p_syn->stripe < p_syn->drawendx)
 	{
-		p_syn->texX = (int)(256 * (p_syn->stripe - (-p_syn->spriteWidth / 2 + \
-		p_syn->spriteScreenX)) * p_syn->tri.tex[4].width / \
-		p_syn->spriteWidth) / 256;
-		if (p_syn->transformY > 0 && p_syn->stripe > 0 && p_syn->stripe < \
-		p_syn->R[0] && p_syn->transformY < p_syn->ZBuffer[p_syn->stripe])
+		p_syn->texx = (int)(256 * (p_syn->stripe - (-p_syn->spritewidth / 2 + \
+		p_syn->spritescreenx)) * p_syn->tri.tex[4].width / \
+		p_syn->spritewidth) / 256;
+		if (p_syn->transformy > 0 && p_syn->stripe > 0 && p_syn->stripe < \
+		p_syn->r[0] && p_syn->transformy < p_syn->zbuffer[p_syn->stripe])
 			get_sprites(p_syn);
 		p_syn->stripe++;
 	}

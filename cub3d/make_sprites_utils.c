@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   make_sprites_utils.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 10:48:07 by huchoi            #+#    #+#             */
+/*   Updated: 2021/04/02 09:29:06 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	sort_sprites(t_syn *p_syn)
@@ -61,28 +73,28 @@ void	ft_mergesort(t_syn *p_syn, double **arr, int start, int end)
 
 void	init_for_sprite(t_syn *p_syn, int i)
 {
-	p_syn->spriteX = p_syn->sprites[i][0] - p_syn->tri.pos[0];
-	p_syn->spriteY = p_syn->sprites[i][1] - p_syn->tri.pos[1];
-	p_syn->invDet = 1.0 / (p_syn->tri.plane[0] * p_syn->tri.dir[1] - \
+	p_syn->spritex = p_syn->sprites[i][0] - p_syn->tri.pos[0];
+	p_syn->spritey = p_syn->sprites[i][1] - p_syn->tri.pos[1];
+	p_syn->invdet = 1.0 / (p_syn->tri.plane[0] * p_syn->tri.dir[1] - \
 			p_syn->tri.dir[0] * p_syn->tri.plane[1]);
-	p_syn->transformX = p_syn->invDet * (p_syn->tri.dir[1] * \
-			p_syn->spriteX - p_syn->tri.dir[0] * p_syn->spriteY);
-	p_syn->transformY = p_syn->invDet * (-p_syn->tri.plane[1] * \
-	p_syn->spriteX + p_syn->tri.plane[0] * p_syn->spriteY);
-	p_syn->spriteScreenX = (int)((p_syn->R[0] / 2) * \
-			(1 + p_syn->transformX / p_syn->transformY));
-	p_syn->spriteHeight = abs((int)(H / (p_syn->transformY)));
-	p_syn->drawStartY = -p_syn->spriteHeight / 2 + H / 2;
-	if (p_syn->drawStartY < 0)
-		p_syn->drawStartY = 0;
-	p_syn->drawEndY = p_syn->spriteHeight / 2 + H / 2;
-	if (p_syn->drawEndY >= H)
-		p_syn->drawEndY = H - 1;
-	p_syn->spriteWidth = abs((int)(H / (p_syn->transformY)));
-	p_syn->drawStartX = -p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
-	if (p_syn->drawStartX < 0)
-		p_syn->drawStartX = 0;
-	p_syn->drawEndX = p_syn->spriteWidth / 2 + p_syn->spriteScreenX;
-	if (p_syn->drawEndX >= p_syn->R[0])
-		p_syn->drawEndX = p_syn->R[0] - 1;
+	p_syn->transformx = p_syn->invdet * (p_syn->tri.dir[1] * \
+			p_syn->spritex - p_syn->tri.dir[0] * p_syn->spritey);
+	p_syn->transformy = p_syn->invdet * (-p_syn->tri.plane[1] * \
+	p_syn->spritex + p_syn->tri.plane[0] * p_syn->spritey);
+	p_syn->spritescreenx = (int)((p_syn->r[0] / 2) * \
+			(1 + p_syn->transformx / p_syn->transformy));
+	p_syn->spriteheight = abs((int)(p_syn->r[1] / (p_syn->transformy)));
+	p_syn->drawstarty = -p_syn->spriteheight / 2 + p_syn->r[1] / 2;
+	if (p_syn->drawstarty < 0)
+		p_syn->drawstarty = 0;
+	p_syn->drawendy = p_syn->spriteheight / 2 + p_syn->r[1] / 2;
+	if (p_syn->drawendy >= p_syn->r[1])
+		p_syn->drawendy = p_syn->r[1] - 1;
+	p_syn->spritewidth = abs((int)(p_syn->r[1] / (p_syn->transformy)));
+	p_syn->drawstartx = -p_syn->spritewidth / 2 + p_syn->spritescreenx;
+	if (p_syn->drawstartx < 0)
+		p_syn->drawstartx = 0;
+	p_syn->drawendx = p_syn->spritewidth / 2 + p_syn->spritescreenx;
+	if (p_syn->drawendx >= p_syn->r[0])
+		p_syn->drawendx = p_syn->r[0] - 1;
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_ctrl.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 10:36:59 by huchoi            #+#    #+#             */
+/*   Updated: 2021/03/10 10:58:40 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	ctrl_pos(int keycode, t_syn *p_syn)
@@ -53,10 +65,10 @@ void	ctrl_dir(int keycode, t_syn *p_syn)
 {
 	double theta;
 
-	theta = 0.3;
+	theta = 0.1;
 	if (keycode == KEY_LEFT)
 	{
-		rotate_dir(p_syn, +theta);
+		rotate_dir(p_syn, theta);
 	}
 	else if (keycode == KEY_RIGHT)
 	{

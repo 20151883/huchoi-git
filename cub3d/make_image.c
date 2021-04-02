@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   make_image.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 10:47:58 by huchoi            #+#    #+#             */
+/*   Updated: 2021/03/10 11:38:57 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	make_under(t_syn *p_syn)
@@ -5,11 +17,11 @@ void	make_under(t_syn *p_syn)
 	int i;
 	int j;
 
-	i = p_syn->R[1] / 2;
-	while (i <= p_syn->R[1])
+	i = p_syn->r[1] / 2;
+	while (i < p_syn->r[1])
 	{
 		j = 0;
-		while (j <= p_syn->R[0])
+		while (j < p_syn->r[0])
 			my_mlx_pixel_put(&(p_syn->img), j++, i, p_syn->f_color);
 		i++;
 	}
@@ -21,10 +33,10 @@ void	make_over(t_syn *p_syn)
 	int	j;
 
 	i = 0;
-	while (i <= p_syn->R[1] / 2)
+	while (i < p_syn->r[1] / 2)
 	{
 		j = 0;
-		while (j <= p_syn->R[0])
+		while (j < p_syn->r[0])
 			my_mlx_pixel_put(&(p_syn->img), j++, i, p_syn->c_color);
 		i++;
 	}

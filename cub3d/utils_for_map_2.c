@@ -1,45 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_for_map_2.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 11:00:46 by huchoi            #+#    #+#             */
+/*   Updated: 2021/04/02 16:48:35 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
-#include "get_next_line.h"
 
-int		**renewer_map(t_syn *p_syn, int **map, char *add_line)
+void	get_first(int fd, char **p_cur_buf)
 {
-	int	**new_map;
-	int *temp;
-	int size;
 	int idx;
+	int nb;
 
-	size = 0;
-	idx = -1;
-	while (map[size] != NULL)
-		size++;
-	if (NULL == (new_map = (int **)calloc(1, sizeof(int *) * (size + 2))))
-		message_exit();
-	if (NULL == (temp = malloc(sizeof(int) * ft_strlen(add_line))))
-		message_exit();
-	while (add_line[++idx])
+	idx = 0;
+	while (**p_cur_buf == '\0')
 	{
-		manage_news_sprite(p_syn, add_line, size, idx);
-		temp[idx] = add_line[idx] - '0';
+		free(*p_cur_buf);
+		nb = get_next_line(fd, p_cur_buf);
+		if (nb == 0 || nb == -1)
+			message_exit();
 	}
-	make_new_map(new_map, map, temp, size);
-	return (new_map);
-}
-
-void	get_first(int fd, char *cur_buf)
-{
-	while (strcmp(cur_buf, "") == 0)
+	while (ft_strchr(*p_cur_buf, ' '))
+		*(ft_strchr(*p_cur_buf, ' ')) = '1';
+	while ((*p_cur_buf)[idx] != '\0')
 	{
-		free(cur_buf);
-		get_next_line(fd, &cur_buf);
+		if ((*p_cur_buf)[idx] != '1')
+			message_exit();
+		idx++;
 	}
-	while (ft_strchr(cur_buf, ' '))
-		*(ft_strchr(cur_buf, ' ')) = '1';
 }
 
 void	check_upper_zero_is_null(char *cur, char *before)
 {
 	int idx;
-	
+
 	idx = -1;
 	while (cur[++idx])
 	{
@@ -72,7 +71,6 @@ char **p_before_buf, int flag)
 {
 	while (ft_strchr(*p_cur_buf, ' '))
 		*(ft_strchr(*p_cur_buf, ' ')) = '1';
-	//printf("%s\n", *p_cur_buf);
 	if (is_only_zero_blank_one(*p_cur_buf) != 1)
 		message_exit();
 	if (((*p_cur_buf)[0] != '1') || \
@@ -92,11 +90,20 @@ char **p_before_buf, int flag)
 
 int		get_last(t_syn *p_syn, char *cur_buf, char *before_buf, int ret)
 {
+	int idx;
+
+	idx = 0;
 	if (-1 == (check_last(before_buf)))
 		message_exit();
 	free(before_buf);
 	while (ft_strchr(cur_buf, ' '))
 		*(ft_strchr(cur_buf, ' ')) = '1';
+	while (cur_buf[idx] != '\0')
+	{
+		if (cur_buf[idx] != '1')
+			message_exit();
+		idx++;
+	}
 	p_syn->tri.test_map = renewer_map(p_syn, p_syn->tri.test_map, cur_buf);
 	free(cur_buf);
 	if (ret == -1)

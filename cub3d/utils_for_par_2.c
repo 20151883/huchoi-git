@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_for_par_2.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 11:03:33 by huchoi            #+#    #+#             */
+/*   Updated: 2021/04/02 09:29:25 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	my_clear(char **lst)
@@ -74,19 +86,20 @@ char	**new_ret(char **ret, char const *s1, int start, int end)
 	len = 0;
 	while (ret[len] != 0)
 		len++;
-	return_value = (char **)malloc(sizeof(char *) * (len + 2));
+	if (0 == (return_value = (char **)malloc(sizeof(char *) * (len + 2))))
+		message_exit();
 	if (return_value == 0)
 	{
 		my_clear(ret);
 		return (0);
 	}
 	i = -1;
-	while (ret[++i] != '\0')
+	while (ret[++i] != NULL)
 		return_value[i] = ret[i];
 	free(ret);
 	if (NULL == (str = (char *)malloc(sizeof(char) * (end - start + 2))))
 		message_exit();
-	strlcpy(str, &s1[start], end - start + 2);
+	ft_strlcpy(str, &s1[start], end - start + 2);
 	return_value[i++] = str;
 	return_value[i] = 0;
 	return (return_value);
@@ -98,7 +111,8 @@ char	**my_split(char const *s1, char *deli)
 	int		start;
 	int		end;
 
-	ret = (char **)malloc(sizeof(char *) * 1);
+	if (0 == (ret = (char **)malloc(sizeof(char *) * 1)))
+		message_exit();
 	if (ret == 0)
 		return (0);
 	*ret = 0;

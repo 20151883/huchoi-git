@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_for_par.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/08 11:04:04 by huchoi            #+#    #+#             */
+/*   Updated: 2021/04/02 10:33:36 by huchoi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	check_flag(t_syn *p_syn)
@@ -32,11 +44,11 @@ void	init_flags(t_syn *p_syn)
 int		is_valid_color(char **split)
 {
 	if ((0 > ft_atoi(split[1]) || ft_atoi(split[1]) > 255))
-		return (-1);
+		message_exit();
 	if ((0 > ft_atoi(split[2]) || ft_atoi(split[2]) > 255))
-		return (-1);
+		message_exit();
 	if ((0 > ft_atoi(split[3]) || ft_atoi(split[3]) > 255))
-		return (-1);
+		message_exit();
 	return (1);
 }
 
@@ -63,7 +75,10 @@ int		is_valid_path(char *path)
 	ret = 1;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
+	{
+		close(fd);
 		message_exit();
+	}
 	close(fd);
 	return (ret);
 }
