@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 10:49:29 by huchoi            #+#    #+#             */
-/*   Updated: 2021/04/02 16:51:14 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/04/02 17:25:28 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	par(t_syn *p_syn)
 	char	**split;
 	char	nb;
 
+	split = NULL;
 	count = 0;
 	if (-1 == (fd = open(p_syn->cub_path, O_RDONLY)))
 		message_exit();

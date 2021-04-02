@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 11:16:41 by huchoi            #+#    #+#             */
-/*   Updated: 2021/04/02 16:51:59 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/04/02 17:30:19 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,6 @@ int				valid_check(t_syn *p_syn, char **p_cur_buf, \
 				char **p_before_buf, int flag);
 int				get_last(t_syn *p_syn, char *cur_buf, \
 				char *before_buf, int ret);
-int				check_first(char *buf, int *p_flag);
 int				check_last(char *buf);
 void			get_dir(t_syn *p_syn, int idx, char *add_line);
 int				renewer_sprites(t_syn *p_syn, int size, int idx);
@@ -184,7 +183,7 @@ void			rotate_dir(t_syn *p_syn, double theta);
 void			load_texture_sprite(t_tri *p_tri, int idx);
 void			par(t_syn *p_syn);
 int				get_end(char *buf, int start, int *p_flag);
-int				check_first(char *buf, int *p_flag);
+int				check_first(char *buf);
 int				check_num_part(char *cur, char *before, int start, int end);
 int				get_start(char *buf, char *before, int end);
 int				is_valid_map(int fd, t_syn *p_syn);
@@ -193,7 +192,7 @@ void			make_sprite(t_syn *p_syn);
 void			init_tri(t_syn *p_syn);
 void			dda_init(t_tri *p_tri);
 void			dda_init_second(t_tri *p_tri);
-void			before_make_texture(t_syn *p_syn, int *p_idx);
+void			before_make_texture(t_syn *p_syn);
 void			renewer_tri(t_tri *test, int *new_pos, int *new_dir);
 void			get_tri(t_tri *p_tria);
 void			abs_must_equal_one(t_tri *p_tri);

@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 10:48:57 by huchoi            #+#    #+#             */
-/*   Updated: 2021/03/10 14:09:06 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/04/02 17:30:19 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,28 @@ void	news(t_syn *p_syn, int *p_idx)
 	if ((p_syn->tri.dda.raydir_x >= 0) && p_syn->tri.dda.side == 0)
 	{
 		*p_idx = 1;
-		before_make_texture(p_syn, p_idx);
+		before_make_texture(p_syn);
 	}
 	else if (p_syn->tri.dda.raydir_x <= 0 && p_syn->tri.dda.side == 0)
 	{
 		*p_idx = 2;
-		before_make_texture(p_syn, p_idx);
+		before_make_texture(p_syn);
 	}
 	else if (p_syn->tri.dda.raydir_y >= 0 && p_syn->tri.dda.side == 1)
 	{
 		*p_idx = 0;
-		before_make_texture(p_syn, p_idx);
+		before_make_texture(p_syn);
 	}
 	else if (p_syn->tri.dda.raydir_y <= 0 && p_syn->tri.dda.side == 1)
 	{
 		*p_idx = 3;
-		before_make_texture(p_syn, p_idx);
+		before_make_texture(p_syn);
 	}
 	else
 		return ;
 }
 
-void	before_make_texture(t_syn *p_syn, int *p_idx)
+void	before_make_texture(t_syn *p_syn)
 {
 	p_syn->texx = (int)(p_syn->wallx * (double)p_syn->tri.tex[3].width);
 	if (p_syn->tri.dda.side == 0 && p_syn->tri.dda.raydir_x > 0)

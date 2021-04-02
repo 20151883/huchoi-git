@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 10:36:23 by huchoi            #+#    #+#             */
-/*   Updated: 2021/04/02 09:22:56 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/04/02 17:25:59 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		is_only_zero_blank_one(char *arr)
 	return (1);
 }
 
-int		check_first(char *buf, int *p_flag)
+int		check_first(char *buf)
 {
 	if (ft_strchr(buf, '0') != 0)
 		message_exit();
@@ -41,7 +41,6 @@ int		check_first(char *buf, int *p_flag)
 int		check_last(char *buf)
 {
 	int i;
-	int j;
 
 	i = 0;
 	while (buf[i])

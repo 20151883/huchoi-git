@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 10:49:13 by huchoi            #+#    #+#             */
-/*   Updated: 2021/03/10 14:10:56 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/04/02 17:28:21 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,13 @@ int				is_valid_map(int fd, t_syn *p_syn)
 {
 	int		ret;
 	int		idx;
-	int		*temp;
 	char	*cur_buf;
 	char	*before_buf;
 
 	init_the_var(&idx, p_syn);
 	get_next_line(fd, &cur_buf);
 	get_first(fd, &cur_buf);
-	if (-1 == (check_first(cur_buf, &(p_syn->dir_alpha_is_exist))))
+	if (-1 == (check_first(cur_buf)))
 		message_exit();
 	if (NULL == (p_syn->tri.test_map = \
 	renewer_map(p_syn, p_syn->tri.test_map, cur_buf)))

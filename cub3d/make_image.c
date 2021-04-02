@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 10:47:58 by huchoi            #+#    #+#             */
-/*   Updated: 2021/03/10 11:38:57 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/04/02 17:29:18 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	ft_close(t_syn *p_syn)
 
 int		key_func(int keycode, t_syn *p_syn)
 {
-	double	temp;
 	double	speed;
 
 	speed = 0.3;

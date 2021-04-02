@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/08 11:00:46 by huchoi            #+#    #+#             */
-/*   Updated: 2021/04/02 16:48:35 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/04/02 17:29:00 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	check_upper_zero_is_null(char *cur, char *before)
 	idx = -1;
 	while (cur[++idx])
 	{
-		if (cur[idx] == '0' && ft_strlen(before) - 1 < idx)
+		if (cur[idx] == '0' && (int)ft_strlen(before) - 1 < idx)
 			message_exit();
 	}
 }

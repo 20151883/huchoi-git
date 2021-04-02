@@ -8,10 +8,10 @@ SRCS =  main.c ttri_dda.c ttri_to_dda.c map.c par.c key_ctrl.c \
 	get_next_line.c get_next_line_utils.c tri_dda_init.c utils_for_par_3.c
 
 OBJS = $(SRCS:.c=.o)
-
+CFLAGS = -W -Wall -Werror -Wextra
 CC = gcc 
 
-FLAGS = -W -Wall -Werror -L./mlx -lmlx -framework OpenGL -framework AppKit
+FLAGS = -W -Wall -Wextra -Werror -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 $(NAME): $(OBJS)
 	$(MAKE) bonus -C ./libft
