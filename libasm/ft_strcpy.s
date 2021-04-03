@@ -1,7 +1,6 @@
 section .text
 	global _ft_strcpy
 _ft_strcpy:
-	;rdi rsi
 	xor r10, r10
 	mov rax, rdi
 	jmp _loop
