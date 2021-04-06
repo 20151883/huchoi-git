@@ -4,51 +4,51 @@
 #include "common.h"
 
 ////////////////////////////////////////////////////////////////////////
-//  ¸í·É¾î¸¦ ½ÇÇàÇÏ´Â ÇÔ¼ö
+//  ëª…ë ¹ì–´ë¥¼ ì‹¤í–‰í•˜ëŠ” í•¨ìˆ˜
 ////////////////////////////////////////////////////////////////////////
 int execute(int ac, char *av[], int sourcefd, char *sourcefile, int destfd, char *destfile,
 	BOOLEAN append, BOOLEAN backgrnd)
 {
 	int pid;
 
-	// ÀÎÀÚ°¡ ¾ø°Å³ª »ç¿ëÀÚ Á¤ÀÇ ¸í·ÉÀ» ¼öÇàÇÏ¿© ½ÇÆĞÇÏ¿´À» °æ¿ì
+	// ì¸ìê°€ ì—†ê±°ë‚˜ ì‚¬ìš©ì ì •ì˜ ëª…ë ¹ì„ ìˆ˜í–‰í•˜ì—¬ ì‹¤íŒ¨í•˜ì˜€ì„ ê²½ìš°
 	if (ac == 0 || shellcmd(ac, av, sourcefd, destfd))
 	{
 		return 0;
 	}
 
-	// ÇÁ·Î¼¼½º¸¦ forkÇÑ´Ù.
+	// í”„ë¡œì„¸ìŠ¤ë¥¼ forkí•œë‹¤.
 	pid = fork();
 
 	switch (pid)
 	{
-		// ¿¡·¯°¡ ³µÀ» °æ¿ì
+		// ì—ëŸ¬ê°€ ë‚¬ì„ ê²½ìš°
 		case ERROR : 
 			fprintf(stderr, "Cannot create new process.\n");
 			return 0;
 
-		// ÀÚ½ÄÀÏ¶§, ÇÁ·Î±×·¥À» ½ÇÇàÇÏ´Â ½ÇÃ¼
+		// ìì‹ì¼ë•Œ, í”„ë¡œê·¸ë¨ì„ ì‹¤í–‰í•˜ëŠ” ì‹¤ì²´
 		case 0 :     
 			redirect(sourcefd, sourcefile, destfd, destfile, append, backgrnd);
 			execvp(av[0], av);
 			fprintf(stderr, "Cannot execute %s\n", av[0]);
 			exit(0);
 
-		// ºÎ¸ğÀÏ ¶§
+		// ë¶€ëª¨ì¼ ë•Œ
 		default :
-			// ÀĞ±â ÆÄÀÏµğ½ºÅ©¸³¼ÇÀ» ´İ´Â´Ù.
+			// ì½ê¸° íŒŒì¼ë””ìŠ¤í¬ë¦½ì…˜ì„ ë‹«ëŠ”ë‹¤.
 			if(sourcefd > 0 && close(sourcefd) == ERROR)
 			{
 				syserr("close sourcefd");
 			}
 
-			// ¾²±â ÆÄÀÏµğ½ºÅ©¸³¼ÇÀ» ´İ´Â´Ù.
+			// ì“°ê¸° íŒŒì¼ë””ìŠ¤í¬ë¦½ì…˜ì„ ë‹«ëŠ”ë‹¤.
 			if(destfd > 1 && close(destfd) == ERROR)
 			{
 				syserr("close destfd");
 			}
 
-			// ¹é±×¶ó¿îµå ¸í·ÉÀÏ °æ¿ì pic Ãâ·Â
+			// ë°±ê·¸ë¼ìš´ë“œ ëª…ë ¹ì¼ ê²½ìš° pic ì¶œë ¥
 			if(backgrnd)
 			{
 				printf("%d\n", pid);
