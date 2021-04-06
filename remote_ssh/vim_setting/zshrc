@@ -1,0 +1,3 @@
+alias nnt="~/.norminette/norminette.rb"
+alias nntr="nnt -R CheckForbiddenSourceHeader"
+alias mnt="gcc -Wall -Wextra -Werror -o test "

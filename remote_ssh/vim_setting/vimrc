@@ -1,0 +1,71 @@
+call plug#begin('~/.vim/plugged')
+Plug 'pbondoer/vim-42header'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'preservim/nerdtree'
+Plug 'Chiel92/vim-autoformat'
+Plug 'dart-lang/dart-vim-plugin'
+call plug#end()
+
+filetype off
+filetype plugin indent on
+
+set mouse=a
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set noexpandtab
+set nocompatible
+set encoding =utf-8
+set modelines =1
+set hidden
+set ttyfast
+set clipboard=unnamed " use OS clipboard
+set number
+set numberwidth=6
+set ruler
+set title
+set nu
+
+if has("syntax")	
+   	syntax on 
+endif
+
+set t_Co=256
+
+hi MatchParen cterm=none ctermbg=green ctermfg=blue
+highlight Comment term=bold cterm=bold ctermfg=4
+
+if has('termguicolors')
+  	set termguicolors
+endif
+  
+let g:hdr42user = 'youngrch'
+let g:hdr42mail = 'youngrch@student.42seoul.kr'
+let NERDTreeShowHidden=1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let g:coc_disable_startup_warning = 1
+
+"nnoremap ``h :RainbowParentheses<enter><esc>:Stdheader<enter><esc>:%s/kr /kr>/g<enter><esc>L
+nnoremap ``h <esc>:Stdheader<enter><esc>:%s/\/var\/mail\/youngrch>         /youngrch@student.42seoul.kr>/g<enter><esc>L
+nnoremap ``n <esc>:se nu<enter>
+nnoremap ``u <esc>:se nonu<enter>
+nnoremap <F2> <esc>
+inoremap <F2> <esc>
+nnoremap <F4> <esc>:w<enter>
+inoremap <F4> <esc>:w<enter>
+
+vmap <C-c> :w! ~/.vimbuffer \| !cat ~/.vimbuffer \| clip.exe <CR><CR>
+map <C-v> :r ~/.vimbuffer<CR>
+
+func! CmtOn()    "주석 on
+	exe "'<,'>norm i//"
+endfunc
+func! CmtOff()    "주석 off
+	exe "'<,'>norm 2x"	
+endfunc
+
+vmap <c-x> <esc>:call CmtOn() <cr>
+vmap <c-z> <esc>:call CmtOff() <cr>
+nmap <c-x> <esc>v:call CmtOn() <cr>
+nmap <c-z> <esc>v:call CmtOff() <cr>
