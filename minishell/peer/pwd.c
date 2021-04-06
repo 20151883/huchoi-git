@@ -12,6 +12,7 @@ char *my_read()
         if (buf[readsize - 1] == EOF)
     }
 }
+
 int main(void)
 {
     write(1, "MINISHELL>>", 11);

@@ -18,7 +18,7 @@ int main(int argc, char *arv[])
             exec_args(parsed);
         else if (exec_flag = 1)
             exec_piped_args(parsed_pipe);
-        else
+        else//본문에는 없는 부분 이긴함.
             continue;
     }
     return (0);

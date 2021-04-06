@@ -1,0 +1,11 @@
+PARENT - my PID : 18958 child's PID : 18959
+ CHILD - my PID : 18959 parent's PID : 18958
+3초 대기
+3초 대기
+3초 대기
+         global_var : 1
+         local_var : 1
+3초 대기
+         종료된 자식 프로세스 ID = 18959
+         global_var : 5
+         local_var : 5
