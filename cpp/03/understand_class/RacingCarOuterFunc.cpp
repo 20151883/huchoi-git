@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 using namespace std;
 
 namespace CAR_CONST
@@ -14,25 +13,17 @@ namespace CAR_CONST
 	};
 }
 
-class Car
+struct Car
 {
-private:
 	char gamerID[CAR_CONST::ID_LEN];	
 	int fuelGauge;		
 	int curSpeed;		
-public:
-	void InitMembers(char * ID, int fuel);
+
 	void ShowCarState();
 	void Accel();
 	void Break();
 };
 
-void Car::InitMembers(char * ID, int fuel)
-{
-	strcpy(gamerID, ID);
-	fuelGauge=fuel;
-	curSpeed=0;
-};
 void Car::ShowCarState()
 {
 	cout<<"¼ÒÀ¯ÀÚID: "<<gamerID<<endl;
@@ -51,6 +42,7 @@ void Car::Accel()
 		curSpeed=CAR_CONST::MAX_SPD;
 		return;
 	}
+
 	curSpeed+=CAR_CONST::ACC_STEP;
 }
 void Car::Break()
@@ -60,15 +52,13 @@ void Car::Break()
 		curSpeed=0;
 		return;
 	}
+
 	curSpeed-=CAR_CONST::BRK_STEP;
 }
 
 int main(void)
 {
-	Car run99;
-	run99.InitMembers("run99", 100);
-	run99.Accel();
-	run99.Accel();
+	Car run99={"run99", 100, 0};
 	run99.Accel();
 	run99.ShowCarState();
 	run99.Break();

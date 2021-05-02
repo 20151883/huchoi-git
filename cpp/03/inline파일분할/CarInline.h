@@ -3,7 +3,7 @@
 
 #include <iostream>
 using namespace std;
-
+//인라인 함수를 헤더파일에 넣어야만 하는 이유에 대해 서술하시오.
 namespace CAR_CONST
 {
 	enum
@@ -19,9 +19,9 @@ namespace CAR_CONST
 class Car
 {
 private:
-	char gamerID[CAR_CONST::ID_LEN];	
-	int fuelGauge;		
-	int curSpeed;		
+	char gamerID[CAR_CONST::ID_LEN];
+	int fuelGauge;
+	int curSpeed;
 public:
 	void InitMembers(char * ID, int fuel);
 	void ShowCarState();
@@ -31,9 +31,9 @@ public:
 
 inline void Car::ShowCarState()
 {
-	cout<<"������ID: "<<gamerID<<endl;
-	cout<<"���ᷮ: "<<fuelGauge<<"%"<<endl;
-	cout<<"����ӵ�: "<<curSpeed<<"km/s"<<endl<<endl;
+	cout<<"������ID: "<<gamerID<<endl;
+	cout<<"���ᷮ: "<<fuelGauge<<"%"<<endl;
+	cout<<"����ӵ�: "<<curSpeed<<"km/s"<<endl<<endl;
 }
 
 

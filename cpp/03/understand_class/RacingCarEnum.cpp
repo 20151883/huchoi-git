@@ -15,15 +15,15 @@ namespace CAR_CONST
 
 struct Car
 {
-	char gamerID[CAR_CONST::ID_LEN];	
-	int fuelGauge;		
-	int curSpeed;		
+	char gamerID[CAR_CONST::ID_LEN];
+	int fuelGauge;
+	int curSpeed;
 
 	void ShowCarState()
 	{
-		cout<<"¼ÒÀ¯ÀÚID: "<<gamerID<<endl;
-		cout<<"¿¬·á·®: "<<fuelGauge<<"%"<<endl;
-		cout<<"ÇöÀç¼Óµµ: "<<curSpeed<<"km/s"<<endl<<endl;
+		cout<<"ì‚¬ìš©ìžID: "<<gamerID<<endl;
+		cout<<"ê³„ê¸°íŒ: "<<fuelGauge<<"%"<<endl;
+		cout<<"ìŠ¤í”¼ë“œ: "<<curSpeed<<"km/s"<<endl<<endl;
 	}
 	void Accel()
 	{
@@ -37,7 +37,7 @@ struct Car
 			curSpeed=CAR_CONST::MAX_SPD;
 			return;
 		}
-	
+
 		curSpeed+=CAR_CONST::ACC_STEP;
 	}
 	void Break()

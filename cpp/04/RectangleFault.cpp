@@ -1,11 +1,11 @@
 #include<iostream>
 using namespace std;
-
+//ê°ì²´ì˜ ë‘ê°€ì§€ íŠ¹ì§•ì¤‘, 'ì •ë³´ì€ë‹‰'ì— ëŒ€í•´ ì„¤ëª…í•˜ê¸° ìœ„í•´ ë¹Œë“œì—… ì¤‘ì¸ ì½”ë“œ.
 class Point
 {
 public:
-	int x;   // xÁÂÇ¥ÀÇ ¹üÀ§´Â 0ÀÌ»ó 100ÀÌÇÏ.
-	int y;   // yÁÂÇ¥ÀÇ ¹üÀ§´Â 0ÀÌ»ó 100ÀÌÇÏ.
+	int x;   // 100ì´í•˜ì˜ ìŒì´ì•„ë‹Œì •ìˆ˜
+	int y;   // 100ì´í•˜ì˜ ìŒì´ì•„ë‹Œì •ìˆ˜
 };
 
 class Rectangle
@@ -17,9 +17,9 @@ public:
 public:
 	void ShowRecInfo()
 	{
-		cout<<"ÁÂ »ó´Ü: "<<'['<<upLeft.x<<", ";
+		cout<<"ì¢Œ ìƒë‹¨: "<<'['<<upLeft.x<<", ";
 		cout<<upLeft.y<<']'<<endl;
-		cout<<"¿ì ÇÏ´Ü: "<<'['<<lowRight.x<<", ";
+		cout<<"ìš° í•˜ë‹¨: "<<'['<<lowRight.x<<", ";
 		cout<<lowRight.y<<']'<<endl<<endl;
 	}
 };

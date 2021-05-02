@@ -2,7 +2,7 @@
 #include <cstring>
 #include "Car.h"
 using namespace std;
-
+//cpp 시작한 시점에서 파일분할에 대한 좋은 습관을 들이라는 의도로 이러한 파일분할을 예제를 들어 보여준듯.
 void Car::InitMembers(char * ID, int fuel)
 {
 	strcpy(gamerID, ID);
@@ -12,9 +12,9 @@ void Car::InitMembers(char * ID, int fuel)
 
 void Car::ShowCarState()
 {
-	cout<<"������ID: "<<gamerID<<endl;
-	cout<<"���ᷮ: "<<fuelGauge<<"%"<<endl;
-	cout<<"����ӵ�: "<<curSpeed<<"km/s"<<endl<<endl;
+	cout<<"사용자ID: "<<gamerID<<endl;
+	cout<<"계기판: "<<fuelGauge<<"%"<<endl;
+	cout<<"스피드: "<<curSpeed<<"km/s"<<endl<<endl;
 }
 
 void Car::Accel()
