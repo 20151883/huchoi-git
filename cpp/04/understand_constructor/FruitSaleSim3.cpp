@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
-
+//ìƒì„±ìì™€ ê³µìƒí•˜ëŠ”... ë©¤ë²„ì´ë‹ˆì…œë¼ì´ì €
+//ë©¤ë²„ì´ë‹ˆì…œë¼ì´ì €ëŠ” ë©¤ë²„ë³€ìˆ˜ë¡œ ì„ ì–¸ëœ ê°ì²´ì˜ ìƒì„±ìí˜¸ì¶œì— í™œìš©ëœë‹¤
+//ë˜í•œ ê°ì²´ê°€ ì•„ë‹Œ ë©¤ë²„ë³€ìˆ˜ì— ëŒ€í•´ì„œë„ ì´ˆê¸°í™”ì‘ì—…ì„ ì§„í–‰í• ìˆ˜ìˆë‹¤.
 class FruitSeller
 {
 	const int APPLE_PRICE;
@@ -11,7 +13,7 @@ public:
 		: APPLE_PRICE(price), numOfApples(num), myMoney(money)
 	{
 	}
-	int SaleApples(int money)  
+	int SaleApples(int money)
 	{
 		int num=money/APPLE_PRICE;
 		numOfApples-=num;
@@ -20,8 +22,8 @@ public:
 	}
 	void ShowSalesResult() const
 	{
-		cout<<"³²Àº »ç°ú: "<<numOfApples<<endl;
-		cout<<"ÆÇ¸Å ¼öÀÍ: "<<myMoney<<endl<<endl;
+		cout<<"ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: "<<numOfApples<<endl;
+		cout<<"ï¿½Ç¸ï¿½ ï¿½ï¿½ï¿½ï¿½: "<<myMoney<<endl<<endl;
 	}
 };
 
@@ -41,8 +43,8 @@ public:
 	}
 	void ShowBuyResult() const
 	{
-		cout<<"ÇöÀç ÀÜ¾×: "<<myMoney<<endl;
-		cout<<"»ç°ú °³¼ö: "<<numOfApples<<endl<<endl;
+		cout<<"ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾ï¿½: "<<myMoney<<endl;
+		cout<<"ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½: "<<numOfApples<<endl<<endl;
 	}
 };
 
@@ -51,10 +53,10 @@ int main(void)
 	FruitSeller seller(1000, 20, 0);
 	FruitBuyer buyer(5000);
 	buyer.BuyApples(seller, 2000);
-	
-	cout<<"°úÀÏ ÆÇ¸ÅÀÚÀÇ ÇöÈ²"<<endl;
+
+	cout<<"ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²"<<endl;
 	seller.ShowSalesResult();
-	cout<<"°úÀÏ ±¸¸ÅÀÚÀÇ ÇöÈ²"<<endl;
+	cout<<"ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²"<<endl;
 	buyer.ShowBuyResult();
 	return 0;
 }

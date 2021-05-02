@@ -7,12 +7,12 @@ class SimpleClass
 	int num2;
 
 public:
-	SimpleClass()
+	SimpleClass()//생성자는 객체생성과정에서 자동으로 호출된다.(그래서 이름이 생성자인가보다)
 	{
 		num1=0;
 		num2=0;
 	}
-	SimpleClass(int n)
+	SimpleClass(int n)//기본적으로 생성자도 하나의 함수이다.
 	{
 		num1=n;
 		num2=0;
@@ -39,7 +39,7 @@ public:
 
 int main(void)
 {
-	SimpleClass sc1;
+	SimpleClass sc1;//SimpleClass sc1() 라고 적으면 문제가 생길게 뻔하니까, 그런 문제상황을 피하기위해서...!
 	sc1.ShowData();
 
 	SimpleClass sc2(100);
