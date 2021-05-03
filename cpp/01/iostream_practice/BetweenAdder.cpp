@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 int main(void)
 {
@@ -17,7 +18,8 @@ int main(void)
 		for(int i=val2+1; i<val1; i++)
 			result+=i;
 	}
-
+	cout<<val1<<endl;
+	cout<<val2<<endl;
 	std::cout<<"두 숫자사이의 모든 정수들의 합: "<<result<<std::endl;
 	return 0;
 }
