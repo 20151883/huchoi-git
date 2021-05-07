@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+//유도클래스의 소멸과정에 주목하면서 보자.
 class SoBase
 {
 private:

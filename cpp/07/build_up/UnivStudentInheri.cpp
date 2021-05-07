@@ -1,12 +1,12 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
-
+//ì¼ë‹¨ ìƒì†ì— ëŒ€í•œ ì˜ˆì‹œë¥¼ ë¨¼ì € ë³´ì—¬ì£¼ê³  ì„¤ëª…ì— ë“¤ì–´ê°.
 class Person
 {
 private:
-	int age;        // ³ªÀÌ
-	char name[50];     // ÀÌ¸§
+	int age;        // ï¿½ï¿½ï¿½ï¿½
+	char name[50];     // ï¿½Ì¸ï¿½
 public:
 	Person(int myage, char * myname) : age(myage)
 	{
@@ -25,7 +25,7 @@ public:
 class UnivStudent : public Person
 {
 private:
-	char major[50];     // Àü°ø°ú¸ñ
+	char major[50];     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public:
 	UnivStudent(char * myname, int myage, char * mymajor)
 		: Person(myage, myname)

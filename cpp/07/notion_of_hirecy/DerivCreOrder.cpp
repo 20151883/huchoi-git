@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+//클래스의 생성자가 호출되는지에 주목하면서 보자.
 class SoBase
 {
 private:
