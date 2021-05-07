@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+//class에 static 멤버 변수가 왜 필요한지를 말햐주기위한 빌드업.
 int simObjCnt=0;
 int cmxObjCnt=0;
 
@@ -10,7 +10,7 @@ public:
 	SoSimple()
 	{
 		simObjCnt++;
-		cout<<simObjCnt<<"��° SoSimple ��ü"<<endl;
+		cout<<simObjCnt<<"��° SoSimple ��ü"<<endl;
 	}
 };
 
@@ -20,12 +20,12 @@ public:
 	SoComplex()
 	{
 		cmxObjCnt++;
-		cout<<cmxObjCnt<<"��° SoComplex ��ü"<<endl;
+		cout<<cmxObjCnt<<"��° SoComplex ��ü"<<endl;
 	}
 	SoComplex(SoComplex &copy)
 	{
 		cmxObjCnt++;
-		cout<<cmxObjCnt<<"��° SoComplex ��ü"<<endl;
+		cout<<cmxObjCnt<<"��° SoComplex ��ü"<<endl;
 	}
 };
 

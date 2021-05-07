@@ -22,8 +22,8 @@ public:
 	}
 	void ShowPersonInfo() const
 	{
-		cout<<"�̸�: "<<name<<endl;
-		cout<<"����: "<<age<<endl;
+		cout<<"�̸�: "<<name<<endl;
+		cout<<"����: "<<age<<endl;
 	}
 	~Person()
 	{
@@ -35,7 +35,7 @@ public:
 int main(void)
 {
 	Person man1("Lee dong woo", 29);
-	Person man2=man1;
+	Person man2=man1;//이렇게 쓰는건 일반적이지 않다고 얘기해줌. Person man2(man1)이라고 쓰는게 일반적..
 	man1.ShowPersonInfo();
 	man2.ShowPersonInfo();
 	return 0;

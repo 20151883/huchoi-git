@@ -9,7 +9,7 @@ private:
 	int num2;
 public:
 	SoSimple(int n1, int n2) 
-		: num1(n1), num2(n2)
+		: num1(n1), num2(n2)//num1=n1, num2=n2와 같은 연산임을 이미 배워왔음.
 	{
 		// empty
 	}
