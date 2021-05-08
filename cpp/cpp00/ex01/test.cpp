@@ -18,8 +18,8 @@ class CRAPPY
 
 	public:
 	void 	fill_the_var();
-	void	search_cmd(int count);
-	void	print_information();
+	void	search_cmd(int count) const;
+	void	print_information() const;
 };
 
 void		CRAPPY::fill_the_var()
