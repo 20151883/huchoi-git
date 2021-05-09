@@ -56,43 +56,71 @@ void    CRAPPY::add()
 	std::cout<<"all information is succesfully stored!!!!";
 	std::cout<<"\n"<<"***************************************************"<<std::endl;
 }
-void    CRAPPY::search(int count) const
+void    CRAPPY::search(int index) const
 {
-    /*char buf[11];
-	memset(buf, ' ', 10);
-	buf[10] = '\0';
 	int size;
-	int start;
-	buf[9] = count + '0';
-	std::cout<<"\n"<<buf;
-	size = strlen(first_name);
-	size = size<=10?size:10;
-	start = 10 - size;
-	strncpy(&buf[start], first_name, size);
-	if (strlen(first_name) > 10)
-		buf[9] = '.';
-	std::cout<<"|"<<buf;
+	std::string buf;
+	//buf.shrink_to_fit();
+	//std::cout<<"test : "<<buf<<std::endl;
+	buf.insert(0, 1, index + '0');
+	size = buf.size();
+	if (size <= 10)
+	{
+		while (size++ < 10)
+			buf.insert(0, " ");
+	}
+	else
+	{
+		buf.resize(9);
+		buf+=".";
+	}
+	std::cout<<buf<<"|";
 
-	memset(buf, ' ', 10);
-	buf[10] = '\0';
-	size = strlen(last_name);
-	size = size<=10?size:10;
-	start = 10 -size;
-	strncpy(&buf[start], last_name, size);
-	if (strlen(last_name) > 10)
-		buf[9] = '.';
-	std::cout<<"|"<<buf;
+	buf = first_name;
+	size = buf.size();
+	if (size <= 10)
+	{
+		while (size++ < 10)
+			buf.insert(0, " ");
+	}
+	else
+	{
+		buf.resize(9);
+		buf+=".";
+	}
+	std::cout<<buf<<"|";
 
-	memset(buf, ' ', 10);
-	buf[10] = '\0';
-	size = strlen(nickname);
-	size = size<=10?size:10;
-	start = 10 -size;
-	strncpy(&buf[start], nickname, size);
-	if (strlen(nickname) > 10)
-		buf[9] = '.';
-	std::cout<<"|"<<buf<<std::endl;*/
+	buf = last_name;
+	size = buf.size();
+	if (size <= 10)
+	{
+		while (size++ < 10)
+			buf.insert(0, " ");
+	}
+	else
+	{
+		buf.resize(9);
+		buf+=".";
+	}
+	std::cout<<buf<<"|";
+
+	buf = nickname;
+	size = buf.size();
+	if (size <= 10)
+	{
+		while (size++ < 10)
+			buf.insert(0, " ");
+	}
+	else
+	{
+		buf.resize(9);
+		buf+=".";
+	}
+	std::cout<<buf<<"|";
+
+	std::cout<<std::endl;
 }
+
 void    CRAPPY::print() const
 {
     std::cout<<"\n*************************"<<std::endl;
@@ -178,10 +206,10 @@ int main(void)
             var.search_all();
             std::cout<<"select your index : ";
             std::getline(std::cin, cmd);
-            char buf[cmd.size() + 1];
-            std::strcpy(buf, cmd.c_str());
-            index = std::atoi(buf);
-			var.print_one(index);
+			char *str = new char(cmd.size() + 1);
+			std::strcpy(str, cmd.c_str());
+			var.print_one(std::atoi(str));
+			free(str);
         }
 		else if (!cmd.compare(0, 5, "EXIT"))
 			exit(0);

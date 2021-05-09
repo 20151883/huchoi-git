@@ -6,10 +6,9 @@ bool Rectangle::InitMembers(const Point &ul, const Point &lr)
 {
 	if(ul.GetX()>lr.GetX() || ul.GetY()>lr.GetY())
 	{
-		cout<<"Àß¸øµÈ À§Ä¡Á¤º¸ Àü´Ş"<<endl;
+		cout<<"ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½"<<endl;
 		return false;
 	}
-
 	upLeft=ul;
 	lowRight=lr;
 	return true;
@@ -17,8 +16,8 @@ bool Rectangle::InitMembers(const Point &ul, const Point &lr)
 
 void Rectangle::ShowRecInfo() const
 {
-	cout<<"ÁÂ »ó´Ü: "<<'['<<upLeft.GetX()<<", ";
+	cout<<"ï¿½ï¿½ ï¿½ï¿½ï¿½: "<<'['<<upLeft.GetX()<<", ";
 	cout<<upLeft.GetY()<<']'<<endl;
-	cout<<"¿ì ÇÏ´Ü: "<<'['<<lowRight.GetX()<<", ";
+	cout<<"ï¿½ï¿½ ï¿½Ï´ï¿½: "<<'['<<lowRight.GetX()<<", ";
 	cout<<lowRight.GetY()<<']'<<endl<<endl;
 }

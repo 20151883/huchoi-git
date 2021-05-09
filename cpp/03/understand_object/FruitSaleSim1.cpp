@@ -31,7 +31,7 @@ public:
 };
 
 class FruitBuyer
-{
+{//키워드 설정 안하면 디폴트로 private이 됨.
 	int myMoney;		// private:
 	int numOfApples;	// private:
 

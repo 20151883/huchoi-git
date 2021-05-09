@@ -29,10 +29,11 @@ SoSimple SimpleFuncObj(SoSimple ob)
 int main(void)
 {
 	SoSimple obj(7);
+	cout<<"test"<<endl;
 	SimpleFuncObj(obj);
-
+	cout<<"test"<<endl;
 	cout<<endl;
-	SoSimple tempRef=SimpleFuncObj(obj);
+	SoSimple tempRef=SimpleFuncObj(obj);//임시객체의 참조정보......
 	cout<<"Return Obj "<<&tempRef<<endl;
 	return 0;
 }

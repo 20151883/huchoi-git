@@ -6,7 +6,7 @@ int main(void)
 	int num=10;
 	int i=0;
 
-	cout<<"true: "<<true<<endl;
+	cout<<"true: "<<true<<endl;//이 경우 true: 1 이라는 결과가 나오는데, 그렇다고 bool을 정수형자료형으로 인정하는건아님.
 	cout<<"false: "<<false<<endl;
 
 	while(true)

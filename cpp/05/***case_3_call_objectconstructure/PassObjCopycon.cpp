@@ -26,8 +26,8 @@ void SimpleFuncObj(SoSimple ob)
 int main(void)
 {
 	SoSimple obj(7);
-	cout<<"함수호출 전"<<endl;
+	cout<<"test"<<endl;
 	SimpleFuncObj(obj);
-	cout<<"함수호출 후"<<endl;
+	cout<<"test"<<endl;
 	return 0;
 }

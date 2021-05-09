@@ -8,7 +8,7 @@ private:
 	char * name;
 	int age;
 public:
-	Person(char * myname, int myage)
+	Person(const char * myname, int myage)
 	{
 		int len=strlen(myname)+1;
 		name=new char[len];
@@ -18,8 +18,8 @@ public:
 
 	void ShowPersonInfo() const
 	{
-		cout<<"�̸�: "<<name<<endl;
-		cout<<"����: "<<age<<endl;
+		cout<<"이름: "<<name<<endl;
+		cout<<"나이: "<<age<<endl;
 	}
 	
 	~Person()
@@ -30,7 +30,7 @@ public:
 };
 
 int main(void)
-{
+{//const 변수나 그냥 상수나 같은 걸로 취급....	
 	Person man1("Lee dong woo", 29);
 	Person man2("Jang dong gun", 41);
 	man1.ShowPersonInfo();

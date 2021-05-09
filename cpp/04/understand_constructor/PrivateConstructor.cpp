@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class AAA
+class AAA//약간 지적유희같은...?
 {
 private:
 	int num;

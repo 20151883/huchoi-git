@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+//RacingCarClassBase.cpp와 비교하면 별 차이가 없어보이지만 나중에 가면 구조체와 클래스는 큰 차이가 있음을 알수있음.
 namespace CAR_CONST
 {
 	enum

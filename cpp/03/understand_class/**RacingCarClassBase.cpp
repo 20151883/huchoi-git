@@ -32,7 +32,7 @@ void Car::InitMembers(const char * ID, int fuel)
 	strcpy(gamerID, ID);
 	fuelGauge=fuel;
 	curSpeed=0;
-};
+};//함수 인자가 존재하면 마지막에 세미콜론을 붙여줘야 하는듯..
 void Car::ShowCarState()
 {
 	cout<<"사용자ID: "<<gamerID<<endl;
@@ -68,7 +68,7 @@ int main(void)
 	Car run99;
 	run99.InitMembers("run99", 100);
 
-	run99.Accel();
+	run99.Accel();//run99::Accel()라고 쓰는건 클래스와 객체와의 구별이 잘 안된다는것.
 	run99.Accel();
 	run99.Accel();
 	run99.ShowCarState();

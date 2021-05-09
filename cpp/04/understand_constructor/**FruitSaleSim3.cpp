@@ -10,7 +10,7 @@ class FruitSeller
 	int myMoney;
 public:
 	FruitSeller(int price, int num, int money)
-		: APPLE_PRICE(price), numOfApples(num), myMoney(money)
+		: APPLE_PRICE(price), numOfApples(num), myMoney(money)//delemeter가 콤마(,)인듯..
 	{
 	}
 	int SaleApples(int money)
@@ -36,7 +36,7 @@ public:
 		: myMoney(money), numOfApples(0)
 	{
 	}
-	void BuyApples(FruitSeller &seller, int money)
+	void BuyApples(FruitSeller &seller, int money)//왜 하필 참조자로 받아오는건지..? 여러가지 이유가 있을거같긴한데.
 	{
 		numOfApples+=seller.SaleApples(money);
 		myMoney-=money;

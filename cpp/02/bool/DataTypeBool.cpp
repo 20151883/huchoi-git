@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-bool IsPositive(int num)//char를 정수형자료형으로 인정하지만, bool은 정수형자료형으로 인정하지 않는다. 이점은 명확하게 할것.
+bool IsPositive(int num)//(char를 정수형자료형으로 인정하지만...) bool은 정수형자료형으로 인정하지 않는다. 이점은 명확하게 할것.
 {
    if(num<0)
        return false;//대문자로 적으면 안됨. #define 된게 아님.

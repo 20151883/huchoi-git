@@ -1,6 +1,6 @@
 #include <iostream>
 
-int Adder(int num1=1, int num2=2);
+int Adder(int num1=1, int num2=2);//함수에 디폴트인자를 넣고싶으면, 이렇게 선언문이랑 정의문이랑 다르게 적는게 일반적인가보다..
 
 int main(void)
 {

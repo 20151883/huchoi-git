@@ -39,10 +39,10 @@ public:
 
 int main(void)
 {
-	SimpleClass sc1;//SimpleClass sc1() 라고 적으면 문제가 생길게 뻔하니까, 그런 문제상황을 피하기위해서...!
+	SimpleClass sc1;//void생성자 호출 방법(SimpleClass sc1() 라고 적으면 문제가 생길게 뻔하니까, 그런 문제상황을 피하기위해서...!)
 	sc1.ShowData();
 
-	SimpleClass sc2(100);
+	SimpleClass sc2(100);//일반적인 생성자를 호출하는 방법.
 	sc2.ShowData();
 
 	SimpleClass sc3(100, 200);
