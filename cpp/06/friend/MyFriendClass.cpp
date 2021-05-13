@@ -8,7 +8,7 @@ class Boy
 {
 private:
 	int height;
-	friend class Girl;
+	friend class Girl;//friend 선언은 private, protected, public아무데서나 해도 됨.
 public:
 	Boy(int len) : height(len)
 	{ }

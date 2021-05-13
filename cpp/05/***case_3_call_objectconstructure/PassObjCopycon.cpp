@@ -26,8 +26,6 @@ void SimpleFuncObj(SoSimple ob)
 int main(void)
 {
 	SoSimple obj(7);
-	cout<<"test"<<endl;
 	SimpleFuncObj(obj);
-	cout<<"test"<<endl;
 	return 0;
 }

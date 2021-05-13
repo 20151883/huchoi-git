@@ -22,9 +22,9 @@ public:
 
 int main(void)
 {
-	Temporary(100);//임시객체를 만드는 방법임.
-	cout<<"********** after make!"<<endl<<endl;
-
+	Temporary(100);//"임시객체"를 만드는 방법임.
+	cout<<"********** after make!"<<endl<<endl;//임시객체가 뭔지에 대해 물으면 대답할수있어야함.
+												//일단은 함수가 반환할때에 대한 명확한 지식이 있어야함.
 	Temporary(200).ShowTempInfo();
 	cout<<"********** after make!"<<endl<<endl;
 

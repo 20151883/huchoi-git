@@ -25,14 +25,14 @@ public:
 
 SoSimple SimpleFuncObj(SoSimple ob)
 {
-	cout<<"return ÀÌÀü"<<endl;
+	cout<<"return ï¿½ï¿½ï¿½ï¿½"<<endl;
 	return ob;
 }
 
 int main(void)
 {
 	SoSimple obj(7);
-	SimpleFuncObj(obj).AddNum(30).ShowData();
+	SimpleFuncObj(obj).AddNum(30).ShowData();//ë§¤ìš° ì¤‘ìš”í•œ ë¶€ë¶„..
 	obj.ShowData();
 	return 0;
 }

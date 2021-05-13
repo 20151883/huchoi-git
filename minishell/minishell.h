@@ -25,7 +25,7 @@
 # include <termios.h>
 # include <termcap.h>
 # include <signal.h>
-
+# include <sys/types.h>
 # define TRUE 1
 # define FALSE 0
 

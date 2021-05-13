@@ -1,21 +1,15 @@
-#include <iostream>
+#include "Brain.hpp"
 
-class Brain{
-    private:
-        std::string brain_name;
-    public:
-        Brain(char *name) :brain_name(name)
-        {}
-        std::string identify()
-        {
-            std::string ret = this;
-        }
-}
-
-int main(void)
+std::string Brain::identify() const
 {
-    Human bob;
-    std::cout << bob.identify() << std::endl;
-    std::cout << bob.getBrain().identify() << std::endl;
-    return (0);
+    long long num = (long long)this;
+    const char *arr = "01234567890ABCDEF";
+    std::string ret;
+    ret.insert(0, "0x");
+    while (num != 0)
+    {
+		ret.insert(2,1,arr[num % 16]);
+		num/=16;
+    }
+	return ret;
 }

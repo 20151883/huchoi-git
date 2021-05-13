@@ -22,7 +22,7 @@ public:
 int main(void)
 {
 	const SoSimple obj(7);
-	// obj.AddNum(20);
+	//obj.AddNum(20);
 	obj.ShowData();
 	return 0;
 }
