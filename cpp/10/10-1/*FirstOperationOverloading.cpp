@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+//연산자오버로딩에 대한 개념만 확실하다면 매우 쉽게 이해하고 구현할수 있는게 연산자오버로딩 단원.(이 부분때문에 *인거...)
 class Point 
 {
 private:

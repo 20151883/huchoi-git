@@ -20,7 +20,7 @@ public:
 	friend Point operator*(int times, Point & ref);
 };
 
-Point operator*(int times, Point & ref)
+Point operator*(int times, Point & ref)//교환법칙문제를 해결하기위해 여러가지 방법이 있을텐데, 이 방법이 제일 나은듯.
 {
 	return ref*times;
 }

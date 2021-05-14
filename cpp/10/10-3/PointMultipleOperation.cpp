@@ -12,7 +12,7 @@ public:
 	{
 		cout<<'['<<xpos<<", "<<ypos<<']'<<endl; 
 	}
-	Point operator*(int times) 
+	Point operator*(int times)//연산자오버로딩에서 제일 중요한건 함수의반환형인거같음(함수의기능과 연쇄가능성 모두 고려해야함.)
 	{
 		Point pos(xpos*times, ypos*times);
 		return pos;

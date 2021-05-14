@@ -12,7 +12,7 @@ public:
 	{
 		cout<<'['<<xpos<<", "<<ypos<<']'<<endl; 
 	}
-	friend Point operator+(const Point &pos1, const Point &pos2);
+	friend Point operator+(const Point &pos1, const Point &pos2);//클래스<->객체
 };
 
 Point operator+(const Point &pos1, const Point &pos2)

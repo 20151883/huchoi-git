@@ -22,7 +22,7 @@ ostream& operator<<(ostream& os, const Point& pos)
 	return os;
 }
 
-int main(void)
+int main(void)//std::cout에 대한 <<연산자 오버로딩을 어떡게 할지 고민해보라.
 {
 	Point pos1(1, 3);
 	cout<<pos1;

@@ -46,6 +46,6 @@ int main(void)
 {
 	using mystd::cout;
 	using mystd::endl;
-	cout<<3.14<<endl<<123<<endl;
+	cout<<3.14<<endl<<123<<endl;//이전 예제에서는 연쇄적인 연산자는 처리 못하는 문제가 있었음.
 	return 0;
 }
