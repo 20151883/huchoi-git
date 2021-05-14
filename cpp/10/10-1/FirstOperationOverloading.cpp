@@ -12,7 +12,7 @@ public:
 	{
 		cout<<'['<<xpos<<", "<<ypos<<']'<<endl; 
 	}
-	Point operator+(const Point &ref)    //operator+¶ó´Â ÀÌ¸§ÀÇ ÇÔ¼ö
+	Point operator+(const Point &ref)//operator+ ë¼ëŠ” ì´ë¦„ì˜ í•¨ìˆ˜
 	{
 		Point pos(xpos+ref.xpos, ypos+ref.ypos);
 		return pos;
