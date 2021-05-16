@@ -24,13 +24,13 @@ class Second : public First
 private:
 	int num3, num4;
 public:
-	Second(int n1, int n2, int n3, int n4) 
+	Second(int n1, int n2, int n3, int n4)
 		: First(n1, n2), num3(n3), num4(n4)
 	{  }
-	void ShowData() 
+	void ShowData()
 	{
 		First::ShowData();
-		cout<<num3<<", "<<num4<<endl; 
+		cout<<num3<<", "<<num4<<endl;
 	}
 
 	/*
@@ -43,7 +43,6 @@ public:
 		return *this;
 	}
 	*/
-	
 };
 
 

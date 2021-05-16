@@ -10,7 +10,7 @@ public:
 	{  }
 	void ShowPosition() const
 	{
-		cout<<'['<<xpos<<", "<<ypos<<']'<<endl; 
+		cout<<'['<<xpos<<", "<<ypos<<']'<<endl;
 	}
 	friend Point operator+(const Point &pos1, const Point &pos2);//클래스<->객체
 };
@@ -19,14 +19,14 @@ Point operator+(const Point &pos1, const Point &pos2)
 {
 	Point pos(pos1.xpos+pos2.xpos, pos1.ypos+pos2.ypos);
 	return pos;
-} 
+}
 
 int main(void)
 {
 	Point pos1(3, 4);
-	Point pos2(10, 20);	
+	Point pos2(10, 20);
 	Point pos3=pos1+pos2;
-
+	//const Point &po3 = pos1 + pos2;//상수화된 임시객체를 가리키고 싶다면 const를 붙여야함.
 	pos1.ShowPosition();
 	pos2.ShowPosition();
 	pos3.ShowPosition();

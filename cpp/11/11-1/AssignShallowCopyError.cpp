@@ -7,15 +7,15 @@ class Person
 	char * name;
 	int age;
 public:
-	Person(char * myname, int myage)
+	Person(const char * myname, int myage)
 	{
 		int len=strlen(myname)+1;
 		name=new char[len];
 		strcpy(name, myname);
 		age=myage;
 	}
-	/*
-	Person& Person::operator=(const Person& ref)
+	/*Person& operator=(const Person& ref)
+	//Person& Person::operator=(const Person& ref) 이렇게 쓰게되면 extra qualification on member 'operator=' 라는 에러메세지가 뜨게됨.
 	{
 		delete []name;
 
@@ -24,15 +24,13 @@ public:
 		strcpy(name, ref.name);
 		age=ref.age;
 		return *this;
-	}
-	*/
-
+	}*/
 	void ShowPersonInfo() const
 	{
-		cout<<"�̸�: "<<name<<endl;
-		cout<<"����: "<<age<<endl;
+		cout<<"이름: "<<name<<endl;
+		cout<<"나이정보: "<<age<<endl;
 	}
-	
+
 	~Person()
 	{
 		delete []name;
