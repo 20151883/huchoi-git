@@ -38,9 +38,12 @@ def draw_chemical_table
 	end
 
 	puts "<td>"
+	puts "<h4>#{var[:name]}</h4>"
 	puts "<ul>"
-	puts "<li><h8>#{var[:number]}</h8></li>"
+	puts "<li><h8>NO #{var[:number]}</h8></li>"
 	puts "<li><h8>#{var[:small]}</h8></li>"
+	puts "<li><h8>#{var[:molar]}</h8></li>"
+	puts "<li>#{var[:electron].join(" ")} electron</li>"
 	puts "</ul>"
 	puts "</td>"
 
