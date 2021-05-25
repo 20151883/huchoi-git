@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 hash_arr = Array.new
 file = File.open ("periodic_table.txt")
 text = file.read
@@ -14,6 +15,7 @@ big_arr.each do |var|
 		if index == 0 then temp_hash["name".to_sym] = var
 		else test = var.split(":")
 			if index == 3 then temp_hash["small".to_sym] = test[1].to_s.delete(" ")
+			elsif index == 5 then temp_hash["electron".to_sym] = test[1].to_s.split(" ")
 			else temp_hash[test[0].to_sym] = test[1].to_i
 			end
 		end
@@ -21,3 +23,4 @@ big_arr.each do |var|
 	hash_arr << temp_hash
 end
 puts hash_arr
+puts hash_arr[0].class

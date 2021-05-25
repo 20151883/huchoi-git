@@ -17,4 +17,4 @@ arr = ARGV[0].split(",")
 arr.each do |var|
 	if var.delete(" ") != "" then puts var.delete(" ") end
 end
-
+##캐피탈라이즈 사용해야함.
