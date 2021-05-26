@@ -7,7 +7,9 @@ class Html
 		@page_name = file_name.to_s
 		#fp = File.new(@page_name, "w+")
 		#fp.close
-		raise " " if head() == -1
+		if head() == -1
+		raise " "
+		end
 		rescue
 			return -1
 		end
@@ -16,19 +18,14 @@ class Html
 	def head()
 		begin
 		#raise Dup_file.new, "msg is A file named #{@page_name} already there: #{File.expand_path(@page_name)}" if File.exist?(@page_name)
-		raise Dup_file.new, "#{@page_name}" if File.exist?(@page_name)
+		raise Dup_file.new, "#{@page_name}" if File.exist?(@page_name+".html")
 		rescue =>var
 			var.show_state
-
-			#retry if nil == var.correct
 			@page_name = var.correct
 			var.explain()
-			#4.times {@page_name.chop!}
-			#@page_name = @page_name << "new.html"
-			#puts "Appended .new in order to create requested file: /home/desktop/folder_2/#{@page_name}"
 			retry
 		else
-			fp = File.new(@page_name, "w+")
+			fp = File.new(@page_name<<".html", "w+")
 			fp.syswrite("<!DOCTYPE html>\n")
 			fp.syswrite("<html>\n")
 			fp.syswrite("<head>\n")
@@ -36,32 +33,22 @@ class Html
 			fp.syswrite("</head>\n")
 			fp.syswrite("<body>\n")
 			fp.close
+			#puts @page_name
 		end
 	end
 
 	def dump(str)
 		begin
-		fp = File.open(@page_name, "a+")
+		fp = File.new(@page_name, "a+")
 		file_data = fp.readlines.map(&:chomp)
-		raise Dup_file.new, "There is no body tag in #{@page_name}" if !(file_data.include?("<body>"))
-		raise @page_name if (file_data.include?("</body>"))
+		raise Body_closed.new, @page_name if (file_data.include?("</body>"))
 		rescue Body_closed=>var
-			#puts "#{var.class}: #{var.exception(var.message)}"
-			#puts var.message
 			fp.close
 			var.show_state(file_data)
 			var.correct(str)
 			var.explain
-			#file_data.each_with_index do |var, index|
-			#	if var == "</body>"
-			#		puts "	> In :#{index + 1} #{var} : text has been inserted and tag moved at the end of it."
-			#end
-		#end
-			file_data.select{|var| var.include?("</body>")}
-			fp.close
-
 		else
-			fp.syswrite ("\t<p>#{str}<\p>\n")
+			fp.syswrite ("\t<p>#{str}</p>\n")
 			fp.close
 		end
 	end
@@ -69,8 +56,8 @@ class Html
 	def finish()
 		begin
 		fp = File.new(@page_name, "a+")
-		#retry if !file_data = fp.readlines.map(&:chomp)
-		raise "#{@page_name} has already been closed." if (file_data.include?("</body>"))
+		file_data = fp.readlines.map(&:chomp)
+		raise @page_name if (file_data.include?("</body>"))
 		rescue =>var
 			puts "#{var.class}: #{var.exception(var.message)}"
 			puts var.backtrace.select{|var| var.include?("head")}
@@ -84,23 +71,19 @@ class Html
 	class Dup_file < StandardError
 		def show_state
 			@page = self.message
-			#puts "here1"
-			puts "A file named #{self.message} already there: #{File.expand_path(self.message)}"
-			#puts "#{@page_name}"
-			#puts "here2"
+			puts "A file named #{self.message+".html"} already there: #{File.expand_path(self.message)+".html"}"
 		end
 		def	correct
 			page_name = self.message
-			#4.times {page_name.chop!}
-			@page = page_name << ".new.html"
-			return @page if File.exist?(@page)
+			@page = page_name << ".new"
+			return @page
 		end
 		def	explain()
-			return if(File.exist?(@page))
+			return if(File.exist?(@page+".html"))
 			temp = File.expand_path(self.message).split("/")
 			temp.pop
 			abs_path = temp.join("/")
-			puts "Appended .new in order to create requested file: #{abs_path}/#{@page}"
+			puts "Appended .new in order to create requested file: #{abs_path}/#{@page+".html"}"
 		end
 	end
 
@@ -110,11 +93,14 @@ class Html
 			puts "In #{self.message} body was closed :"
 		end
 		def	correct(str)
-			fp = File.open(self.message, "wr")
+			fp = File.open(self.message, "r")
 			@file_data = fp.readlines.map(&:chomp)
 			@file_data.pop
-			@file_data << str
-			@file_data.each {|var| fp.write(var)}
+			@file_data << "\t<p>#{str}</p>"
+			@file_data << "</body>"
+			fp.close
+			fp = File.open(self.message, "w")
+			@file_data.each {|var| fp.puts(var)}
 		end
 		def	explain
 			@file_data.each_with_index do |var, index|
@@ -125,6 +111,9 @@ class Html
 	end
 end
 end
-a = Html.new("test")
-a.dump("test")
-a.finish
+if __FILE__ == $0 then
+	a = Html.new("test")
+	a.dump("testsadasdasdasdasd")
+	a.finish
+	a.dump("append")
+end
