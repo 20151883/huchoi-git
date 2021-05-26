@@ -24,17 +24,25 @@ class Elem
 
 	def to_s
 		ret = ""
-		ret << open_tag_type
+		ret << "\n" if !@content.is_a?(Text)
+		ret <<"<#{@tag_type}"
+		if !@opt.empty?
+			opt.each do |key, value|
+				ret <<" #{key.to_s}='#{value}' "
+			end
+		end
+		ret << "/" if double == "simple"
+		ret << ">"
 		if @content.is_a?(Text)
 			ret << @content.to_s
 		else
 			ret << "\n" if ret[-1] != "\n" && ret.size != 0
 			@content.each do |var|
 				ret << var.to_s
+			end
 		end
-	end
-		ret << close_tag_type
-		return ret
+		ret << "</#{@tag_type}>" if @double == "double"
+		ret[0] = "" if !st && ret[0] = "\n"
 	end
 
 	def open_tag_type
@@ -49,6 +57,7 @@ class Elem
 		ret << "/" if double == "simple"
 		ret << ">"
 		#end
+		ret[0] = "" if ret[0] == "\n"
 		return ret
 	end
 
