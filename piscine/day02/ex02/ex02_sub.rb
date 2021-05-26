@@ -15,16 +15,15 @@ class Html
 
 	def head()
 		begin
-		#raise Dup_file.new, "msg is A file named #{@page_name} already there: #{File.expand_path(@page_name)}" if File.exist?(@page_name)
-		raise Dup_file.new, "#{@page_name}" if File.exist?(@page_name)
-		rescue =>var
+		#puts File.exist?(@page_name)
+		raise Dup_file.new if File.exist?(@page_name)
+		rescue Dup_file=>var
+			#puts var.message
 			var.show_state
-			@page_name = var.correct
-			var.explain(@page_name)
-			#4.times {@page_name.chop!}
-			#@page_name = @page_name << "new.html"
-			#puts "Appended .new in order to create requested file: /home/desktop/folder_2/#{@page_name}"
+			var.correct
+			var.explain
 			retry
+			#puts "Appended .new in order to create requested file: /home/desktop/folder_2/#{@page_name}"
 		else
 			fp = File.new(@page_name, "w+")
 			fp.syswrite("<!DOCTYPE html>\n")
@@ -41,7 +40,7 @@ class Html
 		begin
 		fp = File.new(@page_name, "a+")
 		file_data = fp.readlines.map(&:chomp)
-		raise Dup_file.new, "There is no body tag in #{@page_name}" if !(file_data.include?("<body>"))
+		raise "There is no body tag in #{@page_name}" if !(file_data.include?("<body>"))
 		raise "In #{@page_name} body was closed :" if (file_data.include?("</body>"))
 		rescue =>var
 			#puts "#{var.class}: #{var.exception(var.message)}"
@@ -65,10 +64,11 @@ class Html
 		fp = File.new(@page_name, "a+")
 		file_data = fp.readlines.map(&:chomp)
 		raise "#{@page_name} has already been closed." if (file_data.include?("</body>"))
-		rescue =>var
+		rescue Body_closed=>var
 			puts "#{var.class}: #{var.exception(var.message)}"
 			puts var.backtrace.select{|var| var.include?("head")}
 			fp.close
+
 		else
 			fp.syswrite ("</body>\n")
 			fp.close
@@ -77,23 +77,16 @@ class Html
 
 	class Dup_file < StandardError
 		def show_state
-			#puts "here1"
-			puts "A file named #{self.message} already there: #{File.expand_path(self.message)}"
-			#puts "#{@page_name}"
-			#puts "here2"
+			"A file named #{@page_name} already there: #{File.expand_path(@page_name)}"
 		end
 		def	correct
-			page_name = self.message
-			4.times {page_name.chop!}
-			page_name = page_name << "new.html"
-			#puts "Appended .new in order to create requested file: #{File.expand_path(self.message)}"
-			return page_name
+			abs_path = File.expand_path(@page_name)
+			4.times {@page_name.chop!}
+			@page_name = @page_name << "new.html"
+			puts "Appended .new in order to create requested file: #{abs_path}"
 		end
-		def	explain(renewer)
-			temp = File.expand_path(self.message).split("/")
-			temp.pop
-			abs_path = temp.join("/")
-			puts "Appended .new in order to create requested file: #{abs_path}/#{renewer}"
+		def	explain
+			puts @page_name
 		end
 	end
 
@@ -110,6 +103,6 @@ class Html
 	end
 end
 a = Html.new("test.html")
-#a.dump("test")
+a.dump("test")
 #a.finish
-
+#a.dump("af finish")
