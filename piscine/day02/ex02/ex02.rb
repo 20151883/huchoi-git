@@ -5,8 +5,6 @@ class Html
 	def initialize(file_name)
 		begin
 		@page_name = file_name.to_s
-		#fp = File.new(@page_name, "w+")
-		#fp.close
 		if head() == -1
 		raise " "
 		end
