@@ -1,4 +1,0 @@
-require_relative "ex00.rb"
-a = Html.new("mt_ttiel")
-10.times{|x| a.dump("titi_number#{x}")}
-a.finish
