@@ -11,25 +11,24 @@ class Ft_wikipedia
 	begin
 	@key = keyword if @key == nil
 	link = "https://en.wikipedia.org/wiki/#{keyword}"
-	print "first @ :" if @searched_keyword.empty?
+	print "First @ :" if @searched_keyword.empty?
 	puts "#{link}"
 	doc = Nokogiri::HTML(URI.open(link))
-	data = doc.search('div.mw-parser-output p a')
-
+	data = doc.search('div.mw-parser-output p a', 'div.mw-parser-output ul a')
 	first = nil
 	raise StandardError, "nodata" if data.empty?
 	data.each do |var|
 		first = var if var.to_s.include?("/wiki")
 		break if first != nil
 	end
-	puts first
+	#puts first
     first.to_s.split("\"").each do |x|
       @parse = x if x.include?("wiki")
 	end
 	search_value = @parse.split("/")[2] if @parse.is_a?(String)
 	raise StandardError, "loop" if @searched_keyword.include?(search_value)
 	@searched_keyword << search_value
-	puts @searched_keyword[-1]
+	#puts @searched_keyword[-1]
     search("#{@searched_keyword[-1]}")
 
 	rescue OpenURI::HTTPError => var
@@ -45,6 +44,6 @@ class Ft_wikipedia
   end
 end
 a = Ft_wikipedia.new
-a.search("unix")
+a.search("position")
 
 
