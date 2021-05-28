@@ -13,8 +13,7 @@ class Ft_wikipedia
 	puts "#{link}"
 	doc = Nokogiri::HTML(URI.open(link))
 	#raise StandardError, "ead search #{@link}" if !doc#굳이 raise 발생 안시켜도 됨
-	#data = doc.search('div.mv-parser-output p a')
-	data = doc.search('div p a')
+	data = doc.search('div.mv-parser-output p a')
 	#raise StandardError, "Dead search #{@link}" if !data#굳이 raise 발생 안시켜도 됨
 
 	first = nil
