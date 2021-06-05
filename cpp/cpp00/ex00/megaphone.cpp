@@ -1,12 +1,11 @@
 #include <iostream>
 
-using namespace std;
 char	*alpha_upper(char *str);
 int main(int argc, char *argv[])
 {
 	if (argc == 1)
 	{
-		cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+		std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	}
 	else
 	{
@@ -15,13 +14,15 @@ int main(int argc, char *argv[])
 		while (argv[idx])
 		{
 			upper = alpha_upper(argv[idx]);
-			cout<<upper;
+			std::cout<<upper;
 			delete []upper;
 			idx++;
 		}
 	}
-	cout<<endl;
+	std::cout<<std::endl;
+	return (0);
 }
+
 char	*alpha_upper(char *str)
 {
 	int idx = 0;
@@ -31,12 +32,11 @@ char	*alpha_upper(char *str)
 	while (str[idx])
 	{
 		if ('a' <= str[idx] && str[idx] <= 'z')
-		{
 			ret[idx] = str[idx] - diff;
-		}
 		else
 			ret[idx] = str[idx];
 		idx++;
 	}
+	ret[idx] = 0;
 	return (ret);
 }

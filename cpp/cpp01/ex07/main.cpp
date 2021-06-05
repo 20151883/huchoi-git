@@ -5,7 +5,7 @@ int main(int argc, char **argv)
 {
     if (argc != 4)
     {
-        std::cout<<"too few or many argument"<<std::endl;
+        std::cout<<"too few or too many argument"<<std::endl;
         return (1);
     }
     std::ifstream readfile;
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
                     writefile.write(temp.c_str(), 1);
                     buf.erase(buf.begin());
                     buf.push_back(c);
-                }   
+                }
             }
             else
                 buf.push_back(c);
