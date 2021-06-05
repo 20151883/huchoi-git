@@ -1,3 +1,5 @@
+#ifndef __ISPACEMARINE__
+#define __ISPACEMARINE__
 class ISpaceMarine
 {
 	private:
@@ -9,3 +11,4 @@ class ISpaceMarine
 		virtual void rangedAttack() const = 0;
 		virtual void meleeAttack() const = 0;
 };
+#endif
