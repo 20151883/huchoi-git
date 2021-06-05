@@ -3,10 +3,11 @@ class Enemy
 	protected:
 		int hp;
 		std::string type;
+		int flag;
 	public:
-		Enemy(int hp, std::string const & type): hp(hp), type(type)
+		Enemy(int hp, std::string const & type): hp(hp), type(type), flag(0)
 		{}
-		~Enemy()
+		virtual ~Enemy()
 		{}
 		Enemy(Enemy &src)
 		{
@@ -17,32 +18,40 @@ class Enemy
 		{
 			this->hp = src.hp;
 			this->type = src.type;
+			return *this;
 		}
 		std::string getType() const
 		{
 			return this->type;
 		}
-		int getHP() const
+		int getHp() const
 		{
 			return this->hp;
 		}
-		virtual void takeDamage(int);
+		void setFlag(int num)
+		{
+			this->flag = num;
+		}
+		int getFlag()
+		{
+			return this->flag;
+		}
+		virtual void takeDamage(int) = 0;
 };
 
 class SuperMutant :public Enemy
 {
 	private:
 		std::string sound;
-		int flag;
 	public:
-		SuperMutant() :Enemy(170,"Super Mutant"), flag(0)
+		SuperMutant() :Enemy(170,"Super Mutant")
 		{
 			std::cout<<"Gaaah. Me want smash heads!"<<std::endl;
 			this->sound = "Aaargh...";
 		}
-		~SuperMutant()
+		virtual ~SuperMutant()
 		{}
-		SuperMutant(SuperMutant &src)//같은 클래스의 객체에 대해서는 굳이 get, set을 안쓰는게 코드상 깔끔해보임.
+		SuperMutant(SuperMutant &src):Enemy(src.getHp(), src.getType())
 		{
 			this->hp = src.hp;
 			this->type = src.type;
@@ -55,19 +64,23 @@ class SuperMutant :public Enemy
 			this->type = src.type;
 			this->sound = src.sound;
 			this->flag = src.flag;
+			return *this;
 		}
 		virtual void takeDamage(int num)
 		{
-			//dmg = this->hp > 3 ? num - 3 : this->hp;
-			dmg = num > 3 ? num - 3 : 0;
+			int dmg = num > 3 ? num - 3 : 0;
 			this->hp -= dmg;
 			if (this->hp <= 0)
 			{
 				if (this->flag == 0)
-					std::cout<this->sound<<std::endl;
-				flag = 1;
+					std::cout<<this->sound<<std::endl;
+				setFlag(1);
 				this->hp = 0;
 			}
+		}
+		std::string getSound()
+		{
+			return this->sound;
 		}
 };
 
@@ -75,40 +88,44 @@ class RadScorpion :public Enemy
 {
 	private:
 		std::string sound;
-		int flag;
 	public:
-		SuperMutant() :Enemy(80,"RadScorpion"), flag(0)
+		RadScorpion() :Enemy(80,"RadScorpion")
 		{
 			std::cout<<"* click click click *"<<std::endl;
 			this->sound = "* SPROTCH *";
 		}
-		~SuperMutant()
+		virtual ~RadScorpion()
 		{}
-		SuperMutant(SuperMutant &src)//같은 클래스의 객체에 대해서는 굳이 get, set을 안쓰는게 코드상 깔끔해보임.
+		RadScorpion(RadScorpion &src) :Enemy(src.getHp(), src.getType())
 		{
 			this->hp = src.hp;
 			this->type = src.type;
 			this->sound = src.sound;
 			this->flag = src.flag;
 		}
-		SuperMutant &operator=(SuperMutant &src)
+		RadScorpion &operator=(RadScorpion &src)
 		{
 			this->hp = src.hp;
 			this->type = src.type;
 			this->sound = src.sound;
 			this->flag = src.flag;
+			return *this;
 		}
 		virtual void takeDamage(int num)
 		{
 			//dmg = this->hp > 3 ? num - 3 : this->hp;
-			dmg = num
+			int dmg = num;
 			this->hp -= dmg;
 			if (this->hp <= 0)
 			{
 				if (this->flag == 0)
-					std::cout<this->sound<<std::endl;
-				flag = 1;
+					std::cout<<this->sound<<std::endl;
+				setFlag(1);
 				this->hp = 0;
 			}
+		}
+		std::string getSound()
+		{
+			return this->sound;
 		}
 };

@@ -7,7 +7,7 @@ class AWeapon
 		int			apcost;
 		int			damage;
 	public:
-	AWeapon(std::string const & name, int apcost, int damage);
+	AWeapon(std::string const & name, int apcost, int damage)
 	{
 		this->name = name;
 		this->apcost = apcost;
@@ -19,14 +19,21 @@ class AWeapon
 		this->apcost = src.apcost;
 		this->damage = src.damage;
 	}
-	~AWeapon();
+	~AWeapon()
+	{
+
+	}
 	AWeapon &operator=(const AWeapon &src)
 	{
 		this->name = src.name;
 		this->apcost = src.apcost;
 		this->damage = src.damage;
+		return *this;
 	}
-	std::string [...] getName() const;
+	std::string getName() const
+	{
+		return this->name;
+	}
 	virtual int getAPCost() const
 	{
 		return this->apcost;
@@ -43,17 +50,14 @@ class PlasmaRifle :public AWeapon
 	private:
 		std::string sound;
 	public:
-	PlasmaRifle() :AWeapon( "Plasma Rifle", 21, 5)
+	PlasmaRifle() :AWeapon("Plasma Rifle", 5, 21)
 	{
 		this->sound =  "* piouuu piouuu piouuu *";
 	}
 	~PlasmaRifle()
 	{}
-	PlasmaRifle(PlasmaRifle &src)
+	PlasmaRifle(PlasmaRifle &src) :AWeapon(src.getName(), src.getAPCost(), src.getDamage())
 	{
-		this->name =  src.name;
-		this->apcost = src.apcost;
-		this->damage = src.damage;
 		this->sound = src.sound;
 	}
 	PlasmaRifle &operator=(PlasmaRifle &src)
@@ -62,18 +66,30 @@ class PlasmaRifle :public AWeapon
 		this->apcost = src.apcost;
 		this->damage = src.damage;
 		this->sound = src.sound;
+		return *this;
+	}
+	std::string getSound()
+	{
+		return this->sound;
+	}
+	virtual void	attack() const
+	{
+		std::cout<<this->sound<<std::endl;
 	}
 };
 
 class PowerFist :public AWeapon
 {
-	PowerFist() :AWeapon("Power Fist", 50, 8)
+	private:
+		std::string sound;
+	public:
+	PowerFist() :AWeapon("Power Fist", 8, 50)
 	{
-		 this->sound = "* pschhh... SBAM! *"
+		 this->sound = "* pschhh... SBAM! *";
 	}
 	~PowerFist()
 	{}
-	PowerFist(PowerFist &src)
+	PowerFist(PowerFist &src) :AWeapon(src.getName(), src.getAPCost(), src.getDamage())
 	{
 		this->name =  src.name;
 		this->apcost = src.apcost;
@@ -86,5 +102,10 @@ class PowerFist :public AWeapon
 		this->apcost = src.apcost;
 		this->damage = src.damage;
 		this->sound = src.sound;
+		return *this;
+	}
+	virtual void	attack() const
+	{
+		std::cout<<this->sound<<std::endl;
 	}
 };
