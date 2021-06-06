@@ -19,30 +19,10 @@ class Bureaucrat
 			this->range = range;
 		}
 		int	signForm(Form &src);
-		std::string getName()
-		{
-			return this->name;
-		}
-		int getGrade()
-		{
-			return this->range;
-		}
-		void increaseRange()
-		{
-			this->range -= 1;
-			if (range < 1)
-				throw GradeTooLowException();
-			else if (range > 150)
-				throw GradeTooHighException();
-		}
-		void decreaseRange()
-		{
-			this->range += 1;
-			if (range < 1)
-				throw GradeTooLowException();
-			else if (range > 150)
-				throw GradeTooHighException();
-		}
+		std::string getName();
+		int getGrade();
+		void increaseRange();
+		void decreaseRange();
 
 
 		class GradeTooLowException : public std::exception

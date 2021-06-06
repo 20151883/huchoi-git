@@ -5,15 +5,26 @@ class Bureaucrat
 {
 	private:
 		const std::string	name;
-		int					range;
+		int					grade;
 	public:
-		Bureaucrat(const char *name, int range) :name(name)
+		Bureaucrat(const char *name, int grade) :name(name)
 		{
-			if (range < 1)
+			if (grade < 1)
 				throw GradeTooLowException();
-			else if (range > 150)
+			else if (grade > 150)
 				throw GradeTooHighException();
-			this->range = range;
+			this->grade = grade;
+		}
+		Bureaucrat(Bureaucrat &src)
+		{
+
+		}
+		~Bureaucrat()
+		{}
+		Bureaucrat &operator=(Bureaucrat &src)
+		{
+			this->name = src.getName();
+			this->grade = src.getGrade();
 		}
 		std::string getName()
 		{
@@ -21,22 +32,22 @@ class Bureaucrat
 		}
 		int getGrade()
 		{
-			return this->range;
+			return this->grade;
 		}
-		void increaseRange()
+		void increasegrade()
 		{
-			this->range -= 1;
-			if (range < 1)
+			this->grade -= 1;
+			if (grade < 1)
 				throw GradeTooLowException();
-			else if (range > 150)
+			else if (grade > 150)
 				throw GradeTooHighException();
 		}
-		void decreaseRange()
+		void decreasegrade()
 		{
-			this->range += 1;
-			if (range < 1)
+			this->grade += 1;
+			if (grade < 1)
 				throw GradeTooLowException();
-			else if (range > 150)
+			else if (grade > 150)
 				throw GradeTooHighException();
 		}
 
