@@ -50,7 +50,7 @@ int ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		throw GradeTooLowException();
 	}
 	make_tree(this->target);
-	return 1
+	return 1;
 }
 
 std::string ShrubberyCreationForm::getTarget() const

@@ -1,6 +1,5 @@
 #include "form.hpp"
 #include "Bureaucrat.hpp"
-
 class Form;
 class Bureaucrat;
 
