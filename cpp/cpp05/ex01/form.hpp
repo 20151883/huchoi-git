@@ -30,7 +30,7 @@ class Form
 			public:
 				const char * what() const _NOEXCEPT//오버라이딩
     			{
-        			return "TOO LOW  BOUND";
+        			return "TOO HIGH  BOUND";
     			}
 		};
 
@@ -60,6 +60,6 @@ class Form
 			return this->exec_bound;
 		}
 };
-
+std::ostream &operator<<(std::ostream &ost, Form &src);
 
 #endif

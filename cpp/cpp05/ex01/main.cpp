@@ -1,11 +1,11 @@
-#include "form.hpp"
-//#include "Bureaucrat.hpp"
-​
+# include "Bureaucrat.hpp"
+# include "form.hpp"
+
 int main()
 {
     Form* set = new Form("42seoul", 50, 100);
     std::cout << *set;
-​
+
     std::cout << std::endl;
     Form* high;
     try
@@ -16,7 +16,7 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-​
+
     std::cout << std::endl;
     try
     {
@@ -26,7 +26,7 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-​
+
     std::cout << std::endl;
     Form* low;
     try
@@ -37,7 +37,7 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-​
+
     std::cout << std::endl;
     try
     {
@@ -47,24 +47,24 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-​
+
     std::cout << std::endl;
     Bureaucrat* mike = new Bureaucrat("mike", 5);
     std::cout << *mike;
     mike->signForm(*set);
-​
+
     std::cout << std::endl;
     std::cout << *set;
-​
+
     std::cout << std::endl;
     mike->signForm(*set);
-​
+
     std::cout << std::endl;
     Form* set2 = new Form("42paris", 50, 100);
     Bureaucrat* chuck = new Bureaucrat("chuck", 75);
     std::cout << *chuck;
     chuck->signForm(*set2);
-    
+
     delete set;
     delete mike;
     delete set2;
