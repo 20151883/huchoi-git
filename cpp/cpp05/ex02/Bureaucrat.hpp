@@ -8,43 +8,22 @@ class Bureaucrat
 {
 	private:
 		const std::string	name;
-		int					range;
+		int					grade;
 	public:
-		Bureaucrat(const char *name, int range) :name(name)
+		Bureaucrat(const char *name, int grade) :name(name)
 		{
-			if (range < 1)
-				throw GradeTooLowException();
-			else if (range > 150)
+			if (grade < 1)
 				throw GradeTooHighException();
-			this->range = range;
-		}
-		int	signForm(Form &src);
-		std::string getName()
-		{
-			return this->name;
-		}
-		int getGrade()
-		{
-			return this->range;
-		}
-		void increaseRange()
-		{
-			this->range -= 1;
-			if (range < 1)
+			else if (grade > 150)
 				throw GradeTooLowException();
-			else if (range > 150)
-				throw GradeTooHighException();
+			this->grade = grade;
 		}
-		void decreaseRange()
-		{
-			this->range += 1;
-			if (range < 1)
-				throw GradeTooLowException();
-			else if (range > 150)
-				throw GradeTooHighException();
-		}
-
-
+		void	signForm(Form &src);
+		std::string getName() const;
+		int getGrade() const;
+		void increasegrade();
+		void decreasegrade();
+		void executeForm(Form const & form) const;
 		class GradeTooLowException : public std::exception
 		{
 			public:
@@ -62,6 +41,6 @@ class Bureaucrat
     			}
 		};
 };
-
+std::ostream& operator<<(std::ostream &ost, Bureaucrat &src);
 
 #endif

@@ -30,7 +30,7 @@ class Form
 			public:
 				const char * what() const _NOEXCEPT//오버라이딩
     			{
-        			return "TOO LOW  BOUND";
+        			return "TOO HIGH  BOUND";
     			}
 		};
 
@@ -42,24 +42,23 @@ class Form
         			return "TOO LOW  BOUND";
     			}
 		};
-		void beSigned(Bureaucrat &src);
-		std::string getName()
-		{
-			return this->name;
-		}
-		bool getSign()
-		{
-			return this->sign;
-		}
-		int getSignGrade()
-		{
-			return this->sign_bound;
-		}
-		int getExecGrade()
-		{
-			return this->exec_bound;
-		}
-};
 
+		class SignSkipxception : public std::exception
+		{
+			public:
+				const char * what() const _NOEXCEPT//오버라이딩
+    			{
+        			return "sign action is skiped SIGN FIRST!!!";
+    			}
+		};
+		void beSigned(Bureaucrat &src);
+		std::string getName() const;
+		bool getSign() const;
+		void setSign(int num);
+		int getSignGrade() const;
+		int getExecGrade() const;
+		virtual void execute(Bureaucrat const & executor) const = 0;
+};
+std::ostream &operator<<(std::ostream &ost, Form &src);
 
 #endif

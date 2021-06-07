@@ -1,23 +1,67 @@
 #include "Bureaucrat.hpp"
 
-int	Bureaucrat::signForm(Form &src)
+void	Bureaucrat::signForm(Form &src)
 {
-	if (this->range <= src.getSignGrade() && !src.getSign())
+	if (src.getSign() == true)
 	{
-		std::cout<<this->name<<" signs "<< src.getName() <<std::endl;
-		return 1;
+		std::cout<<this->name<<" can not sign "<<src.getName()<<" because the form alraedy signed!!!"<<std::endl;
+		return;
 	}
-	else if (this->range > src.getSignGrade() && src.getSign())
-		std::cout<<this->name<<" cannot sign "<<src.getName()<<" because "<<"low grade and this form already signed!!!"<<std::endl;
-	else if (this->range > src.getSignGrade())
-		std::cout<<this->name<<" cannot sign "<<src.getName()<<" because "<<"low grade"<<std::endl;
-	else
-		std::cout<<this->name<<" cannot sign "<<src.getName()<<" because "<<"form already signed"<<std::endl;
-	return 0;
+	src.beSigned(*this);
+	if (src.getSign() == true)
+		std::cout<<this->name<<" sign "<<src.getName()<<" sucessfully!!!"<<std::endl;
+	else if (this->grade > src.getSignGrade())
+		std::cout<<this->name<<" can not sign "<<src.getName()<<" because Bureaucrat's grade is lower than needed grade!!!"<<std::endl;
 }
+
+std::string Bureaucrat::getName() const
+{
+	return this->name;
+}
+
+int Bureaucrat::getGrade() const
+{
+	return this->grade;
+}
+
+void Bureaucrat::increasegrade()
+{
+	this->grade -= 1;
+	if (grade < 1)
+		throw GradeTooLowException();
+	else if (grade > 150)
+		throw GradeTooHighException();
+}
+
+void Bureaucrat::decreasegrade()
+{
+	this->grade += 1;
+	if (grade < 1)
+		throw GradeTooLowException();
+	else if (grade > 150)
+		throw GradeTooHighException();
+}
+
 std::ostream& operator<<(std::ostream &ost, Bureaucrat &src)
 {
-	printf("<%s>, bureaucrat grade <%d>.", src.getName().c_str(), src.getGrade());
+	ost << src.getName()<<", bureaucrat grade "<<src.getGrade()<<"\n";
 	fflush(stdout);
 	return ost;
+}
+
+void Bureaucrat::executeForm(Form const & form) const
+{
+	if (form.getSign() == false)
+	{
+		std::cout<<this->name<<"  can not executes  "<<form.getName()<<"because sign is skiped"<<std::endl;//throw catch에서 처리하는데 굳이여기서 또 할필요는 없을듯
+	}
+	form.execute(*this);
+	if (form.getSign() == true)
+	{
+		std::cout<<this->name<<"  executes  "<<form.getName()<<std::endl;
+	}
+	else
+	{
+		std::cout<<this->name<<"  can not executes  "<<form.getName()<<"because grade is lower than needed"<<std::endl;
+	}
 }
