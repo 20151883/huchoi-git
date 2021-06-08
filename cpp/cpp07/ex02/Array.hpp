@@ -8,7 +8,7 @@ class Array
 	public:
 		Array()//빈 배열을 만들어라..?
 		{
-			arr = NULL;
+			arr = new T[0];
 			arr_size = 0;
 		}
 		Array(unsigned int num)
@@ -43,8 +43,7 @@ class Array
 			int idx = 0;
 			while (idx < lenth)
 			{
-				T data = src[idx];
-				this->arr[idx] = T(data);
+				this->arr[idx] = src[idx];
 				idx++;
 			}
 			return *this;
@@ -63,13 +62,7 @@ class Array
 		~Array()
 		{
 			unsigned int idx = 0;
-			while (idx < this->arr_size)
-			{
-				//delete &arr[idx];
-				idx++;
-			}
-			if (arr != NULL)
-				delete []arr;
+			delete []arr;
 			std::cout<<"all allocated member is freed...."<<std::endl;
 		}
 };
