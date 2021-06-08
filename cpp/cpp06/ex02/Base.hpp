@@ -5,7 +5,7 @@ class Base
 	private:
 
 	public:
-		~Base()
+		virtual ~Base()
 		{
 			std::cout<<"base is destroed!!!"<<std::endl;
 		}
@@ -22,4 +22,5 @@ class C:public Base
 
 Base * generate(void);
 void identify_from_pointer(Base * p);
-void identify_from_reference( Base & p);
+void identify_from_reference(Base & p);
+void identify_from_reference(Base & p);

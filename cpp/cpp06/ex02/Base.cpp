@@ -16,55 +16,91 @@ Base * generate(void)
 	{
 		ret = new C();
 	}
+	return ret;
 }
-int is_A(Base &src)
+int is_reference_A(Base &src)
 {
 	try{
-		Base *test = new Base();
-		Base &t = *test;
-		dynamic_cast<A&>(t);
+		A &test = dynamic_cast<A &>(src);
 		return 1;
 	}
 	catch(std::exception &e)
 	{
-
+		//std::cout<<""<<std::endl;
+		return 0;
 	}
 }
 
-int is_B()
+int is_reference_B(Base &src)
 {
 	try{
-		Base *test = new Base();
-		dynamic_cast<B&>(*test);
+		B &test = dynamic_cast<B &>(src);
 		return 1;
 	}
 	catch(std::exception &e)
 	{
-
+		//std::cout<<""<<std::endl;
+		return 0;
 	}
 }
 
-int is_C()
+int is_reference_C(Base &src)
 {
 	try{
-		Base *test = new Base();
-		dynamic_cast<C&>(*test);
+		C &test = dynamic_cast<C &>(src);
 		return 1;
 	}
 	catch(std::exception &e)
 	{
-
+		//std::cout<<""<<std::endl;
+		return 0;
 	}
 }
+/////////////////////////////////////////
+int is_pointer_A(Base *src)
+{
+	A *test = dynamic_cast<A *>(src);
+	if (test == NULL)
+		return 0;
+	return 1;
+
+}
+
+int is_pointer_B(Base *src)
+{
+
+	B *test = dynamic_cast<B *>(src);
+	if (test == NULL)
+		return 0;
+	return 1;
+}
+
+int is_pointer_C(Base *src)
+{
+
+	C *test = dynamic_cast<C *>(src);
+	if (test == NULL)
+		return 0;
+	return 1;
+}
+
 
 void identify_from_pointer(Base * p)
 {
-	B &test = *p;
-	if (is_A(test))
+	if (is_pointer_A(p))
 		std::cout<<"A"<<std::endl;
-	if (is_B(test))
+	if (is_pointer_B(p))
 		std::cout<<"B"<<std::endl;
-	if (is_C(test))
+	if (is_pointer_C(p))
 		std::cout<<"C"<<std::endl;
 }
 
+void identify_from_reference(Base & p)
+{
+	if (is_reference_A(p))
+		std::cout<<"A"<<std::endl;
+	if (is_reference_B(p))
+		std::cout<<"B"<<std::endl;
+	if (is_reference_C(p))
+		std::cout<<"C"<<std::endl;
+}
