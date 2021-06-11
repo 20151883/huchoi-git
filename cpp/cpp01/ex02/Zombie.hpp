@@ -5,7 +5,7 @@ class Zombie
         std::string type;
         std::string name;
     public:
-        Zombie(std::string input_type, std::string input_name) :type(input_type), name(input_name)
-        { };
+        Zombie(std::string input_type, std::string input_name) :type(input_type), name(input_name){};
         void announce(void);
+        ~Zombie();
 };

@@ -1,19 +1,4 @@
-#include <iostream>
-
-class Pony{//클래스 멤버로 뭘 넣어야할지 잘 모르겠음.
-    private:
-        std::string color;
-        std::string name;
-        std::string price;
-    public:
-        void    define_pony(std::string color, std::string name, std::string price);
-        void    print_information();
-        ~Pony()
-        {
-            std::cout<<"the pony is disappeared...."<<std::endl;
-        }
-};
-
+#include "Pony.hpp"
 void    Pony::define_pony(std::string my_color, std::string my_name, std::string my_price)
 {
     color = my_color;
@@ -24,6 +9,11 @@ void    Pony::define_pony(std::string my_color, std::string my_name, std::string
 void    Pony::print_information()
 {
     std::cout<<name<<color<<price<<std::endl;
+}
+
+Pony::~Pony()
+{
+    std::cout<<this->name<<" pony is disappeared...."<<std::endl;
 }
 
 void   ponyOnTheHeap(void)
@@ -41,9 +31,3 @@ void    ponyOnTheStack(void)
     stack.print_information();
 }
 
-int main(void)
-{
-    ponyOnTheHeap();
-    ponyOnTheStack();
-    return (0);
-}

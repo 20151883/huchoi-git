@@ -1,27 +1,40 @@
-#include <iostream>
+#include "ZombieHorde.hpp"
 
-class ZombieHorde{
-    private:
-        Zombie *p_zombies;
-        int     num_of_zombies;
-    public:
-        ZombieHorde(int N) :num_of_zombies(N)
-        {
-            p_zombies = new Zombie[N];//아마도 좀비생성자에 void생성자를 하나 만들어서 거기서 이름과타입을 저장하게끔해야할거같음.
-            int idx = 0;
-            while (idx < N)
-            {
-                define_type_name(p_zombies[idx])
-            }
-        }
-        ~ZombieHorde()
-        {
-            delete []p_zombies;
-        }
-        void    announce()//all of zombies announec....
-        {
-            int idx = 0;
-            while (idx < num_of_zombies)
-                p_zombies[idx++]->announce();
-        }
+ZombieHorde::ZombieHorde(int N) :num_of_zombies(N), type("NOTYPE")
+{
+    srand((unsigned int)time(NULL));
+    p_zombies = new Zombie[N];
+    int idx = 0;
+    std::string name;
+    std::string type;
+    while (idx < N)
+    {
+        name = this->random();
+        type = this->random();
+        type.append("type");
+        const Zombie &ref = Zombie(type, name);
+        this->p_zombies[idx] = ref;
+        idx++;
+    }
+}
+ZombieHorde::~ZombieHorde()
+{
+    delete []p_zombies;
+}
+void    ZombieHorde::announce()//all of zombies announec....
+{
+    int idx = 0;
+    while (idx < num_of_zombies)
+        p_zombies[idx++].announce();
+}
+
+std::string	ZombieHorde::random()
+{
+	std::string str("");
+	const char *temp = "qwertyuiopasdfghjklzxcvbnm";
+	for (int i = 0;i<6;i++)
+    {
+		str.push_back(temp[(rand())%26]);
+    }
+	return str;
 }
