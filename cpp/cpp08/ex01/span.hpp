@@ -15,7 +15,7 @@ class Span{
 		Span(int n) :size(n), count(0)
 		{
 			if (n < 0)
-				throw std::exception();
+				throw std::runtime_error("size is too lower");
 		}
 		bool is_dup(int num)
 		{
@@ -29,7 +29,7 @@ class Span{
 		void addNumber(int num)
 		{
 			if (size == count || is_dup(num))
-				throw std::exception();
+				throw std::runtime_error("elements is now too many or duplicated member is exist");
 			else
 				vec.push_back(num);
 				count++;
@@ -37,7 +37,7 @@ class Span{
 		int shortestSpan()
 		{
 			if (count <= 1)
-				throw std::exception();
+				throw std::runtime_error("elements is too fewer to call shortestSpan fucntion");
 			int min = abs(*(vec.begin() + 1) - *(vec.begin()));
 			for(std::vector<int>::iterator i = this->vec.begin(); i != this->vec.end(); i++)
 			{
@@ -50,7 +50,7 @@ class Span{
 		int longestSpan()
 		{
 			if (count <= 1)
-				throw std::exception();
+				throw std::runtime_error("elements is too fewer to call longestSpan fucntion");
 			int max = 0;
 			for(std::vector<int>::iterator i = this->vec.begin(); i != this->vec.end(); i++)
 			{
