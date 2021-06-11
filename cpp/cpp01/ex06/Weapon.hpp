@@ -3,20 +3,11 @@
 #define _Weapon_
 class Weapon
 {
-    private:
-        std::string type;
+	private:
+		std::string type;
     public:
-        /*Weapon()
-        {}*/
-        Weapon(std::string init) :type(init)
-        {}
-        void setType(std::string weapon_type)
-        {
-            type = weapon_type;
-        }
-        std::string getType()
-        {
-            return (type);
-        }
+		Weapon(std::string init);
+		void setType(std::string weapon_type);
+		std::string getType();
 };
 #endif

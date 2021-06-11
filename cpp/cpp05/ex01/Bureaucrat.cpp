@@ -8,7 +8,7 @@ void	Bureaucrat::signForm(Form &src)
 		return;
 	}
 	src.beSigned(*this);
-	if (src.getSign() == true)
+	if (src.getSign() == true)2
 		std::cout<<this->name<<" sign "<<src.getName()<<" sucessfully!!!"<<std::endl;
 	else if (this->grade > src.getSignGrade())
 		std::cout<<this->name<<" can not sign "<<src.getName()<<" because Bureaucrat's grade is lower than needed grade!!!"<<std::endl;

@@ -14,7 +14,9 @@ int main(int argc, char **argv)
     s1 = argv[2];
     s2 = argv[3];
     readfile.open(argv[1], std::ios_base::in);
-    writefile.open("outfile.replace", std::ios_base::out);//파일이 없을시 자동으로 생성해줌.
+    std::string filename(argv[1]);
+	std::string test = filename.substr(0, filename.find(".")).append(".replace");
+    writefile.open(test.c_str(), std::ios_base::out);//파일이 없을시 자동으로 생성해줌.
     if (!writefile.is_open())
     {
         if (readfile.is_open())
@@ -31,14 +33,12 @@ int main(int argc, char **argv)
             {
                 if (!buf.compare(s1))
                 {
-                    //writefile(buf.c_str(), buf.size());
                     writefile.write(s2.c_str(), s2.size());
                     buf.clear();
                     buf.push_back(c);
                 }
                 else
                 {
-                    //writefile.write(buf.front(), 1);
                     temp = buf;
                     temp.resize(1);
                     writefile.write(temp.c_str(), 1);

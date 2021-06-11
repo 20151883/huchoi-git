@@ -2,14 +2,21 @@
 
 std::string Brain::identify() const
 {
-    long long num = (long long)this;
-    const char *arr = "01234567890ABCDEF";
+	//std::cout<<this<<std::endl;
+    long long address = (long long)this;
+    const char *arr = "0123456789ABCDEF";
     std::string ret;
-    ret.insert(0, "0x");
-    while (num != 0)
+   
+    while (address != 0)
     {
-		ret.insert(2,1,arr[num % 16]);
-		num/=16;
+		ret.insert(0, 1, arr[address % 16]);
+		address/=16;
     }
+	 ret.insert(0, "0x");
 	return ret;
+}
+
+Brain::~Brain()
+{
+	std::cout<<"brain is dead"<<std::endl;
 }

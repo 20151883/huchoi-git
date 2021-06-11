@@ -3,7 +3,7 @@
 ZombieHorde::ZombieHorde(int N) :num_of_zombies(N), type("NOTYPE")
 {
     srand((unsigned int)time(NULL));
-    p_zombies = new Zombie[N];
+	Zombie **arr = new Zombie*[N];
     int idx = 0;
     std::string name;
     std::string type;
@@ -11,21 +11,23 @@ ZombieHorde::ZombieHorde(int N) :num_of_zombies(N), type("NOTYPE")
     {
         name = this->random();
         type = this->random();
-        type.append("type");
-        const Zombie &ref = Zombie(type, name);
-        this->p_zombies[idx] = ref;
+        type.append(" type");
+        arr[idx] = new Zombie(type, name);
         idx++;
     }
+	this->p_zombies = arr;
 }
 ZombieHorde::~ZombieHorde()
 {
-    delete []p_zombies;
+	for (int i = 0;i < this->num_of_zombies;i++)
+		delete (this->p_zombies[i]);
+	delete (this->p_zombies);
 }
 void    ZombieHorde::announce()//all of zombies announec....
 {
     int idx = 0;
     while (idx < num_of_zombies)
-        p_zombies[idx++].announce();
+        p_zombies[idx++]->announce();
 }
 
 std::string	ZombieHorde::random()
