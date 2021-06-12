@@ -53,9 +53,9 @@ void    CRAPPY::right_assign(std::string &buf) const
 
 void    CRAPPY::search(int index) const
 {
-	int size;
 	std::string buf;
-	buf.insert(0, 1, index + '0');
+	int start = 0;
+	buf.insert(start, 1, index + '0');
 	right_assign(buf);
 	std::cout<<buf<<"|";
 

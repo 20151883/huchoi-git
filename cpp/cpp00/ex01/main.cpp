@@ -4,7 +4,6 @@ int main(void)
 {
     book var;
     std::string cmd;
-    int index;
     while (1)
     {
         std::cout<<"INPUT YOUR CMD : "<<std::endl;
@@ -18,7 +17,7 @@ int main(void)
             std::getline(std::cin, cmd);
 			char *str = new char(cmd.size() + 1);
 			std::strcpy(str, cmd.c_str());
-			var.print_one(std::atoi(str));
+			var.print_one(std::atoi(cmd.to_s));
 			free(str);
         }
 		else if (!cmd.compare(0, 5, "EXIT"))
