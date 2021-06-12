@@ -1,34 +1,62 @@
 #include "FragTrap.hpp"
+#include <ctime>
 
-void	FragTrap::rangedAttack(std::string const & target)
+FragTrap::FragTrap(const char *name):ClapTrap()
 {
-	std::cout<<"FR4G-TP <"<<Name<<"> attacks <"<<target<<"> at range, causing <"<<Ranged_attack_damage<<"> points of damage!"<<std::endl;
+	Name = name;
+	Hit_point = 100;
+	Max_hit_points= 100;
+	Energy_points=100;
+	Max_energy_points = 100;
+	Level = 1;
+	Melee_attack_damage = 30;
+	Ranged_attack_damage = 20;
+	Armor_damage_reduction = 5;
+	srand(time(NULL));
+	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
 
-
-void	FragTrap::meleeAttack(std::string const & target)
+FragTrap::FragTrap(const FragTrap &src):ClapTrap()
 {
-	std::cout<<"FR4G-TP <"<<Name<<"> attacks <"<<target<<"> at melee, causing <"<<Ranged_attack_damage<<"> points of damage!"<<std::endl;
+	Max_hit_points= 100;
+	Max_energy_points = 100;
+	Melee_attack_damage = 30;
+	Ranged_attack_damage = 20;
+	Armor_damage_reduction = 5;
+	Hit_point = src.Hit_point;
+	Energy_points = src.Energy_points;
+	Level = src.Level;
+	Name = src.Name;
+	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
 
-void	FragTrap::takeDamage(unsigned int amount)
+FragTrap::~FragTrap()
 {
-	if (amount >= Armor_damage_reduction)
-		amount -= Armor_damage_reduction;
+	std::cout<<"the FragTrap("<<Name<< ") is disappeared!!!!"<<std::endl;
+}
+
+FragTrap &FragTrap::operator=(FragTrap &src)
+{
+	Hit_point = src.Hit_point;
+	Energy_points = src.Energy_points;
+	Level = src.Level;
+	Name = src.Name;
+	return (*this);
+}
+
+void	FragTrap::vaulthunter_dot_exe(std::string const & target)
+{
+	std::string arr[5];
+	arr[0] ="Miniontrap";
+	arr[1] = "Meat unicycle";
+	arr[2] = "Funzerker";
+	arr[3] = "Mechomagician";
+	arr[4] = "Shhhh....trap";
+	if (Energy_points < 25)
+		std::cout<<"you have too few ernery to use vaulthunter_dot_exe skill"<<std::endl;
 	else
-		amount = 0;
-	if (Hit_point <= amount)
-		Hit_point = amount;
-	Hit_point -= amount;
-	std::cout<<"FR4G-TP <"<<Name<<"> attacked by someone,and caused <"<<amount<<"> points of damage!"<<std::endl;
-	std::cout<<"and your hit point is "<<Hit_point<<std::endl;
-}
-
-void	FragTrap::beRepaired(unsigned int amount)
-{
-	if (amount + Hit_point > Max_hit_points)
-		amount = Max_hit_points - Hit_point;
-	Hit_point += amount;
-	std::cout<<"FR4G-TP <"<<Name<<"> repaired by angel,and repaired <"<<amount<<"> points of hp!"<<std::endl;
-	std::cout<<"and your hit point is "<<Hit_point<<std::endl;
+	{
+		this->Energy_points -= 25;
+		std::cout<<"FR4G-TP <"<<Name<<"> attacks <"<<target<<"> at "<<arr[rand()%5]<<", causing <"<<25<<"> points of damage!"<<std::endl;
+	}
 }

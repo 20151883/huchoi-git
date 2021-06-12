@@ -4,12 +4,12 @@
 #define _ClapTrap_
 class ClapTrap{
 	protected:
+		std::string	Name;
 		unsigned int Hit_point;
 		unsigned int Max_hit_points;
 		unsigned int Energy_points;
 		unsigned int Max_energy_points;
 		unsigned int Level;
-		std::string Name;
 		unsigned int Melee_attack_damage;
 		unsigned int Ranged_attack_damage;
 		unsigned int Armor_damage_reduction;
@@ -47,9 +47,9 @@ class ClapTrap{
 			Armor_damage_reduction = src.Armor_damage_reduction;
 			return (*this);
 		}
-		virtual void	rangedAttack(std::string const & target) = 0;
-		virtual void	meleeAttack(std::string const & target) = 0;
-		virtual void	takeDamage(unsigned int amount) = 0;
-		virtual void	beRepaired(unsigned int amount) = 0;
+		 void	rangedAttack(std::string const & target);
+		 void	meleeAttack(std::string const & target);
+		 void	takeDamage(unsigned int amount);
+		 void	beRepaired(unsigned int amount);
 };
 #endif
