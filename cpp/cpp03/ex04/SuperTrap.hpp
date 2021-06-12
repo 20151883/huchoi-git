@@ -12,9 +12,9 @@ class SuperTrap : public FragTrap, public NinjaTrap
 {
     public:
         SuperTrap();
-        SuperTrap(std::string name);
+        SuperTrap(const char * name);
         SuperTrap(const SuperTrap&);
         virtual ~SuperTrap();
-        SuperTrap &operator=(const SuperTrap& op);
+        //SuperTrap &operator=(const SuperTrap& op);
 };
 #endif

@@ -14,7 +14,8 @@ class ClapTrap{
 		unsigned int Ranged_attack_damage;
 		unsigned int Armor_damage_reduction;
 	public:
-		ClapTrap(void);
+		ClapTrap();
+		ClapTrap(unsigned int, unsigned int, unsigned int,unsigned int,unsigned int,const char *,unsigned int,unsigned int,unsigned int);
 		ClapTrap(ClapTrap &src);
 		virtual ~ClapTrap();
 		virtual ClapTrap &operator=(ClapTrap &src);

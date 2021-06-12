@@ -26,22 +26,22 @@ SuperTrap::SuperTrap(const char *name)
     std::cout << "Super Trap created" << std::endl;
 }
 
-SuperTrap::SuperTrap(const SuperTrap& op)
+/*SuperTrap::SuperTrap(const SuperTrap& op)
 :
     ClapTrap(op)
 {
     std::cout << "Super Trap Copied !" << std::endl;
-}
+}*/
 
 SuperTrap::~SuperTrap()
 {
     std::cout << "Super Trap Destroyed !" << std::endl;
 }
 
-SuperTrap & SuperTrap::operator=(const SuperTrap& op)
-{
-    if (this == &op)
-        return (*this);
-    ClapTrap::operator=(op);
-    return (*this);
-}
+//SuperTrap & SuperTrap::operator=(const SuperTrap& op)
+//{
+ //   if (this == &op)
+//        return (*this);
+//    ClapTrap::operator=(op);
+//    return (*this);
+//}

@@ -1,6 +1,4 @@
-#include "NinjaTrap.hpp"
 #include "SuperTrap.hpp"
-#include "ClapTrap.hpp"
 #include <typeinfo>
 int main()
 {
@@ -11,8 +9,8 @@ int main()
     NinjaTrap ninj("Ninja");
 
     super.ninjaShoebox(scav);
-    super.ninjaShoebox(ninj);
-    super.vaulthunter_dot_exe(ninj.getName());
+    //super.ninjaShoebox(ninj);
+    //super.vaulthunter_dot_exe(ninj.getName());
 
 	std::cout << std::endl;
     return (0);

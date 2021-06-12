@@ -15,7 +15,11 @@ FragTrap::FragTrap(const char *name):ClapTrap()
 	srand(time(NULL));
 	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
-
+FragTrap::FragTrap(void)
+{
+	Name = "no name";
+	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
+}
 FragTrap::FragTrap(const FragTrap &src):ClapTrap()
 {
 	Max_hit_points= 100;
