@@ -1,9 +1,19 @@
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
-
-int main(void)
+#include "NinjaTrap.hpp"
+#include "SuperTrap.hpp"
+#include "ClapTrap.hpp"
+#include <typeinfo>
+int main()
 {
-	FragTrap test;
-	ScavTrap test1;
-	return (0);
+	std::cout << std::endl;
+
+    SuperTrap super("Super");
+    ScavTrap scav("Scav");
+    NinjaTrap ninj("Ninja");
+
+    super.ninjaShoebox(scav);
+    super.ninjaShoebox(ninj);
+    super.vaulthunter_dot_exe(ninj.getName());
+
+	std::cout << std::endl;
+    return (0);
 }

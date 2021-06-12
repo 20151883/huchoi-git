@@ -1,9 +1,12 @@
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "NinjaTrap.hpp"
+
 
 int main(void)
 {
-	FragTrap test;
-	ScavTrap test1;
+	NinjaTrap ninja("ninja");
+	FragTrap test("test");
+	ScavTrap test1("test1");
+	ninja.ninjaShoebox(test);
+	ninja.ninjaShoebox(test1);
 	return (0);
 }

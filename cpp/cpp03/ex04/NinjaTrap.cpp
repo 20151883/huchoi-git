@@ -1,34 +1,59 @@
 #include "NinjaTrap.hpp"
 
-void	NinjaTrap::rangedAttack(std::string const & target)
+NinjaTrap::NinjaTrap(void)
+{std::cout<<"the NinjaTrap (NULL) is appeared!!!!"<<std::endl;}
+
+NinjaTrap::NinjaTrap(const char *name)
 {
-	std::cout<<"FR4G-TP <"<<Name<<"> attacks <"<<target<<"> at range, causing <"<<Ranged_attack_damage<<"> points of damage!"<<std::endl;
+	Name = name;
+	Hit_point = 60;
+	Max_hit_points= 60;
+	Energy_points=120;
+	Max_energy_points = 120;
+	Level = 1;
+	Melee_attack_damage = 60;
+	Ranged_attack_damage = 5;
+	Armor_damage_reduction = 0;
+	std::cout<<"the NinjaTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
 
-
-void	NinjaTrap::meleeAttack(std::string const & target)
+NinjaTrap::NinjaTrap(NinjaTrap &src)
 {
-	std::cout<<"FR4G-TP <"<<Name<<"> attacks <"<<target<<"> at melee, causing <"<<Ranged_attack_damage<<"> points of damage!"<<std::endl;
+	Max_hit_points= 60;
+	Max_energy_points = 120;
+	Melee_attack_damage = 60;
+	Ranged_attack_damage = 5;
+	Armor_damage_reduction = 0;
+	Hit_point = src.Hit_point;
+	Energy_points = src.Energy_points;
+	Level = src.Level;
+	Name = src.Name;
+	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
 
-void	NinjaTrap::takeDamage(unsigned int amount)
+NinjaTrap::~NinjaTrap()
 {
-	if (amount >= Armor_damage_reduction)
-		amount -= Armor_damage_reduction;
-	else
-		amount = 0;
-	if (Hit_point <= amount)
-		Hit_point = amount;
-	Hit_point -= amount;
-	std::cout<<"FR4G-TP <"<<Name<<"> attacked by someone,and caused <"<<amount<<"> points of damage!"<<std::endl;
-	std::cout<<"and your hit point is "<<Hit_point<<std::endl;
+	std::cout<<"the NinjaTrap("<<Name<< ") is disappeared!!!!"<<std::endl;
 }
 
-void	NinjaTrap::beRepaired(unsigned int amount)
+NinjaTrap &NinjaTrap::operator=(NinjaTrap &src)
 {
-	if (amount + Hit_point > Max_hit_points)
-		amount = Max_hit_points - Hit_point;
-	Hit_point += amount;
-	std::cout<<"FR4G-TP <"<<Name<<"> repaired by angel,and repaired <"<<amount<<"> points of hp!"<<std::endl;
-	std::cout<<"and your hit point is "<<Hit_point<<std::endl;
+	Hit_point = src.Hit_point;
+	Max_hit_points = src.Max_hit_points;
+	Energy_points = src.Energy_points;
+	Max_energy_points = src.Energy_points;
+	Level = src.Level;
+	Name = src.Name;
+	Melee_attack_damage = src.Melee_attack_damage;
+	Ranged_attack_damage = src.Ranged_attack_damage;
+	Armor_damage_reduction = src.Armor_damage_reduction;
+	return (*this);
+}
+void	NinjaTrap::ninjaShoebox(FragTrap &ref)
+{
+	ref.vaulthunter_dot_exe("enemy1");
+}
+void	NinjaTrap::ninjaShoebox(ScavTrap &ref)
+{
+	ref.challengeNewcomer("enemy2");
 }

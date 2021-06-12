@@ -1,5 +1,37 @@
 #include "ClapTrap.hpp"
-
+ClapTrap::ClapTrap(void)
+{
+	std::cout<<"the ClapTrap's constructor!!!!"<<std::endl;
+}
+ClapTrap::ClapTrap(ClapTrap &src)
+{
+	Hit_point = src.Hit_point;
+	Max_hit_points = src.Max_hit_points;
+	Energy_points = src.Energy_points;
+	Max_energy_points = src.Energy_points;
+	Level = src.Level;
+	Name = src.Name;
+	Melee_attack_damage = src.Melee_attack_damage;
+	Ranged_attack_damage = src.Ranged_attack_damage;
+	Armor_damage_reduction = src.Armor_damage_reduction;
+}
+ ClapTrap::~ClapTrap()
+{
+	std::cout<<"the ClapTrap's destructor!!!!"<<std::endl;
+}
+ ClapTrap &ClapTrap::operator=(ClapTrap &src)
+{
+	Hit_point = src.Hit_point;
+	Max_hit_points = src.Max_hit_points;
+	Energy_points = src.Energy_points;
+	Max_energy_points = src.Energy_points;
+	Level = src.Level;
+	Name = src.Name;
+	Melee_attack_damage = src.Melee_attack_damage;
+	Ranged_attack_damage = src.Ranged_attack_damage;
+	Armor_damage_reduction = src.Armor_damage_reduction;
+	return (*this);
+}
 void	ClapTrap::rangedAttack(std::string const & target)
 {
 	std::cout<<"FR4G-TP <"<<Name<<"> attacks <"<<target<<"> at range, causing <"<<Ranged_attack_damage<<"> points of damage!"<<std::endl;
