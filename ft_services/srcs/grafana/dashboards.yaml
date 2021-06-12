@@ -1,0 +1,5 @@
+apiVersion: 1
+providers:
+- name: 'mkristie dashboard'
+  options:
+    path: /var/lib/grafana/dashboards
