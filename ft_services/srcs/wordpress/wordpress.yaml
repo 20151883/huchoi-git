@@ -31,9 +31,9 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - image: wordpress
+      - image: build_wordpress
         name: wordpress
-        imagePullPolicy: Always
+        imagePullPolicy: Never
         ports:
         - containerPort: 5050
         livenessProbe:

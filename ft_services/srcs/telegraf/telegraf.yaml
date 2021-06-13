@@ -19,8 +19,8 @@ spec:
       restartPolicy: Always
       containers:
         - name: telegraf-container
-          image: telegraf
-          imagePullPolicy: Always
+          image: build_telegraf
+          imagePullPolicy: Never
           volumeMounts:
             - name: docker-socket
               mountPath: /var/run/docker.sock
