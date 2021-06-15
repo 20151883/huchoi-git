@@ -1,21 +1,21 @@
-# ################ # 
+# ################ #
 #    ID    : admin #
 # psaaword : admin #
-# ################ # 
+# ################ #
 
-# ################### # 
-# port : 192.168.49.3 #
+# ################### #
+# port : 192.168.99.117 #
 # ################### #
 
-# ############# # 
+# ############# #
 # ssh resetting #
 # ############# #
-ssh-keygen -R 192.168.49.3
+ssh-keygen -R 192.168.99.117
 
 # ########## #
 # replace IP #
 # ########## #
-sed -i "s/https:\/\/localhost/http:\/\/192.168.49.3:5050/g" wordpress.sql
+sed -i "s/https:\/\/localhost/http:\/\/192.168.99.117:5050/g" wordpress.sql
 
 # ################# #
 # upload / download #
@@ -30,7 +30,7 @@ kubectl exec deploy/wordpress -- pkill php-fpm7
 kubectl exec deploy/phpmyadmin -- pkill php-fpm7
 kubectl exec deploy/grafana -- pkill grafana
 kubectl exec deploy/ftps -- pkill vsftpd
-kubectl exec deploy/mysql -- pkill mariadb 
+kubectl exec deploy/mysql -- pkill mariadb
 kubectl exec deploy/influxdb -- pkill influxd
 kubectl exec deploy/nginx -- pkill nginx
 kubectl get po
@@ -45,9 +45,8 @@ export KUBE_EDITOR="code -w"
 export MACHINE_STORAGE_PATH=~/goinfre/youngrch/.docker
 # $ env
 현재 세션에 정의된 환경 변수들을 화면에 출력
-# $ export NAME=VALUE 
+# $ export NAME=VALUE
 NAME이라는 환경변수에 VALUE라는 값을 지정
 # $ unset NAME
-삭제 
- curl -Ik 
- 
+삭제
+ curl -Ik

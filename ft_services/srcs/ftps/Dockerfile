@@ -1,11 +1,11 @@
-FROM	alpine
+FROM	alpine:3.12.0
 # instal basic
 RUN		apk upgrade
 RUN		apk add openssl vsftpd
 # ssl
 RUN     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
         -keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt \
-		-subj '/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=youngrch/CN=192.168.49.3'
+		-subj '/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=youngrch/CN=192.168.99.117'
 # storage folder
 RUN     mkdir -p /var/ftp
 # copy

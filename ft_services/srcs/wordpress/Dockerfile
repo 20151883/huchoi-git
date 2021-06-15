@@ -1,4 +1,4 @@
-FROM    alpine
+FROM    alpine:3.12.0
 #install basic
 RUN     apk update
 RUN     apk add wget nginx
