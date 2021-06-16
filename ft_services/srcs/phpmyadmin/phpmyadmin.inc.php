@@ -1,6 +1,6 @@
 <?php
 
-$cfg['blowfish_secret'] = '';
+$cfg['blowfish_secret'] = 'Ih8,y]8//tN0s3TEJii1CDK.JXgQ7v0Z';
 
 /**
  * Only one server
@@ -17,7 +17,8 @@ $cfg['Servers'][$i]['AllowNoPassword'] = false;
  * Variable definition
  */
 $cfg['Servers'][$i]['host'] = 'mysql';
-$cfg['Servers'][$i]['port'] = '3306';
+#dns시스템을 제공하는듯
+#$cfg['Servers'][$i]['port'] = '3306';
 $cfg['Servers'][$i]['user'] = 'admin';
 $cfg['Servers'][$i]['password'] = 'admin';
 

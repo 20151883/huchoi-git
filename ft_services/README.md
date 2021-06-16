@@ -42,7 +42,7 @@ export MINIKUBE_HOME="$HOME/goinfre/.minikube"
 export KUBECONFIG="$MINIKUBE_HOME/.kube/config"
 export MINIKUBE_ACTIVE_DOCKERD=minikube
 export KUBE_EDITOR="code -w"
-export MACHINE_STORAGE_PATH=~/goinfre/youngrch/.docker
+export MACHINE_STORAGE_PATH=~/goinfre/huchoi/.docker
 # $ env
 현재 세션에 정의된 환경 변수들을 화면에 출력
 # $ export NAME=VALUE
