@@ -12,7 +12,6 @@
 # **************************************************************************** #
 
 # https://github.com/alexandregv/42toolbox
-
 # Ensure USER variabe is set
 [ -z "${USER}" ] && export USER=$(whoami)
 
@@ -72,4 +71,5 @@ open -g -a Docker
 
 echo "${cyan}Docker${blue} is now starting! Please report any bug to: ${cyan}aguiot--${reset}"
 
-export MINIKUBE_HOME="$HOME/goinfre/.minikube"
+echo "init the env variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!	"
+#export MINIKUBE_HOME="$HOME/goinfre/.minikube"

@@ -12,6 +12,8 @@ define( 'DB_PASSWORD', 'admin' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'mysql' );
+#mysql의 포트번호는 3306이므로 디폴트로 설정될듯
+#여기서 설정할때 ip주소와 port번호 같이 써도 되긴하는데, port번호가 3306으로 고정이니까 그냥 ip주소만 써줘도 될듯
 
 define('FS_METHOD', 'direct');
 
@@ -38,7 +40,7 @@ define('AUTH_SALT',        '#+b]#PFGfDJM*3u@AR*Ft%]u0~1&kvXw-8pfjRjip+=#.7FR 5F;
 define('SECURE_AUTH_SALT', '+:.DMZdxPO,Y)=+n5qL{.i[p64H`C5=0>?+~0,Ie*;`4I8]K2||[s4jKY+%t].:3');
 define('LOGGED_IN_SALT',   'SQi`3MGp|{,kb 1<J.0h?Y33#=/1u+6rdKjIf3QIImO|mSj$g8~RNX5mu$d[6;/~');
 define('NONCE_SALT',       's:H(j-OIjSGXgX~aQ7*t;<+*Mm|K[pjPsf~:2wy:e`+D9,=Hm0q3eK9xtXNPH5^`');
-	
+
 
 /**#@-*/
 

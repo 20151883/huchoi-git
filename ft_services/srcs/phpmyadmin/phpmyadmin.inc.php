@@ -18,7 +18,7 @@ $cfg['Servers'][$i]['AllowNoPassword'] = false;
  */
 $cfg['Servers'][$i]['host'] = 'mysql';
 #dns시스템을 제공하는듯
-#$cfg['Servers'][$i]['port'] = '3306';
+#$cfg['Servers'][$i]['port'] = '3306'; 이 부분 정의안하면 자동으로 3306으로 설정됨.
 $cfg['Servers'][$i]['user'] = 'admin';
 $cfg['Servers'][$i]['password'] = 'admin';
 

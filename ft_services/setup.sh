@@ -14,6 +14,7 @@ minikube dashboard &
 eval $(minikube docker-env)
 # docker build
 sleep 30
+#mv ./metallb_template.yaml ./srcs/metallb/metallb.yaml && minikube ip >> ./srcs/metallb/metallb.yaml
 clear
 echo "${GREEN}[building nginx....]${END}"
 echo "${RED}[🐳][ ][ ][ ][ ][ ][ ]${END}"
