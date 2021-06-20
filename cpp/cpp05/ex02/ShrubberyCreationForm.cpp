@@ -39,17 +39,25 @@ static void make_tree(std::string filename)
 }
 int ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if (getSign() == false)
-	{
-		std::cout<<"this form is not signed!! SIGN FIRST!!!!!"<<std::endl;
-		throw SignSkipxception();
+	try{
+		if (getSign() == false)
+		{
+			throw std::exception();
+		}
+		else if (getExecGrade() < executor.getGrade())
+		{
+			throw GradeTooLowException();
+		}
+		make_tree(this->target);
 	}
-	else if (getExecGrade() < executor.getGrade())
+	catch(GradeTooLowException &e)
 	{
 		std::cout<<"executor's grade is lower than need grade "<<std::endl;
-		throw GradeTooLowException();
 	}
-	make_tree(this->target);
+	catch(std::exception &e)
+	{
+		std::cout<<"this form is not signed!! SIGN FIRST!!!!!"<<std::endl;
+	}
 	return 1
 }
 

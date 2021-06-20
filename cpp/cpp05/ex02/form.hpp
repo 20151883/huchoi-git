@@ -1,16 +1,15 @@
 #ifndef __FORM__
 #define __FORM__
-#include <iostream>
-#include <exception>
+class Form;
 #include "Bureaucrat.hpp"
-class Bureaucrat;
+
 class Form
 {
 	private:
-		std::string name;
+		const std::string name;
 		bool sign;
-		int sign_bound;
-		int exec_bound;
+		const int sign_bound;
+		const int exec_bound;
 	public:
 		Form(const char *name, int sign_bound, int exec_bound) :name(name), sign_bound(sign_bound), exec_bound(exec_bound), sign(false)
 		{
@@ -22,8 +21,6 @@ class Form
 				throw GradeTooHighException();
 			if (exec_bound >150)
 				throw GradeTooLowException();
-			this->sign_bound = sign_bound;
-			this->exec_bound = exec_bound;
 		}
 		class GradeTooHighException : public std::exception
 		{
@@ -33,7 +30,6 @@ class Form
         			return "TOO HIGH  BOUND";
     			}
 		};
-
 		class GradeTooLowException : public std::exception
 		{
 			public:
@@ -42,22 +38,24 @@ class Form
         			return "TOO LOW  BOUND";
     			}
 		};
-
-		class SignSkipxception : public std::exception
-		{
-			public:
-				const char * what() const _NOEXCEPT//오버라이딩
-    			{
-        			return "sign action is skiped SIGN FIRST!!!";
-    			}
-		};
 		void beSigned(Bureaucrat &src);
-		std::string getName() const;
-		bool getSign() const;
-		void setSign(int num);
-		int getSignGrade() const;
-		int getExecGrade() const;
-		virtual int execute(Bureaucrat const & executor) const = 0;
+		virtual void execute(Bureaucrat const & executor) const;
+		std::string getName()
+		{
+			return this->name;
+		}
+		bool getSign()
+		{
+			return this->sign;
+		}
+		int getSignGrade()
+		{
+			return this->sign_bound;
+		}
+		int getExecGrade()
+		{
+			return this->exec_bound;
+		}
 };
 std::ostream &operator<<(std::ostream &ost, Form &src);
 
