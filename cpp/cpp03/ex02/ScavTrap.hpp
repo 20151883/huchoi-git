@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
-
+#ifndef __SCAVTRAP__
+#define __SCAVTRAP__
 class ScavTrap:public ClapTrap
 {
 	public:
@@ -7,5 +8,6 @@ class ScavTrap:public ClapTrap
 		ScavTrap(const ScavTrap &src);
 		~ScavTrap();
 		ScavTrap &operator=(ScavTrap &src);
-		void	challengeNewcomer(std::string const & target);
+		void	challengeNewcomer();
 };
+#endif

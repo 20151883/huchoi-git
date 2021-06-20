@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	FragTrap test("test");
+	FragTrap test("huchoi");
 	test.rangedAttack("enemy-1");
 	test.meleeAttack("enemy-2");
 	test.takeDamage(120);

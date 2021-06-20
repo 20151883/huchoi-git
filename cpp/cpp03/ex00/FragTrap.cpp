@@ -69,7 +69,7 @@ FragTrap &FragTrap::operator=(FragTrap &src)
 void	FragTrap::vaulthunter_dot_exe(std::string const & target)
 {
 	std::string arr[5];
-	arr[0] ="Miniontrap";
+	arr[0] = "Miniontrap";
 	arr[1] = "Meat unicycle";
 	arr[2] = "Funzerker";
 	arr[3] = "Mechomagician";

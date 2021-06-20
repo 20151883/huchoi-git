@@ -1,20 +1,14 @@
 #include "ClapTrap.hpp"
+
 ClapTrap::ClapTrap(void)
 {
 	std::cout<<"the ClapTrap's constructor!!!!"<<std::endl;
 }
-ClapTrap::ClapTrap(unsigned int a, unsigned int b, unsigned int c,unsigned int d ,unsigned int e ,const char *f,unsigned int g ,unsigned int h,unsigned int i)
+ClapTrap::ClapTrap(const char *name)
 {
-	Name = f;
-	Hit_point = a;
-	Max_hit_points= b;
-	Energy_points=c;
-	Max_energy_points = d;
-	Level = e;
-	Melee_attack_damage =g;
-	Ranged_attack_damage = h;
-	Armor_damage_reduction = i;
+	this->Name = name;
 }
+
 ClapTrap::ClapTrap(ClapTrap &src)
 {
 	Hit_point = src.Hit_point;
@@ -44,6 +38,12 @@ ClapTrap::ClapTrap(ClapTrap &src)
 	Armor_damage_reduction = src.Armor_damage_reduction;
 	return (*this);
 }
+
+std::string		ClapTrap::getName()
+{
+	return this->Name;
+}
+
 void	ClapTrap::rangedAttack(std::string const & target)
 {
 	std::cout<<"FR4G-TP <"<<Name<<"> attacks <"<<target<<"> at range, causing <"<<Ranged_attack_damage<<"> points of damage!"<<std::endl;

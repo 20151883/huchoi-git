@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
-
+#ifndef __FRAGTRAP__
+#define __FRAGTRAP__
 class FragTrap:public ClapTrap
 {
 	public:
@@ -9,3 +10,4 @@ class FragTrap:public ClapTrap
 		FragTrap &operator=(FragTrap &src);
 		void	vaulthunter_dot_exe(std::string const & target);
 };
+#endif

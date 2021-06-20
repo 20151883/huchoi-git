@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(ClapTrap &src)
 {
 	std::cout<<"the ClapTrap's destructor!!!!"<<std::endl;
 }
- ClapTrap &ClapTrap::operator=(ClapTrap &src)
+ClapTrap &ClapTrap::operator=(ClapTrap &src)
 {
 	Hit_point = src.Hit_point;
 	Max_hit_points = src.Max_hit_points;

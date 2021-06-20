@@ -44,7 +44,7 @@ ScavTrap &ScavTrap::operator=(ScavTrap &src)
 	return (*this);
 }
 
-void ScavTrap::challengeNewcomer(std::string const & target)
+void ScavTrap::challengeNewcomer()
 {
 	std::string arr[5];
 	arr[0] ="MINISHELL is chocolate";
@@ -57,6 +57,6 @@ void ScavTrap::challengeNewcomer(std::string const & target)
 	else
 	{
 		this->Energy_points -= 25;
-		std::cout<<"FR4G-TP <"<<Name<<"> says "<<arr[rand()%5]<<" to "<<target<<", causing a fun....."<<std::endl;
+		std::cout<<"FR4G-TP <"<<Name<<"> says "<<arr[rand()%5]<<std::endl;
 	}
 }

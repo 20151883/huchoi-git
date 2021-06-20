@@ -49,11 +49,22 @@ NinjaTrap &NinjaTrap::operator=(NinjaTrap &src)
 	Armor_damage_reduction = src.Armor_damage_reduction;
 	return (*this);
 }
+
 void	NinjaTrap::ninjaShoebox(FragTrap &ref)
 {
 	ref.vaulthunter_dot_exe("enemy1");
 }
 void	NinjaTrap::ninjaShoebox(ScavTrap &ref)
 {
-	ref.challengeNewcomer("enemy2");
+	ref.challengeNewcomer();
+}
+
+void	NinjaTrap::ninjaShoebox(NinjaTrap &ref)
+{
+	std::cout<<"this is "<<ref.Name<<"ninjaTrap class and Ninjashoebox is called"<<std::endl;
+}
+
+void	NinjaTrap::ninjaShoebox(ClapTrap &ref)
+{
+	std::cout<<"this is "<<ref.getName()<<"ClapTrap class and Ninjashoebox is called"<<std::endl;
 }

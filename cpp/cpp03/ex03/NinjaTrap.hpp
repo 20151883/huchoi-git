@@ -8,15 +8,7 @@
 class NinjaTrap :public ClapTrap
 {
 	private:
-		unsigned int Hit_point;
-		unsigned int Max_hit_points;
-		unsigned int Energy_points;
-		unsigned int Max_energy_points;
-		unsigned int Level;
-		std::string Name;
-		unsigned int Melee_attack_damage;
-		unsigned int Ranged_attack_damage;
-		unsigned int Armor_damage_reduction;
+
 	public:
 		NinjaTrap(void);
 		NinjaTrap(const char *name);
@@ -25,5 +17,7 @@ class NinjaTrap :public ClapTrap
 		NinjaTrap &operator=(NinjaTrap &src);
 		void			ninjaShoebox(FragTrap &ref);
 		void			ninjaShoebox(ScavTrap &ref);
+		void			ninjaShoebox(NinjaTrap &ref);
+		void			ninjaShoebox(ClapTrap &ref);
 };
 #endif

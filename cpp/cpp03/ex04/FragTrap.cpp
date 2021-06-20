@@ -15,10 +15,9 @@ FragTrap::FragTrap(const char *name):ClapTrap()
 	srand(time(NULL));
 	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
-FragTrap::FragTrap(void)
+FragTrap::FragTrap():ClapTrap()
 {
-	Name = "no name";
-	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
+	std::cout<<"this is FRAGTrap constructure"<<std::endl;
 }
 FragTrap::FragTrap(const FragTrap &src):ClapTrap()
 {

@@ -1,28 +1,29 @@
 #include "SuperTrap.hpp"
 
-SuperTrap::SuperTrap()
-:
-    ClapTrap(),
-    FragTrap(),
-    NinjaTrap()
-{}
-
-SuperTrap::SuperTrap(const char *name)
-:
-    ClapTrap(
-        100,
-        10,
-        120,
-        120,
-        1,
-        name,
-        60,
-        30,
-        5
-    ),
-    FragTrap(name),
-    NinjaTrap(name)
+SuperTrap::SuperTrap():ClapTrap("NoName"),FragTrap(),NinjaTrap()
 {
+	Hit_point = 100;
+	Max_hit_points = 10;
+	Energy_points = 120;
+	Max_energy_points = 120;
+	Level = 1;
+	Name = "NoName";
+	Melee_attack_damage = 60;
+	Ranged_attack_damage = 30;
+	Armor_damage_reduction = 5;
+}
+
+SuperTrap::SuperTrap(const char *name):ClapTrap(),FragTrap(),NinjaTrap()
+{
+	Hit_point = 100;
+	Max_hit_points = 10;
+	Energy_points = 120;
+	Max_energy_points = 120;
+	Level = 1;
+	Name = name;
+	Melee_attack_damage = 60;
+	Ranged_attack_damage = 30;
+	Armor_damage_reduction = 5;
     std::cout << "Super Trap created" << std::endl;
 }
 

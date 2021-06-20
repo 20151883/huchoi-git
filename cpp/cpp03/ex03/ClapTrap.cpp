@@ -3,6 +3,11 @@ ClapTrap::ClapTrap(void)
 {
 	std::cout<<"the ClapTrap's constructor!!!!"<<std::endl;
 }
+ClapTrap::ClapTrap(const char *name)
+{
+	this->Name = name;
+}
+
 ClapTrap::ClapTrap(ClapTrap &src)
 {
 	Hit_point = src.Hit_point;
@@ -32,6 +37,12 @@ ClapTrap::ClapTrap(ClapTrap &src)
 	Armor_damage_reduction = src.Armor_damage_reduction;
 	return (*this);
 }
+
+std::string		ClapTrap::getName()
+{
+	return this->Name;
+}
+
 void	ClapTrap::rangedAttack(std::string const & target)
 {
 	std::cout<<"FR4G-TP <"<<Name<<"> attacks <"<<target<<"> at range, causing <"<<Ranged_attack_damage<<"> points of damage!"<<std::endl;

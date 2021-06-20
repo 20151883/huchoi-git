@@ -5,7 +5,7 @@
 # include <string>
 # include "FragTrap.hpp"
 # include "NinjaTrap.hpp"
-#include "ClapTrap.hpp"
+# include "ClapTrap.hpp"
 class SuperTrap;
 
 class SuperTrap : public FragTrap, public NinjaTrap

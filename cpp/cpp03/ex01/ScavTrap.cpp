@@ -1,13 +1,13 @@
 #include "ScavTrap.hpp"
 #include <ctime>
 
-ScavTrap::ScavTrap(const char *name):ClapTrap(), Name(name), Hit_point(100), Max_hit_points(100), Energy_points(50), Max_energy_points(50), Level(1), \
+ScavTrap::ScavTrap(const char *name):Name(name), Hit_point(100), Max_hit_points(100), Energy_points(50), Max_energy_points(50), Level(1), \
 									Melee_attack_damage(20), Ranged_attack_damage(15), Armor_damage_reduction(3)
 {
 	srand(time(NULL));
 	std::cout<<"the ScavTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
-ScavTrap::ScavTrap(const ScavTrap &src):ClapTrap(),Max_hit_points(100), Max_energy_points(50), \
+ScavTrap::ScavTrap(const ScavTrap &src):Max_hit_points(100), Max_energy_points(50), \
 									Melee_attack_damage(20), Ranged_attack_damage(15), Armor_damage_reduction(3)
 {
 	Hit_point = src.Hit_point;
@@ -67,7 +67,7 @@ ScavTrap &ScavTrap::operator=(ScavTrap &src)
 	return (*this);
 }
 
-void ScavTrap::challengeNewcomer(std::string const & target)
+void ScavTrap::challengeNewcomer()
 {
 	std::string arr[5];
 	arr[0] ="MINISHELL is chocolate";
@@ -80,6 +80,6 @@ void ScavTrap::challengeNewcomer(std::string const & target)
 	else
 	{
 		this->Energy_points -= 25;
-		std::cout<<"FR4G-TP <"<<Name<<"> says "<<arr[rand()%5]<<" to "<<target<<", causing a fun....."<<std::endl;
+		std::cout<<"FR4G-TP <"<<Name<<"> says "<<arr[rand()%5]<<std::endl;
 	}
 }

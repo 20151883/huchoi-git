@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
-#ifndef _ClapTrap_
-#define _ClapTrap_
+#ifndef __CLAPTRAP__
+#define __CLAPTRAP__
 class ClapTrap{
 	protected:
 		std::string	Name;
@@ -17,7 +17,7 @@ class ClapTrap{
 		ClapTrap(void);
 		ClapTrap(ClapTrap &src);
 		virtual ~ClapTrap();
-		virtual ClapTrap &operator=(ClapTrap &src);
+		ClapTrap &operator=(ClapTrap &src);
 		void	rangedAttack(std::string const & target);
 		void	meleeAttack(std::string const & target);
 		void	takeDamage(unsigned int amount);

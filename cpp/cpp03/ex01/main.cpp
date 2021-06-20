@@ -1,21 +1,39 @@
+#include <iostream>
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+
 int main(void)
 {
-	FragTrap test("test");
-	test.rangedAttack("enemy-1");
-	test.meleeAttack("enemy-2");
-	test.takeDamage(120);
-	test.beRepaired(120);
-	test.vaulthunter_dot_exe("enemy-3");
-	std::cout<<"********************************"<<std::endl;
-	ScavTrap var("var");
-	var.rangedAttack("opponent-1");
-	var.meleeAttack("opponent-2");
-	var.takeDamage(120);
-	var.beRepaired(120);
-	var.challengeNewcomer("opponent-3");
-	var.challengeNewcomer("opponent-3");
-	var.challengeNewcomer("opponent-3");
-	return 0;
+	FragTrap frag("FR4G");
+	ScavTrap scav("SC4V");
+
+	srand(time(NULL));
+	frag.vaulthunter_dot_exe("CL4P-TP");
+	frag.meleeAttack("CL4P-TP");
+	frag.rangedAttack("CL4P-TP");
+	frag.takeDamage(24);
+	frag.beRepaired(50);
+	frag.takeDamage(42);
+	frag.takeDamage(100);
+	frag.beRepaired(125);
+	frag.vaulthunter_dot_exe("CL4P-TP");
+	frag.vaulthunter_dot_exe("CL4P-TP");
+	frag.vaulthunter_dot_exe("CL4P-TP");
+	frag.vaulthunter_dot_exe("CL4P-TP");
+
+	std::cout << "---" << std::endl;
+
+	scav.challengeNewcomer();
+	scav.meleeAttack("CL4P-TP");
+	scav.rangedAttack("CL4P-TP");
+	scav.takeDamage(24);
+	scav.beRepaired(50);
+	scav.takeDamage(42);
+	scav.takeDamage(100);
+	scav.beRepaired(125);
+	scav.challengeNewcomer();
+	scav.challengeNewcomer();
+	scav.challengeNewcomer();
+	scav.challengeNewcomer();
+	return (0);
 }
