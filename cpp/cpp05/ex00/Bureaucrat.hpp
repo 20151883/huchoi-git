@@ -4,74 +4,27 @@
 class Bureaucrat
 {
 	private:
-		const std::string	name;
+		std::string	name;
 		int					grade;
 	public:
-		Bureaucrat(const char *name, int grade) :name(name)
-		{
-			if (grade < 1)
-				throw GradeTooLowException();
-			else if (grade > 150)
-				throw GradeTooHighException();
-			this->grade = grade;
-		}
-		Bureaucrat(Bureaucrat &src)
-		{
-
-		}
-		~Bureaucrat()
-		{}
-		Bureaucrat &operator=(Bureaucrat &src)
-		{
-			this->name = src.getName();
-			this->grade = src.getGrade();
-		}
-		std::string getName()
-		{
-			return this->name;
-		}
-		int getGrade()
-		{
-			return this->grade;
-		}
-		void increasegrade()
-		{
-			this->grade -= 1;
-			if (grade < 1)
-				throw GradeTooLowException();
-			else if (grade > 150)
-				throw GradeTooHighException();
-		}
-		void decreasegrade()
-		{
-			this->grade += 1;
-			if (grade < 1)
-				throw GradeTooLowException();
-			else if (grade > 150)
-				throw GradeTooHighException();
-		}
-
-
+		Bureaucrat(const char *name, int grade);
+		Bureaucrat(Bureaucrat &src);
+		~Bureaucrat();
+		Bureaucrat &operator=(Bureaucrat &src);
+		std::string getName();
+		int getGrade();
+		void increasegrade();
+		void decreasegrade();
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				const char * what() const _NOEXCEPT//오버라이딩
-    			{
-        			return "TOO LOW";
-    			}
+				const char * what() const _NOEXCEPT;//오버라이딩
 		};
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				const char * what() const _NOEXCEPT//오버라이딩
-    			{
-        			return "TOO HIGH";
-    			}
+				const char * what() const _NOEXCEPT;//오버라이딩
 		};
 };
 
-std::ostream& operator<<(std::ostream &ost, Bureaucrat &src)
-{
-	printf("<%s>, bureaucrat grade <%d>.", src.getName().c_str(), src.getGrade());
-	return ost;
-}
+std::ostream& operator<<(std::ostream &ost, Bureaucrat &src);

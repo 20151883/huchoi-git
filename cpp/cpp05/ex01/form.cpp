@@ -1,11 +1,13 @@
-#include "form.hpp"
+#include "Form.hpp"
 
 void Form::beSigned(Bureaucrat &src)
 {
 	if (this->sign_bound >= src.getGrade() && this->sign == false)
-	{
 		this->sign = true;
-	}
+	else if (this->sign_bound < src.getGrade())
+		throw GradeTooLowException();
+	else
+		throw std::exception();
 }
 
 std::ostream &operator<<(std::ostream &ost, Form &src)

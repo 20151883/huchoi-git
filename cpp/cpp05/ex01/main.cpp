@@ -1,72 +1,107 @@
-# include "Bureaucrat.hpp"
-# include "form.hpp"
-
-int main()
+#include <iostream>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+int main(void)
 {
-    Form* set = new Form("42seoul", 50, 100);
-    std::cout << *set;
+	Bureaucrat francis("Francis", 100);
+	std::cout << francis << std::endl;
 
-    std::cout << std::endl;
-    Form* high;
-    try
-    {
-       high = new Form("High", 0, 100);
-    }
-    catch(std::exception & e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+	Form form1("Taxes", 100, 50);
+	std::cout << form1 << std::endl;
+	form1.beSigned(francis);
+	std::cout << form1 << std::endl;
 
-    std::cout << std::endl;
-    try
-    {
-       high = new Form("High", 50, 0);
-    }
-    catch(std::exception & e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+	std::cout << "---" << std::endl;
 
-    std::cout << std::endl;
-    Form* low;
-    try
-    {
-       low = new Form("Low", 50, 200);
-    }
-    catch(std::exception & e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+	Form form2("NDA", 99, 50);
+	std::cout << form2 << std::endl;
+	try
+	{
+		francis.signForm(form2);
+	}
+	catch(std::exception const &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << form2 << std::endl;
 
-    std::cout << std::endl;
-    try
-    {
-       low = new Form("Low", 200, 50);
-    }
-    catch(std::exception & e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+	std::cout << "---" << std::endl;
 
-    std::cout << std::endl;
-    Bureaucrat* mike = new Bureaucrat("mike", 5);
-    std::cout << *mike;
-    mike->signForm(*set);
+	Form form3("Other Paper", 101, 50);
+	std::cout << form3 << std::endl;
+	francis.signForm(form3);
+	std::cout << form3 << std::endl;
+	try
+	{
+		francis.signForm(form3);
+	}
+	catch(std::exception const &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	std::cout << form3 << std::endl;
 
-    std::cout << std::endl;
-    std::cout << *set;
+	std::cout << "---" << std::endl;
 
-    std::cout << std::endl;
-    mike->signForm(*set);
+	try
+	{
+		Form formException("NDA", 99, 50);
+		std::cout << formException << std::endl;
+		formException.beSigned(francis);
+		std::cout << formException << std::endl;
+	}
+	catch(std::exception const &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 
-    std::cout << std::endl;
-    Form* set2 = new Form("42paris", 50, 100);
-    Bureaucrat* chuck = new Bureaucrat("chuck", 75);
-    std::cout << *chuck;
-    chuck->signForm(*set2);
+	std::cout << "---" << std::endl;
 
-    delete set;
-    delete mike;
-    delete set2;
-    delete chuck;
+	try
+	{
+		Form formException("Important Form", 1000, 50);
+		std::cout << formException << std::endl;
+	}
+	catch(std::exception const &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << "---" << std::endl;
+
+	try
+	{
+		Form formException("Important Form", 0, 50);
+		std::cout << formException << std::endl;
+	}
+	catch(std::exception const &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << "---" << std::endl;
+
+	try
+	{
+		Form formException("Important Form", 100, 1000);
+		std::cout << formException << std::endl;
+	}
+	catch(std::exception const &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << "---" << std::endl;
+
+	try
+	{
+		Form formException("Important Form", 100, 0);
+		std::cout << formException << std::endl;
+	}
+	catch(std::exception const &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	return (0);
 }

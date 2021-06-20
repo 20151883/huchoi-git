@@ -7,6 +7,7 @@ int main(void)
 		a->increasegrade();
 		a->increasegrade();
 		a->increasegrade();
+		//a->increasegrade();
 		std::cout<<"finish "<<a->getName()<<" "<<a->getGrade()<<std::endl;
 	}
 	catch (std::exception & e)//std::exception
