@@ -1,7 +1,7 @@
 #include "NinjaTrap.hpp"
 #include "FragTrap.hpp"
 NinjaTrap::NinjaTrap(void)
-{std::cout<<"the NinjaTrap (NULL) is appeared!!!!"<<std::endl;}
+{std::cout<<"the NinjaTrap is appeared!!!!"<<std::endl;}
 
 NinjaTrap::NinjaTrap(const char *name)
 {

@@ -1,5 +1,6 @@
 #ifndef __ISPACEMARINE__
 #define __ISPACEMARINE__
+#include <iostream>
 class ISpaceMarine
 {
 	private:

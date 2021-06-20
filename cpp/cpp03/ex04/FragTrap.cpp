@@ -56,7 +56,10 @@ void	FragTrap::vaulthunter_dot_exe(std::string const & target)
 	arr[3] = "Mechomagician";
 	arr[4] = "Shhhh....trap";
 	if (Energy_points < 25)
+	{
+		std::cout<<this->Energy_points<<std::endl;
 		std::cout<<"you have too few ernery to use vaulthunter_dot_exe skill"<<std::endl;
+	}
 	else
 	{
 		this->Energy_points -= 25;

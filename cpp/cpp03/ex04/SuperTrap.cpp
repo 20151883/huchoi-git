@@ -16,7 +16,7 @@ SuperTrap::SuperTrap():ClapTrap("NoName"),FragTrap(),NinjaTrap()
 SuperTrap::SuperTrap(const char *name):ClapTrap(),FragTrap(),NinjaTrap()
 {
 	Hit_point = 100;
-	Max_hit_points = 10;
+	Max_hit_points = 100;
 	Energy_points = 120;
 	Max_energy_points = 120;
 	Level = 1;
@@ -24,7 +24,7 @@ SuperTrap::SuperTrap(const char *name):ClapTrap(),FragTrap(),NinjaTrap()
 	Melee_attack_damage = 60;
 	Ranged_attack_damage = 30;
 	Armor_damage_reduction = 5;
-    std::cout << "Super Trap created" << std::endl;
+	std::cout << "Super Trap created" << std::endl;
 }
 
 /*SuperTrap::SuperTrap(const SuperTrap& op)

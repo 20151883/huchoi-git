@@ -70,14 +70,16 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
+	const unsigned int before = amount;
 	if (amount + Hit_point > Max_hit_points)
 		amount = Max_hit_points - Hit_point;
 	Hit_point += amount;
 	std::cout<<"FR4G-TP <"<<Name<<"> repaired by angel,and repaired <"<<amount<<"> points of hp!"<<std::endl;
+	amount = before;
 	if (Energy_points + amount > Max_energy_points)
 		amount = Max_energy_points - Energy_points;
+	Energy_points += amount;
 	std::cout<<"FR4G-TP <"<<Name<<"> repaired by angel,and repaired <"<<amount<<"> points of energy point!"<<std::endl;
 	std::cout<<"and your hit point is "<<Hit_point<<std::endl;
 	std::cout<<"and your Energy point is "<<Energy_points<<std::endl;
 }
-
