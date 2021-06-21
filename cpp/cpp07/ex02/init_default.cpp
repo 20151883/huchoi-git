@@ -2,6 +2,7 @@
 
 int main(void)
 {
+	std::cout<<int(3)<<std::endl;
 	int *p = new int();
 	std::cout<<*p<<std::endl;
 

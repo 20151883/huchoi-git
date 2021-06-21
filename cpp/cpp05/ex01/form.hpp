@@ -10,6 +10,7 @@ class Form
 		const int sign_bound;
 		const int exec_bound;
 		bool sign;
+		Form();
 	public:
 		Form(const char *name, int sign_bound, int exec_bound) :name(name), sign_bound(sign_bound), exec_bound(exec_bound), sign(false)
 		{

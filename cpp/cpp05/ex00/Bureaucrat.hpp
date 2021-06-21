@@ -6,6 +6,7 @@ class Bureaucrat
 	private:
 		std::string	name;
 		int					grade;
+		Bureaucrat();
 	public:
 		Bureaucrat(const char *name, int grade);
 		Bureaucrat(Bureaucrat &src);

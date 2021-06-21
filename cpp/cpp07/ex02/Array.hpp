@@ -25,25 +25,27 @@ class Array
 		Array(Array &src)//깊은복사하기
 		{
 			int lenth = src.size();
+			arr_size = lenth;
 			this->arr = new T [lenth];
 			int idx = 0;
 			while (idx < lenth)
 			{
 				T data = src[idx];
-				this->arr[idx] = T(data);
+				this->arr[idx] = T(data);//대입연산자 오버로딩된거 호출하기위해
 				idx++;
 			}
 		}
 		Array &operator=(Array &src)//깊은복사하기
 		{
 			int lenth = src.size();
+			this->arr_size = lenth;
 			if (this->arr != NULL)
 				delete []this->arr;
 			this->arr = new T [lenth];
 			int idx = 0;
 			while (idx < lenth)
 			{
-				this->arr[idx] = src[idx];
+				this->arr[idx] = src[idx];//대입연산자 오버로딩된거 호출하기위해
 				idx++;
 			}
 			return *this;
