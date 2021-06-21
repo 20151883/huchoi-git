@@ -1,8 +1,7 @@
 #include "Base.hpp"
-#include <ctime>
+
 Base * generate(void)
 {
-	srand(time(NULL));
 	Base *ret;
 	if (rand() / 3 == 0)
 	{
@@ -22,11 +21,11 @@ int is_reference_A(Base &src)
 {
 	try{
 		A &test = dynamic_cast<A &>(src);
+		(void)test;
 		return 1;
 	}
 	catch(std::exception &e)
 	{
-		//std::cout<<""<<std::endl;
 		return 0;
 	}
 }
@@ -35,11 +34,11 @@ int is_reference_B(Base &src)
 {
 	try{
 		B &test = dynamic_cast<B &>(src);
+		(void)test;
 		return 1;
 	}
 	catch(std::exception &e)
 	{
-		//std::cout<<""<<std::endl;
 		return 0;
 	}
 }
@@ -48,11 +47,11 @@ int is_reference_C(Base &src)
 {
 	try{
 		C &test = dynamic_cast<C &>(src);
+		(void)test;
 		return 1;
 	}
 	catch(std::exception &e)
 	{
-		//std::cout<<""<<std::endl;
 		return 0;
 	}
 }
@@ -83,7 +82,6 @@ int is_pointer_C(Base *src)
 		return 0;
 	return 1;
 }
-
 
 void identify_from_pointer(Base * p)
 {
