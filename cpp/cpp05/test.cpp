@@ -33,8 +33,6 @@ class Zombie:Parent
 		}
 }
 
-
-
 void main(void)
 {
 	Parent *p1 = Human();

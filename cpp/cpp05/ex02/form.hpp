@@ -7,56 +7,33 @@ class Form
 {
 	private:
 		const std::string name;
-		bool sign;
 		const int sign_bound;
 		const int exec_bound;
+		bool sign;
+		Form();
 	public:
-		Form(const char *name, int sign_bound, int exec_bound) :name(name), sign_bound(sign_bound), exec_bound(exec_bound), sign(false)
-		{
-			if (sign_bound < 1)
-				throw GradeTooHighException();
-			if (sign_bound >150)
-				throw GradeTooLowException();
-			if (exec_bound < 1)
-				throw GradeTooHighException();
-			if (exec_bound >150)
-				throw GradeTooLowException();
-		}
+		Form(const char *name, int sign_bound, int exec_bound);
+		virtual ~Form();
+		Form(Form &src);
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				const char * what() const _NOEXCEPT//오버라이딩
-    			{
-        			return "TOO HIGH  BOUND";
-    			}
+				const char * what() const _NOEXCEPT;//오버라이딩
 		};
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				const char * what() const _NOEXCEPT//오버라이딩
-    			{
-        			return "TOO LOW  BOUND";
-    			}
+				const char * what() const _NOEXCEPT;//오버라이딩
 		};
 		void beSigned(Bureaucrat &src);
-		virtual void execute(Bureaucrat const & executor) const;
-		std::string getName()
-		{
-			return this->name;
-		}
-		bool getSign()
-		{
-			return this->sign;
-		}
-		int getSignGrade()
-		{
-			return this->sign_bound;
-		}
-		int getExecGrade()
-		{
-			return this->exec_bound;
-		}
+		virtual void execute(Bureaucrat const & executor) const = 0;
+		void check_boundary(Bureaucrat const &src) const;
+		std::string getName() const;
+		bool getSign();
+		int getSignGrade();
+		int getExecGrade();
 };
+
 std::ostream &operator<<(std::ostream &ost, Form &src);
 
 #endif

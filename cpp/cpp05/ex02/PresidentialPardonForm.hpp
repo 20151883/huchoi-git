@@ -1,4 +1,4 @@
-#include "form.hpp"
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 class Form;
 class Bureaucrat;
@@ -7,15 +7,12 @@ class PresidentialPardonForm : public Form
 {
 	private:
 		std::string target;
+		PresidentialPardonForm();
 	public:
-		PresidentialPardonForm(const char *target) :target(target) ,Form("PresidentialPardonForm", 25, 5)
-		{}
-		~PresidentialPardonForm()
-		{}
-		//PresidentialPardonForm(PresidentialPardonForm &src)
-		//{}
-		//PresidentialPardonForm &operator=(PresidentialPardonForm &src)
-		//{}
+		PresidentialPardonForm(const char *target);
+		~PresidentialPardonForm();
+		PresidentialPardonForm(PresidentialPardonForm &src);
+		PresidentialPardonForm &operator=(PresidentialPardonForm &src);
 		std::string getTarget() const;
-		virtual int execute(Bureaucrat const & executor) const;
+		virtual void execute(Bureaucrat const & executor) const;
 };

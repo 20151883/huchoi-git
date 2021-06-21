@@ -11,16 +11,18 @@ class Bureaucrat
 	private:
 		std::string	name;
 		int					grade;
+		Bureaucrat();
 	public:
 		Bureaucrat(const char *name, int grade);
 		Bureaucrat(Bureaucrat &src);
 		~Bureaucrat();
 		Bureaucrat &operator=(Bureaucrat &src);
 		std::string getName();
-		int getGrade();
+		int getGrade() const;
 		void increasegrade();
 		void decreasegrade();
 		void signForm(Form &src);
+		void executeForm(Form const & src);
 		class GradeTooLowException : public std::exception
 		{
 			public:
@@ -34,4 +36,5 @@ class Bureaucrat
 };
 
 std::ostream& operator<<(std::ostream &ost, Bureaucrat &src);
+
 #endif

@@ -1,64 +1,39 @@
 #ifndef __FORM__
 #define __FORM__
-#include <iostream>
-#include <exception>
+class Form;
 #include "Bureaucrat.hpp"
-class Bureaucrat;
+
 class Form
 {
 	private:
-		std::string name;
+		const std::string name;
+		const int sign_bound;
+		const int exec_bound;
 		bool sign;
-		int sign_bound;
-		int exec_bound;
+		Form();
 	public:
-		Form(const char *name, int sign_bound, int exec_bound) :name(name), sign_bound(sign_bound), exec_bound(exec_bound), sign(false)
-		{
-			if (sign_bound < 1)
-				throw GradeTooHighException();
-			if (sign_bound >150)
-				throw GradeTooLowException();
-			if (exec_bound < 1)
-				throw GradeTooHighException();
-			if (exec_bound >150)
-				throw GradeTooLowException();
-			this->sign_bound = sign_bound;
-			this->exec_bound = exec_bound;
-		}
+		Form(const char *name, int sign_bound, int exec_bound);
+		virtual ~Form();
+		Form(Form &src);
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				const char * what() const _NOEXCEPT//오버라이딩
-    			{
-        			return "TOO HIGH  BOUND";
-    			}
+				const char * what() const _NOEXCEPT;//오버라이딩
 		};
-
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				const char * what() const _NOEXCEPT//오버라이딩
-    			{
-        			return "TOO LOW  BOUND";
-    			}
-		};
-
-		class SignSkipxception : public std::exception
-		{
-			public:
-				const char * what() const _NOEXCEPT//오버라이딩
-    			{
-        			return "sign action is skiped SIGN FIRST!!!";
-    			}
+				const char * what() const _NOEXCEPT;//오버라이딩
 		};
 		void beSigned(Bureaucrat &src);
+		virtual void execute(Bureaucrat const & executor) const = 0;
+		void check_boundary(Bureaucrat const &src) const;
 		std::string getName() const;
-		bool getSign() const;
-		void setSign(int num);
-		int getSignGrade() const;
-		int getExecGrade() const;
-		virtual int execute(Bureaucrat const & executor) const = 0;
+		bool getSign();
+		int getSignGrade();
+		int getExecGrade();
 };
+
 std::ostream &operator<<(std::ostream &ost, Form &src);
 
 #endif

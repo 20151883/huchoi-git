@@ -37,23 +37,32 @@ static void make_tree(std::string filename)
 	pyramid(rows/2,rows, test);
 	base(rows, test);
 }
-int ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if (getSign() == false)
-	{
-		std::cout<<"this form is not signed!! SIGN FIRST!!!!!"<<std::endl;
-		throw SignSkipxception();
-	}
-	else if (getExecGrade() < executor.getGrade())
-	{
-		std::cout<<"executor's grade is lower than need grade "<<std::endl;
-		throw GradeTooLowException();
-	}
+	check_boundary(executor);
 	make_tree(this->target);
-	return 1;
 }
 
 std::string ShrubberyCreationForm::getTarget() const
 {
 	return this->target;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const char *target) :Form("ShrubberyCreationForm", 145, 137), target(target)
+{}
+
+ShrubberyCreationForm::ShrubberyCreationForm()
+{}
+
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{}
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &src):Form("ShrubberyCreationForm", 145, 137)
+{
+	this->target = src.target;
+}
+ShrubberyCreationForm &ShrubberyCreationFor::operator=(ShrubberyCreationForm &src)
+{
+	this->target = src.target;
+	return *this;
 }

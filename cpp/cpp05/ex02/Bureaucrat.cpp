@@ -9,6 +9,9 @@ Bureaucrat::Bureaucrat(const char *name, int grade) :name(name)
 	else
 		this->grade = grade;
 }
+Bureaucrat::Bureaucrat()
+{
+}
 Bureaucrat::Bureaucrat(Bureaucrat &src)
 {
 	(void)src;
@@ -27,7 +30,7 @@ std::string Bureaucrat::getName()
 {
 	return this->name;
 }
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
 	return this->grade;
 }
@@ -61,6 +64,22 @@ void Bureaucrat::signForm(Form &src)
 		std::cout<<this->name<<" cannot sign "<<src.getName()<<" because it's already signed"<<std::endl;
 	}
 }
+void Bureaucrat::executeForm(Form const & src)
+{
+	try{
+		src.execute(*this);//여기서 등급이 낮거나 사인이 되어있지 않은 form이라면 예외를 발생시킴.
+		std::cout<<this->name<<" execute the form "<<src.getName()<<std::endl;
+	}
+	catch(Bureaucrat::GradeTooLowException &e)
+	{
+		std::cout<<this->name<<" cannot execute "<<src.getName()<<" because TOO LOW grade"<<std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout<<this->name<<" cannot execute "<<src.getName()<<" because it's not signed"<<std::endl;
+	}
+}
+
 const char * Bureaucrat::GradeTooLowException::what() const _NOEXCEPT//오버라이딩
 {
 	return "TOO LOW";

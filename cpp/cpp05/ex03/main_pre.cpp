@@ -2,12 +2,12 @@
 #include "PresidentialPardonForm.hpp"
 //#include "ShrubberyCreationForm.hpp"
 
-static void testForm(Bureaucrat* bur, Form* form)
+/*static void testForm(Bureaucrat* bur, Form* form)
 {
     std::cout << std::endl << "Sign & Execute \033[33m" << form->getName() << "\033[0m : " << std::endl;
     bur->signForm(*form);
     bur->executeForm(*form);
-}
+}*/
 
 int main()
 {

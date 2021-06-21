@@ -30,7 +30,7 @@ Form *Intern::makeForm(std::string type, std::string tartget)
 	trimize(presi);
 	trimize(tree);
 	trimize(type);
-	Form *ret = NULL;
+	Form *ret = NULL
 	if (type == robot)
 	{
 		ret = new RobotomyRequestForm(tartget.c_str());

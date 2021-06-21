@@ -1,4 +1,4 @@
-#include "form.hpp"
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 class Form;
@@ -8,15 +8,12 @@ class RobotomyRequestForm : public Form
 {
 	private:
 		std::string target;
+		RobotomyRequestForm();
 	public:
-		RobotomyRequestForm(const char *target) :target(target) ,Form("RobotomyRequestForm", 72, 45)
-		{}
-		~RobotomyRequestForm()
-		{}
-		//RobotomyRequestForm(RobotomyRequestForm &src)
-		//{}
-		//RobotomyRequestForm &operator=(RobotomyRequestForm &src)
-		//{}
+		RobotomyRequestForm(const char *target);
+		virtual ~RobotomyRequestForm();
+		RobotomyRequestForm(RobotomyRequestForm &src);
+		RobotomyRequestForm &operator=(RobotomyRequestForm &src);
 		std::string getTarget() const;
-		virtual int execute(Bureaucrat const & executor) const;
+		virtual void execute(Bureaucrat const & executor) const;
 };
