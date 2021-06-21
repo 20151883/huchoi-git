@@ -12,29 +12,13 @@ typedef struct circle{
 	char character;
 }circle;
 
-typedef struct paper{
-	int width;
-	int height;
-
-}paper;
-
-char * init(FILE *istream)
-{
-	int width;
-	int height;
-	char background;
-	fscanf(istream, "%d %d %c", &width, &height, &background);
-	char *ret = malloc(sizeof(int) * width * height);
-	return ret;
-}
 circle *parsing(FILE *istream, char *arr)
 {
 	char c, character;
 	float x,y,radius;
 	char *test = malloc(1025);
-	if (fscanf(istream, "%c %f %f %f %c\n", &c, &x, &y, &radius, &character) == -1)
+	if (fscanf(istream, "%c %f %f %f %c\n", &c, &x, &y, &radius, &character) == -1)//**********
 		return 0;
-	//fscanf(istream, "%[^\n] ", test);
 	if (c == 'c' || c == 'C')
 	{
 
@@ -61,6 +45,7 @@ circle *parsing(FILE *istream, char *arr)
 	ret->character = character;
 	return ret;
 }
+
 void draw_circle(char *arr, circle *p_circle, int width, int height)
 {
 	float lenth;
@@ -71,8 +56,8 @@ void draw_circle(char *arr, circle *p_circle, int width, int height)
 		x = idx % width;
 		y = idx / width;
 		lenth = sqrtf(powf(x - p_circle->center_x, 2.0) + powf(y - p_circle->center_y, 2.0));
-		float diff = lenth - p_circle->radius;
-		if (-1 < diff && diff <= 0)
+		float diff = lenth - p_circle->radius;//추상화: 원의중심점과 점 사이의 거리(원과 점의 위치관계)
+		if (-1 < diff && diff <= 0)//원 위의점, 원의 위의점이라고 볼수 있는 점
 			arr[idx] = p_circle->character;
 		else if (lenth < p_circle->radius && p_circle->is_fill == 1)
 			arr[idx] =  p_circle->character;
@@ -89,9 +74,11 @@ void print_circle(char *arr, int width, int height)
 		}
 	}
 }
+
 int main(void)
 {
 	FILE *istream = fopen("./examples/2", "r");
+	//FILE *istream = fopen("example_", "r");
 	int width;
 	int height;
 	char background;
@@ -104,8 +91,9 @@ int main(void)
 	{
 		draw_circle(arr, temp, width, height);
 		free (temp);
-	}
-	print_circle(arr, width, height);
+	}//위 블럭이 중요
+
+	print_circle(arr, width, height);//문자 출력하고, 적절한 시기에 개행 출력
 	free(arr);
 	fclose(istream);
 	return (0);

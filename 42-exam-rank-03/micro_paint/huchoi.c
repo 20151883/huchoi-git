@@ -74,14 +74,14 @@ void draw_circle(char *arr, circle *p_circle, int width, int height)
 	int size = width * height;
 	int x,y;
 	for (int idx = 0; idx < size ; idx++)
-	{
+	{//추상화: 어떠한 점이 사각형의 범위(****)에 들어가 있는지   범위가 핵심
 		x = idx % width;
 		y = idx / width;
 		if (p_circle->left_up_x <= x && x <= p_circle->right_down_x && p_circle->left_up_y <= y && y <= p_circle->right_down_y)
-		{
-			if (!p_circle->is_fill && ((x - p_circle->left_up_x <= 1.0 || 1.0 >= p_circle->right_down_x  - x) || (y - p_circle->left_up_y <= 1.0 || 1.0 >= p_circle->right_down_y  - y)))
-				arr[idx] = p_circle->character;
-			else if (p_circle->is_fill)
+		{//일단 사각형 위의 점이거나 내부의 점.
+			if (((x - p_circle->left_up_x < 1.0 || 1.0 > p_circle->right_down_x  - x) || (y - p_circle->left_up_y < 1.0 || 1.0 > p_circle->right_down_y  - y)))
+				arr[idx] = p_circle->character;//사각형 위의 점 or 사각형 위의 점이라고 간주할수 있는 점
+			else if (p_circle->is_fill)//논리적으로 else이면은 사각형 위의점이라고 말할수없는 내부의 점
 				arr[idx] = p_circle->character;
 		}
 	}
@@ -99,9 +99,9 @@ void print_circle(char *arr, int width, int height)
 	}
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	FILE *istream = fopen("./examples/2", "r");
+	FILE *istream = fopen(argv[1], "r");
 	int width;
 	int height;
 	char background;
