@@ -56,11 +56,22 @@ void draw_circle(char *arr, circle *p_circle, int width, int height)
 		x = idx % width;
 		y = idx / width;
 		lenth = sqrtf(powf(x - p_circle->center_x, 2.0) + powf(y - p_circle->center_y, 2.0));
-		float diff = lenth - p_circle->radius;//추상화: 원의중심점과 점 사이의 거리(원과 점의 위치관계)
+		if (lenth <= p_circle->radius)
+		{
+			if (p_circle->radius - lenth < 1)
+			{
+				arr[idx] = p_circle->character;
+			}
+			else if (p_circle->is_fill == 1)
+			{
+				arr[idx] = p_circle->character;
+			}
+		}
+		/*float diff = lenth - p_circle->radius;//추상화: 원의중심점과 점 사이의 거리(원과 점의 위치관계)
 		if (-1 < diff && diff <= 0)//원 위의점, 원의 위의점이라고 볼수 있는 점
 			arr[idx] = p_circle->character;
 		else if (lenth < p_circle->radius && p_circle->is_fill == 1)
-			arr[idx] =  p_circle->character;
+			arr[idx] =  p_circle->character;*/
 	}
 }
 void print_circle(char *arr, int width, int height)
@@ -77,8 +88,8 @@ void print_circle(char *arr, int width, int height)
 
 int main(void)
 {
-	FILE *istream = fopen("./examples/2", "r");
-	//FILE *istream = fopen("example_", "r");
+	//FILE *istream = fopen("./examples/2", "r");
+	FILE *istream = fopen("example_", "r");
 	int width;
 	int height;
 	char background;
