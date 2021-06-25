@@ -8,9 +8,12 @@ void *all_monitor(void *arg)
 		gettimeofday(&current, NULL);
 		for (int i = 0;i < info->number_of_philosophers; i++)
 		{
-			if (current.tv_sec - each_time[i].tv_sec >= info->time_to_die * 10000000)
+			gettimeofday(&current, NULL);
+			//sleep(3);
+			//printf("current : %ld\neach_time : %ld info->time_to_die : %d\n", current.tv_sec, each_time[i].tv_sec, info->time_to_die * 10000000);
+			if (current.tv_usec - each_time[i].tv_usec >= info->time_to_die / 10000000)
 			{
-				printf("current : %ld\neach_time : %ld info->time_to_die : %d\n", current.tv_sec, each_time[i].tv_sec, info->time_to_die * 10000000);
+				//printf("current : %ld\neach_time : %ld info->time_to_die : %d\n", current.tv_sec, each_time[i].tv_sec, info->time_to_die * 10000000);
 				//시그널??
 				printf("he is died for starving\n");
 				return ((void *)NULL);
@@ -59,7 +62,11 @@ int main(int argc, char *argv[])
 		pthread_join(tid[j++], NULL);
 	//모든 쓰레드가 종료된 이후에 마무리 작업(쓰레드 자원 해제는 이미 된 상태임)
 	int z;
+	//sleep(5);
+	printf("reach mutex destroy\n");
 	for (z = 0;z < info->number_of_philosophers; z++)
+	{
 		pthread_mutex_destroy(&mutex_fork[z]);
+	}
 	return 0;
 }

@@ -60,14 +60,18 @@ void *sub_main(void *arg)
 	int left, right;//n번째 철학자의 오른쪽의 포크는 fork[n], 왼쪽의 포크는 fork[n-1]
 	right = num == info->number_of_philosophers ? 0 : num;
 	left = num - 1;
-	usleep((temp % 2) * info->time_to_eat);
+	if (temp % 2 == 1)
+		usleep((temp % 2) * info->time_to_eat);
+	/*if (num == info->number_of_philosophers && num % 2 == 0)
+		usleep((temp % 2) * info->time_to_eat);*/
+
 	long hungry_time;
 	long eated_time = 0;//식사를 한 직후의 시점
 	while (max++)
 	{
 		//usleep((temp % 2) * info->time_to_eat);//이건 아마도 처음에 한번만 해주면 될듯?
 		gettimeofday(&mytime, NULL);
-		hungry_time = mytime.tv_sec -
+		//hungry_time = mytime.tv_sec -
 
 		pthread_mutex_lock(&mutex_fork[right]);//뮤텍스락을 건다면 모두 여기서 다 같이 걸어주어야함.
 		pthread_mutex_lock(&mutex_fork[left]);
@@ -81,7 +85,6 @@ void *sub_main(void *arg)
 		printf("%d ms %d is eating\n", mytime.tv_usec - info->start_time.tv_usec, num);
 		usleep(info->time_to_eat);
 		gettimeofday(&mytime, NULL);
-		eated_time = mytime.tv_sec;//이제 필요없을듯
 		each_time[temp].tv_sec = mytime.tv_sec;
 		printf("%d ms %d is sleep\n", mytime.tv_usec - info->start_time.tv_usec, num);
 		pthread_mutex_unlock(&mutex_fork[left]);
@@ -92,5 +95,6 @@ void *sub_main(void *arg)
 		printf("%d ms %d is thinking\n", mytime.tv_usec - info->start_time.tv_usec, num);
 		//usleep(300)//이 값을 계산해야하는지...? 여기서 usleep()안해도 될듯
 	}
+	printf("%d is reached end\n", num);
 	return NULL;
 }
