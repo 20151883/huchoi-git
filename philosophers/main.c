@@ -1,10 +1,40 @@
 #include "main.h"
 
+void *all_monitor(void *arg)
+{
+	struct timeval current;
+	while (1)
+	{
+		gettimeofday(&current, NULL);
+		for (int i = 0;i < info->number_of_philosophers; i++)
+		{
+			if (current.tv_sec - each_time[i].tv_sec >= info->time_to_die * 10000000)
+			{
+				printf("current : %ld\neach_time : %ld info->time_to_die : %d\n", current.tv_sec, each_time[i].tv_sec, info->time_to_die * 10000000);
+				//시그널??
+				printf("he is died for starving\n");
+				return ((void *)NULL);
+			}
+		}
+		usleep(1000);
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	//기본정보저장
 	info = (Info *)malloc(sizeof(Info));//스택영역은 공유가 안되기에...
 	ft_init(info, argv);
+	each_time = malloc(sizeof(struct timeval) + info->number_of_philosophers);
+	struct timeval test;
+	gettimeofday(&test, NULL);
+	for (int i = 0;i < info->number_of_philosophers; i++)
+	{
+		each_time[i].tv_sec = test.tv_sec;
+	}
+	pthread_t monitor;
+	pthread_create(&(monitor), NULL, all_monitor, NULL);
+	pthread_detach(monitor);
 	//개별 쓰레드를 위한 준비작업
 	mutex_fork = malloc(sizeof(pthread_mutex_t) * info->number_of_philosophers);
 	pthread_t tid[info->number_of_philosophers];
