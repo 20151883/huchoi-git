@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncolomer <ncolomer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 15:30:46 by ncolomer          #+#    #+#             */
-/*   Updated: 2019/12/13 15:12:06 by ncolomer         ###   ########.fr       */
+/*   Updated: 2021/06/26 20:09:41 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void
 	while (1)
 	{
 		pthread_mutex_lock(&philo->mutex);
-		if (!philo->is_eating && get_time() > philo->limit)
+		if (!philo->is_eating && get_time() > philo->limit)//밥을 먹은 직후부터 굶은 시간을 재야하는데, 밥을 먹기 시작한 시점부터 굶은 시간을 재고 있는듯..?
 		{
 			display_message(philo, TYPE_DIED);
 			pthread_mutex_unlock(&philo->mutex);
