@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 19:08:39 by huchoi            #+#    #+#             */
-/*   Updated: 2021/06/27 19:24:22 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/06/27 22:43:12 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,10 @@ void				*all_monitor(void *arg);
 int					is_anybody_dead(t_syn *temp);
 int					is_all_enough_eat(t_syn *temp);
 int					is_finish_point(t_syn *temp);
+int					ft_right(t_philo *p_philo);
+int					ft_left(t_philo *p_philo);
+uint64_t			relative_mstime(t_philo *p_philo);
+void				even_last_sleep(t_philo *p_philo);
+int					wait_fork_and_eating(t_philo *p_philo);
+int					ft_isdigit(const char *arr);
 #endif
