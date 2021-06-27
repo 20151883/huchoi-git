@@ -1,16 +1,19 @@
-NAME = philosophers
+NAME = philo
 CC = gcc
 CXXFLAGS =
 #CXXFLAGS = -W -Werror -Wextra -Wall
-OBJS = main.o
+OBJS = main.o utils.o
 
 %.o: %.c %.h
 	$(CC) $(CXXFLAGS) -c $<
 
+all : $(NAME)
+
 $(NAME) : $(OBJS) main.h
 	$(CC) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
-.PHONY: clean
 clean:
-	rm -f $(OBJS) main
-
+	rm -rf $(OBJS)
+fclean:clean
+	rm -rf $(NAME)
+re : fclean $(NAME)
+.PHONY: fclean all
