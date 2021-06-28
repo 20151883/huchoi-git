@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 19:08:39 by huchoi            #+#    #+#             */
-/*   Updated: 2021/06/27 22:43:12 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/06/28 22:43:38 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef	struct		s_syn
 	int				pthread_flag;
 	t_info			*info;
 	uint64_t		*each_time;
+	uint64_t		*revision_time;
+	uint64_t		*before_time;
 	uint64_t		start_time;
 	pthread_mutex_t	*mutex_fork;
 	pthread_mutex_t	*dead_mutex;
@@ -45,6 +47,7 @@ typedef	struct		s_philo
 {
 	t_syn			*p_syn;
 	int				number;
+
 }					t_philo;
 
 uint64_t			get_mstime();
@@ -52,8 +55,8 @@ int					ft_strlen(char *str);
 int					ft_strcmp(char *s1, char *s2);
 int					my_atouit(char *positive_arr);
 int					ft_info_init(t_syn *p_syn, char **argv);
-void				ft_syn_init(t_syn *p_syn);
-void				restore_resources(t_philo *p_philo);
+void				ft_syn_init(t_philo *p_philo);
+void				restore_resources(t_philo *p_philo, pthread_t	*tid);
 int					ft_pthread_create(t_philo *temp, \
 					pthread_t *monitor, pthread_t *tid);
 int					ft_pthread_join(t_syn *temp, pthread_t *monitor, \
@@ -69,4 +72,6 @@ uint64_t			relative_mstime(t_philo *p_philo);
 void				even_last_sleep(t_philo *p_philo);
 int					wait_fork_and_eating(t_philo *p_philo);
 int					ft_isdigit(const char *arr);
+int					manage_one_philosopher(t_philo *p_philo);
+int			sleep_thinking(t_philo *p_philo);
 #endif

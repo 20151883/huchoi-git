@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 21:03:44 by huchoi            #+#    #+#             */
-/*   Updated: 2021/06/27 22:39:14 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/06/28 23:27:14 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,35 @@ void		*sub_main(void *arg)
 			return (NULL);
 		if (is_finish_point(p_philo->p_syn) == 1)
 			return (NULL);
-		printf("%llu ms %d is sleeping\n", relative_mstime(p_philo), num);
-		usleep(p_philo->p_syn->info->time_to_sleep * 1000);
-		if (is_finish_point(p_philo->p_syn) == 1)
+		if (sleep_thinking(p_philo) == 0)
 			return (NULL);
-		printf("%llu ms %d is thinking\n", relative_mstime(p_philo), num);
 	}
 	return (NULL);
+}
+
+int			sleep_thinking(t_philo *p_philo)
+{
+	int		num;
+
+	num = p_philo->number + 1;
+	printf("%llu ms %d is sleeping\n", relative_mstime(p_philo), num);
+	usleep(p_philo->p_syn->info->time_to_sleep * 1000);
+	p_philo->p_syn->revision_time[num - 1] = relative_mstime(p_philo) - \
+	p_philo->p_syn->info->time_to_eat - p_philo->p_syn->info->time_to_sleep;
+	if (is_finish_point(p_philo->p_syn) == 1)
+		return (0);
+	printf("%llu ms %d is thinking\n", relative_mstime(p_philo), num);
+	return (1);
 }
 
 int			check_dead(t_syn *p_syn, int *p_flag, int idx)
 {
 	if ((get_mstime() - p_syn->start_time) > \
-	p_syn->each_time[idx] + p_syn->info->time_to_die)
+	(p_syn->revision_time[idx]) + p_syn->info->time_to_die)
 	{
 		pthread_mutex_lock(p_syn->dead_mutex);
-		//printf("current : %llu && last time : %llu\n", get_mstime() - p_syn->start_time, p_syn->each_time[i]);
-		//printf("gap is : %llu && limit gap is %llu\n", get_mstime() - p_syn->start_time - p_syn->each_time[i], p_syn->info->time_to_die);
+		//printf("gap is : %llu && limit gap is %llu\n", get_mstime() - p_syn->start_time - p_syn->each_time[idx], p_syn->info->time_to_die);
 		printf("%llu %d died\n", get_mstime() - p_syn->start_time, idx + 1);
-		//int *ret = malloc(sizeof(int));
-		//*ret = 1;
 		p_syn->pthread_flag = 1;
 		pthread_mutex_unlock(p_syn->dead_mutex);
 		return (1);
@@ -75,31 +84,45 @@ int			all_check_dead(t_syn *p_syn, int *p_flag)
 	return (0);
 }
 
-void		*all_monitor(void *temp)
+uint64_t	lastest_time(uint64_t *arr, int num)
+{
+	uint64_t	ret;
+	int			idx;
+
+	idx = -1;
+	ret = arr[0];
+	while (++idx < num)
+	{
+		if (arr[idx] > ret)
+			ret = arr[idx];
+	}
+	return (ret);
+}
+
+void		*all_monitor(void *p_philo)
 {
 	int		flag;
 	t_syn	*p_syn;
 
 	flag = 0;
-	p_syn = (t_syn *)temp;
+	p_syn = (t_syn *)(((t_philo *)(p_philo))->p_syn);
 	usleep((p_syn->info->time_to_die / 2) * 1000);
 	while (1)
 	{
+		pthread_mutex_lock(p_syn->eat_count_mutex);
 		if (all_check_dead(p_syn, &flag) == 1)
 			return (NULL);
-		pthread_mutex_lock(p_syn->eat_count_mutex);
 		if (flag == p_syn->info->number_of_philosophers)
 		{
 			p_syn->pthread_flag = 1;
-			printf("%llu must eat count reached\n", \
-			p_syn->each_time[p_syn->info->number_of_philosophers - 1]);
+			printf("%llu must eat count reached\n", relative_mstime(p_philo));
 			pthread_mutex_unlock(p_syn->eat_count_mutex);
 			return (NULL);
 		}
 		else
 			flag = 0;
 		pthread_mutex_unlock(p_syn->eat_count_mutex);
-		usleep(1000);
+		usleep(100);
 	}
 }
 
@@ -125,9 +148,9 @@ int			main(int argc, char *argv[])
 		p_philo[i].number = i;
 		p_philo[i].p_syn = p_syn;
 	}
-	ft_syn_init(p_syn);
+	ft_syn_init(p_philo);
 	ft_pthread_create(p_philo, &monitor, tid);
 	ft_pthread_join(p_syn, &monitor, tid);
-	//restore_resources(p_philo);
+	restore_resources(p_philo, tid);
 	return (0);
 }
