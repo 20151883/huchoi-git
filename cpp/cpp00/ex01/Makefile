@@ -1,6 +1,6 @@
 NAME = execfile
-CC = g++
-CXXFLAGS = -Wall -O2
+CC = clang++
+CXXFLAGS = -Wall -Werror -Wextra
 OBJS = book.o main.o
 
 %.o: %.cc %.h

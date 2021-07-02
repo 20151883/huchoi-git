@@ -1,5 +1,4 @@
 #include "book.hpp"
-//정보은늑과 캡슐화를 달성한 클래스를 만드는 것이 목표.
 
 void    CRAPPY::add()
 {
@@ -36,6 +35,7 @@ void    CRAPPY::add()
 	std::cout<<"all information is succesfully stored!!!!";
 	std::cout<<"\n"<<"***************************************************"<<std::endl;
 }
+
 void    CRAPPY::right_assign(std::string &buf) const
 {
 	int size = buf.size();
@@ -107,13 +107,15 @@ void    book::add_one()
 		std::cout<<"memory is full"<<std::endl;
 	else
 		mans[num_of_men++].add();
-	}
+}
+
  void    book::search_all() const
 {
 	int idx = -1;
 	while (++idx < num_of_men)
 	mans[idx].search(idx);
 }
+
 void    book::print_one(int index) const
 {
 	if (0 <= index && index < num_of_men)

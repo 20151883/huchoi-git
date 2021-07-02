@@ -1,5 +1,5 @@
-CC = g++
-CXXFLAGS = -Wall -O2
+CC = clang++
+CXXFLAGS = -Wall -Werror -Wextra
 OBJS = megaphone.o
 NAME = megaphone
 %.o: %.cc %.h
