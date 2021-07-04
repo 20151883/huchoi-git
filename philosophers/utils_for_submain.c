@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 22:36:43 by huchoi            #+#    #+#             */
-/*   Updated: 2021/06/28 23:29:25 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/06/30 13:33:26 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ int			get_right_fork(t_philo *p_philo)
 		return (0);
 	}
 	if (p_philo->p_syn->each_time[num - 1] != 0)
-		p_philo->p_syn->revision_time[num - 1] = relative_mstime(p_philo) -\
-		p_philo->p_syn->info->time_to_eat - p_philo->p_syn->info->time_to_sleep;
+		p_philo->p_syn->revision_time[num - 1] = relative_mstime(p_philo) -p_philo->p_syn->info->time_to_eat - p_philo->p_syn->info->time_to_sleep;
 	printf("%llu ms %d has taken a fork\n", relative_mstime(p_philo), num);
 	if (0 == manage_one_philosopher(p_philo))
 		return (0);
@@ -70,8 +69,7 @@ int			get_left_fork_eating(t_philo *p_philo)
 	num = p_philo->number + 1;
 	pthread_mutex_lock(&p_philo->p_syn->mutex_fork[ft_left(p_philo)]);
 	if (p_philo->p_syn->each_time[num - 1] != 0)
-		p_philo->p_syn->revision_time[num - 1] = relative_mstime(p_philo) \
-	- p_philo->p_syn->info->time_to_eat - p_philo->p_syn->info->time_to_sleep;
+		p_philo->p_syn->revision_time[num - 1] = relative_mstime(p_philo) - p_philo->p_syn->info->time_to_eat - p_philo->p_syn->info->time_to_sleep;
 	if (is_finish_point(p_philo->p_syn) == 1)
 	{
 		pthread_mutex_unlock(&p_philo->p_syn->mutex_fork[ft_right(p_philo)]);
@@ -101,9 +99,11 @@ int			wait_fork_and_eating(t_philo *p_philo)
 		return (0);
 	if (0 == get_left_fork_eating(p_philo))
 		return (0);
-	usleep(p_philo->p_syn->info->time_to_eat * 1000);
-	p_philo->p_syn->revision_time[num - 1] = \
-	relative_mstime(p_philo) - p_philo->p_syn->info->time_to_eat;
+	//usleep(p_philo->p_syn->info->time_to_eat * 1000);
+	my_usleep(p_philo, p_philo->p_syn->info->time_to_eat * 1000);
+	p_philo->eating_flag = 1;
+	p_philo->sleeping_flag = 0;
+	p_philo->p_syn->revision_time[num - 1] = relative_mstime(p_philo) - p_philo->p_syn->info->time_to_eat;
 	p_philo->p_syn->each_count[num - 1]++;
 	if (is_finish_point(p_philo->p_syn) == 1)
 	{
@@ -114,8 +114,7 @@ int			wait_fork_and_eating(t_philo *p_philo)
 	//printf("									%d eated %d\n", num, p_philo->p_syn->each_count[num - 1]);
 	pthread_mutex_unlock(&p_philo->p_syn->mutex_fork[ft_left(p_philo)]);
 	pthread_mutex_unlock(&p_philo->p_syn->mutex_fork[ft_right(p_philo)]);
-	p_philo->p_syn->revision_time[num - 1] = \
-	relative_mstime(p_philo) - p_philo->p_syn->info->time_to_eat;
+	p_philo->p_syn->revision_time[num - 1] = relative_mstime(p_philo) - p_philo->p_syn->info->time_to_eat;
 	return (1);
 }
 

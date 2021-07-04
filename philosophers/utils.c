@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 19:27:49 by huchoi            #+#    #+#             */
-/*   Updated: 2021/06/28 16:21:43 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/06/30 13:38:13 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,17 @@ uint64_t	get_mstime(void)
 
 	gettimeofday(&current, NULL);
 	return (current.tv_sec * (uint64_t)1000) + (current.tv_usec / 1000);
+}
+
+void		my_usleep(t_philo *p_philo, uint64_t time_to_sleep)
+{
+	uint64_t	start_sleep_time;
+
+	start_sleep_time = relative_mstime(p_philo);
+	while (p_philo->p_syn->pthread_flag != 1)
+	{
+		if (relative_mstime(p_philo) - start_sleep_time >= time_to_sleep / 1000)
+			break;
+		usleep(50);
+	}
 }

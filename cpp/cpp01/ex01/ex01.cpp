@@ -6,10 +6,3 @@ void memoryLeak()
 	std::cout << *panther << std::endl;
 	delete panther;
 }
-
-int main(void)
-{
-	memoryLeak();
-	while (1){}
-	return (0);
-}

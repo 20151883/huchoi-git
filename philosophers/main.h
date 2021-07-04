@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 19:08:39 by huchoi            #+#    #+#             */
-/*   Updated: 2021/06/28 22:43:38 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/06/30 12:17:41 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef	struct		s_philo
 {
 	t_syn			*p_syn;
 	int				number;
+	int				eating_flag;
+	int				sleeping_flag;;
 
 }					t_philo;
 
@@ -74,4 +76,5 @@ int					wait_fork_and_eating(t_philo *p_philo);
 int					ft_isdigit(const char *arr);
 int					manage_one_philosopher(t_philo *p_philo);
 int			sleep_thinking(t_philo *p_philo);
+void		my_usleep(t_philo *p_philo, uint64_t time_to_sleep);
 #endif

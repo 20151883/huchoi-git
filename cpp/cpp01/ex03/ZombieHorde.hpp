@@ -9,5 +9,5 @@ class ZombieHorde{
 		ZombieHorde(int N);
 		~ZombieHorde();
 		void	announce();
-		std::string	random();	
+		std::string	ft_random();
 };

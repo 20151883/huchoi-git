@@ -6,7 +6,7 @@
 /*   By: huchoi <huchoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/27 21:03:44 by huchoi            #+#    #+#             */
-/*   Updated: 2021/06/28 23:27:14 by huchoi           ###   ########.fr       */
+/*   Updated: 2021/06/30 13:33:40 by huchoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,20 @@ int			sleep_thinking(t_philo *p_philo)
 
 	num = p_philo->number + 1;
 	printf("%llu ms %d is sleeping\n", relative_mstime(p_philo), num);
-	usleep(p_philo->p_syn->info->time_to_sleep * 1000);
-	p_philo->p_syn->revision_time[num - 1] = relative_mstime(p_philo) - \
-	p_philo->p_syn->info->time_to_eat - p_philo->p_syn->info->time_to_sleep;
+	//usleep(p_philo->p_syn->info->time_to_sleep * 1000);
+	my_usleep(p_philo, p_philo->p_syn->info->time_to_sleep * 1000);
+	p_philo->sleeping_flag = 1;//////
+	p_philo->p_syn->revision_time[num - 1] = relative_mstime(p_philo) - p_philo->p_syn->info->time_to_eat - p_philo->p_syn->info->time_to_sleep;
 	if (is_finish_point(p_philo->p_syn) == 1)
 		return (0);
 	printf("%llu ms %d is thinking\n", relative_mstime(p_philo), num);
 	return (1);
 }
 
-int			check_dead(t_syn *p_syn, int *p_flag, int idx)
+int			check_dead(t_philo *p_philo, int *p_flag, int idx)
 {
+	t_syn *p_syn = p_philo->p_syn;
+
 	if ((get_mstime() - p_syn->start_time) > \
 	(p_syn->revision_time[idx]) + p_syn->info->time_to_die)
 	{
@@ -71,14 +74,14 @@ int			check_dead(t_syn *p_syn, int *p_flag, int idx)
 	return (0);
 }
 
-int			all_check_dead(t_syn *p_syn, int *p_flag)
+int			all_check_dead(t_philo *p_philo, int *p_flag)
 {
 	int	i;
 
 	i = -1;
-	while (++i < p_syn->info->number_of_philosophers)
+	while (++i < p_philo->p_syn->info->number_of_philosophers)
 	{
-		if (check_dead(p_syn, p_flag, i) == 1)
+		if (check_dead(p_philo, p_flag, i) == 1)
 			return (1);
 	}
 	return (0);
@@ -110,7 +113,7 @@ void		*all_monitor(void *p_philo)
 	while (1)
 	{
 		pthread_mutex_lock(p_syn->eat_count_mutex);
-		if (all_check_dead(p_syn, &flag) == 1)
+		if (all_check_dead(p_philo, &flag) == 1)
 			return (NULL);
 		if (flag == p_syn->info->number_of_philosophers)
 		{
@@ -122,7 +125,7 @@ void		*all_monitor(void *p_philo)
 		else
 			flag = 0;
 		pthread_mutex_unlock(p_syn->eat_count_mutex);
-		usleep(100);
+		usleep(1000);
 	}
 }
 
@@ -146,6 +149,8 @@ int			main(int argc, char *argv[])
 	while (++i < p_syn->info->number_of_philosophers)
 	{
 		p_philo[i].number = i;
+		p_philo[i].eating_flag = 0;
+		p_philo[i].sleeping_flag = 0;
 		p_philo[i].p_syn = p_syn;
 	}
 	ft_syn_init(p_philo);

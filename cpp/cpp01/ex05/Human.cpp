@@ -7,9 +7,10 @@ std::string Human::identify() const
 
 const Brain &Human::getBrain() const
 {
-    const Brain &ret = brain;
-    return (ret);   
+    const Brain &ret = this->brain;
+    return (ret);
 }
+
 Human::~Human()
 {
 	std::cout<<"human dead"<<std::endl;
