@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     std::ofstream writefile;
     std::string s, s1(argv[2]), s2(argv[3]);
     readfile.open(argv[1], std::ios_base::in);
-    writefile.open(std::string(argv[1]).substr(0, filename.find(".")).append(".replace").c_str(), std::ios_base::out);//파일이 없을시 자동으로 생성해줌.
+    writefile.open(std::string(argv[1]).substr(0, std::string(argv[1]).find(".")).append(".replace").c_str(), std::ios_base::out);
     if (!writefile.is_open())
     {
         if (readfile.is_open())
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
         s.resize(size);
         readfile.seekg(0, std::ios::beg);
         readfile.read(&s[0], size);
-        int pos = 0;
+        unsigned int pos = 0;
         while (pos < s.size())
         {
             if (s.compare(pos, s1.size(), s1) == 0)

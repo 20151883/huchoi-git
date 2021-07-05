@@ -17,12 +17,14 @@ ZombieHorde::ZombieHorde(int N) :num_of_zombies(N), type("NOTYPE")
 	}
 	this->p_zombies = arr;
 }
+
 ZombieHorde::~ZombieHorde()
 {
 	for (int i = 0;i < this->num_of_zombies;i++)
 		delete (this->p_zombies[i]);
 	delete (this->p_zombies);
 }
+
 void	ZombieHorde::announce()
 {
 	int idx = 0;

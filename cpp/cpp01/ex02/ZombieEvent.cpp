@@ -10,7 +10,7 @@ void	ZombieEvent::setZombieType(std::string input)
 Zombie* ZombieEvent::newZombie(std::string input)
 {
 	Zombie *ret;
-	ret = new Zombie(type, input);//delete는 언제 진행? 소멸자에서 진행. 서브젝트에서 정해준 바로는 메이ㅁ
+	ret = new Zombie(type, input);
 	return (ret);
 }
 

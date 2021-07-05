@@ -1,5 +1,5 @@
 #include "ZombieEvent.hpp"
-//clang++ main.cpp Zombie.cpp ZombieEvent.cpp
+
 int main(void)
 {
     ZombieEvent test;
