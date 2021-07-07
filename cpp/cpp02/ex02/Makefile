@@ -1,6 +1,5 @@
 NAME = a.out
-#CXX = clang++
-CXX = g++
+CXX = clang++
 CXXFLAGS = -Wall -Werror -Wextra
 OBJS = main.o Fixed.o
 %.o: %.cc %.h
