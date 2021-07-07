@@ -1,10 +1,8 @@
-#include "Human.hpp"
+#include "Karen.hpp"
 
 int main(void)
 {
-	Human bob;
-	std::cout << bob.identify() << std::endl;
-	std::cout << bob.getBrain().identify() << std::endl;
-	std::cout << &(bob.getBrain()) << std::endl;
+	Karen test;
+	test.complain("INFO");
 	return (0);
 }

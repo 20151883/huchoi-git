@@ -1,20 +1,13 @@
-#include "ZombieEvent.hpp"
+#include <iostream>
 
 int main(void)
 {
-    ZombieEvent test;
-    test.setZombieType("deer");
-    Zombie *zombie_one = test.newZombie("huchoi");
-    zombie_one->announce();
-    delete zombie_one;
-    Zombie *zombie_two;
-    test.setZombieType("apple");
-    zombie_two = test.newZombie("devil");
-    zombie_two->announce();
-    delete zombie_two;
-    Zombie *zombie_three;
-    test.setZombieType("third zombie type");
-    zombie_three = test.randomChump();
-    delete zombie_three;
+    std::string str("HI THIS IS BRAIN");
+    std::string *stringPTR = &str;
+    std::string &stringREF = str;
+
+    std::cout<<*stringPTR<<"  address is "<<stringPTR<<std::endl;
+    std::cout<<stringREF<<"  address is "<<&stringREF<<std::endl;
+    std::cout<<str<<"  address is "<<&str<<std::endl;
     return (0);
 }

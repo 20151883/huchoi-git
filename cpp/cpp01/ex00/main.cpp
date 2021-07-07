@@ -1,17 +1,13 @@
-#include "Pony.hpp"
+#include "Zombie.hpp"
+
+void randomChump( std::string name );
+Zombie* newZombie( std::string name );
 
 int main(void)
 {
-	std::cout<<"**************************"<<std::endl;
-	std::cout<<"before ponyOnTheHeap call"<<std::endl;
-    ponyOnTheHeap();
-	std::cout<<"after ponyOnTheHeap call"<<std::endl;
-	std::cout<<"**************************"<<std::endl;
-	std::cout<<"\n\n**************************"<<std::endl;
-	std::cout<<"before ponyOnTheStack call"<<std::endl;
-    ponyOnTheStack();
-	std::cout<<"after ponyOnTheStack call"<<std::endl;
-	std::cout<<"**************************"<<std::endl;
-
+    Zombie *ret = newZombie("test one Zombie");
+    ret->announce();
+    delete ret;
+    randomChump("test two Zombie");
     return (0);
 }

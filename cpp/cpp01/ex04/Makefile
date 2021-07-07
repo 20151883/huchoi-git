@@ -1,13 +1,13 @@
 NAME = replace
-CC = clang++
+CXX = clang++
 CXXFLAGS = -Wall -Werror -Wextra
 OBJS = main.o
 
 %.o: %.cc %.h
-	$(CC) $(CXXFLAGS) -c $<
+	$(CXX) $(CXXFLAGS) -c $<
 all : $(NAME)
 $(NAME) : $(OBJS)
-	$(CC) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 clean :
 	rm -rf $(OBJS)
 fclean : clean

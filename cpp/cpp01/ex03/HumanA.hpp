@@ -1,5 +1,8 @@
-#include <iostream>
-#include "Weapon.hpp"
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
+
+# include <iostream>
+# include "Weapon.hpp"
 
 class HumanA
 {
@@ -9,5 +12,7 @@ class HumanA
     public:
         HumanA(const char *usr_name, Weapon &test) :name(usr_name), gun(test)
         {}
-        void attack();      
+        void attack();
 };
+
+#endif
