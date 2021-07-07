@@ -1,1 +1,1 @@
-clang++ -W -Wall -Wextra -Werror main.cpp ScavTrap.cpp FragTrap.cpp ClapTrap.cpp
+clang++ -W -Wall -Wextra -Werror main.cpp FragTrap.cpp

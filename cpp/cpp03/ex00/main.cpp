@@ -1,12 +1,10 @@
-#include "FragTrap.hpp"
+#include "ClapTrap.hpp"
 
 int main(void)
 {
-	FragTrap test("huchoi");
-	test.rangedAttack("enemy-1");
-	test.meleeAttack("enemy-2");
+	ClapTrap test("huchoi");
+	test.attack("enemy");
 	test.takeDamage(120);
 	test.beRepaired(120);
-	test.vaulthunter_dot_exe("enemy-3");
 	return 0;
 }

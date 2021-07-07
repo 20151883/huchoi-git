@@ -1,28 +1,23 @@
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
+
 #include <iostream>
 #include <cstring>
-#ifndef _ClapTrap_
-#define _ClapTrap_
+
 class ClapTrap{
 	protected:
-		std::string	Name;
-		unsigned int Hit_point;
-		unsigned int Max_hit_points;
+		std::string Name;
+		unsigned int Hit_points;
 		unsigned int Energy_points;
-		unsigned int Max_energy_points;
-		unsigned int Level;
-		unsigned int Melee_attack_damage;
-		unsigned int Ranged_attack_damage;
-		unsigned int Armor_damage_reduction;
+		unsigned int Attack_Damage;
+		ClapTrap();
 	public:
-		ClapTrap(void);
 		ClapTrap(const char *name);
-		ClapTrap(ClapTrap &src);
+		ClapTrap(const ClapTrap &src);
 		virtual ~ClapTrap();
-		virtual ClapTrap &operator=(ClapTrap &src);
-		void	rangedAttack(std::string const & target);
-		void	meleeAttack(std::string const & target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
-		std::string		getName();
+		ClapTrap &operator=(const ClapTrap &src);
+		void attack(std::string const & target);
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
 };
 #endif

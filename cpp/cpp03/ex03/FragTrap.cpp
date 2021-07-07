@@ -1,32 +1,31 @@
 #include "FragTrap.hpp"
-#include <ctime>
 
-FragTrap::FragTrap(const char *name):ClapTrap()
+FragTrap::FragTrap()
 {
-	Name = name;
-	Hit_point = 100;
-	Max_hit_points= 100;
-	Energy_points=100;
-	Max_energy_points = 100;
-	Level = 1;
-	Melee_attack_damage = 30;
-	Ranged_attack_damage = 20;
-	Armor_damage_reduction = 5;
-	srand(time(NULL));
+	std::cout<<"the void FragTrap constucture is called!!!!"<<std::endl;
+}
+
+FragTrap::FragTrap(const char *name): ClapTrap()//, Name(name), Hit_points(100), Energy_points(50), Attack_Damage(20)
+{
+	this->Name = name;
+	this->Hit_points = 100;
+	this->Energy_points = 100;
+	this->Attack_Damage = 30;
 	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
+}
+
+FragTrap &FragTrap::operator=(const FragTrap &src)
+{
+	Hit_points = src.Hit_points;
+	Energy_points = src.Energy_points;
+	Attack_Damage = src.Attack_Damage;
+	Name = src.Name;
+	return (*this);
 }
 
 FragTrap::FragTrap(const FragTrap &src):ClapTrap()
 {
-	Max_hit_points= 100;
-	Max_energy_points = 100;
-	Melee_attack_damage = 30;
-	Ranged_attack_damage = 20;
-	Armor_damage_reduction = 5;
-	Hit_point = src.Hit_point;
-	Energy_points = src.Energy_points;
-	Level = src.Level;
-	Name = src.Name;
+	*this = src;
 	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
 
@@ -35,28 +34,19 @@ FragTrap::~FragTrap()
 	std::cout<<"the FragTrap("<<Name<< ") is disappeared!!!!"<<std::endl;
 }
 
-FragTrap &FragTrap::operator=(FragTrap &src)
+void FragTrap::highFivesGuys(void)
 {
-	Hit_point = src.Hit_point;
-	Energy_points = src.Energy_points;
-	Level = src.Level;
-	Name = src.Name;
-	return (*this);
+	std::cout<<"*******************************"<<std::endl;
+	std::cout<<"*this is positive five request*"<<std::endl;
+	std::cout<<"*******************************"<<std::endl;
+	std::cout<<"I Am Rubber, You Are Glue"<<std::endl;
+	std::cout<<"Start with a Bang"<<std::endl;
+	std::cout<<"You're...GOING TO LOVE ME!!"<<std::endl;
+	std::cout<<"Kick Him While He's Up"<<std::endl;
+	std::cout<<"Through Thick and Thin"<<std::endl;
 }
 
-void	FragTrap::vaulthunter_dot_exe(std::string const & target)
+void FragTrap::attack(std::string const & target)
 {
-	std::string arr[5];
-	arr[0] ="Miniontrap";
-	arr[1] = "Meat unicycle";
-	arr[2] = "Funzerker";
-	arr[3] = "Mechomagician";
-	arr[4] = "Shhhh....trap";
-	if (Energy_points < 25)
-		std::cout<<"you have too few ernery to use vaulthunter_dot_exe skill"<<std::endl;
-	else
-	{
-		this->Energy_points -= 25;
-		std::cout<<"FR4G-TP <"<<Name<<"> attacks <"<<target<<"> at "<<arr[rand()%5]<<", causing <"<<25<<"> points of damage!"<<std::endl;
-	}
+	std::cout<<"FragTrap <"<<this->Name<<"> attacks <"<<target<<">, causing <"<<this->Attack_Damage<<"> points of damage!"<<std::endl;
 }
