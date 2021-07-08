@@ -1,13 +1,26 @@
 #include "Character.hpp"
 
+Character::Character()
+{}
+
 Character::Character(std::string const & name) :ap(40),ptr(NULL)
 {
 	this->name = name;
 }
 Character::~Character()
 {
+}
+
+Character &operator=(const Character &src)
+{
 
 }
+
+Character(const Character &src)
+{
+
+}
+
 void Character::recoverAP()
 {
 	this->ap += 10;
@@ -16,15 +29,17 @@ void Character::recoverAP()
 }
 void Character::equip(AWeapon* p_src)
 {
+	if (p_src == NULL)
+		return ;
 	this->ptr = p_src;
 }
-void Character::attack(Enemy*opp)
+void Character::attack(const Enemy*opp)
 {
+	if (opp == NULL)
+		return ;
 	if (this->ptr)
 	{
 		if (this->ap - this->ptr->getAPCost() < 0)
-			return;
-		if (this->ap < this->ptr->getAPCost())
 			return;
 		std::cout<<this->name<<" attacks "<<opp->getType()<<" with a "<<(this->ptr->getName())<<std::endl;
 		this->ptr->attack();
@@ -38,15 +53,17 @@ void Character::attack(Enemy*opp)
 		}
 	}
 }
-int Character::getAp()
+int Character::getAp() const
 {
 	return this->ap;
 }
-std::string Character::getName() const
+
+const std::string Character::getName() const
 {
 	return this->name;
 }
-AWeapon *Character::getWeapon()
+
+const AWeapon *Character::getWeapon() const
 {
 	return ptr;
 }
@@ -54,9 +71,9 @@ AWeapon *Character::getWeapon()
 std::ostream &operator<<(std::ostream &ost, Character &src)
 {
 	if (src.getWeapon() != NULL)
-		printf("%s has %d AP and wields a %s\n", src.getName().c_str(), src.getAp(), src.getWeapon()->getName().c_str());
+		ost<<src.getName()<<" has "<<src.getAp()<<" AP and wields a "<<src.getWeapon()->getName()<<"\n";
 	else
-		printf("%s has %d AP and is unarmed\n", src.getName().c_str(), src.getAp());
-	fflush(stdout);
+		ost<<src.getName()<<" has "<<src.getAp()<<" AP and is unarmed\n";
+	ost.flush();
 	return ost;
 }

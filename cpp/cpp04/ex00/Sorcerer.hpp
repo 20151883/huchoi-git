@@ -1,5 +1,5 @@
-#ifndef __SORCERER__
-#define __SORCERER__
+#ifndef SORCERER_HPP
+#define SORCERER_HPP
 
 #include <iostream>
 #include "Victim.hpp"
@@ -12,11 +12,11 @@ class Sorcerer{
 	public:
 		Sorcerer(const char *n, const char *t);
 		Sorcerer(const Sorcerer &src);
-		void announce() const;
+		void announce();
 		void polymorph(Victim const &victim) const;
-		std::string getName();
-		std::string getTitle();
-		Sorcerer &operator=(Sorcerer &src);
+		const std::string &getName() const;
+		const std::string &getTitle() const;
+		Sorcerer &operator=(const Sorcerer &src);
 		virtual ~Sorcerer();
 };
 

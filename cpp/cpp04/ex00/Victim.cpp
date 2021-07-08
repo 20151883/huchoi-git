@@ -40,9 +40,9 @@ Victim::~Victim()
 	std::cout<<"Victim "<< name <<" just died for no apparent reason!"<<std::endl;
 }
 
-std::ostream &operator<<(std::ostream &ost, Victim &src)
+std::ostream& operator<<(std::ostream &ost, Victim &src)
 {
-	printf("I\'m %s and I like otters!\n", src.getName().c_str());
-	fflush(stdout);
+	ost<<"I'm "<<src.getName()<<" and I like otters!\n";
+	ost.flush();
 	return ost;
 }

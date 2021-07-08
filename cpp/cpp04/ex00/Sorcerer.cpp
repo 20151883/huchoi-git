@@ -1,20 +1,28 @@
 #include "Sorcerer.hpp"
 
 Sorcerer::Sorcerer()
-{}
+{
+	std::cout<<"private void constructor is called"<<std::endl;
+}
 
 Sorcerer::Sorcerer(const char *n, const char *t) :name(n), title(t)
 {
 	std::cout<<name<<", "<<title<<", is born!"<<std::endl;
 }
 
-Sorcerer::Sorcerer(const Sorcerer &src)
+Sorcerer &Sorcerer::operator=(const Sorcerer &src)//여기서 매개변수 자료형을 const로 바꾸면서 파생된 문제에 대해 생각해보긴
 {
-	this->name = src.name;
-	this->title = src.title;
+	this->name = src.getName();
+	this->title = src.getTitle();
+	return *this;
 }
 
-void Sorcerer::announce() const
+Sorcerer::Sorcerer(const Sorcerer &src)
+{
+	*this = src;
+}
+
+void Sorcerer::announce()
 {
 	 std::cout<<"I am"<<name<<", "<<title<<","<<", and I like ponies!"<<std::endl;
 }
@@ -24,21 +32,14 @@ void Sorcerer::polymorph(Victim const &victim) const
 	victim.getPolymorphed();
 }
 
-std::string Sorcerer::getName()
+const std::string &Sorcerer::getName() const
 {
 	return name;
 }
 
-std::string Sorcerer::getTitle()
+const std::string &Sorcerer::getTitle() const
 {
 	return title;
-}
-
-Sorcerer &Sorcerer::operator=(Sorcerer &src)
-{
-	this->name = src.getName();
-	this->title = src.getTitle();
-	return *this;
 }
 
 Sorcerer::~Sorcerer()
@@ -48,7 +49,7 @@ Sorcerer::~Sorcerer()
 
 std::ostream& operator<<(std::ostream &ost, Sorcerer &src)
 {
-	printf("I am %s, %s, and I like ponies!\n", src.getName().c_str(), src.getTitle().c_str());
-	fflush(stdout);
+	ost<<"I am "<<src.getName()<<", "<<src.getTitle()<<", and I like ponies!\n";
+	ost.flush();
 	return ost;
 }

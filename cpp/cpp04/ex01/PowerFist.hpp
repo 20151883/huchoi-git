@@ -8,8 +8,8 @@ class PowerFist :public AWeapon
 	public:
 		PowerFist();
 		~PowerFist();
-		PowerFist(PowerFist &src);
-		PowerFist &operator=(PowerFist &src);
+		PowerFist(const PowerFist &src);
+		PowerFist &operator=(const PowerFist &src);
 		virtual void	attack() const;
 };
 #endif

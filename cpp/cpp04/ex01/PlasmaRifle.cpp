@@ -8,17 +8,17 @@ PlasmaRifle::PlasmaRifle() :AWeapon("Plasma Rifle", 5, 21)
 PlasmaRifle::~PlasmaRifle()
 {}
 
-PlasmaRifle::PlasmaRifle(PlasmaRifle &src) :AWeapon(src.getName(), src.getAPCost(), src.getDamage())
+PlasmaRifle::PlasmaRifle(const PlasmaRifle &src) :AWeapon(src.getName(), src.getAPCost(), src.getDamage())
 {
 	this->sound = src.sound;
 }
 
-PlasmaRifle &PlasmaRifle::operator=(PlasmaRifle &src)
+PlasmaRifle &PlasmaRifle::operator=(const PlasmaRifle &src)
 {
-	this->name =  src.name;
-	this->apcost = src.apcost;
-	this->damage = src.damage;
-	this->sound = src.sound;
+	this->name =  src.getName();
+	this->apcost = src.getAPCost();
+	this->damage = src.getDamage();
+	this->sound = "* piouuu piouuu piouuu *";
 	return *this;
 }
 

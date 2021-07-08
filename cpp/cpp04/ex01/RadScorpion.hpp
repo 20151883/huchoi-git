@@ -8,8 +8,8 @@ class RadScorpion :public Enemy
 	public:
 		RadScorpion();
 		virtual ~RadScorpion();
-		RadScorpion(RadScorpion &src);
-		RadScorpion &operator=(RadScorpion &src);
+		RadScorpion(const RadScorpion &src);
+		RadScorpion &operator=(const RadScorpion &src);
 		virtual void takeDamage(int num);
 };
 #endif

@@ -14,11 +14,11 @@ class AWeapon
 	public:
 		AWeapon(std::string const & name, int apcost, int damage);
 		AWeapon(const AWeapon &src);
-		~AWeapon();
+		virtual ~AWeapon();
 		AWeapon &operator=(const AWeapon &src);
-		std::string getName() const;
-		virtual int getAPCost() const;
-		virtual int getDamage() const;
+		const std::string &getName() const;
+		int getAPCost() const;
+		int getDamage() const;
 		virtual void attack() const = 0;
 };
 #endif

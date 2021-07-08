@@ -3,25 +3,29 @@
 RadScorpion::RadScorpion() :Enemy(80,"RadScorpion")
 {
 	std::cout<<"* click click click *"<<std::endl;
-	this->dead = "* SPROTCH *";
 }
+
 RadScorpion::~RadScorpion()
-{}
-RadScorpion::RadScorpion(RadScorpion &src) :Enemy(src.getHp(), src.getType())
 {
-	this->hp = src.hp;
-	this->type = src.type;
-	this->dead = src.dead;
-	this->flag = src.flag;
+	if (this->flag == 1)
+		return ;
+	std::cout<<"* SPROTCH *"<<std::endl;
 }
-RadScorpion &RadScorpion::operator=(RadScorpion &src)
+
+RadScorpion::RadScorpion(const RadScorpion &src) :Enemy(src.getHp(), src.getType())
 {
-	this->hp = src.hp;
-	this->type = src.type;
-	this->dead = src.dead;
-	this->flag = src.flag;
+	std::cout<<"* click click click *"<<std::endl;
+	this->flag = src.getFlag();
+}
+
+RadScorpion &RadScorpion::operator=(const RadScorpion &src)
+{
+	this->hp = src.getHp();
+	this->type = src.getType();
+	this->flag = src.getFlag();
 	return *this;
 }
+
 void RadScorpion::takeDamage(int num)
 {
 	if (num < 0)
@@ -31,7 +35,7 @@ void RadScorpion::takeDamage(int num)
 	if (this->hp <= 0)
 	{
 		if (this->flag == 0)
-			std::cout<<this->dead<<std::endl;
+			std::cout<<"* SPROTCH *"<<std::endl;
 		this->flag = 1;
 		this->hp = 0;
 	}
