@@ -6,7 +6,7 @@
 
 class FragTrap : public ClapTrap
 {
-	private:
+	protected:
 		FragTrap();
 	public:
 		FragTrap(const char *name);
@@ -14,7 +14,7 @@ class FragTrap : public ClapTrap
 		FragTrap(const FragTrap &src);
 		virtual ~FragTrap();
 		void highFivesGuys(void);
-		virtual void attack(std::string const & target);
+		void attack(std::string const & target);
 };
 
 #endif

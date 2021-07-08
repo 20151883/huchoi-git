@@ -3,8 +3,9 @@ CXX = clang++
 CXXFLAGS = -Wall -Werror -Wextra
 OBJS = ClapTrap.o main.o
 
-%.o: %.cpp %.hpp
-	$(CXX) $(CXXFLAGS) -c $<
+%.o : %.cpp %.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 all : $(NAME)
 $(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)

@@ -8,6 +8,7 @@ class ScavTrap : virtual public ClapTrap
 {
 	protected:
 		ScavTrap();
+		int gate_keeper_flag;
 	public:
 		ScavTrap(const char *name);
 		ScavTrap &operator=(const ScavTrap &src);

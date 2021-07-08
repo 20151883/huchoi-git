@@ -36,6 +36,5 @@ void DiamondTrap::whoAmI()
 
 void DiamondTrap::attack(std::string const & target)
 {
-	//std::cout<<"ScavTrap <"<<this->Name<<"> attacks <"<<target<<">, causing <"<<this->Attack_Damage<<"> points of damage!"<<std::endl;
-	std::cout<<"ScavTrap <"<<ScavTrap::Name<<"> attacks <"<<target<<">, causing <"<<20<<"> points of damage!"<<std::endl;
+	std::cout<<"ScavTrap <"<<this->Name<<"> attacks <"<<target<<">, causing <"<<this->Attack_Damage<<"> points of damage!"<<std::endl;
 }

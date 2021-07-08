@@ -1,11 +1,11 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap():gate_keeper_flag(0)
 {
 	std::cout<<"the void ScavTrap constucture is called!!!!"<<std::endl;
 }
 
-ScavTrap::ScavTrap(const char *name): ClapTrap()//, Name(name), Hit_points(100), Energy_points(50), Attack_Damage(20)
+ScavTrap::ScavTrap(const char *name): ClapTrap(), gate_keeper_flag(0)
 {
 	this->Name = name;
 	this->Hit_points = 100;
@@ -20,13 +20,14 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 	Energy_points = src.Energy_points;
 	Attack_Damage = src.Attack_Damage;
 	Name = src.Name;
+	gate_keeper_flag = src.gate_keeper_flag;
 	return (*this);
 }
 
 ScavTrap::ScavTrap(const ScavTrap &src):ClapTrap()
 {
 	*this = src;
-	std::cout<<"the ScavTrap("<<Name<< ") is appeared!!!!"<<std::endl;
+	std::cout<<"the ScavTrap( "<<Name<< ") is appeared!!!!"<<std::endl;
 }
 
 ScavTrap::~ScavTrap()
@@ -36,7 +37,13 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::guardGate()
 {
-	std::cout<<"ScavTrap have enterred in Gate keeper mode."<<std::endl;
+	if (gate_keeper_flag == 0)
+	{
+		std::cout<<"ScavTrap have enterred in Gate keeper mode."<<std::endl;
+		gate_keeper_flag = 1;
+	}
+	else
+		std::cout<<"ScavTrap have already enterred in Gate keeper mode."<<std::endl;
 }
 
 void ScavTrap::attack(std::string const & target)

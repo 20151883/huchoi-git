@@ -24,6 +24,7 @@ ClapTrap::ClapTrap(const ClapTrap &src)
 	*this = src;
 	std::cout<<"the ClapTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
+
 ClapTrap::~ClapTrap()
 {
 	std::cout<<"the ClapTrap("<<Name<< ") is disappeared!!!!"<<std::endl;
@@ -39,18 +40,22 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	if (Hit_points <= amount)
 		Hit_points = amount;
 	Hit_points -= amount;
-	std::cout<<"ClapTrap <"<<Name<<"> attacked by someone,and caused <"<<amount<<"> points of damage!"<<std::endl;
+	std::cout<<Name<<"> attacked by someone,and caused <"<<amount<<"> points of damage!"<<std::endl;
 	std::cout<<"and your hit point is "<<Hit_points<<std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	Hit_points += amount;
-	std::cout<<"ClapTrap <"<<Name<<"> repaired by angel,and repaired <"<<amount<<"> points of hp!"<<std::endl;
-	Energy_points += amount;
-	std::cout<<"ClapTrap <"<<Name<<"> repaired by angel,and repaired <"<<amount<<"> points of energy point!"<<std::endl;
+	if (Hit_points > Hit_points + amount)
+		Hit_points = 0xFFFFFFFF;
+	else
+		Hit_points += amount;
+	std::cout<<Name<<"> repaired by angel,and repaired <"<<amount<<"> points of hp!"<<std::endl;
+	if (Energy_points > Energy_points + amount)
+		Energy_points = 0xFFFFFFFF;
+	else
+		Energy_points += amount;
+	std::cout<<Name<<"> repaired by angel,and repaired <"<<amount<<"> points of energy point!"<<std::endl;
 	std::cout<<"and your hit point is "<<Hit_points<<std::endl;
 	std::cout<<"and your Energy point is "<<Energy_points<<std::endl;
 }
-
-
