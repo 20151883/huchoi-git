@@ -22,5 +22,7 @@ int main()
 	std::cout << *me;
 	me->attack(b);
 	std::cout << *me;
+
+	//me->attack(b);이 부분 에러 핸들링을 객체내에서 할 수가 없음.
 	return 0;
 }

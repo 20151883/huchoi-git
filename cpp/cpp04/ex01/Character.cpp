@@ -7,18 +7,28 @@ Character::Character(std::string const & name) :ap(40),ptr(NULL)
 {
 	this->name = name;
 }
+
 Character::~Character()
 {
+	std::cout<<name<<" character's destructor!!!"<<std::endl;
 }
 
-Character &operator=(const Character &src)
+Character &Character::operator=(const Character &src)
 {
-
+	this->name = src.getName();
+	this->ap = src.getAp();
+	if (src.getWeapon() == NULL)
+		this->ptr = NULL;
+	else
+	{
+		this->ptr = src.getWeapon();//얕은 복사가 맞는듯.(근거를 얘기할수 있어야 할듯)
+	}
+	return (*this);
 }
 
-Character(const Character &src)
+Character::Character(const Character &src)
 {
-
+	*this = src;
 }
 
 void Character::recoverAP()
@@ -27,13 +37,15 @@ void Character::recoverAP()
 	if (this->ap > 40)
 		this->ap = 40;
 }
+
 void Character::equip(AWeapon* p_src)
 {
 	if (p_src == NULL)
 		return ;
 	this->ptr = p_src;
 }
-void Character::attack(const Enemy*opp)
+
+void Character::attack(Enemy*opp)
 {
 	if (opp == NULL)
 		return ;
@@ -45,14 +57,14 @@ void Character::attack(const Enemy*opp)
 		this->ptr->attack();
 		this->ap -= this->ptr->getAPCost();
 		opp->takeDamage(this->ptr->getDamage());
-		if (opp->getFlag() == 1)
+		if (opp->getFlag() == 1 )
 		{
-			opp->~Enemy();
-			free(opp);
-			opp = NULL;
+			//opp->~Enemy();
+			delete opp;
 		}
 	}
 }
+
 int Character::getAp() const
 {
 	return this->ap;

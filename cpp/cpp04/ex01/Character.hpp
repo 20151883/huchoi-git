@@ -3,13 +3,15 @@
 
 #include "AWeapon.hpp"
 #include "Enemy.hpp"
+#include "PlasmaRifle.hpp"
+#include "PowerFist.hpp"
 
 class Character
 {
 	private:
 		std::string name;
 		int ap;
-		AWeapon *ptr;
+		const AWeapon *ptr;
 		Character();
 	public:
 		Character(std::string const & name);
@@ -18,7 +20,7 @@ class Character
 		~Character();
 		void recoverAP();
 		void equip(AWeapon* p_src);
-		void attack(Enemy*opp);
+		void attack(Enemy*opp);//생각해보니 매개변수 자료형을 const Ememy * 로 하는건 불필요한 일이었음.
 		int getAp() const;
 		const std::string getName() const;
 

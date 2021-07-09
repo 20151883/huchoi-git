@@ -1,6 +1,8 @@
 #ifndef __ISQUAD__
 #define __ISQUAD__
+
 #include <iostream>
+
 class ISquad
 {
 	public:
