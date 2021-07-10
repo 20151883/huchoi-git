@@ -1,1 +1,1 @@
-echo essential fundtion in class
+check essential fundtion in class

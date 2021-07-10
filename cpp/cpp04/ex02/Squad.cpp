@@ -14,7 +14,7 @@ Squad::~Squad()
 	delete []arr;
 }
 
-Squad::Squad(const ISquad &src) :count(src.getCount())//체크할것
+Squad::Squad(const Squad &src) :count(src.getCount())//객체핸들러에서 가장 중요한 부분
 {
 	this->arr = new ISpaceMarine*[this->count];
 	ISpaceMarine *ptr;
@@ -25,7 +25,7 @@ Squad::Squad(const ISquad &src) :count(src.getCount())//체크할것
 	}
 }
 
-Squad &Squad::operator=(const ISquad &src)//체크할것
+Squad &Squad::operator=(const Squad &src)//객체핸들러에서 가장 중요한 부분
 {
 	int i;
 	if (this->arr != NULL)
@@ -61,7 +61,7 @@ ISpaceMarine* Squad::getUnit(int idx) const
 	return arr[idx];
 }
 
-int Squad::push(ISpaceMarine*src)//체크할것
+int Squad::push(ISpaceMarine*src)//객체 핸들러에서 가장 중요한 부분
 {
 	int i;
 	if (src == NULL)
