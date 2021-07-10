@@ -1,7 +1,9 @@
 #ifndef __ISPACEMARINE__
 #define __ISPACEMARINE__
+
 #include <iostream>
-class ISpaceMarine
+
+class ISpaceMarine // interface class 
 {
 	private:
 

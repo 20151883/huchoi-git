@@ -6,32 +6,11 @@
 class Ice :public AMateria
 {
 	public:
-		Ice() :AMateria("ice")
-		{
-			this->sound =  "* shoots an ice bolt at ";
-		}
-		Ice(const Ice &src)  :AMateria("ice")
-		{
-			this->sound =  src.sound;
-		}
-		Ice &operator=(Ice &src)
-		{
-			(void)src;
-			return *this;
-		}
-		~Ice()
-		{
-
-		}
-		virtual void use(ICharacter& target)
-		{
-			AMateria::use(target);
-			std::cout<<this->sound<<target.getName()<<" *"<<std::endl;//target.getName()
-		}
-		virtual AMateria* clone() const
-		{
-			AMateria *ret = new Ice(*this);
-			return ret;
-		}
+		Ice();
+		Ice(const Ice &src);
+		Ice &operator=(Ice &src);
+		~Ice();
+		virtual void use(ICharacter& target);
+		virtual AMateria* clone() const;
 };
 #endif

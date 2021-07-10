@@ -1,1 +1,1 @@
-check essential fundtion in class
+내가 만든 모든 클래스에 디폴트생성자, 복사생성자, 대입연산자 오버로딩, 소멸자가 모두 존재하는지 확인할것

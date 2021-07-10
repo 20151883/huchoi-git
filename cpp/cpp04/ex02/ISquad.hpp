@@ -1,6 +1,7 @@
 #ifndef __ISQUAD__
 #define __ISQUAD__
 
+#include "ISpaceMarine.hpp"
 #include <iostream>
 
 class ISquad//Interface class!.. 객체핸들러에 대한 부모클래스로 인터페이스 클래스를 두는게 일반적이겠다.

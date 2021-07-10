@@ -7,29 +7,18 @@ class ICharacter;
 class AMateria
 {
 	protected:
-		//[...]
 		unsigned int _xp;
 		std::string type;
-		std::string sound;
 
 	public:
-		AMateria(std::string const & type):_xp(0), type(type)
-		{}
-		virtual ~AMateria() {}
-		std::string const & getType() const
-		{
-			return this->type;
-		}
-		unsigned int getXP() const
-		{
-			return this->_xp;
-		}
+		AMateria(std::string const & type);
+		AMateria(const AMateria &src);
+		const AMateria &operator=(const AMateria &src); 
+		virtual ~AMateria();
+		std::string const & getType() const;
+		unsigned int getXP() const;
 		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target)
-		{
-			(void)target;
-			this->_xp += 10;
-		}
+		virtual void use(ICharacter& target);
 };
 
 #endif

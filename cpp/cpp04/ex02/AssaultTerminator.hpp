@@ -2,36 +2,19 @@
 #define __ASSAULTTERMINATOR__
 
 #include "ISpaceMarine.hpp"
-#include <iostream>
-class AssaultTerminator :public ISpaceMarine//사실상 무연산 클래스
+
+class AssaultTerminator :public ISpaceMarine//왜 이 클래스의 부모클래스를 인터페이스 클래스로 두었는지...?
 {
 	private:
 
 	public:
-		AssaultTerminator()
-		{
-			std::cout<< "* teleports from space *"<<std::endl;
-		}
-		virtual ~AssaultTerminator()
-		{
-			std::cout<< "I'll be back..."<<std::endl;
-		}
-		virtual ISpaceMarine* clone() const
-		{
-			ISpaceMarine *ret = new AssaultTerminator(*this);
-			return ret;
-		}
-		virtual void battleCry() const
-		{
-			std::cout<< "This code is unclean. PURIFY IT!"<<std::endl;
-		}
-		virtual void rangedAttack() const
-		{
-			std::cout<< "* does nothing *"<<std::endl;
-		}
-		virtual void meleeAttack() const
-		{
-			std::cout<<  "* attacks with chainfists *"<<std::endl;
-		}
+		AssaultTerminator();
+		virtual ~AssaultTerminator();
+		AssaultTerminator(const AssaultTerminator &src);
+		const AssaultTerminator &operator=(const AssaultTerminator &src);
+		virtual ISpaceMarine* clone() const;
+		virtual void battleCry() const;
+		virtual void rangedAttack() const;
+		virtual void meleeAttack() const;
 };
 #endif

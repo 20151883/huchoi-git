@@ -1,4 +1,4 @@
-#include "ISquad.hpp"
+#include "Squad.hpp"
 
 Squad::Squad() :count(0), arr(NULL)
 {}
@@ -11,40 +11,37 @@ Squad::~Squad()
 		delete arr[i];
 		i++;
 	}
-	delete []arr;
+	if (arr != NULL)
+		delete []arr;
 }
 
 Squad::Squad(const Squad &src) :count(src.getCount())//객체핸들러에서 가장 중요한 부분
 {
 	this->arr = new ISpaceMarine*[this->count];
-	ISpaceMarine *ptr;
 	for (int i=0; i < count; i++)
 	{
-		ptr = src.getUnit(i)->clone();
-		this->arr[i] = ptr;
+		this->arr[i] = src.getUnit(i)->clone();
 	}
 }
 
-Squad &Squad::operator=(const Squad &src)//객체핸들러에서 가장 중요한 부분
+const Squad &Squad::operator=(const Squad &src)//객체핸들러에서 가장 중요한 부분
 {
 	int i;
 	if (this->arr != NULL)
 	{
 		i = 0;
-		while (i < count)
+		while (i < this->count)
 		{
 			delete arr[i];
 			i++;
 		}
-		this->count = 0;
 		delete []arr;
+		this->count = src.getCount();
 	}
 	this->arr = new ISpaceMarine*[this->count];
-	ISpaceMarine *ptr;
 	for (i=0; i < count; i++)
 	{
-		ptr = src.getUnit(i)->clone();
-		this->arr[i] = ptr;
+		this->arr[i] = src.getUnit(i)->clone();
 	}
 	return *this;
 }
@@ -56,7 +53,7 @@ int Squad::getCount() const
 
 ISpaceMarine* Squad::getUnit(int idx) const
 {
-	if (count - 1 < idx)
+	if (count - 1 < idx || idx < 0)
 		return NULL;
 	return arr[idx];
 }
@@ -66,18 +63,19 @@ int Squad::push(ISpaceMarine*src)//객체 핸들러에서 가장 중요한 부�
 	int i;
 	if (src == NULL)
 		return this->count;
-	for (i = 0; i < this->count; i++)
+	for (i = 0; i < this->count; i++)//ISpaceMarine객체에서 == 연산자 오버로딩을 통해서 객체끼리 비교하는게 좋긴하겠지만, ISpaceMarine 클래스의 정의상 멤버변수가 없어서 그렇게는 할 수가 없음.
 	{
 		if (arr[i] == src)
 			return this->count;
 	}
 	(this->count)++;
 	ISpaceMarine **new_arr = new ISpaceMarine*[this->count];
-	for(i = 0;i < this->count - 1;i++)
+	for(i = 0; i < this->count - 1; i++)
 		new_arr[i] = arr[i];
+	//new_arr[i] = src->clone();//;push()함수의 파라미터를 보면 이렇게 clone하는건 옳지 않은듯.. 컨테이너의 특성상 이렇게 깊은 복사(값의 복사하는게 맞는듯)(test.cpp의 코드와 결과값 관찰해보기)
+	new_arr[i] = src;//서브젝트 메인문과 결과값에서는 이 줄을 사용할것을 요구....
 	if (this->arr)
 		delete []this->arr;
-	new_arr[i] = src;
 	this->arr = new_arr;
 	return this->count;
 }

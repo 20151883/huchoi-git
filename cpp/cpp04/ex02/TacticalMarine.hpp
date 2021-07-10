@@ -3,35 +3,19 @@
 
 #include "ISpaceMarine.hpp"
 #include <iostream>
-class TacticalMarine :public ISpaceMarine//사실상 무연산 클래스
+
+class TacticalMarine :public ISpaceMarine//왜 이 클래스에 대한 부모클래스를 인터페이스 클래스로 둔 것인지...? 확장을 안해서 그런가?
 {
 	private:
 
 	public:
-		TacticalMarine()
-		{
-			std::cout<<"Tactical Marine ready for battle!"<<std::endl;
-		}
-		virtual ~TacticalMarine()
-		{
-			std::cout<< "Aaargh..."<<std::endl;
-		}
-		virtual ISpaceMarine* clone() const
-		{
-			ISpaceMarine *ret = new TacticalMarine(*this);
-			return ret;
-		}
-		virtual void battleCry() const
-		{
-			std::cout<<"For the holy PLOT!"<<std::endl;
-		}
-		virtual void rangedAttack() const
-		{
-			std::cout<< "* attacks with a bolter *"<<std::endl;
-		}
-		virtual void meleeAttack() const
-		{
-			std::cout<< "* attacks with a chainsword *"<<std::endl;
-		}
+		TacticalMarine();
+		~TacticalMarine();
+		TacticalMarine(const TacticalMarine &src);
+		const TacticalMarine &operator=(const TacticalMarine &src);
+		ISpaceMarine* clone() const;
+		void battleCry() const;
+		void rangedAttack() const;
+		void meleeAttack() const;
 };
 #endif
