@@ -13,28 +13,27 @@ Victim::Victim(const Victim &src)
 	name = src.getName();
 }
 
-void	Victim::getPolymorphed() const
+void	Victim::getPolymorphed() const//const함수라서 status값 변경할수가 없겠다.
 {
 	std::cout << this->name <<" has been turned into a cute little sheep!" << std::endl;
 }
 
-std::string Victim::getName (void) const
+const std::string &Victim::getName (void) const
 {
 	return this->name;
 }
 
-void Victim::setName (std::string &test)
+void Victim::setName (const std::string &test)
 {
 	this->name = test;
 }
 
-Victim &Victim::operator=(Victim &src)
+const Victim &Victim::operator=(const Victim &src)
 {
 	this->name = src.getName();
 	return *this;
 }
 
-//virtual Peon	&operator=(Peon &src) = 0;//순수가상함수
 Victim::~Victim()
 {
 	std::cout<<"Victim "<< name <<" just died for no apparent reason!"<<std::endl;

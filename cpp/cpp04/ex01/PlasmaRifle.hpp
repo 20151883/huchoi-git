@@ -1,5 +1,5 @@
-#ifndef __PLASMARIFLE__
-#define __PLASMARIFLE__
+#ifndef PLASMARIFLE_HPP
+#define PLASMARIFLE_HPP
 
 #include "AWeapon.hpp"
 
@@ -10,6 +10,6 @@ class PlasmaRifle :public AWeapon
 		~PlasmaRifle();
 		PlasmaRifle(const PlasmaRifle &src);
 		PlasmaRifle &operator=(const PlasmaRifle &src);
-		virtual void	attack() const;
+		void	attack() const;
 };
 #endif

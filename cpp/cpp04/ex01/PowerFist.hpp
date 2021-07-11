@@ -1,5 +1,5 @@
-#ifndef __POWERFIST__
-#define __POWERFIST__
+#ifndef POWERFIST_HPP
+#define POWERFIST_HPP
 
 #include "AWeapon.hpp"
 
@@ -11,6 +11,6 @@ class PowerFist :public AWeapon
 		~PowerFist();
 		PowerFist(const PowerFist &src);
 		PowerFist &operator=(const PowerFist &src);
-		virtual void	attack() const;
+		void	attack() const;
 };
 #endif

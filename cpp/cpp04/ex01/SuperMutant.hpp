@@ -7,10 +7,10 @@ class SuperMutant :public Enemy
 {
 	public:
 		SuperMutant();
-		virtual ~SuperMutant();
+		~SuperMutant();
 		SuperMutant(const SuperMutant &src);
 		SuperMutant &operator=(const SuperMutant &src);
-		virtual void takeDamage(int num);
+		void takeDamage(int num);
 };
 
 #endif

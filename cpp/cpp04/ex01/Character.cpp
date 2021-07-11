@@ -57,9 +57,9 @@ void Character::attack(Enemy*opp)
 		this->ptr->attack();
 		this->ap -= this->ptr->getAPCost();
 		opp->takeDamage(this->ptr->getDamage());
-		if (opp->getFlag() == 1 )
+		if (opp->getHp() == 0 )
 		{
-			//opp->~Enemy();
+			//opp->~Enemy(); 이것과 아래것이 동일한 기능을 하지는 않는다.
 			delete opp;
 		}
 	}

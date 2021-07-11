@@ -1,6 +1,8 @@
 #include <vector>
 #include <iostream>
 
+//컨테이너의 특징을 알아보기 위해 작성한 예제
+
 int main(void)
 {
     std::string *p1,*p2,*p3;

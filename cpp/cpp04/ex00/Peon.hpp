@@ -10,8 +10,8 @@ class Peon : public Victim
 	public:
 		Peon(const char *n);
 		Peon(const Peon &src);
-		virtual void	 getPolymorphed() const;
-		virtual Peon	&operator=(Peon &src);
-		virtual ~Peon();
+		void	 getPolymorphed() const;
+		Peon	&operator=(Peon &src);
+		~Peon();
 };
 #endif

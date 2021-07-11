@@ -4,7 +4,7 @@
 #include "ISpaceMarine.hpp"
 #include <iostream>
 
-class TacticalMarine :public ISpaceMarine//왜 이 클래스에 대한 부모클래스를 인터페이스 클래스로 둔 것인지...? 확장을 안해서 그런가?
+class TacticalMarine :public ISpaceMarine
 {
 	private:
 

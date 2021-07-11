@@ -4,7 +4,7 @@
 #include "SuperMutant.hpp"
 #include "Character.hpp"
 
-int main()
+int main()//객체간의 상호작용에 대해 공부하자.
 {
 	Character* me = new Character("me");
 	std::cout << *me;
@@ -20,9 +20,13 @@ int main()
 	std::cout << *me;
 	me->attack(b);
 	std::cout << *me;
-	me->attack(b);
+	me->attack(b);//이 함수안에서 delete b가 수행될텐데, 이게 좋은 코드인가...? 대안은 어떤것이 있는지?
 	std::cout << *me;
+	
+	delete me;
+	//delete b;
+	delete pr;
+	delete pf;
 
-	//me->attack(b);이 부분 에러 핸들링을 객체내에서 할 수가 없음.
 	return 0;
 }

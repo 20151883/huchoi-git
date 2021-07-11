@@ -1,8 +1,5 @@
 #include "RobotomyRequestForm.hpp"
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <ctime>
+
 static int make_robot(std::string target)
 {
 	std::cout<<"ssshhhhhhhh maaaake rrrrrrobottttttt....thhhhhheeeee nnnnaaaaameeeee issssssisiss ....."<<target<<std::endl;
@@ -18,7 +15,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 		std::cout<<this->target<<"  robotomized FAILED!!!!!"<<std::endl;
 }
 
-std::string RobotomyRequestForm::getTarget() const
+const std::string &RobotomyRequestForm::getTarget() const
 {
 	return this->target;
 }
@@ -36,6 +33,17 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &src):Form("Robotom
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm &src)
 {
-	(void)src;
+	this->name = src.getName();
+	this->sign_bound = src.getSignGrade();
+	this->exec_bound = src.getExecGrade();
+	this->sign = src.getSign();
+
+	this->target = src.getTarget();
 	return *this;
+}
+
+Form *RobotomyRequestForm::clone(std::string _target)
+{
+	Form *ret = new RobotomyRequestForm(_target.c_str());
+	return ret;
 }

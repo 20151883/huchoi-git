@@ -3,7 +3,7 @@
 
 #include "ISpaceMarine.hpp"
 
-class AssaultTerminator :public ISpaceMarine//왜 이 클래스의 부모클래스를 인터페이스 클래스로 두었는지...?
+class AssaultTerminator :public ISpaceMarine//왜 이 클래스의 부모클래스를 인터페이스 클래스로 두었는지...? 고민해보자.
 {
 	private:
 

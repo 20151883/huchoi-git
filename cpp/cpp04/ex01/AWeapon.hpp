@@ -1,13 +1,12 @@
-#ifndef __AWEAPON__
-#define __AWEAPON__
+#ifndef AWEAPON_HPP
+# define AWEAPON_HPP
 
-#include <iostream>
+# include <iostream>
 
 class AWeapon
 {
 	protected:
 		std::string name;
-		std::string sound;
 		int			apcost;
 		int			damage;
 		AWeapon();

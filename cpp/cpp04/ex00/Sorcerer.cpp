@@ -10,7 +10,7 @@ Sorcerer::Sorcerer(const char *n, const char *t) :name(n), title(t)
 	std::cout<<name<<", "<<title<<", is born!"<<std::endl;
 }
 
-Sorcerer &Sorcerer::operator=(const Sorcerer &src)//여기서 매개변수 자료형을 const로 바꾸면서 파생된 문제에 대해 생각해보긴
+const Sorcerer &Sorcerer::operator=(const Sorcerer &src)//여기서 매개변수 자료형을 const로 바꾸면서 파생된 문제에 대해 생각해보긴
 {
 	this->name = src.getName();
 	this->title = src.getTitle();
@@ -20,7 +20,8 @@ Sorcerer &Sorcerer::operator=(const Sorcerer &src)//여기서 매개변수 자�
 Sorcerer::Sorcerer(const Sorcerer &src)
 {
 	*this = src;
-}
+	std::cout<<name<<", "<<title<<", is born!"<<std::endl;
+}	
 
 void Sorcerer::announce()
 {

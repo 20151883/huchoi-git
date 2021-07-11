@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <exception>
-class Bureaucrat;
+
+class Form;
+
 #include "Form.hpp"
 
 class Bureaucrat
@@ -14,10 +16,10 @@ class Bureaucrat
 		Bureaucrat();
 	public:
 		Bureaucrat(const char *name, int grade);
-		Bureaucrat(Bureaucrat &src);
+		Bureaucrat(const Bureaucrat &src);
 		~Bureaucrat();
-		Bureaucrat &operator=(Bureaucrat &src);
-		std::string getName();
+		const Bureaucrat &operator=(const Bureaucrat &src);
+		const std::string &getName() const;
 		int getGrade() const;
 		void increasegrade();
 		void decreasegrade();
@@ -26,12 +28,12 @@ class Bureaucrat
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				const char * what() const _NOEXCEPT;//오버라이딩
+				const char * what() const noexcept;//오버라이딩
 		};
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				const char * what() const _NOEXCEPT;//오버라이딩
+				const char * what() const noexcept;//오버라이딩
 		};
 };
 

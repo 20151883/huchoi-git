@@ -2,8 +2,10 @@
 
 int main(void)
 {
+	Bureaucrat *a = new Bureaucrat("test", 3);
+	
 	try{
-		Bureaucrat *a = new Bureaucrat("test", 3);
+		
 		a->increasegrade();
 		a->increasegrade();
 		a->increasegrade();
@@ -12,6 +14,10 @@ int main(void)
 	}
 	catch (std::exception & e)//std::exception
 	{
+		delete a;
 		std::cout<<e.what()<<std::endl;
+		return (1);
 	}
+	delete a;
+	return (0);
 }

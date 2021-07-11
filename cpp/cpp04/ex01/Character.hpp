@@ -1,5 +1,5 @@
-#ifndef __CHARACTER__
-#define __CHARACTER__
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
 #include "AWeapon.hpp"
 #include "Enemy.hpp"

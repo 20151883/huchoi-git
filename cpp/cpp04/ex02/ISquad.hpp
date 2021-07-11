@@ -1,5 +1,5 @@
-#ifndef __ISQUAD__
-#define __ISQUAD__
+#ifndef ISQUAD_HPP
+#define ISQUAD_HPP
 
 #include "ISpaceMarine.hpp"
 #include <iostream>

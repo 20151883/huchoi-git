@@ -20,10 +20,9 @@ void	 Peon::getPolymorphed() const
 	std::cout << getName() <<" has been turned into a pink pony!" << std::endl;
 }
 
-Peon	&Peon::operator=(Peon &src)//차라리 Victim에서 멤버변수를 protected 로 두었으면 더 편했을수도...
+Peon	&Peon::operator=(Peon &src)
 {
-	std::string str = src.getName();
-	this->setName(str);
+	setName(src.getName());
 	return *this;
 }
 

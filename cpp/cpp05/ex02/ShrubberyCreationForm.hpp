@@ -1,10 +1,9 @@
-#ifndef __SHRUBBERYCREATIONFORM__
-#define __SHRUBBERYCREATIONFORM__
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-class Form;
-class Bureaucrat;
+#include <fstream>//iostream에 fstream들어있는줄 알았는데 아니였음.
 
 class ShrubberyCreationForm : public Form
 {
@@ -14,9 +13,9 @@ class ShrubberyCreationForm : public Form
 	public:
 		ShrubberyCreationForm(const char *target);
 		virtual ~ShrubberyCreationForm();
-		ShrubberyCreationForm(ShrubberyCreationForm &src);
-		ShrubberyCreationForm &operator=(ShrubberyCreationForm &src);
-		std::string getTarget() const;
+		ShrubberyCreationForm(const ShrubberyCreationForm &src);
+		const ShrubberyCreationForm &operator=(const ShrubberyCreationForm &src);
+		const std::string &getTarget() const;
 		virtual void execute(Bureaucrat const & executor) const;
 };
 

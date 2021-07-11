@@ -1,8 +1,11 @@
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
+
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-
-class Form;
-class Bureaucrat;
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
 
 class RobotomyRequestForm : public Form
 {
@@ -14,6 +17,7 @@ class RobotomyRequestForm : public Form
 		virtual ~RobotomyRequestForm();
 		RobotomyRequestForm(RobotomyRequestForm &src);
 		RobotomyRequestForm &operator=(RobotomyRequestForm &src);
-		std::string getTarget() const;
+		const std::string &getTarget() const;
 		virtual void execute(Bureaucrat const & executor) const;
 };
+#endif

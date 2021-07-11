@@ -2,7 +2,7 @@
 
 PowerFist::PowerFist() :AWeapon("Power Fist", 8, 50)
 {
-	this->sound = "* pschhh... SBAM! *";
+	
 }
 
 PowerFist::~PowerFist()
@@ -18,11 +18,10 @@ PowerFist &PowerFist::operator=(const PowerFist &src)
 	this->name =  src.getName();
 	this->apcost = src.getAPCost();
 	this->damage = src.getDamage();
-	this->sound = "* pschhh... SBAM! *";
 	return *this;
 }
 
 void	PowerFist::attack() const
 {
-	std::cout<<this->sound<<std::endl;
+	std::cout<<"* pschhh... SBAM! *"<<std::endl;
 }

@@ -15,7 +15,7 @@ Squad::~Squad()
 		delete []arr;
 }
 
-Squad::Squad(const Squad &src) :count(src.getCount())//객체핸들러에서 가장 중요한 부분
+Squad::Squad(const Squad &src) :count(src.getCount())//객체핸들러(=켄테이너)에서 가장 중요한 부분
 {
 	this->arr = new ISpaceMarine*[this->count];
 	for (int i=0; i < count; i++)
@@ -24,7 +24,7 @@ Squad::Squad(const Squad &src) :count(src.getCount())//객체핸들러에서 가
 	}
 }
 
-const Squad &Squad::operator=(const Squad &src)//객체핸들러에서 가장 중요한 부분
+const Squad &Squad::operator=(const Squad &src)//객체핸들러(=켄테이너)에서 가장 중요한 부분
 {
 	int i;
 	if (this->arr != NULL)
@@ -36,8 +36,8 @@ const Squad &Squad::operator=(const Squad &src)//객체핸들러에서 가장 �
 			i++;
 		}
 		delete []arr;
-		this->count = src.getCount();
 	}
+	this->count = src.getCount();
 	this->arr = new ISpaceMarine*[this->count];
 	for (i=0; i < count; i++)
 	{
@@ -58,7 +58,7 @@ ISpaceMarine* Squad::getUnit(int idx) const
 	return arr[idx];
 }
 
-int Squad::push(ISpaceMarine*src)//객체 핸들러에서 가장 중요한 부분
+int Squad::push(ISpaceMarine*src)//객체 핸들러(=컨테이너)에서 가장 중요한 부분
 {
 	int i;
 	if (src == NULL)
@@ -72,8 +72,8 @@ int Squad::push(ISpaceMarine*src)//객체 핸들러에서 가장 중요한 부�
 	ISpaceMarine **new_arr = new ISpaceMarine*[this->count];
 	for(i = 0; i < this->count - 1; i++)
 		new_arr[i] = arr[i];
-	//new_arr[i] = src->clone();//;push()함수의 파라미터를 보면 이렇게 clone하는건 옳지 않은듯.. 컨테이너의 특성상 이렇게 깊은 복사(값의 복사하는게 맞는듯)(test.cpp의 코드와 결과값 관찰해보기)
-	new_arr[i] = src;//서브젝트 메인문과 결과값에서는 이 줄을 사용할것을 요구....
+	//new_arr[i] = src->clone();//;push()함수의 파라미터를 보면 이렇게 clone하는건 옳지 않은듯.. 그러나 컨테이너의 특성상 이렇게 깊은 복사(값의 복사하는게 맞는듯)(test.cpp의 코드와 결과값 관찰해보기)
+	new_arr[i] = src;//서브젝트 메인문과 결과값에서는 이 줄을 사용할것을 요구.... 아마도 이 컨테이너의 저장대상은 (ISpaceMarine*)인가보다.***
 	if (this->arr)
 		delete []this->arr;
 	this->arr = new_arr;
