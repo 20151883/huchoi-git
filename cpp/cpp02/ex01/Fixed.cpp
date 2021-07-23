@@ -66,6 +66,6 @@ int Fixed::toInt( void ) const
 std::ostream &operator<<(std::ostream &ost, const Fixed &src)
 {
 	ost<<src.toFloat();
-	ost.flush();//<<연산자 오버로딩시 플러쉬 하는 방법.
+	ost.flush();
 	return (ost);
 }

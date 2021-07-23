@@ -1,9 +1,9 @@
 NAME = a.out
 CXX = clang++
 CXXFLAGS = -Wall -Werror -Wextra
-OBJS = main.o Fixed.o
-%.o: %.cc %.h
-	$(CXX) $(CXXFLAGS) -c $<
+OBJS = Fixed.o main.o
+%.o: %.cpp %.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)

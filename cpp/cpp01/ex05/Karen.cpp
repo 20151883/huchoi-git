@@ -42,7 +42,8 @@ void Karen::complain( std::string level)
 		if (std::string(arr[i].lv) == level)
 		{
 			flag = 1;
-			(this->*arr[i].func)();
+			//(this->*arr[i].func)();
+			((*this).*arr[i].func)();
 			return ;
 		}
 	}

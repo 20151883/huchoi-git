@@ -9,7 +9,7 @@ class Karen
 		void error( void );
 		typedef struct func_list{
 			std::string lv;
-			void (Karen::*func)();
+			void (Karen::*func)(void);
 		}func_list;
 		/*static func_list arr[4]; = {
 			{"DEBUG", &Karen::debug},

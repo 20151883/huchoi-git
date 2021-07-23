@@ -26,14 +26,14 @@ class Fixed
 		int operator<=(const Fixed &right);
 		int operator==(const Fixed &right);
 		int operator!=(const Fixed &right);
-		Fixed &operator+(const Fixed &right);
-		Fixed &operator-(const Fixed &right);
-		Fixed &operator*(const Fixed &right);
-		Fixed &operator/(const Fixed &right);
+		const Fixed &operator+(const Fixed &right);
+		const Fixed &operator-(const Fixed &right);
+		const Fixed &operator*(const Fixed &right);
+		const Fixed &operator/(const Fixed &right);
 		Fixed &operator++();
-		Fixed operator++(int);
+		const Fixed operator++(int);
 		Fixed &operator--();
-		Fixed operator--(int);
+		const Fixed operator--(int);
 		static Fixed &max(Fixed &s1, Fixed &s2);//함수에 static 키워드를 붙이는 이유는?
 		static const Fixed &max(const Fixed &s1, const Fixed &s2);
 		static Fixed &min(Fixed &s1, Fixed &s2);

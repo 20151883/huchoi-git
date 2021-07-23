@@ -95,19 +95,19 @@ int Fixed::operator!=(const Fixed &right)
 	return left.getRawBits() != right.getRawBits();
 }
 
-Fixed &Fixed::operator+(const Fixed &src)
+const Fixed &Fixed::operator+(const Fixed &src)
 {
 	this->setRawBits(this->getRawBits() + src.getRawBits());
 	return (*this);
 }
 
-Fixed &Fixed::operator-(const Fixed &src)
+const Fixed &Fixed::operator-(const Fixed &src)
 {
 	this->setRawBits(this->getRawBits() - src.getRawBits());
 	return (*this);
 }
 
-Fixed &Fixed::operator*(const Fixed &right)
+const Fixed &Fixed::operator*(const Fixed &right)
 {
 	Fixed &left = *this;
 	long op1 = left.getRawBits();
@@ -116,7 +116,7 @@ Fixed &Fixed::operator*(const Fixed &right)
 	return (*this);
 }
 
-Fixed &Fixed::operator/( const Fixed &right)
+const Fixed &Fixed::operator/( const Fixed &right)
 {
 	Fixed &left = *this;
 	long op1 = left.getRawBits();
@@ -131,10 +131,11 @@ Fixed &Fixed::operator++()
 	return (*this);
 }
 
-Fixed Fixed::operator++(int)
+const Fixed Fixed::operator++(int)
 {
+	Fixed ret(*this);
 	this->num++;
-	return (*this);
+	return (ret);
 }
 
 Fixed &Fixed::operator--()
@@ -143,10 +144,11 @@ Fixed &Fixed::operator--()
 	return (*this);
 }
 
-Fixed Fixed::operator--(int)
+const Fixed Fixed::operator--(int)
 {
+	Fixed ret(*this);
 	this->num--;
-	return (*this);
+	return (ret);
 }
 
 Fixed &Fixed::max(Fixed &s1, Fixed &s2)
