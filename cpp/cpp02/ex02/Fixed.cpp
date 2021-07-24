@@ -125,7 +125,7 @@ const Fixed &Fixed::operator/( const Fixed &right)
 	return (*this);
 }
 
-Fixed &Fixed::operator++()
+Fixed &Fixed::operator++()//고정소수점 연산하는 방식이 인터넷에 있음.
 {
 	this->num++;
 	return (*this);

@@ -8,7 +8,7 @@ int main( void )
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
     std::cout << a << std::endl;
-    std::cout << a++ << std::endl;//
+    std::cout << a++ << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     Fixed::max(a, b);
