@@ -6,14 +6,13 @@
 
 class ScavTrap : public ClapTrap
 {
-	protected:
-		ScavTrap();
+	private:
 		int gate_keeper_flag;
 	public:
-		ScavTrap(const char *name);
+		ScavTrap(const char *name = "non name");
 		ScavTrap &operator=(const ScavTrap &src);
 		ScavTrap(const ScavTrap &src);
-		virtual ~ScavTrap();
+		~ScavTrap();
 		void guardGate();
 		void attack(std::string const & target);
 };

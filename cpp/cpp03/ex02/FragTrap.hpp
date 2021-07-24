@@ -6,13 +6,11 @@
 
 class FragTrap : public ClapTrap
 {
-	protected:
-		FragTrap();
 	public:
-		FragTrap(const char *name);
+		FragTrap(const char *name = "non name");
 		FragTrap &operator=(const FragTrap &src);
 		FragTrap(const FragTrap &src);
-		virtual ~FragTrap();
+		~FragTrap();
 		void highFivesGuys(void);
 		void attack(std::string const & target);
 };

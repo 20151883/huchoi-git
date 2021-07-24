@@ -1,11 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap()
-{
-	std::cout<<"the void FragTrap constucture is called!!!!"<<std::endl;
-}
-
-FragTrap::FragTrap(const char *name): ClapTrap()//, Name(name), Hit_points(100), Energy_points(50), Attack_Damage(20)
+FragTrap::FragTrap(const char *name): ClapTrap(name)//, Name(name), Hit_points(100), Energy_points(50), Attack_Damage(20)
 {
 	this->Name = name;
 	this->Hit_points = 100;

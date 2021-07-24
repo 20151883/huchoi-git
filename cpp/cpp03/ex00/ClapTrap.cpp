@@ -1,10 +1,5 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap()
-{
-	std::cout<<"the void ClapTrap constucture is called!!!!"<<std::endl;
-}
-
 ClapTrap::ClapTrap(const char *name): Name(name), Hit_points(10), Energy_points(10), Attack_Damage(0)
 {
 	std::cout<<"the ClapTrap("<<Name<< ") is appeared!!!!"<<std::endl;

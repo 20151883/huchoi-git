@@ -1,13 +1,7 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap():gate_keeper_flag(0)
+ScavTrap::ScavTrap(const char *name): ClapTrap(name), gate_keeper_flag(0)
 {
-	std::cout<<"the void ScavTrap constucture is called!!!!"<<std::endl;
-}
-
-ScavTrap::ScavTrap(const char *name): ClapTrap(), gate_keeper_flag(0)
-{
-	this->Name = name;
 	this->Hit_points = 100;
 	this->Energy_points = 50;
 	this->Attack_Damage = 20;

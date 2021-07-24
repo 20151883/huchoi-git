@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(const char *name):FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap(const char *name):ClapTrap((std::string(name) + std::string("_clap_name")).c_str()),FragTrap(name), ScavTrap(name)
 {
 	Hit_points = 100;
 	Energy_points = 50;
@@ -31,7 +31,7 @@ DiamondTrap::~DiamondTrap()
 
 void DiamondTrap::whoAmI()
 {
-	std::cout<<this->Name<<"     "<<ClapTrap::Name<<std::endl;
+	std::cout<<"my name is "<<this->Name<<"   and   ClapTrap name is "<<ClapTrap::Name<<std::endl;
 }
 
 void DiamondTrap::attack(std::string const & target)
