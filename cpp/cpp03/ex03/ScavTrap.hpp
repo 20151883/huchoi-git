@@ -9,7 +9,7 @@ class ScavTrap : virtual public ClapTrap
 	private:
 		int gate_keeper_flag;
 	public:
-		ScavTrap(const char *name = "non name");
+		ScavTrap(const std::string name = "non name");
 		ScavTrap &operator=(const ScavTrap &src);
 		ScavTrap(const ScavTrap &src);
 		virtual ~ScavTrap();

@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(const char *name): ClapTrap(name), gate_keeper_flag(0)
+ScavTrap::ScavTrap(const std::string name): ClapTrap(name), gate_keeper_flag(0)
 {
 	this->Name = name;
 	this->Hit_points = 100;

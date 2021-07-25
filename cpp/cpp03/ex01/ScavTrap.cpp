@@ -18,7 +18,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 	return (*this);
 }
 
-ScavTrap::ScavTrap(const ScavTrap &src):ClapTrap()
+ScavTrap::ScavTrap(const ScavTrap &src):ClapTrap(src.Name.c_str())
 {
 	*this = src;
 	std::cout<<"the ScavTrap( "<<Name<< ") is appeared!!!!"<<std::endl;

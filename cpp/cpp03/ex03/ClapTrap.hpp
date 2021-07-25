@@ -11,7 +11,7 @@ class ClapTrap{
 		unsigned int Energy_points;
 		unsigned int Attack_Damage;
 	public:
-		ClapTrap(const char *name = "non name");
+		ClapTrap(const std::string name = "non name");
 		ClapTrap(const ClapTrap &src);
 		virtual ~ClapTrap();
 		ClapTrap &operator=(const ClapTrap &src);

@@ -2,7 +2,6 @@
 # define CLAPTRAP_HPP
 
 #include <iostream>
-#include <cstring>
 
 class ClapTrap{
 	private:
