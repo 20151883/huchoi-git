@@ -7,5 +7,8 @@ int main(void)
 	test.takeDamage(120);
 	test.beRepaired(120);
 	test.highFivesGuys();
+	
+	FragTrap test2(test);
+	test.beRepaired(0);
 	return 0;
 }

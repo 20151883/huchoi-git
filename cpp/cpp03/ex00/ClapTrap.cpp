@@ -19,6 +19,7 @@ ClapTrap::ClapTrap(const ClapTrap &src)
 	*this = src;
 	std::cout<<"the ClapTrap("<<Name<< ") is appeared!!!!"<<std::endl;
 }
+
 ClapTrap::~ClapTrap()
 {
 	std::cout<<"the ClapTrap("<<Name<< ") is disappeared!!!!"<<std::endl;

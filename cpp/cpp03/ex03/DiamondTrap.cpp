@@ -10,9 +10,13 @@ DiamondTrap::DiamondTrap(const char *name):ClapTrap((std::string(name) + std::st
 	std::cout<<"the DiamondTrap("<<this->Name<< ") is appeared!!!!"<<std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &src):FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap(const DiamondTrap &src):ClapTrap((std::string(src.Name) + std::string("_clap_name")).c_str()), FragTrap((std::string(src.Name) + std::string("_clap_name"))), ScavTrap((std::string(src.Name) + std::string("_clap_name")))
 {
-	*this = src;
+	Hit_points = src.Hit_points;
+	Energy_points = src.Energy_points;
+	Attack_Damage = src.Attack_Damage;
+	Name = src.Name;
+	std::cout<<"the DiamondTrap("<<this->Name<< ") is appeared!!!!"<<std::endl;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)

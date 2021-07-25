@@ -9,5 +9,7 @@ int main(void)
 	test.highFivesGuys();
 	test.whoAmI();
 	test.attack("test");
+
+	//DiamondTrap test2(test);
 	return 0;
 }

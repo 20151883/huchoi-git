@@ -18,7 +18,7 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
 	return (*this);
 }
 
-FragTrap::FragTrap(const FragTrap &src):ClapTrap()
+FragTrap::FragTrap(const FragTrap &src):ClapTrap(src.Name.c_str())
 {
 	*this = src;
 	std::cout<<"the FragTrap("<<Name<< ") is appeared!!!!"<<std::endl;
