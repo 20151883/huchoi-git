@@ -9,6 +9,5 @@ int main(void)
 	test.highFivesGuys();
 	
 	FragTrap test2(test);
-	test.beRepaired(0);
 	return 0;
 }
