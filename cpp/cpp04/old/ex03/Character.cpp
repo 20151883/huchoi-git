@@ -8,7 +8,7 @@ Character::Character(const char *name) :name(name), count(0), size(4)
         this->slot[i] = NULL;
 }
 
-Character::Character(const Character &src):ICharacter()
+Character::Character(const Character &src)//ICharacter 생성자 호출하는게 맞나..? 고민해보기
 {
     this->name = src.getName();
     this->count = src.getCount();
@@ -61,7 +61,7 @@ std::string const & Character::getName() const
 }
 
 void Character::equip(AMateria* m)
-{ 
+{
     if (this->count < this->size)
     {
         for (int i = 0; i < this->size; i++)

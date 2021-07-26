@@ -11,7 +11,7 @@ class AMateria
 		std::string type;
 
 	public:
-		AMateria(std::string const & type = "non type");
+		AMateria(std::string const & type);
 		AMateria(const AMateria &src);
 		const AMateria &operator=(const AMateria &src); 
 		virtual ~AMateria();
