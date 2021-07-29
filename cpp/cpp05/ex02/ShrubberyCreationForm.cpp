@@ -39,35 +39,27 @@ static void make_tree(std::string filename)
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	check_boundary(executor);
-	make_tree(this->target);
+	make_tree(getTarget());
 }
 
-const std::string &ShrubberyCreationForm::getTarget() const
-{
-	return this->target;
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm(const char *target) :Form("ShrubberyCreationForm", 145, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const char *target) :Form("ShrubberyCreationForm", 145, 137, target)
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm():Form("ShrubberyCreationForm", 145, 137), target("noName")
+ShrubberyCreationForm::ShrubberyCreationForm():Form("ShrubberyCreationForm", 145, 137, "noname")
 {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src):Form("ShrubberyCreationForm", 145, 137)
-{
-	this->target = src.target;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src):Form("ShrubberyCreationForm", 145, 137, src.getTarget())
+{}
 
 const ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src)
 {
-	this->name = src.getName();
-	this->sign_bound = src.getSignGrade();
-	this->exec_bound = src.getExecGrade();
-	this->sign = src.getSign();
-
-	this->target = src.getTarget();
+	setName(src.getName());
+	setSignGrade(src.getSignGrade());
+	setExecGrade(src.getExecGrade());
+	setSign(src.getSign());
+	setTarget(src.getTarget());
 	return *this;
 }

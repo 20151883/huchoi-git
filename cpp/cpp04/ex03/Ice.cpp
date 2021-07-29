@@ -17,7 +17,7 @@ Ice &Ice::operator=(Ice &src)
 Ice::~Ice()
 {}
 
-void Ice::use(ICharacter& target)//오버로딩에 대해 얘기하고 싶은듯
+void Ice::use(ICharacter& target)//오버로딩
 {
     AMateria::use(target);
     std::cout<<"* shoots an ice bolt at "<<target.getName()<<" *"<<std::endl;

@@ -3,23 +3,20 @@
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-
-class Form;
-class Bureaucrat;
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
 
 class RobotomyRequestForm : public Form
 {
 	private:
-		std::string target;
 		RobotomyRequestForm();
 	public:
 		RobotomyRequestForm(const char *target);
-		virtual ~RobotomyRequestForm();
+		 ~RobotomyRequestForm();
 		RobotomyRequestForm(RobotomyRequestForm &src);
 		RobotomyRequestForm &operator=(RobotomyRequestForm &src);
-		Form *clone(std::string target);
-		virtual void execute(Bureaucrat const & executor) const;
-		const std::string & getTarget() const;
+		 void execute(Bureaucrat const & executor) const;
+		 Form		*clone(const char *str);
 };
-
 #endif

@@ -3,16 +3,16 @@
 Bureaucrat::Bureaucrat(const char *name, int grade) :name(name)
 {
 	if (grade < 1)
-		throw GradeTooLowException();
-	else if (grade > 150)
 		throw GradeTooHighException();
+	else if (grade > 150)
+		throw GradeTooLowException();
 	else
 		this->grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &src)
 {
-	*this = src;
+	this->grade = src.getGrade();
 }
 
 Bureaucrat::~Bureaucrat()
@@ -20,7 +20,6 @@ Bureaucrat::~Bureaucrat()
 
 const Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src) 
 {
-	this->name = src.getName();
 	this->grade = src.getGrade();
 	return *this;
 }
@@ -38,7 +37,7 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::increasegrade()
 {
 	if (grade <= 1)
-		throw Bureaucrat::GradeTooLowException();
+		throw Bureaucrat::GradeTooHighException();
 	else
 		this->grade -= 1;
 }
@@ -46,17 +45,17 @@ void Bureaucrat::increasegrade()
 void Bureaucrat::decreasegrade()
 {
 	if (grade >= 150)
-		throw Bureaucrat::GradeTooHighException();
+		throw Bureaucrat::GradeTooLowException();
 	else
 		this->grade += 1;
 }
 
-const char * Bureaucrat::GradeTooLowException::what() const noexcept //오버라이딩
+const char * Bureaucrat::GradeTooLowException::what() const _NOEXCEPT //오버라이딩
 {
 	return "TOO LOW";
 }
 
-const char * Bureaucrat::GradeTooHighException::what() const noexcept //오버라이딩
+const char * Bureaucrat::GradeTooHighException::what() const _NOEXCEPT //오버라이딩
 {
 	return "TOO HIGH";
 }

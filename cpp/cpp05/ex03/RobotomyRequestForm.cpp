@@ -1,5 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
+
 static int make_robot(std::string target)
 {
 	std::cout<<"ssshhhhhhhh maaaake rrrrrrobottttttt....thhhhhheeeee nnnnaaaaameeeee issssssisiss ....."<<target<<std::endl;
@@ -8,42 +9,37 @@ static int make_robot(std::string target)
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	check_boundary(executor);
-	int ret = make_robot(this->target);
+	int ret = make_robot(getTarget());
 	if (ret == 1)
-		std::cout<<this->target<<"  has been robotomized successfully 50% of the time"<<std::endl;
+		std::cout<<getTarget()<<"  has been robotomized successfully 50% of the time"<<std::endl;
 	else
-		std::cout<<this->target<<"  robotomized FAILED!!!!!"<<std::endl;
+		std::cout<<getTarget()<<"  robotomized FAILED!!!!!"<<std::endl;
 }
 
-const std::string &RobotomyRequestForm::getTarget() const
-{
-	return this->target;
-}
-RobotomyRequestForm::RobotomyRequestForm():Form("RobotomyRequestForm", 72, 45), target("NoName")
+RobotomyRequestForm::RobotomyRequestForm():Form("RobotomyRequestForm", 72, 45, "noName")
 {}
 
-RobotomyRequestForm::RobotomyRequestForm(const char *target) :Form("RobotomyRequestForm", 72, 45), target(target)
+RobotomyRequestForm::RobotomyRequestForm(const char *target) :Form("RobotomyRequestForm", 72, 45, target)
 {}
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {}
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &src):Form("RobotomyRequestForm", 72, 45), target(src.target)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm &src):Form("RobotomyRequestForm", 72, 45, src.getTarget())
 {}
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm &src)
 {
-	this->name = src.getName();
-	this->sign_bound = src.getSignGrade();
-	this->exec_bound = src.getExecGrade();
-	this->sign = src.getSign();
-
-	this->target = src.getTarget();
+	setName(src.getName());
+	setSignGrade(src.getSignGrade());
+	setExecGrade(src.getExecGrade());
+	setSign(src.getSign());
+	setTarget(src.getTarget());
 	return *this;
 }
 
-Form *RobotomyRequestForm::clone(std::string _target)
+Form		*RobotomyRequestForm::clone(const char *str)
 {
-	Form *ret = new RobotomyRequestForm(_target.c_str());
+	Form *ret = new RobotomyRequestForm(str);
 	return ret;
 }

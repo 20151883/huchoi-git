@@ -17,7 +17,7 @@ Cure &Cure::operator=(Cure &src)
 Cure::~Cure()
 {}
 
-void Cure::use(ICharacter& target)//오버로딩에 대해 얘기하고 싶은듯
+void Cure::use(ICharacter& target)//오버로딩
 {
     AMateria::use(target);
     std::cout<<"* heals "<<target.getName()<<"'s wounds *"<<std::endl;

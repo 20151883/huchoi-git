@@ -27,12 +27,12 @@ class Form
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				const char * what() const noexcept;
+				const char * what() const _NOEXCEPT;
 		};
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				const char * what() const noexcept;
+				const char * what() const _NOEXCEPT;
 		};
 };
 std::ostream &operator<<(std::ostream &ost, const Form &src);

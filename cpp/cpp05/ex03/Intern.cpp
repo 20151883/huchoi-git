@@ -52,7 +52,12 @@ Form *Intern::makeForm(std::string _type, std::string _target)
 	for (int i = 0; i < 3; i++)
 	{
 		if (arr[i].type == _type || arr[i].type == _type + std::string("form"))
+		{
 			ret = arr[i].form->clone(_target.c_str());
+			std::cout<<"Intern creates "<<arr[i].type<<std::endl;
+			return ret;
+		}
 	}
+	std::cout<<"the form type is not exist!!!"<<std::endl;
 	return ret;
 }

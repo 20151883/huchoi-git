@@ -11,7 +11,7 @@ class Form;
 class Bureaucrat
 {
 	private:
-		std::string	name;
+		const std::string	name;
 		int					grade;
 		Bureaucrat();
 	public:
@@ -28,12 +28,12 @@ class Bureaucrat
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				const char * what() const noexcept;//오버라이딩
+				const char * what() const _NOEXCEPT;//오버라이딩
 		};
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				const char * what() const noexcept;//오버라이딩
+				const char * what() const _NOEXCEPT;//오버라이딩
 		};
 };
 

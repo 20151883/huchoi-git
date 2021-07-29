@@ -1,24 +1,20 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-class Form;
-class Bureaucrat;
 
 class PresidentialPardonForm : public Form
 {
 	private:
-		std::string target;
 		PresidentialPardonForm();
 	public:
 		PresidentialPardonForm(const char *target);
 		~PresidentialPardonForm();
 		PresidentialPardonForm(PresidentialPardonForm &src);
 		PresidentialPardonForm &operator=(PresidentialPardonForm &src);
-		Form *clone(std::string target);
-		virtual void execute(Bureaucrat const & executor) const;
-		const std::string &getTarget() const ;
+		 void execute(Bureaucrat const & executor) const;
+		Form		*clone(const char *str);
 };
 
 #endif

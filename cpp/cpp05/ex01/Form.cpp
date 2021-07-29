@@ -27,17 +27,15 @@ const Form & Form::operator=(const Form &src)
 }
 
 Form::~Form()
-{
+{}
 
-}
-
-const char * Form::GradeTooHighException::what() const noexcept//오버라이딩
+const char * Form::GradeTooHighException::what() const _NOEXCEPT//오버라이딩
 {
 	return "TOO HIGH  BOUND";
 }
 
 
-const char * Form::GradeTooLowException::what() const noexcept//오버라이딩
+const char * Form::GradeTooLowException::what() const _NOEXCEPT//오버라이딩
 {
 	return "TOO LOW  BOUND";
 }
@@ -74,7 +72,7 @@ void Form::beSigned(Bureaucrat &src)
 
 std::ostream& operator<<(std::ostream &ost, const Form &src)
 {
-	ost << "name: "<<src.getName()<<"  signed? "<<src.getSign()<<"  sign bound: "<<src.getSignGrade()<<"  exec bound: "<<src.getExecGrade();
+	ost << "name: "<<src.getName()<<"  \nsigned? "<<src.getSign()<<"  sign bound: "<<src.getSignGrade()<<"  \nexec bound: "<<src.getExecGrade();
 	ost.flush();
 	return ost;
 }

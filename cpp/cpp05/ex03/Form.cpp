@@ -18,7 +18,7 @@ void Form::check_boundary(Bureaucrat const &src) const
 		throw Form::GradeTooLowException();
 }
 
-Form::Form(const char *name, int sign_bound, int exec_bound) :name(name), sign_bound(sign_bound), exec_bound(exec_bound), sign(false)
+Form::Form(const char *name, int sign_bound, int exec_bound, std::string target) :name(name), sign_bound(sign_bound), exec_bound(exec_bound), sign(false), target(target)
 {
 	if (sign_bound < 1)
 		throw GradeTooHighException();
@@ -49,18 +49,18 @@ Form::~Form()
 
 }
 
-const char * Form::GradeTooHighException::what() const noexcept
+const char * Form::GradeTooHighException::what() const _NOEXCEPT
 {
 	return "TOO HIGH  BOUND";
 }
 
 
-const char * Form::GradeTooLowException::what() const noexcept
+const char * Form::GradeTooLowException::what() const _NOEXCEPT
 {
 	return "TOO LOW  BOUND";
 }
 
-std::string Form::getName() const
+const std::string &Form::getName() const
 {
 	return this->name;
 }
@@ -80,7 +80,37 @@ int Form::getExecGrade() const
 	return this->exec_bound;
 }
 
-std::ostream& operator<<(std::ostream &ost,  Form &src)
+std::string Form::getTarget() const
+{
+	return this->target;
+}
+
+void				Form::setName(std::string src)
+{
+	this->name = src;
+}
+
+void				Form::setSign(bool src)
+{
+	this->sign = src;
+}
+
+void				Form::setSignGrade(int src)
+{
+	this->sign_bound = src;
+}
+
+void				Form::setExecGrade(int src)
+{
+	this->exec_bound = src;
+}
+
+void	Form::setTarget(std::string src)
+{
+	this->target = src;
+}
+
+std::ostream& operator<<(std::ostream &ost, const Form &src)
 {
 	ost << "name: "<<src.getName()<<"  signed? "<<src.getSign()<<"  sign bound: "<<src.getSignGrade()<<"  exec bound: "<<src.getExecGrade();
 	ost.flush();

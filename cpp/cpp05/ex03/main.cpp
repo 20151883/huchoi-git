@@ -7,7 +7,6 @@ int main(void)
 {
     Intern someRandomIntern;
     Form* rrf;
-    rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-    std::cout<<rrf->getSignGrade()<<std::endl;
+    rrf = someRandomIntern.makeForm("robotOmyrequest", "Bender");
     return (0);
 }

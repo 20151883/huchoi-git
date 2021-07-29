@@ -36,12 +36,11 @@ Bureaucrat::~Bureaucrat()
 
 const Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src) 
 {
-	this->name = src.getName();
 	this->grade = src.getGrade();
 	return *this;
 }
 
-std::string Bureaucrat::getName() const
+const std::string &Bureaucrat::getName() const
 {
 	return this->name;
 }
@@ -83,12 +82,12 @@ void Bureaucrat::signForm(Form &src)
 	}
 }
 
-const char * Bureaucrat::GradeTooLowException::what() const noexcept //오버라이딩
+const char * Bureaucrat::GradeTooLowException::what() const _NOEXCEPT //오버라이딩
 {
 	return "TOO LOW";
 }
 
-const char * Bureaucrat::GradeTooHighException::what() const noexcept //오버라이딩
+const char * Bureaucrat::GradeTooHighException::what() const _NOEXCEPT //오버라이딩
 {
 	return "TOO HIGH";
 }
