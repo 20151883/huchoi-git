@@ -2,13 +2,8 @@
 
 class Base
 {
-	private:
-
 	public:
-		virtual ~Base()
-		{
-			std::cout<<"base is destroed!!!"<<std::endl;
-		}
+		virtual ~Base();
 };
 
 class A:public Base

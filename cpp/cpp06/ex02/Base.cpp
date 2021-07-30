@@ -1,13 +1,19 @@
 #include "Base.hpp"
 
+Base::~Base()
+{
+	std::cout<<"base is destroed!!!"<<std::endl;
+}
+
 Base * generate(void)
 {
 	Base *ret;
-	if (rand() / 3 == 0)
+	int num = rand() % 3;
+	if (num == 0)
 	{
 		ret = new A();
 	}
-	else if (rand() / 3 == 0)
+	else if (num == 1)
 	{
 		ret = new B();
 	}
@@ -17,6 +23,7 @@ Base * generate(void)
 	}
 	return ret;
 }
+
 int is_reference_A(Base &src)
 {
 	try{

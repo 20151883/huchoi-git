@@ -1,20 +1,18 @@
 #include "Serialization.hpp"
 
-void * serialize(void)
+uintptr_t serialize(Data* ptr)
 {
-	std::string str[] = {"geeks", "are", "awesome"};
-	int size = str.size();
-	std::string ret = "";
-	for (int i=0; i<size; i++)
-	{
-		int ln = str[i].length();
-		ret.push_back('0' + ln);
-		ret = ret + str[i];
-	}
-	return ret;
+	return reinterpret_cast<uintptr_t>(ptr);
 }
 
-Data * deserialize(void * raw)
+Data* deserialize(uintptr_t raw)
 {
-	return NULL;
+	return reinterpret_cast<Data *>(raw);
+}
+
+std::ostream& operator<<(std::ostream &ost, Data src)
+{
+    ost<<src.num<<" "<<src.c<<" "<<src.f<<" "<<src.d<<" "<<src.str;
+    ost.flush();
+    return ost;
 }

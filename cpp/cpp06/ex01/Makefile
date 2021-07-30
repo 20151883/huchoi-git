@@ -1,7 +1,7 @@
 NAME = a.out
 CXX = clang++
 CXXFLAGS = -Wall -Werror -Wextra
-OBJS = Base.o main.o
+OBJS = Serialization.o main.o
 
 %.o: %.cpp %.hpp
 	$(CXX) $(CXXFLAGS) -c $<

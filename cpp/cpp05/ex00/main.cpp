@@ -3,7 +3,7 @@
 int main(void)
 {
 	Bureaucrat *a = new Bureaucrat("test", 3);
-	
+	Bureaucrat *test = new Bureaucrat[20];
 	try{
 		
 		a->increasegrade();

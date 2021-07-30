@@ -1,13 +1,14 @@
-CC = clang++
-CXXFLAGS = -Wall -Werror -Wextra -W
+NAME = convert
+CXX = clang++
+CXXFLAGS = -Wall -Werror -Wextra
 OBJS = cast.o
 
-%.o: %.cc %.h
-	$(CC) $(CXXFLAGS) -c $<
-convert : $(OBJS)
-	$(CC) $(CXXFLAGS) $(OBJS) -o convert
+%.o: %.cpp %.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 clean :
 	rm -rf $(OBJS)
 fclean : clean
-	rm -rf convert
-re : fclean convert
+	rm -rf $(NAME)
+re : fclean $(NAME)
