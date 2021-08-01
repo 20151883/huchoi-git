@@ -1,14 +1,18 @@
-CC = clang++
+NAME = test
+CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror
 OBJS = main.o
 
-%.o: %.cc %.h
-	$(CC) $(CXXFLAGS) -c $<
+%.o: %.cpp %.hpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-test : $(OBJS)
-	$(CC) $(CXXFLAGS) $(OBJS) -o test
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+
 clean:
 	rm -rf $(OBJS)
+
 fclean: clean
-	rm -rf test
-re : fclean test
+	rm -rf $(NAME)
+
+re : fclean $(NAME)

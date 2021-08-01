@@ -14,5 +14,12 @@ int main( void ) {
 	std::cout << "c = " << c << ", d = " << d << std::endl;
 	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
 	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
+
+	/*int src = 3, src2 = 4;
+	int &e =src, &f = src2;
+	e = f;
+	std::cout<<e<<"   "<<f<<std::endl;
+	std::cout<<&e<<"   "<<&f<<std::endl;
+	std::cout<<src<<"   "<<src2<<std::endl;*/
 	return 0;
 }

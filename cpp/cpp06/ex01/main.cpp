@@ -7,5 +7,6 @@ int main(void)
 	uintptr_t uintptr = serialize(&test);
 	Data *dataptr = deserialize(uintptr);
 	std::cout<<*dataptr<<std::endl;
+	std::cout<<sizeof(uintptr_t)<<std::endl;
 	return 0;
 }

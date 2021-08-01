@@ -9,7 +9,7 @@ void swap(T &arg1, T &arg2)
 }
 
 template <class T>
-T min(T arg1, T arg2)//레퍼런스형으로 반환할지 아니면 그냥 자료형으로 반환할지 생각해보기
+T min(T arg1, T arg2)
 {
 	if(arg1 == arg2)
 		return arg2;

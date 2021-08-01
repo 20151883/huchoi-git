@@ -5,11 +5,14 @@ std::ostream &operator<<(std::ostream &ost, int ptr[])
 	ost<<ptr[0]<<" "<<ptr[1]<<" "<<ptr[2]<<" "<<ptr[3];
 	return ost;
 }
+
 std::ostream &operator<<(std::ostream &ost, float ptr[])
 {
 	ost<<ptr[0]<<" "<<ptr[1]<<" "<<ptr[2]<<" "<<ptr[3];
 	return ost;
 }
+
+
 int main(void)
 {
 	int arr[] = {1,2,3,4};
