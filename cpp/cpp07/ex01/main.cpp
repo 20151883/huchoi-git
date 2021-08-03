@@ -12,22 +12,21 @@ std::ostream &operator<<(std::ostream &ost, float ptr[])
 	return ost;
 }
 
-
-int main(void)
+class Awesome
 {
-	int arr[] = {1,2,3,4};
-	std::cout<<"before: "<<arr<<std::endl;
-	iter(arr, 4, testfunc<int>);
-	std::cout<<"after: "<<arr<<std::endl;
-
-	char arr2[] = "test";
-	std::cout<<"before: "<<arr2<<std::endl;
-	iter(arr2, 4, testfunc<char>);
-	std::cout<<"after: "<<arr2<<std::endl;
-
-	float arr3[] = {1.1,2.1,3.1,4.1};
-	std::cout<<"before: "<<arr3<<std::endl;
-	iter(arr3, 4, testfunc<float>);
-	std::cout<<"after: "<<arr3<<std::endl;
+	public:
+		Awesome( void ) : _n( 42 ) { return; }
+		int get( void ) const { return this->_n; }
+	private:
+		int _n;
+};
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
+template< typename T >
+void print( T const & x ) { std::cout << x << std::endl; return; }
+int main() {
+	const int tab[] = { 0, 1, 2, 3, 4 }; // <--- I never understood why you can't write int[] tab. Wouldn't that make more sense?
+	const Awesome tab2[5];
+	iter( tab, 5, print );
+	iter( tab2, 5, print );
 	return 0;
 }

@@ -8,7 +8,7 @@ int main()
 		sp.addNumber(17);
 		sp.addNumber(9);
 		sp.addNumber(11);
-		sp.addNumber(11);
+		sp.addNumber(13);
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}
@@ -18,7 +18,7 @@ int main()
 	}
 	catch(...)//std::exception의 생성자는 문자열을 인자로 받을수없다. std::rubtime_error("this is error")처럼 다른 예외클래스는 가능하다.
 	{
-		std::cout<<e.what()<<std::endl;
+		std::cout<<"error"<<std::endl;
 	}
 	return 0;
 }

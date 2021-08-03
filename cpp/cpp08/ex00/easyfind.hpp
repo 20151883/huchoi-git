@@ -1,13 +1,12 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <functional>
+
 template <class T>
-void easyfind(T &src, int target)//T = std::vector <int> 타입의 자료형
+void easyfind(T &src, int target)
 {
-	auto result = std::find(src.begin(), src.end(), 3);
-	std::cout << "3 은 " << std::distance(src.begin(), result) + 1 << " 번째 원소"
-            << std::endl;
+	typename T::iterator result = std::find(src.begin(), src.end(), target);
 	if (result == src.end())
 		throw std::exception();
+	std::cout <<"target은 "<<target <<"이고 target은 " << std::distance(src.begin(), result) + 1 << " 번째 원소"<< std::endl;
 }

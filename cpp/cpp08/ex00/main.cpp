@@ -1,25 +1,5 @@
 #include "easyfind.hpp"
 
-/*template <class Iter>
-std::ostream &print(std::ostream &ost, Iter &src)
-{
-
-	return ost;
-}*/
-
-template <class Iter>
-void print(Iter begin, Iter end)
-{
-	if (begin == end)
-		return;
-	while (begin != end)
-	{
-		std::cout<<*begin<<" , ";
-		begin++;
-	}
-	std::cout<<std::endl;
-}
-
 int main(void)
 {
 	try{
@@ -30,12 +10,14 @@ int main(void)
  		vec.push_back(2);
 		vec.push_back(3);
 		vec.push_back(4);
-		print(vec.begin(), vec.end());
 		easyfind(vec, 3);
+		easyfind(vec, 4);
+		easyfind(vec, 100);
 	}
 	catch(std::exception &e)
 	{
-		e.what();
+		std::cout<<e.what()<<std::endl;
+		return 1;
 	}
 	return (0);
 }
