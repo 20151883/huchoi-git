@@ -1,7 +1,7 @@
 NAME = a.out
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-OBJS = 
+OBJS = vector.o
 
 %.o : %.cpp %.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -9,7 +9,7 @@ OBJS =
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 clean : 
 	rm -rf $(OBJS)
