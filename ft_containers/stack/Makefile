@@ -1,7 +1,8 @@
 NAME = a.out
 CXX = clang++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-OBJS = vector.o
+CXXFLAGS =
+OBJS = stack.o
 
 %.o : %.cpp %.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
