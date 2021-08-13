@@ -204,7 +204,36 @@ int main(void)
         std::cout << "alice >= eve returns " << (alice >= eve) << '\n';
         std::cout<<"비멤버 함수 test를 테스트해봅시다. 끝!!!!!\n"<<std::endl;
         */
-       
+
+        
+        //std::vector<int> t;
+        //std::cout << t.back() << std::endl;
+        std::vector<int> vec(10);
+        for(std::vector<int>::iterator iter =  vec.begin(); iter != vec.end();  iter++)
+            *iter = rand() % 100;
+        std::sort(vec.begin(), vec.end());
+        container_print(vec);
+        std::vector<int>::reverse_iterator i = vec.rbegin();
+        i += 3;
+        std::cout << *i <<"  "<< &*i <<std::endl;
+        std::vector<int>::iterator test = i.base();//ptr자체를 반환하는게 맞음.
+        std::cout << *test <<"  "<< &*test <<std::endl;
+        test++;
+        std::cout << *test <<"  "<< &*test <<std::endl;
+        
+        ft::vector<int> a(10);
+        std::cout << a.capacity() << std::endl;
+        std::cout << a.size() << std::endl;
+        a.clear();
+        std::cout << a.capacity() << std::endl;
+        std::cout << a.size() << std::endl;
+        a.assign(10, 42);
+       /*
+       std::cout << "암시적 형변환에 대해 테스트 해봅시다." << std::endl;
+        ft::vector<int> test(3);
+        //std::cout << (test == 3) << std::endl;
+        std::cout << "암시적 형변환은 허용이 되지 않습니다." << std::endl;
+        */
     }
     catch(std::exception &e)
     {
