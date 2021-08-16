@@ -228,6 +228,14 @@ int main(void)
         std::cout << a.capacity() << std::endl;
         std::cout << a.size() << std::endl;
         a.assign(10, 42);
+        
+         ft::vector<int>::iterator iter2 = a.end();
+         iter2++;
+         iter2++;
+         iter2++;
+         iter2++;
+         iter2++;//map과는 다르게 세그폴트가 안남...
+         
        /*
        std::cout << "암시적 형변환에 대해 테스트 해봅시다." << std::endl;
         ft::vector<int> test(3);

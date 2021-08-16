@@ -66,6 +66,7 @@
         "stack": "cpp",
         "list": "cpp",
         "set": "cpp",
-        "__memory": "cpp"
+        "__memory": "cpp",
+        "memory_resource": "cpp"
     }
 }
