@@ -37,6 +37,8 @@ void func()
         std::cout<<"vec3의 size = "<< vec3.size() << "capacity : "<< vec3.capacity() <<std::endl;
         std::cout<<"\nvec4의 내부를 출력합니다"<<std::endl;
         container_print(vec4);
+        vec2.clear();
+        std::cout << vec2.size() << std::endl;
         std::cout<<"vec4의 size = "<< vec4.size() << "capacity : "<< vec4.capacity() <<std::endl;
 
         //std::vector<int>::iterator t;std::랑 ft::랑 결과(초기화하는 값이 다르다는 뜻)가 다르게 나옴.

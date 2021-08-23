@@ -11,7 +11,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
-clean : 
+clean :
 	rm -rf $(OBJS)
 
 fclean: clean
