@@ -104,13 +104,13 @@ void send_data(FILE* fp, char* ct, char* file_name)
 		return;
 	}
 
-	/* Çì´õ Á¤º¸ Àü¼Û */
+	/* ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	fputs(protocol, fp);
 	fputs(server, fp);
 	fputs(cnt_len, fp);
 	fputs(cnt_type, fp);
 
-	/* ¿äÃ» µ¥ÀÌÅÍ Àü¼Û */
+	/* ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 	while(fgets(buf, BUF_SIZE, send_file)!=NULL) 
 	{
 		fputs(buf, fp);
@@ -141,7 +141,7 @@ void send_error(FILE* fp)
 	char cnt_len[]="Content-length:2048\r\n";
 	char cnt_type[]="Content-type:text/html\r\n\r\n";
 	char content[]="<html><head><title>NETWORK</title></head>"
-	       "<body><font size=+5><br>¿À·ù ¹ß»ý! ¿äÃ» ÆÄÀÏ¸í ¹× ¿äÃ» ¹æ½Ä È®ÀÎ!"
+	       "<body><font size=+5><br>ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½! ï¿½ï¿½Ã» ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ È®ï¿½ï¿½!"
 		   "</font></body></html>";
 
 	fputs(protocol, fp);

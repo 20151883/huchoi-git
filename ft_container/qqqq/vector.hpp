@@ -21,6 +21,7 @@ namespace ft
 			{//iterator class interface 어디에...?
 			//https://en.cppreference.com/w/cpp/named_req/RandomAccessIterator <- 여기에 interface 다 있음.
 			//공식 레퍼런스 사이트를 쫌 참고하십시오....!
+				class Const_iterator;
 				public:
 					typedef std::random_access_iterator_tag iterator_category;
 					typedef T value_type;
@@ -33,6 +34,7 @@ namespace ft
 					Iterator(pointer ptr) : ptr(ptr) {} //어댑터나 그 비슷한 것들... 즉 어떤 타켓 내포하는건 녀석들은, 타겟을 내포하려는 시도를 생성자측에서 시도하려고함.
 					Iterator():ptr(NULL){}
 					Iterator(const Iterator &src):ptr(src.base()) {}
+					Iterator(const Const_iterator &other):ptr(other.base()) {}
 					pointer base() const { return ptr; }
 					reference operator*() const { return *ptr; }
 					pointer operator->() { return ptr; }
@@ -347,8 +349,8 @@ namespace ft
 			void clear() 
 			{ 
 				_allocator.deallocate(_array, _capacity);
-				_array = _allocator.allocate(0); 
-				_capacity = 0;
+				_array = _allocator.allocate(_capacity); 
+				//_capacity = 0;
 				/*_array = _allocator.allocate(0);*/ 
 				_size = 0; 
 			}

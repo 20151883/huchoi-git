@@ -45,29 +45,30 @@ std::ostream	&operator<<(std::ostream &o, foo const &bar) {
 
 int		main(void)
 {
-	const int size = 5;
-	TESTED_NAMESPACE::vector<TESTED_TYPE> vct(size);
-	TESTED_NAMESPACE::vector<TESTED_TYPE>::reverse_iterator it = vct.rbegin();
-	TESTED_NAMESPACE::vector<TESTED_TYPE>::const_reverse_iterator ite = vct.rbegin();
+	TESTED_NAMESPACE::vector<TESTED_TYPE> vct(10);
+	TESTED_NAMESPACE::vector<TESTED_TYPE> vct2;
 
-	for (int i = 0; i < size; ++i)
-		it[i] = (size - i) * 5;
+	for (unsigned long int i = 0; i < vct.size(); ++i)
+		vct[i] = (vct.size() - i) * 3;
+	printSize(vct);
 
-	it = it + 5;
-	it = 1 + it;
-	it = it - 4;
-	std::cout << *(it += 2) << std::endl;
-	std::cout << *(it -= 1) << std::endl;
+	vct2.insert(vct2.end(), 42);
+	vct2.insert(vct2.begin(), 2, 21);
+	printSize(vct2);
 
-	*(it -= 2) = 42;
-	*(it += 2) = 21;
+	vct2.insert(vct2.end() - 2, 42);
+	printSize(vct2);
 
-	std::cout << "const_ite +=/-=: " << *(ite += 2) << " | " << *(ite -= 2) << std::endl;
+	vct2.insert(vct2.end(), 2, 84);
+	printSize(vct2);
 
-	std::cout << "(it == const_it): " << (ite == it) << std::endl;
-	std::cout << "(const_ite - it): " << (ite - it) << std::endl;
-	std::cout << "(ite + 3 == it): " << (ite + 3 == it) << std::endl;
+	vct2.resize(4);
+	printSize(vct2);
 
-	printSize(vct, true);
+	vct2.insert(vct2.begin() + 2, vct.begin(), vct.end());
+	vct.clear();
+	printSize(vct2);
+
+	printSize(vct);
 	return (0);
 }

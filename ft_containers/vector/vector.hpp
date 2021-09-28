@@ -10,7 +10,8 @@
 
 #include "../etc/etc.hpp"
 #include <unistd.h>
-namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴한데...
+
+namespace ft //iterator_traits는 이 namespace에다가 정의하는게 맞긴한데...
 {
 	template <typename T, class Allocator = std::allocator<T> > //allocater가 아니라 allocator...! allocator에 T가 들어가는게 가장 중요함. 메모리 할당 단위를 결정하게 됨.
 	class vector
@@ -22,16 +23,14 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 			//https://en.cppreference.com/w/cpp/named_req/RandomAccessIterator <- 여기에 interface 다 있음.
 			//공식 레퍼런스 사이트를 쫌 참고하십시오....!
 				public:
-
 					typedef std::random_access_iterator_tag iterator_category;
-					//typedef std::bidirectional_iterator_tag iterator_category;
 					typedef T value_type;
 					typedef int difference_type;
 					typedef T* pointer;
 					typedef T& reference;
 
-					Iterator(pointer ptr) : ptr(ptr) {}//어댑터나 그 비슷한 것들... 즉 어떤 타켓 내포하는건 녀석들은, 타겟을 내포하려는 시도를 생성자측에서 시도하려고함.
-					Iterator():ptr(NULL){}
+					Iterator(pointer ptr) : ptr(ptr) { }//어댑터나 그 비슷한 것들... 즉 어떤 타켓 내포하는건 녀석들은, 타겟을 내포하려는 시도를 생성자측에서 시도하려고함.
+					Iterator():ptr(NULL) {}
 					reference operator*() const { return *ptr; }
 					pointer operator->() { return ptr; }
 					friend bool operator== (const Iterator& a, const Iterator& b) { return a.ptr == b.ptr; };
@@ -53,9 +52,9 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 					//bidirection-iterator
 					Iterator& operator--() { ptr--; return *this; }  
 					const Iterator &operator--(int) { Iterator tmp = *this; --(*this); return tmp; }
+					
 					//LegacyRandomAccessIterator
-
-					Iterator& operator+=(int n) //{ ptr += num;  return *this; }//operator+랑 똑같이 연산?//std::sort() 함수에서 이 연산자를 요구함.
+					Iterator& operator+=(int n)//std::sort() 함수에서 이 연산자를 요구함.
 					{
 						while (n < 0)
 						{
@@ -106,6 +105,7 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 				private:
 					pointer ptr;
 			};
+			/*
 			class reverse_iterator//위에 Iterator 본문 복붙했는데, 수정이 필요한 부분 수정함.
 			{//어댑터는 아님.(근데 어쨌거나 어댑터의 성질을 가지는건 사실임.)// reverse_iterator에 대해서 정리 잘 해놓기. "실제로 가리키는 것" <-> "내뱉어야하는 값"
 				public:
@@ -173,10 +173,10 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 							ret *= -1;
 						return ret;
 					};
-					/*friend difference_type operator-(const reverse_iterator &lhs, const reverse_iterator &rhs) 이런식으로 하면 안됨.
+					//friend difference_type operator-(const reverse_iterator &lhs, const reverse_iterator &rhs) 이런식으로 하면 안됨.
 					{
-						return std::distance(lhs, rhs);
-					}*/
+					//	return std::distance(lhs, rhs);
+					//}
 					const value_type &operator[](int diff) const
 					{
 						return (*(this + diff));
@@ -191,7 +191,7 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 					friend bool operator<=(const reverse_iterator& a, const reverse_iterator &b) { return !(a > b); }
 				private:
 					pointer ptr;
-			};
+			};*/
 		
 		//컨테이너 구현을 시작.
 
@@ -240,18 +240,12 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 				assign(count, value);
 			}
 
-			//가불기 상태...! => enable_if 사용해서 해결하면 될듯. -> 일단은 해결함
-			//enable_if, is_itegral 구현, 사용법 공부하기
-			//template< class InputIt>
-			//template< class InputIt, typename std::enable_if< !(std::is_integral<InputIt>::value), InputIt >::type* >
-
-			//template <class InputIt>
 			template< class InputIt >
 			vector( InputIt first, typename ft::enable_if< !(ft::is_integral<InputIt>::value), InputIt >::type last, const Allocator& alloc = Allocator()):_capacity(0), _size(0), _allocator(alloc)
 			{
 				_array = _allocator.allocate(0);
 				assign(first, last);
-			}//템플릿 특수화로는 해결이 안됨.
+			} //템플릿 특수화로는 아까의 문제가 해결이 안됨.
 			
 			vector( const vector& other ):_capacity(other._capacity), _size(other._size), _allocator(other._allocator)
 			{
@@ -269,16 +263,18 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 				assign(src.begin(), src.end());
 				return *this;
 			}
+
 			~vector()
 			{
 				_allocator.deallocate(_array, _capacity);
 			}
+
 			void assign( size_type count, const T& value )
 			{
 				clear();
 				insert(begin(), count, value);
 			}
-			//InputIt = enable_if< !(is_integral<InputIt>::value), InputIt>::type
+
 			template< class InputIt >
 			void assign( InputIt first, typename enable_if< !(is_integral<InputIt>::value), InputIt >::type last ) //fitst > last이면 에러가 발생하게끔 구현. 반개구간임을 명심하자.
 			{
@@ -292,8 +288,8 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 
 			//Element access
 
-			T &operator[](int idx) { return _array[idx];}
-			const T &operator[](int idx) const { return _array[idx];}
+			T &operator[](int idx) { return _array[idx]; }
+			const T &operator[](int idx) const { return _array[idx]; }
 			reference at( size_type pos )
 			{
 				if (pos > _size)
@@ -342,7 +338,7 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 
 			//Modifiers
 
-			void clear() { _size = 0; }
+			void clear() { _size = 0; } // 이렇게 하는게 맞음 표준에서도 이렇게 하는듯
 			iterator insert( iterator pos, const T& value )//다른 insert함수들의 반환형이 void인 이유에 대해 생각해보기
 			{
 				size_type diff = std::distance(begin(), pos);//distance = (index_num - index_num)
@@ -352,21 +348,18 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 				size_type new_capacity = _capacity;
 				if (new_capacity <= 0)
 					new_capacity = 1;
-				if (_size  + 1 > _capacity)
-					new_capacity = new_capacity * 2;
 				if (new_capacity >= _max_size)
 					throw std::runtime_error("(reserve함수에서) 들어온 인자의 크기가 할당할수 있는 크기보다 큼.");
+				if (_size  + 1 > _capacity)
+					new_capacity = new_capacity * 2;
 				if (new_capacity != _capacity)
 					reserve(new_capacity);
-				
-				_capacity = new_capacity;//여기서 위 블록 살짝 복잡할수 있음.
 				pos = Iterator(&_array[diff]);//reserve()를 했기때문에 iterator갱신이 필요함.
 				
 				//memcpy문제 발생할수 있음...
 				memcpy(&*pos + 1, &*pos, sizeof(T) * std::distance(pos, end()));
 				*pos = value;
 				_size++;//cosnt 함수가 아니면 무조건 멤버변수에 변동이 있음.
-				//std::cout << "capacity는" << _capacity << std::endl;
 				return pos;
 			}
 			void insert( iterator pos, size_type count, const T& value )
@@ -376,15 +369,11 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 					pos = insert(pos, value);
 			}
 			template< class InputIt >
-			void insert( iterator pos, InputIt first, InputIt last)//first > last 이면 에러가 발생. 반개구간임을 명심하자
+			void insert( iterator pos, typename enable_if< !( is_integral<InputIt>::value), InputIt >::type first, InputIt last)
 			{
-				
 				last--;
-				
 				for (;last >= first; --last)
-				{
 					pos = insert(pos, *last);
-				}
 			}
 			iterator erase( iterator pos )
 			{
@@ -400,7 +389,7 @@ namespace ft//iterator_traits는 이 namespace에다가 정의하는게 맞긴�
 					first = erase(first);
 				return first;
 			}
-			void push_back( const T& value ) { insert(end(), value);}
+			void push_back( const T& value ) { insert(end(), value); }
 			void pop_back(){ _size--; }
 			void resize( size_type count, T value = T() )
 			{

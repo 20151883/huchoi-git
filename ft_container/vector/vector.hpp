@@ -349,8 +349,8 @@ namespace ft
 			void clear() 
 			{ 
 				_allocator.deallocate(_array, _capacity);
-				_array = _allocator.allocate(0); 
-				_capacity = 0;
+				_array = _allocator.allocate(_capacity); 
+				//_capacity = 0;
 				/*_array = _allocator.allocate(0);*/ 
 				_size = 0; 
 			}

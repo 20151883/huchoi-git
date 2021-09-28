@@ -333,6 +333,42 @@ namespace ft
 				if(!_kcompare(data.first, GetData(cNode).first) && !_kcompare(GetData(cNode).first, data.first))
 						return cNode;
 			*/
+
+			BTreeNode *_utils_for_lower(const key_type &target) const
+			{
+				BTreeNode * cNode = _RNode;
+				BTreeNode * pNode = cNode;   // current node
+				BSTData cd;    // current data
+				while(cNode != _endNode)
+				{
+					cd = GetData(cNode);
+
+					if(!_kcompare(target, GetData(cNode).first) && !_kcompare(GetData(cNode).first, target))
+						return cNode; // 이때는 cNode 반환하는게 맞음
+					else if (_kcompare(target, cd.first) == true)
+					{
+						pNode = cNode;
+						cNode = GetLeftSubTree(cNode);
+					}
+					else
+					{
+						pNode = cNode;
+						cNode = GetRightSubTree(cNode);
+					}
+				}
+				if (pNode == _RightestNode())
+					return _endNode;
+				else
+					return pNode; 
+			}
+			BTreeNode * _RightestNode() const
+			{
+				BTreeNode *ret = _RNode;
+				while (ret->right != _endNode)
+					ret = ret->right;
+				return ret;
+
+			}
 			void RenewerRoot(BTreeNode * bt)
 			{
 				if(bt == _endNode || bt == NULL)
@@ -921,36 +957,37 @@ namespace ft
 				return ret;
 			}
 
-			iterator insert( iterator hint, const value_type& value )//어질어질하다... 어떻게 동작하는지 파악할 방법이 없음... -> 걍 대충해봄
+			iterator insert( iterator hint, const value_type& value )
 			{
 				iterator terminal = end();
 				iterator ret = find(value.first);
-				if (ret != _endNode)
+				if (ret != end())
 					return ret;
-				if (_kcompare(hint->first, value.first) == true)//적어도 이 조건문은 검증됨
+				if (_kcompare(hint->first, value.first) == true)
 				{
 					iterator phint = hint;
-					while (hint != terminal && _kcompare(hint->first, value.first))//*********** 로직 제대로 된거 아닌듯 iterator가 위에서 아래로 내려가는게 아닌데 위->아래를 가정하고 짠 로직임...
+					while (hint != terminal && _kcompare(hint->first, value.first))
 					{
-						//std::cout << "> " << std::endl;
 						phint = hint;
 						hint++;
 					}
 					
-					BTreeNode *parent;
+					BTreeNode *parent ;
 					if (!_kcompare(hint->first, value.first) && !_kcompare(value.first, hint->first))
 						return hint;
 					else if (hint == terminal)
-						parent = phint.base();
-					else // hint->first > value.first
-						parent = phint.base();
+						{ parent = phint.base(); }
+					else 
+						parent = hint.base();
 					_size++;
-					BSTInsert(&parent, value);//BSTInsert()함수 잘 구현한듯
+					if (parent == _endNode)
+						BSTInsert(&_RNode, value);
+					BSTInsert(&parent, value);
 				}
-				else // 위의것과 정반대로 진행하면 됨.
+				else 
 				{
 					iterator phint;
-					while (hint != terminal && !_kcompare(hint->first, value.first))//*********** 로직 제대로 된거 아닌듯 iterator가 위에서 아래로 내려가는게 아닌데 위->아래를 가정하고 짠 로직임...
+					while (hint != terminal && !_kcompare(hint->first, value.first))
 					{
 						phint = hint;
 						hint--;
@@ -961,7 +998,7 @@ namespace ft
 					else if (hint == terminal)
 						parent = phint.base();
 					else
-						parent = phint.base();
+						parent = hint.base();
 					_size++;
 					BSTInsert(&parent, value);
 				}
@@ -1053,21 +1090,37 @@ namespace ft
 			}
 			ft::pair<iterator,iterator> equal_range( const Key& key ) {	return make_pair(lower_bound(key), upper_bound(key)); }
 			ft::pair<const_iterator,const_iterator> equal_range( const Key& key ) const { return make_pair(lower_bound(key), upper_bound(key)); }
-			iterator lower_bound( const Key& key ) { return find(key); }
-			const_iterator lower_bound( const Key& key ) const { return find(key); }
+			iterator lower_bound( const Key& key ) 
+			{
+				//_utils_for_lower(key);
+				iterator check(_utils_for_lower(key));
+				return check;
+			}
+			const_iterator lower_bound( const Key& key ) const 
+			{
+				const_iterator check(_utils_for_lower(key));
+				return check;
+			}
 			iterator upper_bound( const Key& key ) 
 			{ 
-				iterator ret = find(key); 
-				if (ret == end())
-					return ret;
-				return ++ret;
+				iterator iter= lower_bound(key);
+				if (iter == end())
+					return end();
+				else if (iter->first == key)
+					return ++iter;
+				else
+					return iter;
 			}
 			const_iterator upper_bound( const Key& key ) const 
 			{ 
-				const_iterator ret = find(key); 
-				if (ret == end())
-					return ret;
-				return ++ret;
+				const_iterator iter= lower_bound(key);
+				if (iter == end())
+					return end();
+				else if (iter->first == key)
+					return ++iter;
+				else
+					return iter;
+				
 			}
 
 			//Observers

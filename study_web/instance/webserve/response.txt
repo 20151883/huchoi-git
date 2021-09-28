@@ -1,0 +1,14 @@
+HTTP/1.1 200OK
+Content-type: text/html; charset=UTF-8
+content-length: 174
+
+<html>
+<head><title>NETWORK</title></head>
+<body><font size=+5>
+<div>
+TCP/IP Socket Programming <br>
+this is test msg<br>
+</div>
+this is new  line <br>
+</font></body>
+</html>
