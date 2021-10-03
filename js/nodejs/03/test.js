@@ -1,5 +1,14 @@
-setImmediate(() => console.log("set immediate"));
-let v1 = 3;
-let v2 = "v2";
-console.log(v1);
-console.log(v2, { colors: false });
+var candyMachine = {
+	status : {name:"node", count:5},
+	getCandy(){
+		this.status.count--;
+		return this.status.count;
+	},
+};
+
+const {getCandy, status:{count}, status} = candyMachine;
+let bind_test = getCandy.bind(candyMachine);
+console.log(bind_test());
+
+console.log(count);
+console.log(status.count);
