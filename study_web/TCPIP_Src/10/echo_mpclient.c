@@ -21,19 +21,19 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 	
-	sock=socket(PF_INET, SOCK_STREAM, 0);  
+	sock=socket(PF_INET, SOCK_STREAM, 0);  //소켓생성
 	memset(&serv_adr, 0, sizeof(serv_adr));
 	serv_adr.sin_family=AF_INET;
-	serv_adr.sin_addr.s_addr=inet_addr(argv[1]);
-	serv_adr.sin_port=htons(atoi(argv[2]));
-	
-	if(connect(sock, (struct sockaddr*)&serv_adr, sizeof(serv_adr))==-1)
+	serv_adr.sin_addr.s_addr=inet_addr(argv[1]);//서버 주소 설정
+	serv_adr.sin_port=htons(atoi(argv[2]));//서버의 포트 설정
+	//클라이언트소켓의 주소나 포트번호는 운영체제에 의해 자동으로 할당됨
+	if(connect(sock, (struct sockaddr*)&serv_adr, sizeof(serv_adr))==-1)//클라이언트에게 연결요청
 		error_handling("connect() error!");
 
 	pid=fork();
-	if(pid==0)
+	if(pid==0)//자식 프로세스
 		write_routine(sock, buf);
-	else 
+	else//부모 프로세스 
 		read_routine(sock, buf);
 
 	close(sock);

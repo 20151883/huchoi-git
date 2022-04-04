@@ -7,7 +7,7 @@ void testfunc(T &src)
 }
 
 template <typename T, typename Fp>
-void iter (T *arr, int lenth, Fp fp)//여기서 함수도 template으로 주고싶은데 잘 못하겠음.
+void iter (T *arr, int lenth, Fp fp)
 {
 	int idx = 0;
 	while (idx < lenth)
@@ -16,3 +16,4 @@ void iter (T *arr, int lenth, Fp fp)//여기서 함수도 template으로 주고�
 		idx++;
 	}
 }
+

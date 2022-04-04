@@ -49,8 +49,9 @@ void convert_float(std::string test)
 	cout<<"float: ";
 	try
 	{
-		long  double ld = stold(test);//에러가 발생한다면 이 함수에서 발생함.
-		float f = static_cast<float>(ld);
+		// long  double ld = stold(test);//에러가 발생한다면 이 함수에서 발생함.
+		// float f = static_cast<float>(ld);
+		float f = stof(test);
 		if (!IsFloatFinite(f) && test != std::string("nan"))
 		{
 			if (ld > 0)
@@ -73,8 +74,9 @@ void convert_double(std::string test)
 {
 	cout<<"double: ";
 	try{
-		long  double ld = stold(test);
-		double d =static_cast<double>(ld);
+		// long  double ld = stold(test);
+		// double d =static_cast<double>(ld);
+		double d = stod(test);
 		if (!IsDoubleFinite(d) && test != std::string("nan"))
 		{
 			if (ld > 0)

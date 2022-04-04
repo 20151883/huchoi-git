@@ -10,6 +10,26 @@
 
 #include "etc.hpp"
 #include <unistd.h>
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
+
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	s1 = (unsigned char *)dst;
+	s2 = (unsigned char *)src;
+	i = 0;
+	while (i < n)
+	{
+		s1[i] = s2[i];
+		i++;
+	}
+	return (dst);
+}
+
 namespace ft
 {
 	template <typename T, class Allocator = std::allocator<T> >
@@ -261,7 +281,7 @@ namespace ft
 				}
 				_capacity = src.capacity();
 				_size = src.size();
-				//memcpy(_array, src.begin().base(), src.size() * sizeof(T));
+				//ft_memcpy(_array, src.begin().base(), src.size() * sizeof(T));
 				//assign(src.begin(), src.end());
 				return *this;
 			}
@@ -333,7 +353,7 @@ namespace ft
 				if (new_cap >= _capacity)
 				{
 					T *temp = _allocator.allocate(new_cap);
-					memcpy(temp, _array, sizeof(T) * _size);
+					ft_memcpy(temp, _array, sizeof(T) * _size);
 					_allocator.deallocate(_array, _capacity);
 					_array = temp;
 					_capacity = new_cap;
@@ -367,7 +387,7 @@ namespace ft
 
 				pos = Iterator(&_array[diff]);
 
-				memcpy(&*pos + 1, &*pos, sizeof(T) * std::distance(pos, end()));//<-여기서 consturcture 호출 하지 말것
+				ft_memcpy(&*pos + 1, &*pos, sizeof(T) * std::distance(pos, end()));//<-여기서 consturcture 호출 하지 말것
 				// *pos = value;
 				_allocator.construct(&*pos, value);
 				_size++;
@@ -395,7 +415,7 @@ namespace ft
 			iterator erase( iterator pos )
 			{
 				size_type diff = std::distance(begin(), pos);
-				memcpy(&*pos, &*pos + 1, sizeof(T) * std::distance(pos + 1, end()));
+				ft_memcpy(&*pos, &*pos + 1, sizeof(T) * std::distance(pos + 1, end()));
 				_size--;
 				return Iterator(&_array[diff]);
 			}

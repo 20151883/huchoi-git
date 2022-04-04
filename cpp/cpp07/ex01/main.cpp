@@ -27,8 +27,6 @@ void print( T const & x ) { std::cout << x << std::endl; return; }
 int main() 
 {
 	const int tab[] = { 0, 1, 2, 3, 4 }; // <--- I never understood why you can't write int[] tab. Wouldn't that make more sense?
-	//const Awesome tab2[5];
 	iter<const int, void (*)(const int &)>( tab, 5, print );
-	//iter( tab2, 5, print );
 	return 0;
 }
